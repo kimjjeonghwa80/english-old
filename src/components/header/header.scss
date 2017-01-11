@@ -1,0 +1,18 @@
+header {
+    nav.top {
+        background-color: #595959;
+        color: white;
+        .menus {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+            .menu {
+                float: right;
+                padding: 1em;
+                cursor: pointer;
+            }
+        }
+    }
+
+}

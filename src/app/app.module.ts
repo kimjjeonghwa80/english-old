@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HelpPage } from '../pages/help/help';
 
+import { HeaderComponent } from '../components/header/header';
+
 const appRoutes: Routes = [
   { path: 'help', component: HelpPage },
   { path: '', component: HomePage }
@@ -18,7 +20,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomePage,
-    HelpPage
+    HelpPage,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
