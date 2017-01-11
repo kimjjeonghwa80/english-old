@@ -3,6 +3,7 @@
 
 
 .history
+src/api/firebase-api-2.0
 
 *~
 *.sw[mnpcod]
