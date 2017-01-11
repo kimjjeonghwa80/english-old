@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
+import { FirebaseApiModule } from '../api/firebase-api-2.0/firebase-api-module';
 import { AppComponent } from './app.component';
 
 import { HomePage } from '../pages/home/home';
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot( appRoutes )
+    RouterModule.forRoot( appRoutes ),
+    FirebaseApiModule
   ],
   bootstrap: [ AppComponent ],
   providers: [ ]
