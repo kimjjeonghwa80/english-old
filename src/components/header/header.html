@@ -3,9 +3,11 @@
     <nav class="top">
         <ul class="menus">
             <li class="menu" routerLink="/help">Help</li>
-            <li class="menu" (click)="onClickRegister()">Register</li>
-            <li class="menu" (click)="onClickLogin()">Login</li>
-            <li class="menu"> <a target="_blank" href="https://video.withcenter.com/">Video English</a> </li>
+            <li *ngIf="!isLoggedin" class="menu" (click)="onClickRegister()">Register</li>
+            <li *ngIf="isLoggedin" class="menu" (click)="onClickUpdateProfile()">Update Profile</li>
+            <li *ngIf="!isLoggedin" class="menu" (click)="onClickLogin()">Login</li>
+            <li *ngIf="isLoggedin" class="menu" (click)="onClickLogout()">Logout</li>
+            <li  class="menu"> <a target="_blank" href="https://video.withcenter.com/">Video English</a> </li>
             
         </ul>
     </nav>

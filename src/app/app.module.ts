@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {  NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+
 
 import { FirebaseApiModule } from '../api/firebase-api-2.0/firebase-api-module';
 import { AppComponent } from './app.component';
@@ -14,6 +16,7 @@ import { HelpPage } from '../pages/help/help';
 import { HeaderComponent } from '../components/header/header';
 
 import { LoginModal } from '../components/modals/login/login';
+import { RegisterComponent } from '../components/modals/register/register';
 
 const appRoutes: Routes = [
   { path: 'help', component: HelpPage },
@@ -26,18 +29,20 @@ const appRoutes: Routes = [
     HomePage,
     HelpPage,
     HeaderComponent,
-    LoginModal
+    LoginModal,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     RouterModule.forRoot( appRoutes ),
     FirebaseApiModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    FormsModule
   ],
   bootstrap: [ AppComponent ],
   providers: [ NgbActiveModal ],
-  entryComponents: [ LoginModal ]
+  entryComponents: [ LoginModal, RegisterComponent ]
 })
 export class AppModule {}
 

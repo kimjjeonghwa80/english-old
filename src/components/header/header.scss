@@ -16,3 +16,15 @@ header {
     }
 
 }
+
+.modal.fade{
+    opacity:100;-webkit-transition:opacity 10s linear;-o-transition:opacity 10s linear;transition:opacity 10s linear!important
+}
+
+.modal{
+    top: 10em !important;
+}
+
+.modal-dialog{
+    margin: 100px auto !important;
+}
