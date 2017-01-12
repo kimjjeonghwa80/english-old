@@ -9,9 +9,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 export class LoginModal{
     @Input() login;
-    constructor( private modal: NgbActiveModal, public activeModal: NgbActiveModal ){}
+    constructor( public activeModal: NgbActiveModal ){}
 
   onClickDismiss(){
-    this.modal.dismiss( 'dismiss' );
+    this.activeModal.dismiss( 'dismiss' );
   }
 }
