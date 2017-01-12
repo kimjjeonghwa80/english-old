@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, NgZone } from '@angular/core';
+import { Component, Input, NgZone } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../../../api/firebase-api-2.0/user';
 

@@ -24,15 +24,17 @@ export class HeaderComponent {
         let modalRef = this.modal.open( LoginModal );
             modalRef.componentInstance.submit.subscribe( (uid) =>{
                 console.log('emit' + uid);
-            })
+            });
     }
     onClickRegister(){
         let modalRef = this.modal.open ( RegisterComponent );  
-
+        modalRef.componentInstance.submit.subscribe( (uid) =>{
+                console.log('emit' + uid);
+            });
     }
 
     checkLogin(){
-        let user = firebase.auth().currentUser;
+        //let user = firebase.auth().currentUser;
         firebase.auth().onAuthStateChanged((user) => {
             this.ngZone.run( () => {
                 if (user) {
