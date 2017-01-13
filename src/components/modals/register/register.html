@@ -2,76 +2,84 @@
 
 
   <div class="modal-header">
+
+    <h5 class="modal-title"> {{ title }}</h5>
     <button type="button" class="close" aria-label="Close" (click)="onClickDismiss()">
       <span aria-hidden="true">&times;</span>
     </button>
-    <h5 class="modal-title">Register</h5>
   </div>
   
     <div class="modal-body">
+      <div *ngIf="loading && uid" class="in-page-loading"><i class="fa fa-cog fa-spin"></i> Loading ...</div>
+      <form *ngIf="!loading || !uid">
 
-      <form>
+          <table class="container-fluid" cellspacing="0">
 
-            <div class="form-group row" *ngIf="!userdata">
-              <label for="email" class="col-xs-3 col-form-label" >Email: </label>
-              <div class="col-xs-9">
-                <input class="form-control form-control-sm"   type="email" id="email" name="email" [(ngModel)]="registrationForm.email">
-              </div>
-            </div>
+                <!-- This supports IE 9. IE 9 does not support HTML 5 -->
 
+                  <tr>
+                      <td><label for="firstname" >First Name</label></td>
+                      <td >
+                          <input class="form-control" [(ngModel)]="registrationForm.firstname"  type="text" id="firstname" name="firstname">
+                      </td>
+                  </tr>
 
-            <div class="form-group row" *ngIf="!userdata">
-              <label for="password" class="col-xs-3 col-form-label" >Password: </label>
-              <div class="col-xs-9">
-                <input class="form-control form-control-sm"   type="password" id="password" name="password" [(ngModel)]="registrationForm.password">
-              </div>
-            </div>
+                  <tr>
+                      <td><label for="lastname" >Last Name</label></td>
+                      <td >
+                          <input class="form-control" [(ngModel)]="registrationForm.lastname"  type="text" id="lastname" name="lastname">
+                      </td>
+                  </tr>
 
-            <div class="form-group row">
-              <label for="firstname" class="col-xs-3 col-form-label" >Firstname: </label>
-              <div class="col-xs-9">
-                <input class="form-control form-control-sm"   type="text" id="firstname" name="firstname" [(ngModel)]="registrationForm.firstname">
-              </div>
-            </div>
+                  <tr *ngIf="!userdata">
+                      <td><label for="email" >Email</label></td>
+                      <td >
+                      <input class="form-control" [(ngModel)]="registrationForm.email"  type="email" id="email" name="email">
+                      </td>
+                  </tr>
 
-            <div class="form-group row">
-              <label for="lastname" class="col-xs-3 col-form-label" >Lastname: </label>
-              <div class="col-xs-9">
-                <input class="form-control form-control-sm"   type="text" id="lastname" name="lastname" [(ngModel)]="registrationForm.lastname">
-              </div>
-            </div>
-
-
-            <div class="form-group row">
-                <label for="gender" class="form-check-inline">
-                    <input type="radio" class="form-check-input"  [(ngModel)]="registrationForm.gender" name="gender" id="gender" value="male">
-                    Male
-                </label>
-                <label for="gender" class="form-check-inline">
-                    <input type="radio" class="form-check-input"  [(ngModel)]="registrationForm.gender" name="gender" id="gender" value="female">
-                    Female
-                </label>
-            </div>
+                  <tr *ngIf="!userdata">
+                      <td><label for="password" >Password</label></td>
+                      <td >
+                          <input class="form-control" [(ngModel)]="registrationForm.password"  type="password" id="password" name="password">
+                      </td>
+                  </tr>
 
 
 
-            <div class="form-group row">
-              <label for="birthdate" class="col-xs-3 col-form-label" >Birthdate: </label>
-              <div class="col-xs-9">
-                <input class="form-control form-control-sm"   type="date" id="birthdate" name="birthdate" [(ngModel)]="registrationForm.birthdate">
-              </div>
-            </div>
+
+                  <tr>
+                      <td><label> Gender</label></td>
+                      <td >
+                          <label for="genderM" class="form-check-inline male">
+                              <input type="radio" class="form-check-input "  [(ngModel)]="registrationForm.gender" name="gender" id="genderM" value="male">
+                              Male
+                          </label>
+                          <label for="genderF" class="form-check-inline female">
+                              <input type="radio" class="form-check-input "  [(ngModel)]="registrationForm.gender" name="gender" id="genderF" value="female">
+                              Female
+                          </label>
+
+                      </td>
+                  </tr>
+                  <tr>
+                    <td><label> Birthdate</label></td>
+                    <td>
+                      <input class="form-control form-control-sm"   type="date" id="birthdate" name="birthdate" [(ngModel)]="registrationForm.birthdate">
+                    </td>
+                  </tr>
+          </table>
 
 
-          
-      </form>
+
+        </form>
 
     </div>
 
     
     <div class="modal-footer">
       
-      <button type="button"class="btn btn-primary btn-sm" (click)="onClickSubmit()">Signup</button>
+      <button type="button"class="btn btn-primary btn-sm" (click)="onClickSubmit()">{{ title }}</button>
     </div>
 
 

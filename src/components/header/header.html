@@ -7,9 +7,26 @@
             <li *ngIf="isLoggedin" class="menu" (click)="onClickUpdateProfile()">Update Profile</li>
             <li *ngIf="!isLoggedin" class="menu" (click)="onClickLogin()">Login</li>
             <li *ngIf="isLoggedin" class="menu" (click)="onClickLogout()">Logout</li>
-            <li  class="menu"> <a target="_blank" href="https://video.withcenter.com/">Video English</a> </li>
+            <li class="menu"> <a target="_blank" href="https://video.withcenter.com/room/{{ userdata.firstname }}/testroom">Video English</a> </li>
+            
+            
+        </ul>
+    </nav>
+    <h5 class="companylogo">LOGO</h5>
+    <nav class="secondary">
+        <ul class="menus">
+            <li class="menu" routerLink="">Home</li>
+            <li class="menu" >Power English</li>
+            <li class="menu" >Power China</li>
+            <li class="menu" >Recommended courses</li>
+            <li class="menu" >Member Management System</li>
+            <li class="menu" >Course Review</li>
+            <li class="menu" >Consultation Request</li>
             
         </ul>
     </nav>
 </header>
 
+
+
+ 

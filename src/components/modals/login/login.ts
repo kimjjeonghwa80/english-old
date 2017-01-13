@@ -27,13 +27,27 @@ export class LoginModal{
   }
 
   onClickLogin(){
+      if( this.validate() == false ) return;
         this.userService.login( this.login_form.email, this.login_form.password, uid => {
             console.log("Login ok: ", uid);
             this.submit.emit( uid );
+            this.activeModal.close();
         },
         error => {
-            console.error("Login error: ", error );
+            alert("Login error: " + error );
         });
+  }
+
+  validate(){
+      if( this.login_form.email == '' || this.login_form.email == null ){
+          alert( 'Please provide your registered email' );
+          return false;
+      }
+      if( this.login_form.password == '' || this.login_form.password == null ){
+          alert( 'Password is required' );
+          return false;
+      }
+      return true;
   }
 
 
