@@ -10,22 +10,34 @@
             <li class="menu"> <a target="_blank" href="https://video.withcenter.com/room/{{ userdata.firstname }}/testroom">Video English</a> </li>  
         </ul>
     </nav>
-    <h5 class="companylogo">LOGO</h5>
-    <nav class="secondary">
-        <ul class="menus">
-            <li class="menu" routerLink="">Home</li>
-            <li class="menu" >Power English</li>
-            <li class="menu" >Power China</li>
-            <li class="menu" >Recommended courses</li>
-            <li class="menu" >Member Management System</li>
-            <li class="menu" >Course Review</li>
-            <li class="menu" >Consultation Request</li>
-            
-        </ul>
-    </nav>
+
+    <ng-container *ngIf=" app.widthSize == 'small' ">
+        <table width="100%">
+            <tr>
+                <td><h5 class="companylogo">LOGO</h5></td>
+                <td>
+                    <i class="fa fa-bars" (click)="onClickMoreMenu()"></i>
+                </td>
+            </tr>
+        </table>
+        <nav class="bottom" [class.active]="this.more">
+            <ul class="menus">
+                <li class="menu" routerLink="">Home</li>
+                <li class="menu" >Power English</li>
+                <li class="menu" >Power China</li>
+                <li class="menu" >Recommended courses</li>
+                <li class="menu" >Member Management System</li>
+                <li class="menu" >Course Review</li>
+                <li class="menu" >Consultation Request</li>
+            </ul>
+        </nav>
+    </ng-container>
+    <ng-container *ngIf=" app.widthSize == 'big' ">
+        Big menu
+    </ng-container>
+
 </header>
 
 
 
 
- 

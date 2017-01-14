@@ -1,15 +1,7 @@
 import { Component, Input, NgZone } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../../../api/firebase-api-2.0/user';
-
-interface form{
-    email       : string;
-    password    : string;
-    name        : string;
-    mobile      : string;
-    gender      : string;
-    birthdate   : Date;
-}
+import { USER_REGISTRATION_FORM } from '../../../api/firebase-api-2.0/interfaces';
 @Component({
     selector:'register-component',
     templateUrl: 'register.html'
@@ -19,7 +11,7 @@ export class RegisterComponent{
 
     loading:boolean = true;
     title:string;
-    registrationForm = <form>{}
+    registrationForm = <USER_REGISTRATION_FORM> {}
     userdata;
     @Input() uid = null;
     constructor( 

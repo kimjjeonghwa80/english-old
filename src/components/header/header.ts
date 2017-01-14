@@ -4,6 +4,7 @@ import { LoginModal } from '../modals/login/login';
 import { RegisterComponent } from '../modals/register/register';
 import * as firebase from 'firebase';
 import { User } from '../../api/firebase-api-2.0/user';
+import { App } from '../../providers/app';
 interface data {
     email       : string;
     firstname   : string;
@@ -16,22 +17,20 @@ interface data {
     templateUrl: 'header.html'
 })
 export class HeaderComponent implements OnInit {
-    random
+    random;
     ctr: number = 0;
     uid;
     userdata = <data>{};
+    more: boolean = false;
     constructor( 
         private modal       : NgbModal,
         private ngZone      : NgZone,
-        private user        : User
+        private user        : User,
+        private app         : App
         ) {
             this.random = this.getRandomInit( 0, 9999999);
             this.userdata.firstname = 'guest' + this.random;            
-        console.log('header :: constructor()')
-
-        setTimeout(() => {
-console.log('login: ', user.isLogin);
-        }, 3000);
+        console.log('header :: constructor(), loginUser: ', user.loginUser);
         
         //this.checkLogin();
     }
@@ -102,4 +101,7 @@ console.log('login: ', user.isLogin);
             modalRef.componentInstance.uid = this.uid;
     }
 
+    onClickMoreMenu() {
+        this.more = ! this.more;
+    }
 }

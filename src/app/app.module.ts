@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {  NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-
+import { App } from '../providers/app';
 
 import { FirebaseApiModule } from '../api/firebase-api-2.0/firebase-api-module';
 import { AppComponent } from './app.component';
@@ -41,7 +41,7 @@ const appRoutes: Routes = [
     FormsModule
   ],
   bootstrap: [ AppComponent ],
-  providers: [ NgbActiveModal ],
+  providers: [ App, NgbActiveModal ],
   entryComponents: [ LoginModal, RegisterComponent ]
 })
 export class AppModule {}
