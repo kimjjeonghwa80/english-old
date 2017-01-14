@@ -5,8 +5,8 @@ import { User } from '../../../api/firebase-api-2.0/user';
 interface form{
     email       : string;
     password    : string;
-    firstname   : string;
-    lastname    : string;
+    name        : string;
+    mobile      : string;
     gender      : string;
     birthdate   : Date;
 }
@@ -26,8 +26,7 @@ export class RegisterComponent{
         public activeModal  : NgbActiveModal,
         private userService : User,
         private ngZone      : NgZone 
-        ){
-            
+        ) {
             
         }
 
@@ -70,8 +69,8 @@ export class RegisterComponent{
       this.ngZone.run( () =>{
           console.log('gender ' + this.userdata.gender )
           this.registrationForm.email       = this.userdata.email;
-          this.registrationForm.firstname   = this.userdata.firstname;
-          this.registrationForm.lastname    = this.userdata.lastname;
+          this.registrationForm.name        = this.userdata.name;
+          this.registrationForm.mobile      = this.userdata.mobile;
           this.registrationForm.gender      = this.userdata.gender;
           this.registrationForm.birthdate   = this.userdata.birthdate;
           this.title = 'Update';
@@ -82,18 +81,18 @@ export class RegisterComponent{
     checkLogin(){
 
 
-        this.userService.checklogin( res =>{
-            this.ngZone.run( () =>{
-                this.userService.get( res.uid, res =>{
-                    this.userdata = res;
-                }, error =>console.log('error ' + error ) )
-            })
-        }, error => {
-            console.log( 'error ' + error );
-        }, complete =>{
-            console.log( 'complete check ' );
-            this.renderRegister();
-        } )
+        // this.userService.checklogin( res =>{
+        //     this.ngZone.run( () =>{
+        //         this.userService.get( res.uid, res =>{
+        //             this.userdata = res;
+        //         }, error =>console.log('error ' + error ) )
+        //     })
+        // }, error => {
+        //     console.log( 'error ' + error );
+        // }, complete =>{
+        //     console.log( 'complete check ' );
+        //     this.renderRegister();
+        // } )
     }
 
   onClickSubmit( ){
@@ -109,28 +108,28 @@ export class RegisterComponent{
   register(){
       if( this.validate() == false ) return;
       console.log('form :: ' + JSON.stringify(this.registrationForm))
-        console.log("Going to create user : " + this.registrationForm.firstname);
-        this.userService.data('key', this.registrationForm.firstname )
+        console.log("Going to create user : " + this.registrationForm.name);
+        this.userService.data('key', this.registrationForm.name )
             .data('email', this.registrationForm.email)
             .data('password', this.registrationForm.password )
-            .data('firstname', this.registrationForm.firstname)
-            .data('lastname' , this.registrationForm.lastname)
+            .data('name', this.registrationForm.name)
+            .data('mobile' , this.registrationForm.mobile)
             .data('gender' , this.registrationForm.gender)
             .data('birthdate', this.registrationForm.birthdate)
             .create(
                 ( uid ) => { 
-                    console.log(`create ${this.registrationForm.firstname} : success`); 
+                    console.log(`create ${this.registrationForm.name} : success`); 
                     this.activeModal.close(); 
                 },
-                (e) => alert(`create ${this.registrationForm.firstname}: failure:`+ e),
-                () => console.log(`create ${this.registrationForm.firstname} : complete`) );
+                (e) => alert(`create ${this.registrationForm.name}: failure:`+ e),
+                () => console.log(`create ${this.registrationForm.name} : complete`) );
   }
 
   updateProfile(){
         this.userService.clear()
             .data('key', this.userdata.uid)
-            .data('firstname', this.registrationForm.firstname)
-            .data('lastname' , this.registrationForm.lastname)
+            .data('name', this.registrationForm.name)
+            .data('mobile' , this.registrationForm.mobile)
             .data('gender' , this.registrationForm.gender)
             .data('birthdate', this.registrationForm.birthdate)
             .update(
@@ -144,11 +143,11 @@ export class RegisterComponent{
   }
 
   validate(){
-      if( this.registrationForm.firstname == '' || this.registrationForm.firstname == null){
+      if ( ! this.registrationForm.name ) {
           alert('First Name is required');
           return false;
       }
-      if( this.registrationForm.lastname == '' || this.registrationForm.lastname == null ){
+      if( ! this.registrationForm.mobile ) {
           alert('Last Name is required');
           return false;
       }

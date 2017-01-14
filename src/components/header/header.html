@@ -3,13 +3,11 @@
     <nav class="top">
         <ul class="menus">
             <li class="menu" routerLink="/help">Help</li>
-            <li *ngIf="!isLoggedin" class="menu" (click)="onClickRegister()">Register</li>
-            <li *ngIf="isLoggedin" class="menu" (click)="onClickUpdateProfile()">Update Profile</li>
-            <li *ngIf="!isLoggedin" class="menu" (click)="onClickLogin()">Login</li>
-            <li *ngIf="isLoggedin" class="menu" (click)="onClickLogout()">Logout</li>
-            <li class="menu"> <a target="_blank" href="https://video.withcenter.com/room/{{ userdata.firstname }}/testroom">Video English</a> </li>
-            
-            
+            <li *ngIf="!user.isLogin" class="menu" (click)="onClickRegister()">Register</li>
+            <li *ngIf="user.isLogin" class="menu" (click)="onClickUpdateProfile()">Update Profile</li>
+            <li *ngIf="!user.isLogin" class="menu" (click)="onClickLogin()">Login</li>
+            <li *ngIf="user.isLogin" class="menu" (click)="onClickLogout()">Logout</li>
+            <li class="menu"> <a target="_blank" href="https://video.withcenter.com/room/{{ userdata.firstname }}/testroom">Video English</a> </li>  
         </ul>
     </nav>
     <h5 class="companylogo">LOGO</h5>
@@ -26,6 +24,7 @@
         </ul>
     </nav>
 </header>
+
 
 
 
