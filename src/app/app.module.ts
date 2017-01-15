@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {  NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { App } from '../providers/app';
 
@@ -14,6 +14,10 @@ import { HomePage } from '../pages/home/home';
 import { HelpPage } from '../pages/help/help';
 
 import { HeaderComponent } from '../components/header/header';
+import { IntroComponent } from '../components/intro/intro';
+import { ContactComponent } from '../components/contact/contact';
+import { CurriculumComponent } from '../components/curriculum/curriculum';
+import { PaymentComponent } from '../components/payment/payment';
 
 import { LoginModal } from '../components/modals/login/login';
 import { RegisterComponent } from '../components/modals/register/register';
@@ -30,7 +34,11 @@ const appRoutes: Routes = [
     HelpPage,
     HeaderComponent,
     LoginModal,
-    RegisterComponent
+    RegisterComponent,
+    IntroComponent,
+    ContactComponent,
+    CurriculumComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

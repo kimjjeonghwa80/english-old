@@ -1,13 +1,6 @@
 
-app-component {
-    display: block;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-}
-
-.left{
-    float: left;
-}
+@import './base';
+@import './layout';
+@import './module';
+@import './state';
+@import './theme';

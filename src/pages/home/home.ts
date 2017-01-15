@@ -10,6 +10,6 @@ export class HomePage {
         userTest: UserTest,
         private user: User
         ) {
-            userTest.run();
+            // userTest.run();
     }
 }
