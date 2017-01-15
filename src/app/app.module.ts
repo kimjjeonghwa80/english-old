@@ -6,7 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { App } from '../providers/app';
-
+import { Ng2PageScrollModule } from 'ng2-page-scroll';
 import { FirebaseApiModule } from '../api/firebase-api-2.0/firebase-api-module';
 import { AppComponent } from './app.component';
 
@@ -18,6 +18,7 @@ import { IntroComponent } from '../components/intro/intro';
 import { ContactComponent } from '../components/contact/contact';
 import { CurriculumComponent } from '../components/curriculum/curriculum';
 import { PaymentComponent } from '../components/payment/payment';
+import { TeacherComponent } from '../components/teacher/teacher';
 
 import { LoginModal } from '../components/modals/login/login';
 import { RegisterComponent } from '../components/modals/register/register';
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
     IntroComponent,
     ContactComponent,
     CurriculumComponent,
-    PaymentComponent
+    PaymentComponent,
+    TeacherComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot( appRoutes ),
     FirebaseApiModule,
     NgbModule.forRoot(),
-    FormsModule
+    FormsModule,
+    Ng2PageScrollModule.forRoot()
   ],
   bootstrap: [ AppComponent ],
   providers: [ App, NgbActiveModal ],

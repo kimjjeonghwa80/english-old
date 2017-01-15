@@ -12,10 +12,10 @@ export class App {
         this.width = width;
         // console.log("setWidth(): ", this._width);
     }
-    getWidth() {
+    private getWidth() {
         return this.width;
     }
-    get widthSize() {
+    get widthSize() : 'small' | 'big' {
         if ( this.getWidth() < 760 ) return 'small';
         else return 'big';
     }

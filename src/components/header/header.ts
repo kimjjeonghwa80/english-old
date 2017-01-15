@@ -1,17 +1,15 @@
-import { Component, NgZone, OnInit  } from '@angular/core';
+import { Component, NgZone, OnInit, Inject  } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginModal } from '../modals/login/login'; 
 import { RegisterComponent } from '../modals/register/register';
 import * as firebase from 'firebase';
 import { User } from '../../api/firebase-api-2.0/user';
+import { USER_REGISTRATION_FORM } from '../../api/firebase-api-2.0/interfaces';
 import { App } from '../../providers/app';
-interface data {
-    email       : string;
-    firstname   : string;
-    lastname    : string;
-    gender      : string;
-    birthdate   : Date;
-};
+import { DOCUMENT } from '@angular/platform-browser';
+import { PageScrollService, PageScrollInstance, PageScrollConfig } from 'ng2-page-scroll';
+const header_height: number = 86;
+const big_header_gap: number = 12;
 @Component({
     selector: 'header-component',
     templateUrl: 'header.html'
@@ -20,16 +18,18 @@ export class HeaderComponent implements OnInit {
     random;
     ctr: number = 0;
     uid;
-    userdata = <data>{};
+    userdata = <USER_REGISTRATION_FORM> {};
     more: boolean = false;
     constructor( 
         private modal       : NgbModal,
         private ngZone      : NgZone,
         private user        : User,
-        private app         : App
+        private app         : App,
+        private pageScrollService: PageScrollService,
+        @Inject(DOCUMENT) private document: Document
         ) {
             this.random = this.getRandomInit( 0, 9999999);
-            this.userdata.firstname = 'guest' + this.random;            
+            this.userdata.name = 'guest' + this.random;            
         console.log('header :: constructor(), loginUser: ', user.loginUser);
         
         //this.checkLogin();
@@ -104,4 +104,22 @@ export class HeaderComponent implements OnInit {
     onClickMoreMenu() {
         this.more = ! this.more;
     }
+
+    /**
+     * ================= ScrollSpy + Affix ======================
+     */
+
+    onClickMenu( name ) {
+        this.scrollTo( name );
+    }
+    
+    scrollTo( id ) {
+        let margin_top = header_height;
+        if ( this.app.widthSize == 'big' ) margin_top += big_header_gap;
+        PageScrollConfig.defaultScrollOffset = margin_top;
+        PageScrollConfig.defaultDuration = 300;
+        let pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#' + id);
+        this.pageScrollService.start( pageScrollInstance );
+    }
+
 }
