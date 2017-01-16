@@ -27,7 +27,7 @@ export class AppComponent {
   }
   
   onResize(event) {
-    this.app.setWidth( window.innerWidth);
+    this.app.setWidth( window.innerWidth );
   }
 
 

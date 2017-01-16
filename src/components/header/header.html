@@ -7,52 +7,53 @@
                 <li *ngIf="user.isLogin" class="menu" (click)="onClickUpdateProfile()">Update Profile</li>
                 <li *ngIf="!user.isLogin" class="menu" (click)="onClickLogin()">Login</li>
                 <li *ngIf="user.isLogin" class="menu" (click)="onClickLogout()">Logout</li>
-                <li class="menu"> <a target="_blank" href="https://video.withcenter.com/room/{{ user.loginUser.name }}/testroom">Video English</a> </li>  
+                <li class="menu"> <a target="_blank" href="https://video.withcenter.com/room/{{ user?.loginUser?.name }}/testroom">Video English</a> </li>  
             </ul>
         </div>
-        <div class="bottom">
-            <ng-container *ngIf=" app.widthSize == 'small' ">
-                <div class="menu">
-                    <table width="100%" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <td width="30"><h5 class="companylogo">LOGO</h5></td>
+        <div *ngIf=" app.widthSize == 'small' " class="bottom small">
+            <div class="menu">
+                <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td width="80%"><h5 class="companylogo">LOGO</h5></td>
+                        
+                        <!--
                             <td width="50%">
-                                <span (click)="onClickMenu('curriculum')">Courses</span>
-                                <span (click)="onClickMenu('teacher')">Teachers</span>
-                                <span (click)="onClickMenu('payment')">Payment</span>
-                            </td>
-                            <td width="20%">
-                                <i class="fa fa-bars" (click)="onClickMoreMenu()"></i>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+                            <span (click)="onClickMenu('curriculum')">Courses</span>
+                            <span (click)="onClickMenu('teacher')">Teachers</span>
+                            <span (click)="onClickMenu('payment')">Payment</span>
+                        </td>
+                        -->
+                        <td width="20%">
+                            <i class="fa fa-bars" (click)="onClickMoreMenu()"></i>
+                        </td>
+                    </tr>
+                </table>
+            </div>
 
-                <div class="panel" [class.active]="this.more">
-                    <ul class="menus">
-                        <li class="menu" routerLink="">Home</li>
-                        <li class="menu" >Power English</li>
-                        <li class="menu" >Power China</li>
-                        <li class="menu" >Recommended courses</li>
-                        <li class="menu" >Member Management System</li>
-                        <li class="menu" >Course Review</li>
-                        <li class="menu" >Consultation Request</li>
-                    </ul>
-                </div>
-
-            </ng-container>
-            <ng-container *ngIf=" app.widthSize == 'big' ">
-                <ul class="menus main-menu">
-                    <li class="menu" [class.active]=" app.scrollId =='intro' " (click)="onClickMenu('intro')">Home</li>
-                    <li class="menu" [class.active]=" app.scrollId =='curriculum' " (click)="onClickMenu('curriculum')">Courses</li>
-                    <li class="menu" [class.active]=" app.scrollId =='teacher' " (click)="onClickMenu('teacher')">Teachers</li>
-                    <li class="menu" [class.active]=" app.scrollId =='payment' " (click)="onClickMenu('payment')">Payment</li>
+            <div class="panel" [class.active]="this.more">
+                <ul class="menus">
+                    <li class="menu" [class.active]=" app.scrollId =='intro' " (click)="onClickPanelMenu('intro')">Home</li>
+                    <li class="menu" [class.active]=" app.scrollId =='curriculum' " (click)="onClickPanelMenu('curriculum')">Courses</li>
+                    <li class="menu" [class.active]=" app.scrollId =='teacher' " (click)="onClickPanelMenu('teacher')">Teachers</li>
+                    <li class="menu" [class.active]=" app.scrollId =='payment' " (click)="onClickPanelMenu('payment')">Payment</li>
                     <li class="menu" >Inquery</li>
                     <li class="menu" >Level Test</li>
-                    <li class="menu" >Reservations</li>
-                    <li class="menu" [class.active]=" app.scrollId =='contact' " (click)="onClickMenu('contact')">Contact</li>
+                    <li class="menu" >Reservation</li>
+                    <li class="menu" [class.active]=" app.scrollId =='contact' " (click)="onClickPanelMenu('contact')">Contact</li>
                 </ul>
-            </ng-container>
+            </div>
+        </div>
+        <div *ngIf=" app.widthSize == 'big' " class="bottom big">
+            <ul class="menus main-menu">
+                <li class="menu" [class.active]=" app.scrollId =='intro' " (click)="onClickMenu('intro')">Home</li>
+                <li class="menu" [class.active]=" app.scrollId =='curriculum' " (click)="onClickMenu('curriculum')">Courses</li>
+                <li class="menu" [class.active]=" app.scrollId =='teacher' " (click)="onClickMenu('teacher')">Teachers</li>
+                <li class="menu" [class.active]=" app.scrollId =='payment' " (click)="onClickMenu('payment')">Payment</li>
+                <li class="menu" >Inquery</li>
+                <li class="menu" >Level Test</li>
+                <li class="menu" >Reservations</li>
+                <li class="menu" [class.active]=" app.scrollId =='contact' " (click)="onClickMenu('contact')">Contact</li>
+            </ul>
         </div>
     </nav>
 </header>

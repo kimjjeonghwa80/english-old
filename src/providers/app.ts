@@ -12,7 +12,7 @@ export class App {
      */
     setWidth( width ) {
         this.width = width;
-        // console.log("setWidth(): ", this._width);
+        console.log("setWidth(): ", this.width);
     }
     private getWidth() {
         return this.width;

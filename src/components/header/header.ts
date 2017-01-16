@@ -112,6 +112,10 @@ export class HeaderComponent implements OnInit {
     onClickMenu( name ) {
         this.scrollTo( name );
     }
+    onClickPanelMenu( name ) {
+        this.more = false;
+        this.scrollTo( name );
+    }
     
     scrollTo( id ) {
         PageScrollConfig.defaultScrollOffset = this.app.marginTop;
