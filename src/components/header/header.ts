@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit, Inject  } from '@angular/core';
+import { Component, OnInit, Inject  } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginModal } from '../modals/login/login'; 
 import { RegisterComponent } from '../modals/register/register';
@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
     more: boolean = false;
     constructor( 
         private modal       : NgbModal,
-        private ngZone      : NgZone,
+        // private ngZone      : NgZone,
         private user        : User,
         private app         : App,
         private pageScrollService: PageScrollService,

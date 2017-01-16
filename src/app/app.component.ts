@@ -22,6 +22,9 @@ export class AppComponent {
             app.scrolled( event );
           });
   }
+  ngOnInit() {
+    setTimeout( () => this.app.scrolled( event ), 10);
+  }
   onDevinceReady() {
     console.log("yes, I am running in cordova.");
   }
