@@ -136,11 +136,11 @@ export class RegisterComponent{
 
   validate(){
       if ( ! this.registrationForm.name ) {
-          alert('First Name is required');
+          alert('Name is required');
           return false;
       }
       if( ! this.registrationForm.mobile ) {
-          alert('Last Name is required');
+          alert('Provide your mobile number');
           return false;
       }
       if( this.registrationForm.password == '' || this.registrationForm.password == null ){

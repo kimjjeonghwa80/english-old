@@ -1,5 +1,8 @@
 # English Web/App
 
+#Firebase Host
+https://english-c26df.firebaseapp.com/
+
 # TODO
 
 * Scroll spy on page scroll. when the bottom of the section#id appears into view, set it active.

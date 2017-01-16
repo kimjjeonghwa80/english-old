@@ -7,7 +7,7 @@
                 <li *ngIf="user.isLogin" class="menu" (click)="onClickUpdateProfile()">Update Profile</li>
                 <li *ngIf="!user.isLogin" class="menu" (click)="onClickLogin()">Login</li>
                 <li *ngIf="user.isLogin" class="menu" (click)="onClickLogout()">Logout</li>
-                <li class="menu"> <a target="_blank" href="https://video.withcenter.com/room/{{ userdata.firstname }}/testroom">Video English</a> </li>  
+                <li class="menu"> <a target="_blank" href="https://video.withcenter.com/room/{{ user.loginUser.name }}/testroom">Video English</a> </li>  
             </ul>
         </div>
         <div class="bottom">
