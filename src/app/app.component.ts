@@ -19,7 +19,7 @@ export class AppComponent {
     Observable.fromEvent(window, 'scroll')
           .debounceTime(100)
           .subscribe((event) => {
-            console.log('Observable: scroll: ', event);
+            app.scrolled( event );
           });
   }
   onDevinceReady() {

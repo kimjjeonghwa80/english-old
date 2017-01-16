@@ -52,7 +52,12 @@ header-component header nav.navbar {
         .menu {
             display: inline-block;
             padding: .58em;
+            &.active {
+                background-color: #d00000;
+                color: yellow;
+            }
         }
+
     }
 
 }

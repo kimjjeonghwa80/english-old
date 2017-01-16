@@ -2,7 +2,7 @@
     <nav class="navbar fixed-top">
         <div class="top">
             <ul class="menus">
-                <li class="menu" routerLink="/help">Help</li>
+                <li class="menu" (click)="onClickMenu('contact')">Help</li>
                 <li *ngIf="!user.isLogin" class="menu" (click)="onClickRegister()">Register</li>
                 <li *ngIf="user.isLogin" class="menu" (click)="onClickUpdateProfile()">Update Profile</li>
                 <li *ngIf="!user.isLogin" class="menu" (click)="onClickLogin()">Login</li>
@@ -15,7 +15,12 @@
                 <div class="menu">
                     <table width="100%" cellpadding="0" cellspacing="0">
                         <tr>
-                            <td width="80%"><h5 class="companylogo">LOGO</h5></td>
+                            <td width="30"><h5 class="companylogo">LOGO</h5></td>
+                            <td width="50%">
+                                <span (click)="onClickMenu('curriculum')">Courses</span>
+                                <span (click)="onClickMenu('teacher')">Teachers</span>
+                                <span (click)="onClickMenu('payment')">Payment</span>
+                            </td>
                             <td width="20%">
                                 <i class="fa fa-bars" (click)="onClickMoreMenu()"></i>
                             </td>
@@ -38,14 +43,14 @@
             </ng-container>
             <ng-container *ngIf=" app.widthSize == 'big' ">
                 <ul class="menus main-menu">
-                    <li class="menu" (click)="onClickMenu('content')">Home</li>
-                    <li class="menu" (click)="onClickMenu('curriculum')">Courses</li>
-                    <li class="menu" (click)="onClickMenu('teacher')">Teachers</li>
-                    <li class="menu" (click)="onClickMenu('payment')">Payment</li>
+                    <li class="menu" [class.active]=" app.scrollId =='intro' " (click)="onClickMenu('intro')">Home</li>
+                    <li class="menu" [class.active]=" app.scrollId =='curriculum' " (click)="onClickMenu('curriculum')">Courses</li>
+                    <li class="menu" [class.active]=" app.scrollId =='teacher' " (click)="onClickMenu('teacher')">Teachers</li>
+                    <li class="menu" [class.active]=" app.scrollId =='payment' " (click)="onClickMenu('payment')">Payment</li>
                     <li class="menu" >Inquery</li>
                     <li class="menu" >Level Test</li>
                     <li class="menu" >Reservations</li>
-                    <li class="menu" (click)="onClickMenu('contact')">Contact</li>
+                    <li class="menu" [class.active]=" app.scrollId =='contact' " (click)="onClickMenu('contact')">Contact</li>
                 </ul>
             </ng-container>
         </div>

@@ -2,14 +2,13 @@ import { Component, NgZone, OnInit, Inject  } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginModal } from '../modals/login/login'; 
 import { RegisterComponent } from '../modals/register/register';
-import * as firebase from 'firebase';
+//import * as firebase from 'firebase';
 import { User } from '../../api/firebase-api-2.0/user';
 import { USER_REGISTRATION_FORM } from '../../api/firebase-api-2.0/interfaces';
 import { App } from '../../providers/app';
 import { DOCUMENT } from '@angular/platform-browser';
 import { PageScrollService, PageScrollInstance, PageScrollConfig } from 'ng2-page-scroll';
-const header_height: number = 86;
-const big_header_gap: number = 12;
+
 @Component({
     selector: 'header-component',
     templateUrl: 'header.html'
@@ -50,7 +49,8 @@ export class HeaderComponent implements OnInit {
     }
 
     onClickRegister(){
-        let modalRef = this.modal.open ( RegisterComponent ); 
+        let modalRef = this.modal.open ( RegisterComponent );
+        modalRef;
     }
 
     getUserData(){
@@ -114,9 +114,7 @@ export class HeaderComponent implements OnInit {
     }
     
     scrollTo( id ) {
-        let margin_top = header_height;
-        if ( this.app.widthSize == 'big' ) margin_top += big_header_gap;
-        PageScrollConfig.defaultScrollOffset = margin_top;
+        PageScrollConfig.defaultScrollOffset = this.app.marginTop;
         PageScrollConfig.defaultDuration = 300;
         let pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#' + id);
         this.pageScrollService.start( pageScrollInstance );
