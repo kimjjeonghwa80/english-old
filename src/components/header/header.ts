@@ -5,7 +5,7 @@ import { RegisterComponent } from '../modals/register/register';
 //import * as firebase from 'firebase';
 import { User } from '../../api/firebase-api-2.0/user';
 import { UserTest } from '../../api/firebase-api-2.0/test/user-test';
-import { USER_REGISTRATION_FORM } from '../../api/firebase-api-2.0/interfaces';
+// import { USER_REGISTRATION_FORM } from '../../api/firebase-api-2.0/interfaces';
 import { App } from '../../providers/app';
 import { DOCUMENT } from '@angular/platform-browser';
 import { PageScrollService, PageScrollInstance, PageScrollConfig } from 'ng2-page-scroll';
@@ -80,8 +80,10 @@ export class HeaderComponent implements OnInit {
 
 
     onClickUpdateProfile(){
+        console.log('uid ' + JSON.stringify(this.user.loginUser))
+        let uid = this.user.loginUser['uid']
         let modalRef = this.modal.open( RegisterComponent );
-            modalRef.componentInstance.uid = this.uid;
+            modalRef.componentInstance.uid = uid;
     }
 
     onClickMoreMenu() {

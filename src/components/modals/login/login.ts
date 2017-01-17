@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../../../api/firebase-api-2.0/user';
 import { App } from '../../../providers/app';
@@ -13,8 +13,8 @@ interface LOGIN_FORM {
     templateUrl: 'login.html'
 })
 
-export class LoginModal{
-
+export class LoginModal implements OnInit{
+    saveid:boolean =false;
     form = <LOGIN_FORM> {};
     constructor( 
       public activeModal  : NgbActiveModal,
@@ -25,11 +25,20 @@ export class LoginModal{
       }
 
   onClickDismiss(){
-    this.activeModal.dismiss( 'dismiss' );
+    this.activeModal.close();
+  }
+
+  ngOnInit(){
+      let id = localStorage.getItem('saveid');
+      if( id ){
+          this.form.id = id;
+          this.saveid = true;
+      }
+
   }
 
   onClickLogin(){
-
+      
       //this.form.id = "user191559";
       //this.form.password = this.form.id;
       if( this.validate() == false ) return;
@@ -39,10 +48,13 @@ export class LoginModal{
           console.log("user data: ", data);
           let uid = data['uid'];
           this.user.get( uid, data => {
+              
               console.log( data );
               // 2. login with email/password
               this.user.login( data['email'], this.form.password, uid => {
                   this.activeModal.close();
+                  if( this.saveid ) localStorage.setItem('saveid', this.form.id )
+                  else localStorage.removeItem('saveid')
               },
               error => this.app.alert('login error: login failed'),
               () => {} );

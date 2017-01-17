@@ -1,46 +1,64 @@
-<div >
+<div class="login-modal">
 
 
   <div class="modal-header">
 
-    <h5 class="modal-title">Login</h5>
-      <button type="button" class="close" aria-label="Close" (click)="onClickDismiss()">
-        <span aria-hidden="true">&times;</span>
+      <h5 class="modal-title">
+        <font class="modal-title">login</font>
+      </h5>
+      <button type="button" class="close" aria-hidden="true" (click)="onClickDismiss()">
+        <span aria-hidden="true">×</span>
       </button>
+      
   </div>
   
     <div class="modal-body">
-      <form>
-          <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-              <input [(ngModel)]="form.id" name="id" type="text" class="form-control form-control-sm" placeholder="User ID">
-          </div>
-          <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
-              <input [(ngModel)]="form.password" name="password" type="password" class="form-control form-control-sm" id="password" placeholder="Password">
-          </div>
+      <div class="form-container"> 
+        <form>
+            <div>
+            <p class="form-title">Please login.</p>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                <input [(ngModel)]="form.id" name="id" type="text" class="form-control form-control-sm" placeholder="User ID">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                <input [(ngModel)]="form.password" name="password" type="password" class="form-control form-control-sm" id="password" placeholder="Password">
+            </div>
 
-      </form> 
+            <div class="row">
+              <div class="col-md-6 form-save">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]="saveid" name="saveid">
+                  save ID
+                </label>
+              </div>
+              <div class="col-md-6 form-login" ><button type="button"class="btn btn-danger form-control" (click)="onClickLogin()">Log in</button></div>
+            </div>
+            <hr/>
+            <div class="id-password row">
+              <div class="col-md-6 button-id" >
+                <button type="button"class="btn btn-info form-control" (click)="onClickLogin()">
+                  <i class="fa fa-user fa-fw"></i>find ID
+                </button>
+              </div>
+              <div class="col-md-6 button-password" >
+                <button type="button"class="btn btn-info form-control" (click)="onClickLogin()">
+                  <i class="fa fa-lock fa-fw"></i>Forgot password
+                </button>
+              </div>
+            </div>
+              <p class="info">
+                Still not a member in Video English ?
+              </p>
+              <div  class="button-signup">
+                <button type="button"class="btn btn-warning form-control" (click)="onClickLogin()">
+                  Sign Up
+                </button>
+              </div>
+        </form>
+      </div> 
     </div>
-
-    
-    <div class="modal-footer">
-      
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input">
-          save ID
-        </label>
-      
-      <button type="button"class="btn btn-sm login" (click)="onClickLogin()">Log in</button>
-    </div>
-    
-    <div class="modal-footer">
-      <button class="btn btn-sm btn-success noradius full"><i class="fa fa-user" aria-hidden="true"></i> Find ID</button>
-      <button class="btn btn-sm btn-success noradius full"><i class="fa fa-lock" aria-hidden="true"></i> Forgot Password</button>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-sm btn-block btn-warning">Sign Up</button>
-    </div>
-
 
 </div>

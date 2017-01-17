@@ -38,11 +38,12 @@ export class RegisterComponent{
     }
 
     onClickDismiss() {
-        this.activeModal.dismiss( 'dismiss' );
+        this.activeModal.close();
     }
 
   ngOnInit(){
      if( this.uid ) {
+         console.log('logged in')
          this.getUserData(); 
          
      }
@@ -52,28 +53,33 @@ export class RegisterComponent{
   renderRegister(){
       
   }
-
+  onchange(){
+      console.log('ok ' + this.form.id );
+      this.form.id = this.form.id.replace(/./g, '');
+  }
   getUserData(){
       this.user.get( this.uid, res =>{
           
               this.userdata = res;
              this.initializeData();
-             this.renderRegister();
+             
              
       }, error => {
           console.log('error ' + error ); 
-        }, () => this.renderRegister());
+        }, () =>{});
   }
 
   initializeData(){
       
           console.log('gender ' + this.userdata.gender )
+          this.form.id          = this.userdata.id;
           this.form.email       = this.userdata.email;
           this.form.name        = this.userdata.name;
           this.form.mobile      = this.userdata.mobile;
           this.form.gender      = this.userdata.gender;
           this.form.birthdate   = this.userdata.birthdate;
           this.title = 'Update';
+          this.loading = false;
           
   }
 
@@ -138,20 +144,14 @@ export class RegisterComponent{
   }
 
   validate() {
-      
-
       if ( ! this.form.id ) {
           this.app.alert('ID is required');
           return false;
       }
-
-
       if ( ! this.form.email ) {
           this.app.alert('Email is required');
           return false;
       }
-
-
       if ( ! this.form.name ) {
           this.app.alert('Name is required');
           return false;
@@ -160,7 +160,7 @@ export class RegisterComponent{
           this.app.alert('Provide your mobile number');
           return false;
       }
-      if( this.form.password == '' || this.form.password == null ){
+      if( ! this.form.password ){
           this.app.alert('Password is required' );
           return false;
       }

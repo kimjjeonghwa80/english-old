@@ -1,16 +1,89 @@
+$breakpoint:760px;
 login-component{
 
-    .login{
-        padding: 3px;
-        width: 6em;
-        height: 2.3em;
-        background-color: coral;
+    @mixin button-size() {
+        margin: 0 0 20px;
+        padding: 7px 22px;
+        width: 135px;
+        height: 34px;
     }
-    .btn, .form-check-input{
-        cursor: pointer;
-    }
-    .full{
-        width: 100%;
+    // Module -- Component -- Narrow
+    .login-modal {
+        .modal-header {
+            .modal-title {
+                line-height: 1.428571429;
+            }
+        }
+        .modal-body {
+
+            .form-container {
+                margin-top: 1.5em;
+                margin-left: auto;
+                margin-right: auto;
+                border: solid 1px #eee;
+                padding: 30px;
+                color: #555;
+                background: #fefefe;
+                box-shadow: 0 0 3px #eee;
+                .form-title {
+                    text-align: center;
+                    font-size: 22px;
+                    font-family: 나눔고딕, 돋음, verdana;
+                    border-bottom: 1px solid #eee;
+                }
+                .input-group {
+                    margin-top:1.5em;
+                }
+                .form-save {
+                    padding-top: 1em;
+                }
+                .form-login {
+                    padding-top: 1em;
+                    .btn {
+                        margin: 0 0 20px;
+                        padding: 7px 22px;
+                        background-color:#f15f4c;
+                        cursor: pointer;
+                        
+                    }
+                }
+                .id-password{
+                    button {
+                        margin: 0 0 20px;
+                        padding: 7px 22px;
+                        background-color: #45c1ae;
+                        border-color: #3bb19f;
+                        cursor: pointer;
+                    }
+                }
+                .info {
+                    text-align: center;
+                    font-weight: bold;
+                }
+                .button-signup {
+                    .btn {
+                        background-color: #e5b742;
+                        border-color: #e2ae2c;
+                        cursor: pointer;
+                    }
+                }
+                // Wide
+                @media all and (min-width: $breakpoint) {
+                   width: 362px;
+                   .form-save {
+                       padding-top:1em;
+                      
+                   }
+                   .form-login {
+                        padding-top: 1em;
+                        .btn {
+                            @include button-size();
+                            background-color:#f15f4c;
+                        }
+                    }
+                }
+            }
+        }
     }
     
 }
