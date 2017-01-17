@@ -4,6 +4,7 @@ import { LoginModal } from '../modals/login/login';
 import { RegisterComponent } from '../modals/register/register';
 //import * as firebase from 'firebase';
 import { User } from '../../api/firebase-api-2.0/user';
+import { UserTest } from '../../api/firebase-api-2.0/test/user-test';
 import { USER_REGISTRATION_FORM } from '../../api/firebase-api-2.0/interfaces';
 import { App } from '../../providers/app';
 import { DOCUMENT } from '@angular/platform-browser';
@@ -17,82 +18,64 @@ export class HeaderComponent implements OnInit {
     random;
     ctr: number = 0;
     uid;
-    userdata = <USER_REGISTRATION_FORM> {};
+    
     more: boolean = false;
+    login: boolean = false;
     constructor( 
         private modal       : NgbModal,
-        // private ngZone      : NgZone,
         private user        : User,
+        private userTest    : UserTest,
         private app         : App,
         private pageScrollService: PageScrollService,
         @Inject(DOCUMENT) private document: Document
-        ) {
-            this.random = this.getRandomInit( 0, 9999999);
-            this.userdata.name = 'guest' + this.random;            
+    ) {
+        // userTest.run();
         console.log('header :: constructor(), loginUser: ', user.loginUser);
+        this.login = user.loggedIn;
+        console.log("user login status: ", this.login);
         
-        //this.checkLogin();
+        //console.log(user.loggedIn);
+        //console.log(user);
+        // this.onClickRegister();
+
+        // this.onClickLogin();
     }
     onClickLogin(){
         console.log('login');
         let modalRef = this.modal.open( LoginModal );
-            modalRef.componentInstance.submit.subscribe( (uid) =>{
-                console.log('emit' + uid);
-            });
+        
+        modalRef.result.then( (x) => {
+            console.log( this.user.loginUser );
+            this.login = this.user.loggedIn;
+            console.log("user login status: ", this.login);
+        });
+
     }
 
-    ngOnInit(){
+    ngOnInit() {
 
     }
-    renderUserData( data ) {
-        this.userdata = data;
-    }
-
-    onClickRegister(){
+    
+    onClickRegister() {
         let modalRef = this.modal.open ( RegisterComponent );
-        modalRef;
+        modalRef.result.then( (x) => {
+            console.log( this.user.loginUser );
+            this.login = this.user.loggedIn;
+            console.log("user login status: ", this.login);
+        });
     }
 
-    getUserData(){
-        // this.userService.get( this.uid, response =>{
-        //     this.renderUserData( response );
-        // }, error => console.log('error on getting data ' + error ) ,
-        // () => console.log('completed task ' ) )
-    }
 
-    checkLogin(){
 
-        // this.userService.checklogin( res =>{
-        //     this.ctr ++;
-        //     console.log('counter ' + this.ctr);
-        //     this.ngZone.run( () =>{
-        //         this.isLoggedin = true;
-        //         this.uid = res;
-        //         this.getUserData();
-        //         console.log('check response ' + JSON.stringify(res))
-        //     })
-        // }, error => {
-        //     console.log( 'error ' + error );
-        //     this.isLoggedin = false;
-        // }, complete =>console.log( 'complete check ' ) )
-    }
 
-    getRandomInit( min, max ) {
-        min = Math.ceil( min );
-        max = Math.floor( max );
-        return Math.floor( Math.random() * ( max - min ) ) + min;
-    }
 
     onClickLogout() {
-
-        // this.userService.logout( res =>{
-        //     console.log('logged out');
-        //     this.ngZone.run( () =>{
-        //         this.isLoggedin = false;
-        //     })
-        // }, error => console.log('error ' + error ), 
-        // () => console.log('complete ' ) )
-
+        this.login = false;
+        this.user.logout( () => {
+            console.info('user login status: ', this.login);
+        },
+        (e) => console.error('logout error: ', e),
+        () => {} );
     }
 
 
@@ -112,6 +95,7 @@ export class HeaderComponent implements OnInit {
     onClickMenu( name ) {
         this.scrollTo( name );
     }
+
     onClickPanelMenu( name ) {
         this.more = false;
         this.scrollTo( name );

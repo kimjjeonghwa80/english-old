@@ -3,13 +3,20 @@
         <div class="top">
             <ul class="menus">
                 <li class="menu" (click)="onClickMenu('contact')">Help</li>
-                <li *ngIf="!user.isLogin" class="menu" (click)="onClickRegister()">Register</li>
-                <li *ngIf="user.isLogin" class="menu" (click)="onClickUpdateProfile()">Update Profile</li>
-                <li *ngIf="!user.isLogin" class="menu" (click)="onClickLogin()">Login</li>
-                <li *ngIf="user.isLogin" class="menu" (click)="onClickLogout()">Logout</li>
-                <li class="menu"> <a target="_blank" href="https://video.withcenter.com/room/{{ user?.loginUser?.name }}/testroom">Video English</a> </li>  
+                <li *ngIf="! login " class="menu" (click)="onClickRegister()">Register</li>
+                <li *ngIf=" login " class="menu" (click)="onClickUpdateProfile()">Profile</li>
+                
+                <li *ngIf=" ! login " class="menu" (click)="onClickLogin()">Login</li>
+
+                <li *ngIf=" login " class="menu" (click)="onClickLogout()">
+                    Logout
+                </li>
+
+
+                <li class="menu"> <a target="_blank" href="https://video.withcenter.com/room/{{ user?.loginUser?.name }}/testroom">Class Room</a> </li>  
             </ul>
         </div>
+
         <div *ngIf=" app.widthSize == 'small' " class="bottom small">
             <div class="menu">
                 <table width="100%" cellpadding="0" cellspacing="0">

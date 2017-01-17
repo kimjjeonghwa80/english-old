@@ -86,4 +86,8 @@ export class App {
         };
     }
 
+
+    alert( str ) {
+        alert( str );
+    }
 }

@@ -1,10 +1,10 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../../../api/firebase-api-2.0/user';
+import { App } from '../../../providers/app';
 
-
-interface login{
-  email     : string;
+interface LOGIN_FORM {
+  id     : string;
   password  : string;
 }
 
@@ -15,35 +15,53 @@ interface login{
 
 export class LoginModal{
 
-    login_form: login = <login>{};
-    @Output() submit = new EventEmitter();
+    form = <LOGIN_FORM> {};
     constructor( 
       public activeModal  : NgbActiveModal,
-      private userService : User
-      ){}
+      private user : User,
+      private app: App
+      ){
+          // this.onClickLogin();
+      }
 
   onClickDismiss(){
     this.activeModal.dismiss( 'dismiss' );
   }
 
   onClickLogin(){
+
+      //this.form.id = "user191559";
+      //this.form.password = this.form.id;
       if( this.validate() == false ) return;
-        this.userService.login( this.login_form.email, this.login_form.password, uid => {
-            console.log("Login ok: ", uid);
-            this.submit.emit( uid );
-            this.activeModal.close();
-        },
-        error => {
-            alert("Login error: " + error );
-        });
+
+      // 1. get user email from user id.
+      this.user.get( this.form.id, data => {
+          console.log("user data: ", data);
+          let uid = data['uid'];
+          this.user.get( uid, data => {
+              console.log( data );
+              // 2. login with email/password
+              this.user.login( data['email'], this.form.password, uid => {
+                  this.activeModal.close();
+              },
+              error => this.app.alert('login error: login failed'),
+              () => {} );
+          },
+          error => this.app.alert( 'login error: failed to get user info' ),
+          () => {} );
+      },
+      error => this.app.alert( 'login error: failed to get user uid'),
+      () => {} );
+      
   }
 
   validate(){
-      if( this.login_form.email == '' || this.login_form.email == null ){
+      
+      if( ! this.form.id ){
           alert( 'Please provide your registered email' );
           return false;
       }
-      if( this.login_form.password == '' || this.login_form.password == null ){
+      if( this.form.password == '' || this.form.password == null ){
           alert( 'Password is required' );
           return false;
       }

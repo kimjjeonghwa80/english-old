@@ -1,5 +1,6 @@
-import { Component, Input, NgZone } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { App } from '../../../providers/app';
 import { User } from '../../../api/firebase-api-2.0/user';
 import { USER_REGISTRATION_FORM } from '../../../api/firebase-api-2.0/interfaces';
 @Component({
@@ -11,63 +12,69 @@ export class RegisterComponent{
 
     loading:boolean = true;
     title:string;
-    registrationForm = <USER_REGISTRATION_FORM> {}
+    form = <USER_REGISTRATION_FORM> {}
     userdata;
     @Input() uid = null;
-    constructor( 
-        public activeModal  : NgbActiveModal,
-        private userService : User,
-        private ngZone      : NgZone 
-        ) {
-            
-        }
+    constructor(
+        private app: App,
+        private activeModal  : NgbActiveModal,
+        private user : User
+    ) {
 
+            //this.fakeData();
+            //this.register();
 
-  onClickDismiss(){
-    this.activeModal.dismiss( 'dismiss' );
-  }
+    }
+
+    fakeData() {
+        let id = 'user' + (new Date).getHours() + (new Date).getMinutes() + (new Date).getSeconds();
+        this.form.id = id;
+        this.form.email = id + '@gmail.com';
+        this.form.name = id;
+        this.form.password = id;
+        this.form.mobile = '09174678000';
+        this.form.gender = 'M';
+        this.form.birthdate = '1990-12-30';
+    }
+
+    onClickDismiss() {
+        this.activeModal.dismiss( 'dismiss' );
+    }
 
   ngOnInit(){
      if( this.uid ) {
          this.getUserData(); 
          
      }
-
- 
      this.title = 'Signup';
-     
-  
   }
 
   renderRegister(){
-      this.ngZone.run( () =>{
-          this.loading = false;
-      })
+      
   }
 
   getUserData(){
-      this.userService.get( this.uid, res =>{
-          this.ngZone.run( () =>{
+      this.user.get( this.uid, res =>{
+          
               this.userdata = res;
              this.initializeData();
              this.renderRegister();
-          })
+             
       }, error => {
           console.log('error ' + error ); 
         }, () => this.renderRegister());
   }
 
   initializeData(){
-      this.ngZone.run( () =>{
+      
           console.log('gender ' + this.userdata.gender )
-          this.registrationForm.email       = this.userdata.email;
-          this.registrationForm.name        = this.userdata.name;
-          this.registrationForm.mobile      = this.userdata.mobile;
-          this.registrationForm.gender      = this.userdata.gender;
-          this.registrationForm.birthdate   = this.userdata.birthdate;
+          this.form.email       = this.userdata.email;
+          this.form.name        = this.userdata.name;
+          this.form.mobile      = this.userdata.mobile;
+          this.form.gender      = this.userdata.gender;
+          this.form.birthdate   = this.userdata.birthdate;
           this.title = 'Update';
-    
-      })
+          
   }
 
     checkLogin(){
@@ -87,43 +94,39 @@ export class RegisterComponent{
         // } )
     }
 
-  onClickSubmit( ){
-      if(! this.userdata ){
-          this.register();
-          return;
-      }
-      this.updateProfile();
-
+  onClickSubmit() {
+      this.register();
   }
 
 
-  register(){
+  register() {
       if( this.validate() == false ) return;
-      console.log('form :: ' + JSON.stringify(this.registrationForm))
-        console.log("Going to create user : " + this.registrationForm.name);
-        this.userService.data('key', this.registrationForm.name )
-            .data('email', this.registrationForm.email)
-            .data('password', this.registrationForm.password )
-            .data('name', this.registrationForm.name)
-            .data('mobile' , this.registrationForm.mobile)
-            .data('gender' , this.registrationForm.gender)
-            .data('birthdate', this.registrationForm.birthdate)
+      console.log('form :: ' + JSON.stringify(this.form))
+        console.log("Going to create user : " + this.form.name);
+        this.user.data('key', this.form.id )
+            .data('id', this.form.id)
+            .data('email', this.form.email)
+            .data('password', this.form.password )
+            .data('name', this.form.name)
+            .data('mobile' , this.form.mobile)
+            .data('gender' , this.form.gender)
+            .data('birthdate', this.form.birthdate)
             .create(
                 ( uid ) => { 
-                    console.log(`create ${this.registrationForm.name} : success`); 
-                    this.activeModal.close(); 
+                    console.log(`create ${this.form.name} : success`); 
+                    this.activeModal.close();
                 },
-                (e) => alert(`create ${this.registrationForm.name}: failure:`+ e),
-                () => console.log(`create ${this.registrationForm.name} : complete`) );
+                (e) => this.app.alert(`create ${this.form.name}: failure:`+ e),
+                () => console.log(`create ${this.form.name} : complete`) );
   }
 
   updateProfile(){
-        this.userService.clear()
+        this.user.clear()
             .data('key', this.userdata.uid)
-            .data('name', this.registrationForm.name)
-            .data('mobile' , this.registrationForm.mobile)
-            .data('gender' , this.registrationForm.gender)
-            .data('birthdate', this.registrationForm.birthdate)
+            .data('name', this.form.name)
+            .data('mobile' , this.form.mobile)
+            .data('gender' , this.form.gender)
+            .data('birthdate', this.form.birthdate)
             .update(
                 () => {
                     console.log(`user update: ${this.userdata.uid} : success.`);
@@ -134,25 +137,39 @@ export class RegisterComponent{
             );
   }
 
-  validate(){
-      if ( ! this.registrationForm.name ) {
-          alert('Name is required');
+  validate() {
+      
+
+      if ( ! this.form.id ) {
+          this.app.alert('ID is required');
           return false;
       }
-      if( ! this.registrationForm.mobile ) {
-          alert('Provide your mobile number');
+
+
+      if ( ! this.form.email ) {
+          this.app.alert('Email is required');
           return false;
       }
-      if( this.registrationForm.password == '' || this.registrationForm.password == null ){
-          alert('Password is required' );
+
+
+      if ( ! this.form.name ) {
+          this.app.alert('Name is required');
           return false;
       }
-      if( this.registrationForm.gender == undefined ){
-          alert('Please select your gender');
+      if( ! this.form.mobile ) {
+          this.app.alert('Provide your mobile number');
           return false;
       }
-      if( this.registrationForm.birthdate == undefined ){
-          alert('Please indicate your birthdate');
+      if( this.form.password == '' || this.form.password == null ){
+          this.app.alert('Password is required' );
+          return false;
+      }
+      if( this.form.gender == undefined ){
+          this.app.alert('Please select your gender');
+          return false;
+      }
+      if( this.form.birthdate == undefined ){
+          this.app.alert('Please indicate your birthdate');
           return false;
       }
   }
