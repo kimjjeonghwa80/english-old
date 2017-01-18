@@ -102,11 +102,21 @@ export class HeaderComponent implements OnInit {
         this.scrollTo( name );
     }
     
+
     scrollTo( id ) {
-        PageScrollConfig.defaultScrollOffset = this.app.marginTop;
-        PageScrollConfig.defaultDuration = 300;
-        let pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#' + id);
-        this.pageScrollService.start( pageScrollInstance );
+        
+        ///document.location='#id';
+
+        try {
+            PageScrollConfig.defaultScrollOffset = this.app.marginTop;
+            PageScrollConfig.defaultDuration = 300;
+            let pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#' + id);
+            console.info('pageScrllIntance : ', pageScrollInstance);
+            this.pageScrollService.start( pageScrollInstance );
+        }
+        catch ( e ) {
+            console.log("scrollTo error: ", e);
+        }
     }
 
 }

@@ -75,8 +75,8 @@ export class App {
     getOffset(el) {
         el = el.getBoundingClientRect();
         return {
-            left: el.left + window.scrollX,
-            top: Math.round(el.top) + Math.round(window.pageYOffset)
+            left: Math.round(el.left + window.pageYOffset),
+            top: Math.round(el.top + window.pageYOffset)
         };
         
     }
