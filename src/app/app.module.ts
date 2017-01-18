@@ -22,6 +22,8 @@ import { TeacherComponent } from '../components/teacher/teacher';
 
 import { LoginModal } from '../components/modals/login/login';
 import { RegisterComponent } from '../components/modals/register/register';
+import { ForgotPasswordComponent } from '../components/modals/forgot-password/forgot-password';
+import { FindIdModal } from '../components/modals/find-id/find-id';
 
 const appRoutes: Routes = [
   { path: 'help', component: HelpPage },
@@ -40,7 +42,9 @@ const appRoutes: Routes = [
     ContactComponent,
     CurriculumComponent,
     PaymentComponent,
-    TeacherComponent
+    TeacherComponent,
+    ForgotPasswordComponent,
+    FindIdModal
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,13 @@ const appRoutes: Routes = [
   ],
   bootstrap: [ AppComponent ],
   providers: [ App, NgbActiveModal ],
-  entryComponents: [ LoginModal, RegisterComponent ]
+  
+  entryComponents: [ 
+    LoginModal, 
+    RegisterComponent, 
+    ForgotPasswordComponent, 
+    FindIdModal 
+    ]
 })
 export class AppModule {}
 

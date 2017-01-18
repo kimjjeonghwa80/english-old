@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../../../api/firebase-api-2.0/user';
 import { App } from '../../../providers/app';
+
+import { FindIdModal } from '../find-id/find-id';
+import { ForgotPasswordComponent } from '../forgot-password/forgot-password';
+import { RegisterComponent } from '../register/register';
 
 interface LOGIN_FORM {
   id     : string;
@@ -19,7 +23,8 @@ export class LoginModal implements OnInit{
     constructor( 
       public activeModal  : NgbActiveModal,
       private user : User,
-      private app: App
+      private app: App,
+      private modal: NgbModal
       ){
           // this.onClickLogin();
       }
@@ -27,6 +32,23 @@ export class LoginModal implements OnInit{
   onClickDismiss(){
     this.activeModal.close();
     if( ! this.saveid ) localStorage.removeItem('saveid');
+  }
+
+
+  onClickForgotPassword(){
+      this.activeModal.close();
+      this.modal.open( ForgotPasswordComponent )
+  }
+
+  onClickFindId(){
+      this.activeModal.close();
+      this.modal.open( FindIdModal );
+  }
+  
+
+  onClickRegister(){
+      this.activeModal.close();
+      this.modal.open( RegisterComponent );
   }
 
   ngOnInit(){
