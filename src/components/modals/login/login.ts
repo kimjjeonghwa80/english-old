@@ -91,16 +91,17 @@ export class LoginModal implements OnInit{
   }
 
   validate(){
-      
-      if( ! this.form.id ){
-          alert( 'Please provide your registered email' );
-          return false;
-      }
-      if( this.form.password == '' || this.form.password == null ){
-          alert( 'Password is required' );
-          return false;
-      }
+      if( this.form.id.match(/[.#$\[\]]/g)) return this.validateError('valid id ');
+      if( ! this.form.id )return this.validateError( 'id ' );
+      if( ! this.form.password ) return this.validateError( 'password ' );
       return true;
+  }
+
+
+
+  validateError( name ) {
+      this.app.alert( name + ' is required ...' );
+      return false;
   }
 
 

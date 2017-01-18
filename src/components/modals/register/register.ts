@@ -70,7 +70,7 @@ export class RegisterComponent{
 
   register() {
       if ( this.validate() == false ) return;
-      console.log('form :: ' + JSON.stringify(this.form))
+        console.log('form :: ' + JSON.stringify(this.form))
         console.log("Going to create user : " + this.form.name);
         this.loading = true;
         this.user.data('key', this.form.id )
@@ -87,11 +87,24 @@ export class RegisterComponent{
                     this.activeModal.close();
                 },
                 (e) => this.app.alert(`create ${this.form.name}: failure:`+ e),
-                () => { this.loading = false; console.log(`create ${this.form.name} : complete`); } );
+                () => { this.loading = false; console.log(`create ${this.form.name} : complete`); } ); 
+  }
+
+  /**
+   * @description: this method is for checking if user id exists.
+   */
+  checkid(id){
+      let userid:string;
+      this.user.get( id , res =>{
+          userid = res;
+          console.log('user id exist');
+          return false;
+      }, error => {return true})
+      
   }
 
   updateProfile(){
-      this.loading = true;
+    this.loading = true;
     this.user.clear()
         .data('key', this.form.uid)
         .data('name', this.form.name)
@@ -110,6 +123,7 @@ export class RegisterComponent{
 
   validate() {
       console.log('form: ', this.form);
+      if( this.form.id.match(/[.#$\[\]]/g)) return this.validateError('valid id')
       if ( this.user.loggedIn ) {
 
       }

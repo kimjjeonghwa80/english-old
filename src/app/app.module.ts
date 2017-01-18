@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 
 import { HomePage } from '../pages/home/home';
 import { HelpPage } from '../pages/help/help';
+import { AdminPage } from '../pages/adminpage/adminpage';
 
 import { HeaderComponent } from '../components/header/header';
 import { IntroComponent } from '../components/intro/intro';
@@ -27,7 +28,8 @@ import { FindIdModal } from '../components/modals/find-id/find-id';
 
 const appRoutes: Routes = [
   { path: 'help', component: HelpPage },
-  { path: '', component: HomePage }
+  { path: '', component: HomePage },
+  { path: 'adminpage', component: AdminPage }
 ];
 
 @NgModule({
@@ -44,7 +46,8 @@ const appRoutes: Routes = [
     PaymentComponent,
     TeacherComponent,
     ForgotPasswordComponent,
-    FindIdModal
+    FindIdModal,
+    AdminPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,7 @@ const appRoutes: Routes = [
   ],
   bootstrap: [ AppComponent ],
   providers: [ App, NgbActiveModal ],
-  
+
   entryComponents: [ 
     LoginModal, 
     RegisterComponent, 
