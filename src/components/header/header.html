@@ -51,7 +51,7 @@
             </div>
         </div>
         <div *ngIf=" app.widthSize == 'big' " class="bottom big">
-            <ul class="menus main-menu">
+            <ul class="menus main-menu float-right">
                 <li class="menu" [class.active]=" app.scrollId =='intro' " (click)="onClickMenu('intro')">Home</li>
                 <li class="menu" [class.active]=" app.scrollId =='curriculum' " (click)="onClickMenu('curriculum')">Courses</li>
                 <li class="menu" [class.active]=" app.scrollId =='teacher' " (click)="onClickMenu('teacher')">Teachers</li>

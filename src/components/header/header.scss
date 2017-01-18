@@ -14,6 +14,7 @@ header-component header nav.navbar {
         a {
             text-decoration: none;
             color: $color_pallete5;
+            cursor:pointer;
         }
         .menu {
             float: right;
@@ -33,12 +34,17 @@ header-component header nav.navbar {
 
     .main-menu {
         .menu {
+            margin: 5px 0;
+            padding: .3em;
             display: inline-block;
-            padding: .58em;
+            cursor:pointer;
+            border-radius: 4px;
+            &:hover {
+                background: $color_pallete5;
+            }
             &.active {
-                background: #f15f4c;
-                color: #fff;
-               
+                background: $color_pallete3;
+                color: $color_pallete6;
             }
         }
     }
@@ -47,7 +53,6 @@ header-component header nav.navbar {
 
 
 header-component .bottom.small {
-
     .companylogo {
         margin-left: 1.3em;
         margin-top: .4em;
@@ -55,6 +60,7 @@ header-component .bottom.small {
     }
     .panel {
         max-height: 0;
+        padding: 1em;
         &.active {
             max-height: 400px;
         }
@@ -65,9 +71,14 @@ header-component .bottom.small {
         color: $color_pallete1;
         .menu {
             padding: .6em 0 .6em 2em;
+            border-top: 1px solid $color_pallete5;
+            cursor:pointer;
+            &:hover {
+                background: $color_pallete5;
+            }
             &.active {
-                background: #f15f4c;
-                color: #fff;
+                background: $color_pallete3;
+                color: $color_pallete6;
             }
         }
     }
