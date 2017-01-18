@@ -10,13 +10,14 @@ import { USER_REGISTRATION_FORM } from '../../../api/firebase-api-2.0/interfaces
 
 export class RegisterComponent{
 
-    loading: boolean = false;
-    title: string = null;
+    isIDexists  :boolean;
+    loading     : boolean = false;
+    title       : string  = null;
     form = <USER_REGISTRATION_FORM> {};
     constructor (
-        private app: App,
+        private app          : App,
         private activeModal  : NgbActiveModal,
-        public user : User
+        public user          : User
     ) {
 
             //this.fakeData();
@@ -69,37 +70,44 @@ export class RegisterComponent{
 
 
   register() {
-      if ( this.validate() == false ) return;
-        console.log('form :: ' + JSON.stringify(this.form))
-        console.log("Going to create user : " + this.form.name);
-        this.loading = true;
-        this.user.data('key', this.form.id )
-            .data('id', this.form.id)
-            .data('email', this.form.email)
-            .data('password', this.form.password )
-            .data('name', this.form.name)
-            .data('mobile' , this.form.mobile)
-            .data('gender' , this.form.gender)
-            .data('birthdate', this.form.birthdate)
-            .create(
-                ( uid ) => { 
-                    console.log(`create ${this.form.name} : success`); 
-                    this.activeModal.close();
-                },
-                (e) => this.app.alert(`create ${this.form.name}: failure:`+ e),
-                () => { this.loading = false; console.log(`create ${this.form.name} : complete`); } ); 
+      this.checkid( );
+      setTimeout( () =>{
+        if( this.isIDexists == false ) return this.app.alert('id exists');
+        if ( this.validate() == false ) return;
+            console.log('form :: ' + JSON.stringify(this.form))
+            console.log("Going to create user : " + this.form.name);
+            this.loading = true;
+            this.user.data('key', this.form.id )
+                .data('id', this.form.id)
+                .data('email', this.form.email)
+                .data('password', this.form.password )
+                .data('name', this.form.name)
+                .data('mobile' , this.form.mobile)
+                .data('gender' , this.form.gender)
+                .data('birthdate', this.form.birthdate)
+                .create(
+                    ( uid ) => { 
+                        console.log(`create ${this.form.name} : success`); 
+                        this.activeModal.close();
+                    },
+                    (e) => this.app.alert(`create ${this.form.name}: failure:`+ e),
+                    () => { this.loading = false; console.log(`create ${this.form.name} : complete`); } ); 
+      }, 300);
+   
   }
 
   /**
    * @description: this method is for checking if user id exists.
+   * 
+   * @description: it'll set isIDexists to false if the key exists and true if not.
    */
-  checkid(id){
+  checkid(){
       let userid:string;
-      this.user.get( id , res =>{
+      this.user.get( this.form.id , res =>{
           userid = res;
-          console.log('user id exist');
-          return false;
-      }, error => {return true})
+          this.isIDexists = false;
+      }, error => this.isIDexists = true )
+
       
   }
 

@@ -79,19 +79,19 @@ export class LoginModal implements OnInit{
                   if( this.saveid ) localStorage.setItem('saveid', this.form.id )
                   else localStorage.removeItem('saveid')
               },
-              error => this.app.alert('login error: login failed'),
+              error => this.app.alert('login error: incorrect password'),
               () => {} );
           },
           error => this.app.alert( 'login error: failed to get user info' ),
           () => {} );
       },
-      error => this.app.alert( 'login error: failed to get user uid'),
+      error => this.app.alert( 'login error: Id does not exist'),
       () => {} );
       
   }
 
   validate(){
-      if( this.form.id.match(/[.#$\[\]]/g)) return this.validateError('valid id ');
+      if( this.form.id.match(/[.#$\[\]]/g)) return this.validateError(' valid id ');
       if( ! this.form.id )return this.validateError( 'id ' );
       if( ! this.form.password ) return this.validateError( 'password ' );
       return true;
