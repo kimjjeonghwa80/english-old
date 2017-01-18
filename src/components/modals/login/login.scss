@@ -1,4 +1,4 @@
-$breakpoint:760px;
+
 login-component{
 
     @mixin button-size() {
@@ -7,6 +7,7 @@ login-component{
         width: 135px;
         height: 34px;
     }
+
     // Module -- Component -- Narrow
     .login-modal {
         .modal-header {
@@ -34,19 +35,24 @@ login-component{
                 .input-group {
                     margin-top:1.5em;
                 }
-                .form-save {
+
+                .save-id {
                     padding-top: 1em;
                 }
-                .form-login {
-                    padding-top: 1em;
+                .login {
+                    padding-top: .4em;
                     .btn {
                         margin: 0 0 20px;
                         padding: 7px 22px;
                         background-color:#f15f4c;
                         cursor: pointer;
                         
+                        &:focus {
+                            color: white;
+                        }
                     }
                 }
+
                 .id-password{
                     button {
                         margin: 0 0 20px;
@@ -67,21 +73,22 @@ login-component{
                         cursor: pointer;
                     }
                 }
+
                 // Wide
                 @media all and (min-width: $breakpoint) {
                    width: 362px;
-                   .form-save {
-                       padding-top:1em;
-                      
+                   .save-id {
+                       padding-top: 1.3em;
                    }
-                   .form-login {
+                   .login {
                         padding-top: 1em;
                         .btn {
                             @include button-size();
-                            background-color:#f15f4c;
                         }
                     }
                 }
+
+
             }
         }
     }
