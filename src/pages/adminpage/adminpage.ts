@@ -1,4 +1,4 @@
-import { Component, Renderer, OnDestroy  } from '@angular/core';
+import { Component, Renderer  } from '@angular/core';
 import { User } from '../../api/firebase-api-2.0/user';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
