@@ -6,11 +6,15 @@ header-component{
 header-component header nav.navbar {
     margin: 0;
     padding: 0;
-    background-color: blue;
-    color: white;
+    background-color: $color_pallete6;
+    color: $color_pallete1;
     .top {
-        background-color: #4b494f;
-        color: white;
+        background-color: $color_pallete1;
+        color: $color_pallete6;
+        a {
+            text-decoration: none;
+            color: $color_pallete5;
+        }
         .menu {
             float: right;
             cursor: pointer;
@@ -32,8 +36,9 @@ header-component header nav.navbar {
             display: inline-block;
             padding: .58em;
             &.active {
-                background-color: #d00000;
-                color: yellow;
+                background: #f15f4c;
+                color: #fff;
+               
             }
         }
     }
@@ -56,16 +61,13 @@ header-component .bottom.small {
         transition-duration: .3s;
         overflow: hidden;
 
-        background-color: #ededed;
-        color: #4b494f;
+        background-color: $color_pallete6;
+        color: $color_pallete1;
         .menu {
             padding: .6em 0 .6em 2em;
-            &:last-child {
-                
-            }
             &.active {
-                background-color: #4b494f;
-                color: white;
+                background: #f15f4c;
+                color: #fff;
             }
         }
     }
