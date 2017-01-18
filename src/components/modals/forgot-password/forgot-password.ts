@@ -20,6 +20,10 @@ export class ForgotPasswordComponent{
         this.activeModal.close();
     }
 
+    /**
+     * @description: user needs to provide valid registered email.
+     */
+
     onClickResetPassword(){
         this.user.resetpassword( this.email , success =>{
             console.log( ' failed ' + success );
