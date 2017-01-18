@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject  } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginModal } from '../modals/login/login'; 
 import { RegisterComponent } from '../modals/register/register';
@@ -8,7 +8,7 @@ import { UserTest } from '../../api/firebase-api-2.0/test/user-test';
 // import { USER_REGISTRATION_FORM } from '../../api/firebase-api-2.0/interfaces';
 import { App } from '../../providers/app';
 import { DOCUMENT } from '@angular/platform-browser';
-import { PageScrollService, PageScrollInstance, PageScrollConfig } from 'ng2-page-scroll';
+
 
 @Component({
     selector: 'header-component',
@@ -25,9 +25,7 @@ export class HeaderComponent implements OnInit {
         private modal       : NgbModal,
         private user        : User,
         private userTest    : UserTest,
-        private app         : App,
-        private pageScrollService: PageScrollService,
-        @Inject(DOCUMENT) private document: Document
+        private app         : App
     ) {
         // userTest.run();
         console.log('header :: constructor(), loginUser: ', user.loginUser);
@@ -94,29 +92,13 @@ export class HeaderComponent implements OnInit {
      */
 
     onClickMenu( name ) {
-        this.scrollTo( name );
+        this.app.scrollTo( name );
     }
 
     onClickPanelMenu( name ) {
         this.more = false;
-        this.scrollTo( name );
+        this.app.scrollTo( name );
     }
     
-
-    scrollTo( id ) {
-        
-        ///document.location='#id';
-
-        try {
-            PageScrollConfig.defaultScrollOffset = this.app.marginTop;
-            PageScrollConfig.defaultDuration = 300;
-            let pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#' + id);
-            console.info('pageScrllIntance : ', pageScrollInstance);
-            this.pageScrollService.start( pageScrollInstance );
-        }
-        catch ( e ) {
-            console.log("scrollTo error: ", e);
-        }
-    }
 
 }

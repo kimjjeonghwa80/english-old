@@ -44,7 +44,7 @@
                     <li class="menu" [class.active]=" app.scrollId =='teacher' " (click)="onClickPanelMenu('teacher')">Teachers</li>
                     <li class="menu" [class.active]=" app.scrollId =='payment' " (click)="onClickPanelMenu('payment')">Payment</li>
                     <li class="menu" >Inquery</li>
-                    <li class="menu" >Level Test</li>
+                    <li class="menu" [class.active]=" app.scrollId =='level-test' " (click)="onClickPanelMenu('level-test')">Level Test</li>
                     <li class="menu" >Reservation</li>
                     <li class="menu" [class.active]=" app.scrollId =='contact' " (click)="onClickPanelMenu('contact')">Contact</li>
                 </ul>
@@ -57,7 +57,7 @@
                 <li class="menu" [class.active]=" app.scrollId =='teacher' " (click)="onClickMenu('teacher')">Teachers</li>
                 <li class="menu" [class.active]=" app.scrollId =='payment' " (click)="onClickMenu('payment')">Payment</li>
                 <li class="menu" >Inquery</li>
-                <li class="menu" >Level Test</li>
+                <li class="menu" [class.active]=" app.scrollId =='level-test' " (click)="onClickMenu('level-test')">Level Test</li>
                 <li class="menu" >Reservations</li>
                 <li class="menu" [class.active]=" app.scrollId =='contact' " (click)="onClickMenu('contact')">Contact</li>
             </ul>

@@ -6,7 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { App } from '../providers/app';
-import { Ng2PageScrollModule } from 'ng2-page-scroll';
+
 import { FirebaseApiModule } from '../api/firebase-api-2.0/firebase-api-module';
 import { AppComponent } from './app.component';
 
@@ -20,6 +20,7 @@ import { ContactComponent } from '../components/contact/contact';
 import { CurriculumComponent } from '../components/curriculum/curriculum';
 import { PaymentComponent } from '../components/payment/payment';
 import { TeacherComponent } from '../components/teacher/teacher';
+import { LevelTestComponent } from '../components/level-test/level-test';
 
 import { LoginModal } from '../components/modals/login/login';
 import { RegisterComponent } from '../components/modals/register/register';
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
     CurriculumComponent,
     PaymentComponent,
     TeacherComponent,
+    LevelTestComponent,
     ForgotPasswordComponent,
     FindIdModal,
     AdminPage
@@ -55,8 +57,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot( appRoutes, { useHash: Boolean(history.pushState) === false }),
     FirebaseApiModule,
     NgbModule.forRoot(),
-    FormsModule,
-    Ng2PageScrollModule.forRoot()
+    FormsModule
   ],
   bootstrap: [ AppComponent ],
   providers: [ App, NgbActiveModal ],
