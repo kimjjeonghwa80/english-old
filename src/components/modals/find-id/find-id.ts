@@ -26,12 +26,13 @@ export class FindIdModal implements OnInit{
 
   onClickFindID(){
       this.loading = true;
-      this.user.get( this.email.replace('@', '+').replace('.', '+'), res =>{
+      this.user.get( this.email.replace('@', '+').replace('.', '-'), res =>{
           console.log('res ' + JSON.stringify(res))        
             this.user.get( res.uid , re =>{
                 
                 this.id = re['id'];
-                console.log('id ' + this.id )
+                console.log('id ' + this.id );
+                
             })
       }, error => console.error(' error ' +error ), 
       ()=>this.loading = false)
