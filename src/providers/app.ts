@@ -58,6 +58,7 @@ export class App {
                 if ( i < len - 1 ) {
                     let nextEl = parts[i + 1];
                     pos = this.getOffset( nextEl );
+                   
                     if ( pos.top > windowTop + this.marginTop ) break;
                 }
                 console.log( 'id:' + el.id + ', pos: ', pos);
@@ -75,8 +76,9 @@ export class App {
         el = el.getBoundingClientRect();
         return {
             left: el.left + window.scrollX,
-            top: el.top + window.scrollY
+            top: Math.round(el.top) + Math.round(window.pageYOffset)
         };
+        
     }
 
     getWindowOffset() {
