@@ -31,7 +31,8 @@ export class FindIdModal implements OnInit{
             this.user.get( res.uid , re =>{
                 
                 this.id = re['id'];
-                console.log('id ' + this.id )
+                console.log('id ' + this.id );
+                
             })
       }, error => console.error(' error ' +error ), 
       ()=>this.loading = false)

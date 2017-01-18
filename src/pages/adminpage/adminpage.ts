@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Renderer, OnDestroy  } from '@angular/core';
 import { User } from '../../api/firebase-api-2.0/user';
 import { Router } from '@angular/router';
+import * as _ from 'lodash';
 
 @Component({
     selector: 'admin-page',
@@ -9,21 +10,71 @@ import { Router } from '@angular/router';
 
 export class AdminPage{
 
-
+    scrollListener = null;
+    scrollCount = 0;
+    users = [];
     constructor(
         private user : User,
-        private router: Router
+        private router: Router,
+        private renderer: Renderer
     ){
         if(! this.user.loggedIn){
-            this.router.navigate([''])
+            // this.router.navigate(['']);
+            console.log('is logged in ? ' + this.user.loggedIn )
         }
+        this.getUsers();
+        this.beginScroll();
     }
 
 
-
+    displayUsers( data? ){
+    console.log('data ' + JSON.stringify(data))
+    if ( Object.keys(data).length <= 0 ) {
+        // this.noMorePosts = true;
+        return;
+    }
+    console.log('got more')
+    for( let key of Object.keys(data).reverse() ) {
+      this.users.push ( {'key':key, 'values':data[key]} );
+      // this.searchedItem.push( {key: key, value: data[key]} );
+    }
+    console.info('posts ' + JSON.stringify(this.users))
+    }
     getUsers(){
-        this.user
+        this.user.page( 'user' , res =>{
+            console.log('res :' + JSON.stringify(res));
+            this.displayUsers( res );
+        }, error =>{
+            console.log('error ' + error );
+        })
     }
+
+
+  beginScroll() {
+    this.scrollListener = this.renderer.listenGlobal( 'document', 'scroll', _.debounce( () => this.pageScrolled(), 200));
+  }
+  endScroll() {
+    if ( this.scrollListener ) this.scrollListener();
+  }
+  pageScrolled() {
+    let pages = document.querySelector(".pages");
+    if ( pages === void 0 || ! pages || pages['offsetTop'] === void 0) return; // @attention this is error handling for some reason, especially on first loading of each forum, it creates "'offsetTop' of undefined" error.
+    let pagesHeight = pages['offsetTop'] + pages['clientHeight'];
+    let pageOffset = window.pageYOffset + window.innerHeight;
+    if( pageOffset > pagesHeight - 200) { // page scrolled. the distance to the bottom is within 200 px from
+      console.log("page scroll reaches at bottom: pageOffset=" + pageOffset + ", pagesHeight=" + pagesHeight);
+      this.getUsers();
+    }
+  }
+
+  /**
+   *
+   * @description end scroll on destroy.
+   *
+   */
+  ngOnDestroy() {
+    this.endScroll();
+  }
 
 
 }
