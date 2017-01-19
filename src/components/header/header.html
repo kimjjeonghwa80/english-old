@@ -2,7 +2,7 @@
     <nav class="navbar fixed-top">
         <div class="top">
             <ul class="menus">
-                <li class="menu" (click)="onClickMenu('contact')"> {{ app.widthSize }} Help</li>
+                <li class="menu" (click)="onClickMenu('contact')"> Help</li>
                 <li *ngIf="! login " class="menu" (click)="onClickRegister()">Register</li>
                 <li *ngIf=" login " class="menu" (click)="onClickUpdateProfile()">Profile</li>
                 
@@ -43,10 +43,11 @@
                     <li class="menu" [class.active]=" app.scrollId =='curriculum' " (click)="onClickPanelMenu('curriculum')">Courses</li>
                     <li class="menu" [class.active]=" app.scrollId =='teacher' " (click)="onClickPanelMenu('teacher')">Teachers</li>
                     <li class="menu" [class.active]=" app.scrollId =='payment' " (click)="onClickPanelMenu('payment')">Payment</li>
-                    <li class="menu" >Inquery</li>
                     <li class="menu" [class.active]=" app.scrollId =='level-test' " (click)="onClickPanelMenu('level-test')">Level Test</li>
-                    <li class="menu" >Reservation</li>
                     <li class="menu" [class.active]=" app.scrollId =='contact' " (click)="onClickPanelMenu('contact')">Contact</li>
+                    <li class="menu" [class.active]=" app.scrollId =='comment' " (click)="onClickPanelMenu('comment')">Comment</li>
+                    <li class="menu" >Inquery</li>
+                    <li class="menu" >Reservations</li>
                 </ul>
             </div>
         </div>
@@ -56,10 +57,11 @@
                 <li class="menu" [class.active]=" app.scrollId =='curriculum' " (click)="onClickMenu('curriculum')">Courses</li>
                 <li class="menu" [class.active]=" app.scrollId =='teacher' " (click)="onClickMenu('teacher')">Teachers</li>
                 <li class="menu" [class.active]=" app.scrollId =='payment' " (click)="onClickMenu('payment')">Payment</li>
-                <li class="menu" >Inquery</li>
                 <li class="menu" [class.active]=" app.scrollId =='level-test' " (click)="onClickMenu('level-test')">Level Test</li>
-                <li class="menu" >Reservations</li>
                 <li class="menu" [class.active]=" app.scrollId =='contact' " (click)="onClickMenu('contact')">Contact</li>
+                <li class="menu" [class.active]=" app.scrollId =='comment' " (click)="onClickMenu('comment')">Comment</li>
+                <li class="menu" >Inquery</li>
+                <li class="menu" >Reservations</li>
             </ul>
         </div>
     </nav>
