@@ -1,0 +1,46 @@
+comment-component {
+    display: block;
+    background-color: #F7CD47;;
+    .comment-container {
+        padding: 3em 0;
+        margin-left: auto;
+        margin-right: auto; 
+        width: 80%;
+        display: block;
+        .img-comment {
+            padding: 1em;
+            img {
+                width: 100%;
+                height: auto;
+                vertical-align: middle;
+            }
+        }
+        .title-row {
+            display: inline-block;
+            font-size: 41px;
+            color: #2d2d2d;
+            margin-bottom: 1.4rem;
+        }
+        .inner {
+            height: 175px;
+            overflow-y: hidden;
+            margin-bottom: 15px;
+            .picture-text {
+                margin-bottom: 14px;
+                display: inline-block;
+                img {
+                    vertical-align: middle;
+                    border-radius: 100%;
+                }
+            }
+            .name-text {
+                display: inline-block;
+                font-size: 18px;
+                font-weight: bold;
+            }
+            .comment-text {
+                color: #2c3e50;
+            }
+        }
+    }
+}

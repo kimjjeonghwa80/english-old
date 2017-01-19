@@ -1,4 +1,60 @@
 curriculum-component {
     display: block;
-    background-color: $color_pallete3;
+    background-repeat: no-repeat;
+    background-image: url("/assets/img/course.jpg");
+    background-color: #fff;
+    .curriculum-container {
+        padding-top:100px; 
+        .info-text {
+            margin-left:auto;
+            margin-right:auto;
+            margin-bottom:1em; 
+            padding: 0.5rem 2.8125rem 0.8125rem;
+            color: #334353;
+            font-size: 2.1875em;
+            width: 425px;
+            border-radius: 0.3125rem;
+            background-color: rgba(255,255,255,.75);
+        }
+        .more-text {
+            margin-left:auto;
+            margin-right:auto;
+            width: 162px; 
+            display: block;
+            span {
+                display: inline-block;
+                margin-bottom: 3.125em;
+                border-radius: 0.1875em;
+                padding: 0.875em 1.25em;
+                font-size: 18px;
+                letter-spacing: 0.1875em;
+                cursor: pointer;
+                color: #FFFFFF;
+                background-color: #F46516;
+                text-decoration: none;
+            }
+        }
+        .collection {
+            margin-left:auto;
+            margin-right:auto;
+            padding: 10px;
+            border-radius: 3px;
+            max-width: 980px;
+            background-color: #ededed;
+            margin-bottom: 6em;
+            .load-more {
+                padding: 0.875em 1.25em;
+                font-size: 1em;
+                letter-spacing: 0.1875em;
+                border-radius: 0.1875em;
+                color: #FFFFFF;
+                background-color: #3498db;
+                text-align: center;
+                width: 90%;
+                margin-left:auto;
+                margin-right:auto;
+                cursor: pointer;
+            }
+        }
+    }
 }
