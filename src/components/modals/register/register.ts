@@ -12,7 +12,6 @@ export class RegisterComponent{
 
     isIDexists  :boolean;
     loading     : boolean = false;
-    title       : string  = null;
     form = <USER_REGISTRATION_FORM> {};
     constructor (
         private app          : App,
@@ -45,18 +44,17 @@ export class RegisterComponent{
          console.log('logged in')
          this.getUserData(); 
      }
-     this.title = 'Signup';
   }
 
 
   getUserData() {
     this.loading = true;
-    this.user.get( this.user.currentUser.uid, res => {
+    this.user.get( this.user.loginUser.uid, res => {
         this.form = res;
     }, error => {
         console.log('error ' + error ); 
     }, () =>{ this.loading = false; });
-  }
+  } 
 
 
 

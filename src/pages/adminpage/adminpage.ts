@@ -9,7 +9,8 @@ import * as _ from 'lodash';
 })
 
 export class AdminPage{
-
+    noMorePosts: boolean = false;
+    inPageLoading:boolean = false;
     scrollListener = null;
     scrollCount = 0;
     users = [];
@@ -34,20 +35,37 @@ export class AdminPage{
         return;
     }
     console.log('got more')
-    for( let key of Object.keys(data).reverse() ) {
-      this.users.push ( {'key':key, 'values':data[key]} );
+    for( let key of Object.keys(data) ) {
+        // if( ! key.match(/[+ -]/g) ) 
+        this.users.push ( {'key':key, 'values':data[key]} );
+      
       // this.searchedItem.push( {key: key, value: data[key]} );
     }
     console.info('posts ' + JSON.stringify(this.users))
     }
+
+    
     getUsers(){
+
+        if( this.noMorePosts == true) return;
+        if ( this.inPageLoading ) {
+        console.info("in page loading");
+        return;
+        }
+        this.inPageLoading = true;
         this.user.page( 'user' , res =>{
             console.log('res :' + JSON.stringify(res));
             this.displayUsers( res );
+            this.inPageLoading = false;
         }, error =>{
             console.log('error ' + error );
         })
     }
+    
+
+   onClickDeleteUser(){
+       
+   }
 
 
   beginScroll() {
