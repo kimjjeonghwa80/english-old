@@ -13,11 +13,6 @@ $header-top-height: 36px;
 $header-bottom-height: $header-height - $header-top-height;
 
 
-$big-header-gap: 12px; // @attention - this value must match on header.ts
-$big-header-height: $header-height + $big-header-gap;
-$big-header-top-height: $header-top-height + $big-header-gap;
-$big-header-bottom-height: $big-header-height - $big-header-top-height;
-
 
 @import './base';
 @import './layout';

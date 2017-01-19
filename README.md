@@ -44,8 +44,6 @@ post list
 * cd ../..
 
 
-* npm install ng2-scrollspy --save
-
 
 
 # User Guide

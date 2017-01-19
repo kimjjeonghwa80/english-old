@@ -10,14 +10,6 @@ header-component {
             .bottom { height: $header-bottom-height; }
         }
     }
-    header.big {
-        nav.navbar {
-            .top { height: $big-header-top-height; }
-            .menu { padding: .55rem .6rem; }
-            .bottom { height: $big-header-bottom-height; }
-        }
-    }
-
 }
 
 section#content {

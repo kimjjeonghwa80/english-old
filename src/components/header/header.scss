@@ -60,7 +60,6 @@ header-component .bottom.small {
     }
     .panel {
         max-height: 0;
-        padding: 1em;
         &.active {
             max-height: 400px;
         }
@@ -70,6 +69,7 @@ header-component .bottom.small {
         background-color: $color_pallete6;
         color: $color_pallete1;
         .menu {
+            margin: 0 1em;
             padding: .6em 0 .6em 2em;
             border-top: 1px solid $color_pallete5;
             cursor:pointer;
