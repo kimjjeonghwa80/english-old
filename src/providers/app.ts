@@ -139,17 +139,17 @@ export class App {
 
 
     /**
-     * 
-     * 
-     * @code
-     *          this.scrollToY( parts[i]['top'] - HEADER_HEIGHT );
-     *          scrollToY(0, 1500, 'easeInOutQuint');
-     * @endcode
-     * 
-     * @attention the speed and ease does not look like working.
-     * @param speed - 
-     * @param easing - easeOutSine, easeInOutSine, easeInOutQuint
-     */
+    * 
+    * 
+    * @code
+    *          this.scrollToY( parts[i]['top'] - HEADER_HEIGHT );
+    *          scrollToY(0, 1500, 'easeInOutQuint');
+    * @endcode
+    * 
+    * @attention the speed and ease does not look like working.
+    * @param speed - 
+    * @param easing - easeOutSine, easeInOutSine, easeInOutQuint
+    */
     scrollToY( scrollTargetY, speed?, easing? ) {
 
         // first add raf shim
