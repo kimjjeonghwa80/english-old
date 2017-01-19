@@ -1,26 +1,33 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 export const HEADER_HEIGHT: number = 86;
 @Injectable()
 export class App {
     width: number = 0;
     scrollId: string = null;
-    constructor() {
+    constructor( private ngZone: NgZone ) {
     }
     /**
      * Everytime window resizes, this is set.
      */
     setWidth( width ) {
         this.width = width;
+        this.renderPage();
         // console.log("setWidth(): ", this.width);
     }
-
+    renderPage() {
+        this.ngZone.run(() => {
+            // console.log('ngZone.run()');
+        });
+    }
     private getWidth() {
         return this.width;
     }
 
     get widthSize() : 'small' | 'big' {
-        if ( this.getWidth() < 760 ) return 'small';
-        else return 'big';
+        let size : 'small' | 'big' = 'small';
+        if ( this.getWidth() >= 760 ) size = 'big';
+        // console.log('size: ', size);
+        return size;
     }
 
     get marginTop() {
@@ -45,10 +52,10 @@ export class App {
     /**
      * @note No need to cache for speedup since it is only being called once every bounce time.
      */
-    scrolled( event ) {
-        console.log(event);
+    scrolled( event? ) {
+        // console.log(event);
         let windowTop = this.getWindowOffset().top;
-        console.log(`windows offset: `, windowTop);
+        // console.log(`windows offset: `, windowTop);
         let selectedId = null;
         let parts = this.getParts();
         // console.log(parts);
@@ -62,11 +69,13 @@ export class App {
                     
                     if ( nextPart.top > windowTop + this.marginTop ) break;
                 }
-                console.log( 'id:' + part.id + ', pos: ', pos);
+                // console.log( 'id:' + part.id + ', pos: ', pos);
             }
         }
-        console.log('selected: ', selectedId);
+        // console.log('selected: ', selectedId);
         this.scrollId = selectedId;
+
+        this.renderPage();
         // console.log( this.getOffset(parts) );
     }
 
@@ -101,6 +110,7 @@ export class App {
                     console.log("parts:i, ", parts[i]);
                     /// window.scrollTo( 0, parts[i]['top'] - HEADER_HEIGHT );
                     this.scrollToY( parts[i]['top'] - HEADER_HEIGHT, 2000, 'easeInOutQuint' );
+
                     break;
                 }
             }
