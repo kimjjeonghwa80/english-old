@@ -2,7 +2,7 @@
     <nav class="navbar fixed-top">
         <div class="top">
             <ul class="menus">
-                <li class="menu" (click)="onClickMenu('contact')">Help</li>
+                <li class="menu" (click)="onClickMenu('contact')"> {{ app.widthSize }} Help</li>
                 <li *ngIf="! login " class="menu" (click)="onClickRegister()">Register</li>
                 <li *ngIf=" login " class="menu" (click)="onClickUpdateProfile()">Profile</li>
                 
