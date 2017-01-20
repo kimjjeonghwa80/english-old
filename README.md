@@ -50,3 +50,11 @@ post list
 
 
 * If a user logs in and close browser, then the user remain logged-in when the user visits again to the site.
+
+
+
+# Firebase Admin sdk
+- for user account management. using firebase admin sdk there's no need to re-authenticate the user.
+# firebase-admin INSTALLATION
+* https://firebase.google.com/docs/admin/setup
+
