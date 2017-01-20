@@ -1,72 +1,105 @@
-<header [class.big]=" app.widthSize == 'big' ">
-    <nav class="navbar fixed-top">
-        <div class="top">
-            <ul class="menus">
-                <li class="menu" (click)="onClickMenu('contact')"> Help</li>
-                <li *ngIf="! login " class="menu" (click)="onClickRegister()">Register</li>
-                <li *ngIf=" login " class="menu" (click)="onClickUpdateProfile()">Profile</li>
-                
-                <li *ngIf=" ! login " class="menu" (click)="onClickLogin()">Login</li>
-
-                <li *ngIf=" login " class="menu" (click)="onClickLogout()">
-                    Logout
-                </li>
-
-
-                <li class="menu"> <a target="_blank" href="https://video.withcenter.com/room/{{ user?.loginUser?.name }}/testroom">Class Room</a> </li>  
-            </ul>
+<header>
+    <nav class="navbar fixed-top">    
+        <div class="header-inner" [class.big]=" app.widthSize == 'big' ">
+            <a href="#" [class.big]=" app.widthSize == 'big' " [class.small]=" app.widthSize == 'small' " >
+                <img src="assets/img/logo.png">
+            </a>
+            
         </div>
-
         <div *ngIf=" app.widthSize == 'small' " class="bottom small">
             <div class="menu">
-                <table width="100%" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td width="80%"><h5 class="companylogo">LOGO</h5></td>
-                        
-                        <!--
-                            <td width="50%">
-                            <span (click)="onClickMenu('curriculum')">Courses</span>
-                            <span (click)="onClickMenu('teacher')">Teachers</span>
-                            <span (click)="onClickMenu('payment')">Payment</span>
-                        </td>
-                        -->
-                        <td width="20%">
-                            <i class="fa fa-bars" (click)="onClickMoreMenu()"></i>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+                <ul>
+                    <li><i class="fa fa-bars" (click)="onClickMoreMenu()"></i></li>
+                    <li *ngIf="! login " class="menu" (click)="onClickRegister()">Register</li>
+                    <li *ngIf=" login " class="menu" (click)="onClickUpdateProfile()">Profile</li>
+                    
+                    <li *ngIf=" ! login " class="menu" (click)="onClickLogin()">Login</li>
 
+                    <li *ngIf=" login " class="menu" (click)="onClickLogout()">
+                        Logout
+                    </li>
+                    <li class="menu" (click)="onClickMenu('contact')"> Help</li>
+                </ul>
+            </div>
             <div class="panel" [class.active]="this.more">
                 <ul class="menus">
-                    <li class="menu" [class.active]=" app.scrollId =='intro' " (click)="onClickPanelMenu('intro')">Home</li>
-                    <li class="menu" [class.active]=" app.scrollId =='curriculum' " (click)="onClickPanelMenu('curriculum')">Courses</li>
-                    <li class="menu" [class.active]=" app.scrollId =='teacher' " (click)="onClickPanelMenu('teacher')">Teachers</li>
-                    <li class="menu" [class.active]=" app.scrollId =='payment' " (click)="onClickPanelMenu('payment')">Payment</li>
-                    <li class="menu" [class.active]=" app.scrollId =='level-test' " (click)="onClickPanelMenu('level-test')">Level Test</li>
-                    <li class="menu" [class.active]=" app.scrollId =='contact' " (click)="onClickPanelMenu('contact')">Contact</li>
-                    <li class="menu" [class.active]=" app.scrollId =='comment' " (click)="onClickPanelMenu('comment')">Comment</li>
-                    <li class="menu" >Inquery</li>
-                    <li class="menu" >Reservations</li>
+                    <li class="menu" [class.active]=" app.scrollId =='intro' " (click)="onClickPanelMenu('intro')">
+                        <img src="assets/img/nav1.jpg"> Home
+                    </li>
+                    <li class="menu" [class.active]=" app.scrollId =='curriculum' " (click)="onClickPanelMenu('curriculum')">
+                        <img src="assets/img/nav2.jpg"> Courses
+                    </li>
+                    <li class="menu" [class.active]=" app.scrollId =='teacher' " (click)="onClickPanelMenu('teacher')">
+                        <img src="assets/img/nav3.png"> Teachers
+                    </li>
+                    <li class="menu" [class.active]=" app.scrollId =='payment' " (click)="onClickPanelMenu('payment')">
+                        <img src="assets/img/nav4.png"> Payment
+                    </li>
+                    <li class="menu" [class.active]=" app.scrollId =='level-test' " (click)="onClickPanelMenu('level-test')">
+                        <img src="assets/img/nav5.jpg"> Level Test
+                    </li>
+                    <li class="menu" [class.active]=" app.scrollId =='contact' " (click)="onClickPanelMenu('contact')">
+                        <img src="assets/img/nav6.png"> Contact
+                    </li>
+                    <li class="menu" [class.active]=" app.scrollId =='comment' " (click)="onClickPanelMenu('comment')">
+                        <img src="assets/img/nav7.jpg"> Comment
+                    </li>
+                    <li class="menu" >
+                        <img src="assets/img/nav8.png"> Inquery
+                    </li>
+                    <li class="menu" >
+                        <img src="assets/img/nav9.jpg"> Reservations
+                    </li>
                 </ul>
             </div>
         </div>
         <div *ngIf=" app.widthSize == 'big' " class="bottom big">
-            <ul class="menus main-menu float-right">
-                <li class="menu" [class.active]=" app.scrollId =='intro' " (click)="onClickMenu('intro')">Home</li>
-                <li class="menu" [class.active]=" app.scrollId =='curriculum' " (click)="onClickMenu('curriculum')">Courses</li>
-                <li class="menu" [class.active]=" app.scrollId =='teacher' " (click)="onClickMenu('teacher')">Teachers</li>
-                <li class="menu" [class.active]=" app.scrollId =='payment' " (click)="onClickMenu('payment')">Payment</li>
-                <li class="menu" [class.active]=" app.scrollId =='level-test' " (click)="onClickMenu('level-test')">Level Test</li>
-                <li class="menu" [class.active]=" app.scrollId =='contact' " (click)="onClickMenu('contact')">Contact</li>
-                <li class="menu" [class.active]=" app.scrollId =='comment' " (click)="onClickMenu('comment')">Comment</li>
-                <li class="menu" >Inquery</li>
-                <li class="menu" >Reservations</li>
-            </ul>
+            <div class="top-menu">
+                <ul>
+                    <li *ngIf="! login " class="menu" (click)="onClickRegister()">Register</li>
+                    <li *ngIf=" login " class="menu" (click)="onClickUpdateProfile()">Profile</li>
+                    
+                    <li *ngIf=" ! login " class="menu" (click)="onClickLogin()">Login</li>
+
+                    <li *ngIf=" login " class="menu" (click)="onClickLogout()">
+                        Logout
+                    </li>
+                    <li class="menu" (click)="onClickMenu('contact')"> Help</li>
+                </ul>
+            </div>
+            <div class="menus">
+                <ul >
+                    
+                    <li class="menu" [class.active]=" app.scrollId =='intro' " (click)="onClickPanelMenu('intro')">
+                        <span class="menu-img"><img src="assets/img/nav1.jpg"></span>Home
+                    </li>
+                    <li class="menu" [class.active]=" app.scrollId =='curriculum' " (click)="onClickPanelMenu('curriculum')">
+                        <span class="menu-img"><img src="assets/img/nav2.jpg"></span> Courses
+                    </li>
+                    <li class="menu" [class.active]=" app.scrollId =='teacher' " (click)="onClickPanelMenu('teacher')">
+                        <span class="menu-img"><img src="assets/img/nav3.png"></span> Teachers
+                    </li>
+                    <li class="menu" [class.active]=" app.scrollId =='payment' " (click)="onClickPanelMenu('payment')">
+                        <span class="menu-img"><img src="assets/img/nav4.png"></span> Payment
+                    </li>
+                    <li class="menu" [class.active]=" app.scrollId =='level-test' " (click)="onClickPanelMenu('level-test')">
+                        <span class="menu-img"><img src="assets/img/nav5.jpg"></span> Level Test
+                    </li>
+                    <li class="menu" [class.active]=" app.scrollId =='contact' " (click)="onClickPanelMenu('contact')">
+                        <span class="menu-img"><img src="assets/img/nav6.png"></span> Contact
+                    </li>
+                    <li class="menu" [class.active]=" app.scrollId =='comment' " (click)="onClickPanelMenu('comment')">
+                        <span class="menu-img"><img src="assets/img/nav7.jpg"></span> Comment
+                    </li>
+                    <li class="menu" >
+                        <span class="menu-img"><img src="assets/img/nav8.png"></span> Inquery
+                    </li>
+                    <li class="menu" >
+                        <span class="menu-img"><img src="assets/img/nav9.jpg"></span> Reservations
+                    </li>
+                </ul>
+            </div>
+            
         </div>
     </nav>
 </header>
-
-
-
-

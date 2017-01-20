@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-export const HEADER_HEIGHT: number = 86;
+export const HEADER_HEIGHT: number = 110;
 @Injectable()
 export class App {
     width: number = 0;
@@ -7,8 +7,8 @@ export class App {
     constructor( private ngZone: NgZone ) {
     }
     /**
-     * Everytime window resizes, this is set.
-     */
+    * Everytime window resizes, this is set.
+    */
     setWidth( width ) {
         this.width = width;
         this.renderPage();
@@ -108,8 +108,8 @@ export class App {
             for ( let i = 0, len = parts.length; i < len; i ++ ) {
                 if ( parts[i]['id'] == id ) {
                     console.log("parts:i, ", parts[i]);
-                    /// window.scrollTo( 0, parts[i]['top'] - HEADER_HEIGHT );
-                    this.scrollToY( parts[i]['top'] - HEADER_HEIGHT, 2000, 'easeInOutQuint' );
+                    //  window.scrollTo( 0, parts[i]['top'] - HEADER_HEIGHT+1 );
+                    this.scrollToY( parts[i]['top'] - HEADER_HEIGHT+1, 2000, 'easeInOutQuint' );
 
                     break;
                 }
