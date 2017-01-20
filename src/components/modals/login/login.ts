@@ -67,10 +67,10 @@ export class LoginModal implements OnInit{
       if( this.validate() == false ) return;
 
       // 1. get user email from user id.
-      this.user.get( this.form.id, data => {
+      this.user.get( 'id/'+this.form.id, data => {
           console.log("user data: ", data);
           let uid = data['uid'];
-          this.user.get( uid, data => {
+          this.user.get( 'metadata/'+uid, data => {
               
               console.log( data );
               // 2. login with email/password

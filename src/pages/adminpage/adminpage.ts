@@ -53,7 +53,7 @@ export class AdminPage{
         return;
         }
         this.inPageLoading = true;
-        this.user.page( 'user' , res =>{
+        this.user.page( 'user/id' , res =>{
             console.log('res :' + JSON.stringify(res));
             this.displayUsers( res );
             this.inPageLoading = false;

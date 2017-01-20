@@ -49,7 +49,7 @@ export class RegisterComponent{
 
   getUserData() {
     this.loading = true;
-    this.user.get( this.user.loginUser.uid, res => {
+    this.user.get( 'metadata/'+this.user.loginUser.uid, res => {
         this.form = res;
     }, error => {
         console.log('error ' + error ); 
