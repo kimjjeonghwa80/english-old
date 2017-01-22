@@ -1,7 +1,9 @@
 import { Component, Renderer  } from '@angular/core';
 import { User } from '../../api/firebase-api-2.0/user';
+import { App } from '../../providers/app';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
+
 
 @Component({
     selector: 'admin-page',
@@ -17,11 +19,13 @@ export class AdminPage{
     constructor(
         private user : User,
         private router: Router,
-        private renderer: Renderer
+        private renderer: Renderer,
+        private app : App
     ){
         if(! this.user.loggedIn){
-            // this.router.navigate(['']);
-            console.log('is logged in ? ' + this.user.loggedIn )
+            this.router.navigate(['']);
+            console.log('is logged in ? ' + this.user.loggedIn )  
+            return;        
         }
         this.getUsers();
         this.beginScroll();
@@ -55,10 +59,11 @@ export class AdminPage{
         this.user.page( 'user/id' , res =>{
             console.log('res :' + JSON.stringify(res));
             this.displayUsers( res );
-            this.inPageLoading = false;
+            // this.inPageLoading = false;
         }, error =>{
             console.log('error ' + error );
-        })
+            this.app.alert('error on getting list, maybe you have no permission or may be caused by connection error.')
+        }, () => this.inPageLoading = false )
     }
     
 

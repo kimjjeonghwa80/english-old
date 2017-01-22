@@ -70,9 +70,8 @@ export class LoginModal implements OnInit{
       this.user.get( 'id/'+this.form.id, data => {
           console.log("user data: ", data);
           let uid = data['uid'];
-          this.user.get( 'metadata/'+uid, data => {
-              
-              console.log( data );
+          console.info('uid :: ' + uid );
+              console.log('email node :: ' +  data );
               // 2. login with email/password
               this.user.login( data['email'], this.form.password, uid => {
                   this.activeModal.close();
@@ -81,9 +80,7 @@ export class LoginModal implements OnInit{
               },
               error => this.app.alert('login error: incorrect password'),
               () => {} );
-          },
-          error => this.app.alert( 'login error: failed to get user info' ),
-          () => {} );
+
       },
       error => this.app.alert( 'login error: Id does not exist'),
       () => {} );
