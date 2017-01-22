@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { App } from '../../../providers/app';
 import { User } from '../../../api/firebase-api-2.0/user';
+import { Forum } from '../../../api/firebase-api-2.0/forum';
 import { USER_REGISTRATION_FORM } from '../../../api/firebase-api-2.0/interfaces';
 @Component({
     selector:'register-component',
@@ -16,12 +17,25 @@ export class RegisterComponent{
     constructor (
         private app          : App,
         private activeModal  : NgbActiveModal,
-        public user          : User
+        public user          : User,
+        private forum        : Forum
     ) {
 
             //this.fakeData();
             //this.register();
+            // this.testforumpost();
 
+
+    }
+    testforumpost(){
+        this.forum
+            .data('post', 'another post test')
+            .data('comment', 'comment test')
+            .create('QnA', res =>{
+                console.log('res :: ' + res);
+        }, err =>{
+            this.app.alert('error :: ' + err );
+        }, ()=> console.info( 'completed ') )
     }
 
     fakeData() {

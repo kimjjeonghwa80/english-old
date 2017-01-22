@@ -41,7 +41,6 @@ export class AdminPage{
       
       // this.searchedItem.push( {key: key, value: data[key]} );
     }
-    console.info('posts ' + JSON.stringify(this.users))
     }
 
     
@@ -53,7 +52,7 @@ export class AdminPage{
         return;
         }
         this.inPageLoading = true;
-        this.user.page( 'user/metadata' , res =>{
+        this.user.page( 'user/id' , res =>{
             console.log('res :' + JSON.stringify(res));
             this.displayUsers( res );
             this.inPageLoading = false;
