@@ -24,6 +24,7 @@ export class RegisterComponent{
             //this.fakeData();
             //this.register();
             // this.testforumpost();
+            // this.testforumcruddelete();
 
 
     }
@@ -36,6 +37,12 @@ export class RegisterComponent{
         }, err =>{
             this.app.alert('error :: ' + err );
         }, ()=> console.info( 'completed ') )
+    }
+
+    testforumcruddelete(){
+        this.forum.delete( 'forums','QnA', '-KbB8W5Ol78zynTOs2T-', res =>{
+            console.log('successfully deleted ' + res );
+        }, err => this.app.alert('error ' + err))
     }
 
     onEnterRegister(event){
