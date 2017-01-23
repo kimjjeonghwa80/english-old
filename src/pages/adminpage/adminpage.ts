@@ -22,10 +22,12 @@ export class AdminPage{
         private renderer: Renderer,
         private app : App
     ){
-        if(! this.user.loggedIn){
-            this.router.navigate(['']);
+        console.log('user :: ' + this.user.loginUser.uid);
+        if(! this.user.loggedIn ){
+            // this.router.navigate(['']);
             console.log('is logged in ? ' + this.user.loggedIn )  
-            return;        
+            console.log('user :: ' + this.user.loginUser.uid);
+            // return;        
         }
         this.getUsers();
         this.beginScroll();
@@ -56,13 +58,13 @@ export class AdminPage{
         return;
         }
         this.inPageLoading = true;
-        this.user.page( 'user/id' , res =>{
+        this.user.page( 'user/metadata' , res =>{
             console.log('res :' + JSON.stringify(res));
             this.displayUsers( res );
             // this.inPageLoading = false;
         }, error =>{
-            console.log('error ' + error );
-            this.app.alert('error on getting list, maybe you have no permission or may be caused by connection error.')
+            console.log('error :: ' + error );
+            this.app.alert( error )
         }, () => this.inPageLoading = false )
     }
     
