@@ -70,6 +70,8 @@
                     
                     <li *ngIf=" ! login " class="menu" (click)="onClickLogin()">Login</li>
 
+                    <li *ngIf="login" class="menu" (click)="onClickGotoClassRoom()">Class Room</li>
+
                     <li *ngIf=" login " class="menu" (click)="onClickLogout()">
                         Logout
                     </li>

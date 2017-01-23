@@ -53,6 +53,13 @@ export class HeaderComponent implements OnInit {
     ngOnInit() {
 
     }
+
+    onClickGotoClassRoom(){
+        window.open(
+            `https://video.withcenter.com/room/${this.user.loginUser.name}/testroom`,
+            '_blank'
+        )
+    }
     
     onClickRegister() {
         let modalRef = this.modal.open ( RegisterComponent );
