@@ -126,11 +126,11 @@ export class RegisterComponent{
   updateProfile(){
     this.loading = true;
     this.user.clear()
-        .data('key', this.form.uid)
-        .data('name', this.form.name)
-        .data('mobile' , this.form.mobile)
-        .data('gender' , this.form.gender)
-        .data('birthdate', this.form.birthdate)
+        .data( 'key', this.form.uid )
+        .data( 'name', this.form.name )
+        .data( 'mobile' , this.form.mobile )
+        .data( 'gender' , this.form.gender )
+        .data( 'birthdate', this.form.birthdate )
         .update(
             () => {
                 console.log(`user update: ${this.form.uid} : success.`);

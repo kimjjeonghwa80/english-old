@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginModal } from '../modals/login/login'; 
 import { RegisterComponent } from '../modals/register/register';
 //import * as firebase from 'firebase';
+
 import { User } from '../../api/firebase-api-2.0/user';
 import { UserTest } from '../../api/firebase-api-2.0/test/user-test';
 // import { USER_REGISTRATION_FORM } from '../../api/firebase-api-2.0/interfaces';
@@ -46,7 +47,7 @@ export class HeaderComponent implements OnInit {
             console.log( this.user.loginUser );
             this.login = this.user.loggedIn;
             console.log("user login status: ", this.login);
-        });
+        }).catch( () => console.log('exit') );
 
     }
 
@@ -67,7 +68,7 @@ export class HeaderComponent implements OnInit {
             console.log( this.user.loginUser );
             this.login = this.user.loggedIn;
             console.log("user login status: ", this.login);
-        });
+        }).catch( () =>console.log('exit '));
     }
 
 
