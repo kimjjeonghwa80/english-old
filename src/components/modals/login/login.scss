@@ -76,11 +76,11 @@ login-component{
 
                 // Wide
                 @media all and (min-width: $breakpoint) {
-                   width: 362px;
-                   .save-id {
-                       padding-top: 1.3em;
-                   }
-                   .login {
+                    width: 362px;
+                    .save-id {
+                        padding-top: 1.3em;
+                    }
+                    .login {
                         padding-top: 1em;
                         .btn {
                             @include button-size();

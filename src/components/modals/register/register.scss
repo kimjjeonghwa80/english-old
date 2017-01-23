@@ -1,16 +1,61 @@
+
 register-component{
-    display: block;
-    form {
-        
-    }
-    .male{
-        margin-right: 2em;
-        margin-left: 2em;
-    }
-    .btn{
-        cursor: pointer;
+
+    @mixin button-size() {
+        margin: 0 0 20px;
+        padding: 7px 22px;
+        width: 135px;
+        height: 34px;
     }
 
+    // Module -- Component -- Narrow
+    .register-modal {
+        .modal-header {
+            .modal-title {
+                line-height: 1.428571429;
+            }
+        }
+        .modal-body {
+
+            .form-container {
+                margin-top: 1.5em;
+                margin-left: auto;
+                margin-right: auto;
+                border: solid 1px #eee;
+                padding: 30px;
+                color: #555;
+                background-color: #fefefe;
+                box-shadow: 0 0 3px #eee;
+                .form-title {
+                    text-align: center;
+                    font-size: 22px;
+                    font-family: 나눔고딕, 돋음, verdana;
+                    border-bottom: 1px solid #eee;
+                }
+                .input-group {
+                    margin-top:1.5em;
+                    .birthday {
+                        width: 100%;
+                        font-size: .875rem;
+                        color:#464a4c;
+                        border:1px solid #cccccc;
+                    }
+                }
+
+                .register {
+                    padding-top: .4em;
+                    .btn {
+                        margin: 0 0 20px;
+                        padding: 7px 22px;
+                        background-color:#f15f4c;
+                        cursor: pointer;
+                        
+                        &:focus {
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
-
-

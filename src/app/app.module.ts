@@ -22,6 +22,8 @@ import { PaymentComponent } from '../components/payment/payment';
 import { TeacherComponent } from '../components/teacher/teacher';
 import { LevelTestComponent } from '../components/level-test/level-test';
 import { CommentComponent } from '../components/comment/comment';
+import { InqueryComponent } from '../components/inquery/inquery';
+import { ReservationComponent } from '../components/reservation/reservation';
 
 import { LoginModal } from '../components/modals/login/login';
 import { RegisterComponent } from '../components/modals/register/register';
@@ -49,6 +51,8 @@ const appRoutes: Routes = [
     TeacherComponent,
     LevelTestComponent,
     CommentComponent,
+    InqueryComponent,
+    ReservationComponent,
     ForgotPasswordComponent,
     FindIdModal,
     AdminPage

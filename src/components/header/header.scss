@@ -12,6 +12,7 @@ header-component {
                 img {
                     margin:0 1em;
                 }
+                
             }
             a {
                 &.small {
@@ -64,6 +65,12 @@ header-component {
                     .menu {
                         cursor:pointer;
                         background-color: #2980b9;
+                        span {
+                            i {
+                                font-size: 2.5em;
+                                color: #15acd7;
+                            }
+                        }
                         &.active {
                             color: #0bcc00;
                         }
@@ -123,6 +130,10 @@ header-component {
                         }
                         span {
                             display: block;
+                            i {
+                                font-size: 3em;
+                                color: #15acd7;
+                            }
                         }
                     }
                 }
