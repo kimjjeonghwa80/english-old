@@ -91,7 +91,7 @@ export class RegisterComponent{
   register() {
       this.checkid( );
       setTimeout( () =>{
-        if( this.isIDexists == false ) return this.app.alert('id exists');
+        if( this.isIDexists == false ) return this.app.alert('id already in used');
         if ( this.validate() == false ) return;
             console.log('form :: ' + JSON.stringify(this.form))
             console.log("Going to create user : " + this.form.name);
@@ -122,7 +122,7 @@ export class RegisterComponent{
    */
   checkid(){
       let userid:string;
-      this.user.get( this.form.id , res =>{
+      this.user.get( 'id/'+this.form.id , res =>{
           userid = res;
           this.isIDexists = false;
       }, error => this.isIDexists = true )
