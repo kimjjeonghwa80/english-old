@@ -87,12 +87,20 @@ export class LoginModal implements OnInit{
       
   }
 
+  onEnterLogin(event){
+       if( event.keyCode == 13){
+           this.onClickLogin();
+       }
+  }
+
   validate(){
       if( this.form.id.match(/[.#$\[\]]/g)) return this.validateError(' valid id ');
       if( ! this.form.id )return this.validateError( 'id ' );
       if( ! this.form.password ) return this.validateError( 'password ' );
       return true;
   }
+
+
 
 
 

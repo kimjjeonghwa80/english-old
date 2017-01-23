@@ -38,6 +38,13 @@ export class RegisterComponent{
         }, ()=> console.info( 'completed ') )
     }
 
+    onEnterRegister(event){
+       if( event.keyCode == 13){
+           if( this.user.loggedIn )this.updateProfile();
+           else this.register();
+       }
+    }
+
     fakeData() {
         let id = 'user' + (new Date).getHours() + (new Date).getMinutes() + (new Date).getSeconds();
         this.form.id = id;

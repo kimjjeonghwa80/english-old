@@ -24,13 +24,13 @@
             </div>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
-                <input [(ngModel)]="form.password" name="password" type="password" class="form-control form-control-sm" id="password" placeholder="Password">
+                <input [(ngModel)]="form.password" name="password" type="password" class="form-control form-control-sm" id="password" placeholder="Password" (keydown)="onEnterLogin($event)">
             </div>
 
             <div class="row">
               <div class="col-md-6 save-id">
                 <label class="form-check-label">
-                  <input type="checkbox" class="form-check-input" [(ngModel)]="saveid" name="saveid">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]="saveid" name="saveid" (keydown)="onEnterLogin($event)">
                   save ID
                 </label>
               </div>
