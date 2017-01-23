@@ -22,15 +22,17 @@ export class AdminPage{
         private renderer: Renderer,
         private app : App
     ){
-        console.log('user :: ' + this.user.loginUser.uid);
-        if(! this.user.loggedIn ){
-            // this.router.navigate(['']);
-            console.log('is logged in ? ' + this.user.loggedIn )  
-            console.log('user :: ' + this.user.loginUser.uid);
-            // return;        
-        }
+        this.checkAuth();
         this.getUsers();
         this.beginScroll();
+    }
+
+
+    checkAuth(){
+        if(! this.user.loggedIn ){
+            this.router.navigate(['']);
+            console.log('is logged in ? ' + this.user.loggedIn )  
+        }
     }
 
 
