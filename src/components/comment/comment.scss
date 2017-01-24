@@ -9,12 +9,21 @@ comment-component {
         display: block;
         .img-comment {
             padding: 1em;
+            text-align: center;
             img {
-                width: 100%;
-                height: auto;
-                vertical-align: middle;
+                margin:0 auto;
+                width: 50%;
             }
         }
+        @media all and (min-width: $breakpoint) {
+                .img-comment {
+                    img {
+                        width: 100%;
+                        height: auto;
+                        vertical-align: middle;
+                    }
+                }
+            }
         .title-row {
             display: inline-block;
             font-size: 41px;
