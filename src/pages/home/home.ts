@@ -13,7 +13,7 @@ export class HomePage implements AfterViewInit {
         private user: User,
         public app: App
     ) {
-        // userTest.run();
+        userTest.run();
         
     }
 
