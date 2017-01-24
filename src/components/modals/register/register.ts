@@ -67,12 +67,12 @@ export class RegisterComponent{
         this.activeModal.close();
     }
 
-  ngOnInit(){
-     if ( this.user.loggedIn ) {
-         console.log('logged in')
-         this.getUserData(); 
-     }
-  }
+    ngOnInit(){
+        if ( this.user.loggedIn ) {
+            console.log( 'logged in' );
+            this.getUserData(); 
+        }
+    }
 
 
   getUserData() {

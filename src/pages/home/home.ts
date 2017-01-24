@@ -1,6 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { User } from '../../api/firebase-api-2.0/user';
-// import { UserTest } from '../../api/firebase-api-2.0/test/user-test';
+import { UserTest } from '../../api/firebase-api-2.0/test/user-test';
 import { App } from '../../providers/app';
 @Component( {
     selector: 'home-page',
@@ -9,10 +9,11 @@ import { App } from '../../providers/app';
 export class HomePage implements AfterViewInit {
     
     constructor(
-        // userTest: UserTest,
+        userTest: UserTest,
         private user: User,
         public app: App
     ) {
+        // userTest.run();
         
     }
 
