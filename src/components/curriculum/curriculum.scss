@@ -37,12 +37,25 @@ curriculum-component {
         .collection {
             margin-left:auto;
             margin-right:auto;
-            padding: 10px;
+            padding: 2em;
             border-radius: 3px;
             width: 98%;
             max-width: 980px;
             background-color: #ededed;
             margin-bottom: 6em;
+            
+            .inner-row {
+                background-color: #fff;
+                img {
+                    width: 100%;
+                }
+                .title {
+                    width: 100%;
+                }
+                .desc {
+                    width: 100%;
+                }
+            }
             .load-more {
                 padding: 0.875em 1.25em;
                 font-size: 1em;
