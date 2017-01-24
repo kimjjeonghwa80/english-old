@@ -60,8 +60,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot( appRoutes ),
-    // RouterModule.forRoot( appRoutes, { useHash: Boolean(history.pushState) === false }),
+
+    RouterModule.forRoot( appRoutes, { useHash: !history.pushState }),
     FirebaseApiModule,
     NgbModule.forRoot(),
     FormsModule
