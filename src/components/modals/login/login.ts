@@ -67,7 +67,7 @@ export class LoginModal implements OnInit{
       if( this.validate() == false ) return;
 
       // 1. get user email from user id.
-      this.user.get( 'id/'+this.form.id, data => {
+      this.user.get( this.form.id, data => {
           console.log("user data: ", data);
           let uid = data['uid'];
           console.info('uid :: ' + uid );

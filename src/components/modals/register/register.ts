@@ -23,12 +23,10 @@ export class RegisterComponent{
 
             //this.fakeData();
             //this.register();
-            // this.testforumpost();
-            // this.testforumcruddelete();
 
 
     }
-
+    
     // testforumpost(){
     //     this.forum
     //         .data('post', 'another post test')
@@ -39,12 +37,7 @@ export class RegisterComponent{
     //         this.app.alert('error :: ' + err );
     //     }, ()=> console.info( 'completed ') )
     // }
-
-    testforumcruddelete(){
-        this.forum.delete( 'forums','QnA', '-KbB8W5Ol78zynTOs2T-', res =>{
-            console.log('successfully deleted ' + res );
-        }, err => this.app.alert('error ' + err))
-    }
+    
 
     onEnterRegister(event){
        if( event.keyCode == 13){
@@ -78,7 +71,7 @@ export class RegisterComponent{
 
   getUserData() {
     this.loading = true;
-    this.user.get( 'metadata/'+this.user.loginUser.uid, res => {
+    this.user.get( this.user.loginUser.uid, res => {
         this.form = res;
     }, error => {
         console.log('error ' + error ); 
