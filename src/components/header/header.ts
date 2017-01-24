@@ -2,14 +2,9 @@ import { Component, OnInit  } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginModal } from '../modals/login/login'; 
 import { RegisterComponent } from '../modals/register/register';
-//import * as firebase from 'firebase';
-
 import { User } from '../../api/firebase-api-2.0/user';
 import { UserTest } from '../../api/firebase-api-2.0/test/user-test';
-// import { USER_REGISTRATION_FORM } from '../../api/firebase-api-2.0/interfaces';
 import { App } from '../../providers/app';
-import { DOCUMENT } from '@angular/platform-browser';
-
 
 @Component({
     selector: 'header-component',

@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-export const HEADER_HEIGHT: number = 110;
+export const HEADER_HEIGHT: number = 140;
 @Injectable()
 export class App {
     width: number = 0;
@@ -63,7 +63,6 @@ export class App {
             for ( let i = 0, len = parts.length; i < len; i ++ ) {
                 let part = parts[i];
                 selectedId = part.id;
-                let pos = null;
                 if ( i < len - 1 ) {
                     let nextPart = parts[i + 1];
                     
@@ -109,7 +108,7 @@ export class App {
                 if ( parts[i]['id'] == id ) {
                     console.log("parts:i, ", parts[i]);
                     //  window.scrollTo( 0, parts[i]['top'] - HEADER_HEIGHT+1 );
-                    this.scrollToY( parts[i]['top'] - HEADER_HEIGHT+1, 2000, 'easeInOutQuint' );
+                    this.scrollToY( parts[i]['top'] - HEADER_HEIGHT, 2000, 'easeInOutQuint' );
 
                     break;
                 }
@@ -188,8 +187,7 @@ export class App {
         var time = Math.max(.1, Math.min(Math.abs(scrollY - scrollTargetY) / speed, .8));
 
         // easing equations from https://github.com/danro/easing-js/blob/master/easing.js
-        var PI_D2 = Math.PI / 2,
-            easingEquations = {
+        var easingEquations = {
                 easeOutSine: function (pos) {
                     return Math.sin(pos * (Math.PI / 2));
                 },

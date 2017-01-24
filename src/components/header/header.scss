@@ -21,6 +21,7 @@ header-component {
                         padding-top:1em;
                         margin-left:auto;
                         margin-right:auto;
+                        margin-bottom: 10px;
                         max-width: 260px;
                         height: auto;
                     }
@@ -39,10 +40,15 @@ header-component {
                 background-color: #3498db;
                 ul {
                     li {
+                        padding: .2em;
                         display: inline-block;
                         list-style: none;
                         cursor: pointer;
+                        font {
+                            font-size: 17px;
+                        }
                         i {
+                            vertical-align: middle;
                             font-size: 2.375em;
                         }
                     }
@@ -65,10 +71,17 @@ header-component {
                     .menu {
                         cursor:pointer;
                         background-color: #2980b9;
+                        font {
+                            font-size: 17px;
+                        }
                         span {
+                            display: inline-block;
+                            
                             i {
-                                font-size: 2.5em;
-                                color: #15acd7;
+                                color: $color_pallete6;
+                                &.fa-inverse {
+                                    color: #15acd7;
+                                }
                             }
                         }
                         &.active {
@@ -87,8 +100,6 @@ header-component {
             position: absolute;
             right: 0;
             display: inline-block;
-            
-            font-size: 10px;
             color: #045f9c;
             background-color: rgba(0,0,0,0);
             .top-menu {
@@ -128,10 +139,13 @@ header-component {
                         &:hover {
                             color: #0e7ecc;
                         }
+                        font {
+                            font-size:13px;
+                        }
                         span {
                             display: block;
                             i {
-                                font-size: 3em;
+                                font-size: 2.2em;
                                 color: #15acd7;
                             }
                         }
