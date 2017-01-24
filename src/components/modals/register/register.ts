@@ -28,16 +28,17 @@ export class RegisterComponent{
 
 
     }
-    testforumpost(){
-        this.forum
-            .data('post', 'another post test')
-            .data('comment', 'comment test')
-            .create('QnA', res =>{
-                console.log('res :: ' + res);
-        }, err =>{
-            this.app.alert('error :: ' + err );
-        }, ()=> console.info( 'completed ') )
-    }
+
+    // testforumpost(){
+    //     this.forum
+    //         .data('post', 'another post test')
+    //         .data('comment', 'comment test')
+    //         .create('QnA', res =>{
+    //             console.log('res :: ' + res);
+    //     }, err =>{
+    //         this.app.alert('error :: ' + err );
+    //     }, ()=> console.info( 'completed ') )
+    // }
 
     testforumcruddelete(){
         this.forum.delete( 'forums','QnA', '-KbB8W5Ol78zynTOs2T-', res =>{
