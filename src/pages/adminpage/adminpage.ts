@@ -29,21 +29,23 @@ export class AdminPage{
 
 
     checkAuth(){
-        if(! this.user.loggedIn ){
-            this.router.navigate(['']);
-            console.log('is logged in ? ' + this.user.loggedIn )  
-        }
+        setInterval( () =>{
+            if(! this.user.loggedIn ){
+                this.router.navigate(['']);
+                console.log('is logged in ? ' + this.user.loggedIn )  
+            }
+        },100)
     }
 
 
     displayUsers( data? ){
     console.log('data ' + JSON.stringify(data))
     if ( Object.keys(data).length <= 0 ) {
-        // this.noMorePosts = true;
+        this.noMorePosts = true;
         return;
     }
     console.log('got more')
-    for( let key of Object.keys(data) ) {
+    for( let key of Object.keys(data).reverse() ) {
         // if( ! key.match(/[+ -]/g) ) 
         this.users.push ( {'key':key, 'values':data[key]} );
       
