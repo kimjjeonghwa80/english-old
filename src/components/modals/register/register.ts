@@ -26,7 +26,18 @@ export class RegisterComponent{
 
 
     }
-
+    
+    // testforumpost(){
+    //     this.forum
+    //         .data('post', 'another post test')
+    //         .data('comment', 'comment test')
+    //         .create('QnA', res =>{
+    //             console.log('res :: ' + res);
+    //     }, err =>{
+    //         this.app.alert('error :: ' + err );
+    //     }, ()=> console.info( 'completed ') )
+    // }
+    
 
     onEnterRegister(event){
        if( event.keyCode == 13){

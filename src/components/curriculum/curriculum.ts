@@ -3,4 +3,9 @@ import { Component } from '@angular/core';
     selector: 'curriculum-component',
     templateUrl: 'curriculum.html'
 })
-export class CurriculumComponent {}
+export class CurriculumComponent {
+    showBook:boolean = false;
+    constructor() {
+
+    }
+}
