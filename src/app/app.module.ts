@@ -24,6 +24,7 @@ import { LevelTestComponent } from '../components/level-test/level-test';
 import { CommentComponent } from '../components/comment/comment';
 import { InqueryComponent } from '../components/inquery/inquery';
 import { ReservationComponent } from '../components/reservation/reservation';
+import { FooterComponent } from '../components/footer/footer';
 
 import { LoginModal } from '../components/modals/login/login';
 import { RegisterComponent } from '../components/modals/register/register';
@@ -53,6 +54,7 @@ const appRoutes: Routes = [
     CommentComponent,
     InqueryComponent,
     ReservationComponent,
+    FooterComponent,
     ForgotPasswordComponent,
     FindIdModal,
     AdminPage
