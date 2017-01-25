@@ -29,12 +29,10 @@ export class AdminPage{
 
 
     checkAuth(){
-        setInterval( () =>{
             if(! this.user.loggedIn ){
                 this.router.navigate(['']);
                 console.log('is logged in ? ' + this.user.loggedIn )  
             }
-        },100)
     }
 
 
@@ -62,7 +60,8 @@ export class AdminPage{
         return;
         }
         this.inPageLoading = true;
-        this.user.page( 'user/metadata' , res =>{
+        this.user.data('dbref', 'meta/')
+        .page(res =>{
             console.log('res :' + JSON.stringify(res));
             this.displayUsers( res );
             // this.inPageLoading = false;
