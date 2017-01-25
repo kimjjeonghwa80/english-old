@@ -15,6 +15,8 @@ import { HelpPage } from '../pages/help/help';
 import { AdminPage } from '../pages/adminpage/adminpage';
 
 import { HeaderComponent } from '../components/header/header';
+import { BigHeaderComponent } from '../components/header/components/big-header/big-header';
+import { SmallHeaderComponent } from '../components/header/components/small-header/small-header';
 import { IntroComponent } from '../components/intro/intro';
 import { ContactComponent } from '../components/contact/contact';
 import { CurriculumComponent } from '../components/curriculum/curriculum';
@@ -44,6 +46,8 @@ const appRoutes: Routes = [
     HomePage,
     HelpPage,
     HeaderComponent,
+    BigHeaderComponent,
+    SmallHeaderComponent,
     LoginModal,
     RegisterComponent,
     IntroComponent,
