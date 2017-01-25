@@ -60,7 +60,7 @@ export class AdminPage{
         return;
         }
         this.inPageLoading = true;
-        this.user.data('dbref', 'meta/')
+        this.user.data('dbref', 'user/meta/')
         .page(res =>{
             console.log('res :' + JSON.stringify(res));
             this.displayUsers( res );
