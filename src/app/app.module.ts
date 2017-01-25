@@ -25,6 +25,7 @@ import { CommentComponent } from '../components/comment/comment';
 import { InqueryComponent } from '../components/inquery/inquery';
 import { ReservationComponent } from '../components/reservation/reservation';
 import { FooterComponent } from '../components/footer/footer';
+import { AsideComponent } from '../components/aside/aside';
 
 import { LoginModal } from '../components/modals/login/login';
 import { RegisterComponent } from '../components/modals/register/register';
@@ -55,6 +56,7 @@ const appRoutes: Routes = [
     InqueryComponent,
     ReservationComponent,
     FooterComponent,
+    AsideComponent,
     ForgotPasswordComponent,
     FindIdModal,
     AdminPage
