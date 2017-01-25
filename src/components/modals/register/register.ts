@@ -60,10 +60,12 @@ export class RegisterComponent{
 
   getUserData() {
     this.loading = true;
-    this.user.get( this.user.loginUser.uid, res => {
+    console.info('userid ' + this.user.loginUser.uid )
+    this.user.data('child', 'meta/')
+    .get( this.user.loginUser.uid, res => {
         this.form = res;
     }, error => {
-        console.log('error ' + error ); 
+        console.log('error ::' + error ); 
     }, () =>{ this.loading = false; });
   } 
 
