@@ -1,18 +1,21 @@
 <section id="teacher" class="part">
     <div>
-    <h2>Teacher Page</h2>
-    <h3>Withcenter, Inc. Teacher List.</h3>
-
+    <div class="title">
+        <h2>강사 소개</h2>
+        <h3>Withcenter, Inc. Teacher List.</h3>
+    </div>
 
     <div *ngIf=" teachers " class="teachers">
-        <div class="teacher" *ngFor=" let teacher of teachers; let i = index">
-            <div>{{ teacher.name }}</div>
-            <img src="{{ lms.url }}/{{ teacher.photo }}">
-            <div>{{ teacher.birthday }}</div>
-            <div>{{ teacher.greeting }}</div>
-            <div>{{ teacher.major }}</div>
-            <div>{{ teacher.url_youtube }}</div>
-
+        <div class="row">
+            <div class="teacher col-md-6" *ngFor=" let teacher of teachers; let i = index">
+                <div class="photo">
+                    <img src="{{ lms.url }}/{{ teacher.photo }}">
+                    <img class="youtube-button" src="{{ lms.url }}/centerxshare/img/play.png" border="0">
+                </div>
+                <div class="name">Teacher {{ teacher.name }}</div>
+                <div class="major">{{ teacher.major }}</div>
+                <div [innerHTML]=" teacher.greeting "></div>
+            </div>
         </div>
     </div>
 

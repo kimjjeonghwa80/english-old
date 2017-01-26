@@ -1,4 +1,15 @@
 reservation-component {
     display: block;
     background-color: #71b8ff;
+    .reservation {
+        .reminder-image {
+            img {
+                display: block;
+                margin: 0 auto;
+                width: 70%;
+                top: 30%;
+                left: 10%;
+            }
+        }
+    }
 }

@@ -71,27 +71,26 @@ export class AdminPage{
     }
     
 
-   onClickDeleteUser(){
-       
-   }
-
-
-  beginScroll() {
-    this.scrollListener = this.renderer.listenGlobal( 'document', 'scroll', _.debounce( () => this.pageScrolled(), 200));
-  }
-  endScroll() {
-    if ( this.scrollListener ) this.scrollListener();
-  }
-  pageScrolled() {
-    let pages = document.querySelector(".pages");
-    if ( pages === void 0 || ! pages || pages['offsetTop'] === void 0) return; // @attention this is error handling for some reason, especially on first loading of each forum, it creates "'offsetTop' of undefined" error.
-    let pagesHeight = pages['offsetTop'] + pages['clientHeight'];
-    let pageOffset = window.pageYOffset + window.innerHeight;
-    if( pageOffset > pagesHeight - 200) { // page scrolled. the distance to the bottom is within 200 px from
-      console.log("page scroll reaches at bottom: pageOffset=" + pageOffset + ", pagesHeight=" + pagesHeight);
-      this.getUsers();
+    onClickDeleteUser(){
     }
-  }
+
+
+    beginScroll() {
+        this.scrollListener = this.renderer.listenGlobal( 'document', 'scroll', _.debounce( () => this.pageScrolled(), 200));
+    }
+    endScroll() {
+        if ( this.scrollListener ) this.scrollListener();
+    }
+    pageScrolled() {
+        let pages = document.querySelector(".pages");
+        if ( pages === void 0 || ! pages || pages['offsetTop'] === void 0) return; // @attention this is error handling for some reason, especially on first loading of each forum, it creates "'offsetTop' of undefined" error.
+        let pagesHeight = pages['offsetTop'] + pages['clientHeight'];
+        let pageOffset = window.pageYOffset + window.innerHeight;
+        if( pageOffset > pagesHeight - 200) { // page scrolled. the distance to the bottom is within 200 px from
+        console.log("page scroll reaches at bottom: pageOffset=" + pageOffset + ", pagesHeight=" + pagesHeight);
+        this.getUsers();
+        }
+    }
 
   /**
    *

@@ -1,5 +1,64 @@
 teacher-component {
     display: block;
-    background-color: $color_pallete4;
-    
+    background-color: $color_pallete6;
+    .title {
+        text-align: center;
+    }
+    .teachers {
+        position: relative;
+        padding: 1em;
+        .teacher {
+            margin: 0;
+            padding: 20px;
+            border: 8px solid #ffffff;
+            background-color: #01d9c1;
+            text-align: left;
+            .photo {
+                margin: 15px 0;
+                overflow: hidden;
+                position: relative;
+                display: inline-block;
+                height: 100px;
+                width: 100px;
+                border: 3px solid #ffffff;
+                border-radius: 100%;
+                float: left;
+                img {
+                    width: 100px;
+                    height: auto;
+                    vertical-align: middle;
+                    &.youtube-button {
+                        position: absolute;
+                        width: 24px;
+                        height: 24px;
+                        bottom: 10px;
+                        left: 50px;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .name {
+                display: block;
+                font-size: 25px;
+                color: #FFFFFF;
+                margin: 35px 0 5px 10px;
+            }
+            .major {
+                display: block;
+                font-size: 20px;
+                color: #FFFFFF;
+                margin-left: 10px;
+            }
+            .button_play {
+                cursor: pointer;
+            }
+        }
+    }
+}
+@media all and (min-width: $breakpoint) {
+    teacher-component {
+        position: relative;
+        margin: 0 auto;
+        max-width: 980px;
+    }
 }
