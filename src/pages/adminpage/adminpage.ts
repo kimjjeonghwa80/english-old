@@ -60,15 +60,14 @@ export class AdminPage{
         return;
         }
         this.inPageLoading = true;
-        this.user.data('dbref', 'user/meta/')
-        .page(res =>{
-            console.log('res :' + JSON.stringify(res));
-            this.displayUsers( res );
-            // this.inPageLoading = false;
-        }, error =>{
-            console.log('error :: ' + error );
-            this.app.alert( error )
-        }, () => this.inPageLoading = false )
+        // this.user.page(res =>{
+        //     console.log('res :' + JSON.stringify(res));
+        //     this.displayUsers( res );
+        //     // this.inPageLoading = false;
+        // }, error =>{
+        //     console.log('error :: ' + error );
+        //     this.app.alert( error )
+        // }, () => this.inPageLoading = false )
     }
     
 
