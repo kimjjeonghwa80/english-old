@@ -1,9 +1,10 @@
+
 aside-component {
     display: block;
     background-color: #fff;
     .sidebar {
         position: fixed;
-        top: 150px;
+        top: 190px;
         left: 50px;
         right: auto;
         bottom: auto;
@@ -25,7 +26,7 @@ aside-component {
                             width: 95px;
                             height: auto;
                         }
-                        span {
+                        font {
                             text-decoration: none;
                             position: absolute;
                             font-size: 12px;
@@ -41,8 +42,14 @@ aside-component {
                 }
             }
         }
-    @media all and (max-width: $breakpoint) {
+    }
+@media all and (max-width: $breakpoint) {
+    aside-component {
+        display: block;
+        background-color: #4a565f;
+        padding-top: 10px;
         .sidebar {
+            display: inline-block;
             position: relative;
             top: auto;
             left: auto;
@@ -67,7 +74,7 @@ aside-component {
                             width: 100%;
                             height: auto;
                         }
-                        span {
+                        font {
                             text-decoration: none;
                             position: absolute;
                             font-size: 12px;

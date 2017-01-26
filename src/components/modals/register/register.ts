@@ -72,8 +72,7 @@ export class RegisterComponent{
   getUserData() {
     this.loading = true;
     console.info('userid ' + this.user.loginUser.uid )
-    this.user.data('child', 'meta/')
-    .get( this.user.loginUser.uid, res => {
+    this.user.private_get( this.user.loginUser.uid, res => {
         this.form = res;
     }, error => {
         console.log('error ::' + error ); 
@@ -99,15 +98,7 @@ export class RegisterComponent{
             console.log('form :: ' + JSON.stringify(this.form))
             console.log("Going to create user : " + this.form.name);
             this.loading = true;
-            this.user.data('key', this.form.id )
-                .data('id', this.form.id)
-                .data('email', this.form.email)
-                .data('password', this.form.password )
-                .data('name', this.form.name)
-                .data('mobile' , this.form.mobile)
-                .data('gender' , this.form.gender)
-                .data('birthdate', this.form.birthdate)
-                .create(
+            this.user.create(
                     ( uid ) => { 
                         console.log(`create ${this.form.name} : success`); 
                         this.activeModal.close();
@@ -135,13 +126,7 @@ export class RegisterComponent{
 
   updateProfile(){
     this.loading = true;
-    this.user.clear()
-        .data( 'key', this.form.uid )
-        .data( 'name', this.form.name )
-        .data( 'mobile' , this.form.mobile )
-        .data( 'gender' , this.form.gender )
-        .data( 'birthdate', this.form.birthdate )
-        .update(
+    this.user.update( this.user.loginUser.uid,
             () => {
                 console.log(`user update: ${this.form.uid} : success.`);
                 this.activeModal.close();

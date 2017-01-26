@@ -86,7 +86,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-4 col-xs-6 col-6 mybook">
+                
+                <section *ngIf="showBook" class="more-book">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-4 col-xs-6 col-6 mybook">
                     <div class="inner-row">
                         <img src="assets/img/book7.jpg">
                         <div class="title">
@@ -156,8 +159,6 @@
                         </div>
                     </div>
                 </div>
-                <section *ngIf="showBook" class="more-book">
-                    <div class="row">
                     <div class="col-md-3 col-sm-4 col-xs-6 col-6 mybook">
                     <div class="inner-row">
                         <img src="assets/img/book13.jpg">

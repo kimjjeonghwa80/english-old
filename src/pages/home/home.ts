@@ -14,7 +14,7 @@ export class HomePage implements AfterViewInit {
         public app: App
     ) {
         testAll.run();
-        
+
     }
 
     ngAfterViewInit() {
