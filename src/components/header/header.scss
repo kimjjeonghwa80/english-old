@@ -1,5 +1,175 @@
 header-component {
     display: block;
+    .small {
+        .navbar {
+            padding: 0;
+            background-color: #ffffff;
+            border-top: .2em solid #44bddf;
+            .logo {
+                padding: 20px;
+                img {
+                    cursor: pointer;
+                    display: block;
+                    padding-top:1em;
+                    margin-left:auto;
+                    margin-right:auto;
+                    margin-bottom: 10px;
+                    max-width: 260px;
+                    height: auto;
+                }
+            }//.logo
+            .bottom {
+                margin: 0;
+                ul {
+                    margin: 0;
+                    padding: 0;
+                }
+                .menu {
+                    padding: .4em;
+                    color: #ffffff;
+                    background-color: #3498db;
+                    ul {
+                        li {
+                            padding: .2em;
+                            display: inline-block;
+                            list-style: none;
+                            cursor: pointer;
+                            font {
+                                font-size: 17px;
+                            }
+                            i {
+                                vertical-align: middle;
+                                font-size: 2.375em;
+                            }
+                        }
+                    }
+                    
+                }
+                .panel {
+                    padding: 0;
+                    max-height: 0;
+                    overflow: hidden;
+                    transition-duration: .3s;
+                    &.active {
+                        max-height: 450px;
+                    }
+                    .menus {
+                        margin:0;
+                        list-style: none;
+                        color: #ffffff;
+                        background-color: #2980b9;
+                        .menu {
+                            cursor:pointer;
+                            background-color: #2980b9;
+                            font {
+                                font-size: 17px;
+                            }
+                            span {
+                                display: inline-block;
+                                
+                                i {
+                                    color: $color_pallete6;
+                                    &.fa-inverse {
+                                        color: #15acd7;
+                                    }
+                                }
+                            }
+                            &.active {
+                                color: #0bcc00;
+                            }
+                            &:hover {
+                                background-color:#3498db;
+                            }
+                        }
+                    }
+                }
+            }//.bottom
+        }
+    }
+}
+
+@media all and (min-width: $breakpoint) {
+    header-component {
+        display: block;
+        .big {
+            .navbar {
+                .logo {
+                    padding-top: 30px;
+                    width: 250px;
+                    display: inline-block;
+                    img {
+                        margin:0 1em;
+                    }
+                }
+                .bottom {
+                    margin: 0;
+                    padding-top: 30px;
+                    position: absolute;
+                    right: 0;
+                    display: inline-block;
+                    color: #045f9c;
+                    background-color: rgba(0,0,0,0);
+                    .top-menu {
+                        position: absolute;
+                        top:0;
+                        right: 0;
+                        margin-right:.6em;
+                        color:#fff;
+                        ul {
+                            margin: 0;
+                            padding: 0;
+                            background-color: #44bddf;
+                            border-top-left-radius: -10px;
+                            border-bottom-left-radius: .5em;
+                            border-bottom-right-radius: .5em;
+                            li {
+                                display: inline-block;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    .menus {
+                        ul {
+                            margin: 0;
+                            padding: 0;
+                            
+                            li {
+                                display: inline-block;
+                                list-style: none;
+                                text-align: center;
+                                cursor: pointer;
+                                
+                                &.active {
+                                    color: #d35400;
+                                    font-weight: 600;
+                                }
+                                &:hover {
+                                    color: #0e7ecc;
+                                }
+                                font {
+                                    font-size:13px;
+                                }
+                                span {
+                                    display: block;
+                                    i {
+                                        font-size: 2.2em;
+                                        color: #15acd7;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+header-component {
+    display: block;
     .navbar {
         padding: 0;
         background-color: #ffffff;

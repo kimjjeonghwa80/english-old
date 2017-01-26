@@ -27,12 +27,25 @@ export class HeaderComponent implements OnInit {
         console.log('header :: constructor(), loginUser: ', user.loginUser);
         this.login = user.loggedIn;
         console.log("user login status: ", this.login);
+        this.listenEvents();
+    }
+    
+    listenEvents() {
+        this.app.myEvent.subscribe( item => {
+        if( item.eventType == "login") {
+            this.onClickLogin();
+        }
+        if( item.eventType == "enter-classroom") {
+            this.onClickGotoClassRoom();
+        }
+        if( item.eventType == "register") {
+            this.onClickRegister();
+        }
         
-        //console.log(user.loggedIn);
-        //console.log(user);
-        // this.onClickRegister();
+        });
+    }
+    ngOnInit() {
 
-        // this.onClickLogin();
     }
     onClickLogin(){
         console.log('login');
@@ -45,11 +58,6 @@ export class HeaderComponent implements OnInit {
         }).catch( () => console.log('exit') );
 
     }
-
-    ngOnInit() {
-
-    }
-
     onClickGotoClassRoom(){
         window.open(
             `https://video.withcenter.com/room/${this.user.loginUser.name}/testroom`,

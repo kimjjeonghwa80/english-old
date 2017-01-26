@@ -1,10 +1,12 @@
-import { Injectable, NgZone } from '@angular/core';
-export const HEADER_HEIGHT: number = 140;
+import { Injectable, NgZone, EventEmitter } from '@angular/core';
+export const HEADER_HEIGHT: number = 180;
 @Injectable()
 export class App {
+    public myEvent: EventEmitter<any>;
     width: number = 0;
     scrollId: string = null;
     constructor( private ngZone: NgZone ) {
+        this.myEvent = new EventEmitter();
     }
     /**
     * Everytime window resizes, this is set.
