@@ -34,6 +34,9 @@ import { RegisterComponent } from '../components/modals/register/register';
 import { ForgotPasswordComponent } from '../components/modals/forgot-password/forgot-password';
 import { FindIdModal } from '../components/modals/find-id/find-id';
 
+
+import { LMS } from '../providers/lms';
+
 const appRoutes: Routes = [
   { path: 'help', component: HelpPage },
   { path: '', component: HomePage },
@@ -75,7 +78,7 @@ const appRoutes: Routes = [
     FormsModule
   ],
   bootstrap: [ AppComponent ],
-  providers: [ App, NgbActiveModal ],
+  providers: [ App, NgbActiveModal, LMS ],
 
   entryComponents: [ 
     LoginModal, 
