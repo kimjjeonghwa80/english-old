@@ -13,6 +13,15 @@ teacher-component {
             border: 8px solid #ffffff;
             background-color: #01d9c1;
             text-align: left;
+            .youtube-player {
+                position: absolute;
+                top: 35px;
+                left: 20px;
+                .youtube-video {
+                    height: 100px;
+                    width: 100px;
+                }
+            }
             .photo {
                 margin: 15px 0;
                 overflow: hidden;
