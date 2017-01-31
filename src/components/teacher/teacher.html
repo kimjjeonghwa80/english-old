@@ -4,17 +4,26 @@
         <h2>강사 소개</h2>
         <h3>Withcenter, Inc. Teacher List.</h3>
     </div>
-
     <div *ngIf=" teachers " class="teachers">
         <div class="row">
+        
             <div class="teacher col-md-6" *ngFor=" let teacher of teachers; let i = index">
                 <div class="photo">
                     <img src="{{ lms.url }}/{{ teacher.photo }}">
-                    <img class="youtube-button" src="{{ lms.url }}/centerxshare/img/play.png" border="0">
+                    <img (click)="playYoutube='true'" class="youtube-button" src="{{ lms.url }}/centerxshare/img/play.png" border="0">
                 </div>
                 <div class="name">Teacher {{ teacher.name }}</div>
                 <div class="major">{{ teacher.major }}</div>
                 <div [innerHTML]=" teacher.greeting "></div>
+                <div *ngIf="playYoutube" class="youtube-player" >
+                    <object width="640" height="360">
+                    <param name="movie" value="{{teacher.url_youtube}}"/>
+                    <param name="allowFullScreen" value="true"/>
+                    <param name="allowscriptaccess" value="always"/>
+                    <embed width="150" height="150" src="{{teacher.url_youtube}}"  type="text/html" allowscriptaccess="always" allowfullscreen="true"/>
+                    </object>
+                    
+                </div>
             </div>
         </div>
     </div>
