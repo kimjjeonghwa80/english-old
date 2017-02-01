@@ -41,6 +41,12 @@ export class HeaderComponent implements OnInit {
         if( item.eventType == "register") {
             this.onClickRegister();
         }
+        if( item.eventType == "logout" ){
+            this.onClickLogout();
+        }
+        if( item.eventType == "update" ){
+            this.onClickUpdateProfile();
+        }
         
         });
     }
