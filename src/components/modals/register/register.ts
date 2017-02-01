@@ -107,8 +107,8 @@ export class RegisterComponent{
                 data['email'] = this.form.email;
                 data['password'] = this.form.password;
                 data['name'] = this.form.name;
-            this.user.create(
-                    ( uid ) => { 
+            this.user.create( data['id'], data,
+                    uid => { 
                         console.log(`create ${this.form.name} : success`); 
                         this.activeModal.close();
                     },
