@@ -4,6 +4,7 @@ import { App } from '../../../providers/app';
 import { User } from '../../../api/firebase-api-2.0/user';
 import { Forum } from '../../../api/firebase-api-2.0/forum';
 import { USER_REGISTRATION_FORM } from '../../../api/firebase-api-2.0/interfaces';
+import { LMS } from '../../../providers/lms';
 @Component({
     selector:'register-component',
     templateUrl: 'register.html'
@@ -18,7 +19,8 @@ export class RegisterComponent{
         private app          : App,
         private activeModal  : NgbActiveModal,
         public user          : User,
-        private forum        : Forum
+        private forum        : Forum,
+        private lms          : LMS
     ) {
 
             //this.fakeData();
@@ -85,6 +87,7 @@ export class RegisterComponent{
 
   onClickSubmit() {
       this.register();
+      this.centerXregister();
   }
   onClickUpdate() {
       this.updateProfile();
@@ -107,8 +110,8 @@ export class RegisterComponent{
                 data['email'] = this.form.email;
                 data['password'] = this.form.password;
                 data['name'] = this.form.name;
-            this.user.create(
-                    ( uid ) => { 
+            this.user.create( this.form.id, this.form ,
+                    uid => { 
                         console.log(`create ${this.form.name} : success`); 
                         this.activeModal.close();
                     },
@@ -120,7 +123,9 @@ export class RegisterComponent{
 
 
   centerXregister(){
-      
+      this.lms.register( this.form, res =>{
+          console.log(' registered on centerX ');
+      }, error => console.error(' error on registration ' + error ) )
   }
 
   /**

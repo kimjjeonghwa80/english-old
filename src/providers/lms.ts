@@ -41,4 +41,15 @@ export class LMS {
             success( json['data'] );
         });
     }
+
+
+    register( data, success, failure: ( error : string ) => void ){
+        let url = LMS_ENDPOINT_URL + `?id=${data['id']}&name=${data['name']}&email=${data['email']}&mobile=${data['mobile']}&domain=englishfordevelopers.com&function=user_create`;
+        this.http.get( url ).subscribe( re =>{
+            console.log( ' user_create :: ' + re );
+            if( re ) success( re );
+            else failure( 'error on lms registration ' );
+        })
+    }
+    
 }
