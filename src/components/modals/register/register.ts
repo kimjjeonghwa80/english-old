@@ -43,8 +43,8 @@ export class RegisterComponent{
 
     onEnterRegister(event){
        if( event.keyCode == 13){
-           if( this.user.loggedIn )this.updateProfile();
-           else this.register();
+           if( this.user.loggedIn ) this.updateProfile( callback => this.updateLMSprofile() );
+           else this.register( callback => this.lmsregister( ) );
        }
     }
 
@@ -86,16 +86,15 @@ export class RegisterComponent{
 
 
   onClickSubmit() {
-      this.register();
-      this.centerXregister();
+      this.register( callback => this.lmsregister() );
+      
   }
   onClickUpdate() {
-      this.updateProfile();
-      this.updateCenterXprofile();
+      this.updateProfile( callback => this.updateLMSprofile() );
   }
 
 
-  register() {
+  register( callback ) {
       this.checkid( );
       setTimeout( () =>{
         if( this.isIDexists == false ) return this.app.alert('id already in used');
@@ -114,7 +113,7 @@ export class RegisterComponent{
             this.user.create( this.form.id, this.form ,
                     uid => { 
                         console.log(`create ${this.form.name} : success`); 
-                        
+                        callback();
                     },
                     (e) => this.app.alert(`create ${this.form.name}: failure:`+ e),
                     () => { this.loading = false; console.log(`create ${this.form.name} : complete`); } ); 
@@ -123,7 +122,7 @@ export class RegisterComponent{
   }
 
 
-  centerXregister(){
+  lmsregister(){
       this.lms.register( this.form, res =>{
           console.log(' registered on centerX ' + res );
           this.activeModal.close();
@@ -145,18 +144,19 @@ export class RegisterComponent{
       
   }
 
-  updateProfile(){
+  updateProfile( callback ){
     this.loading = true;
     this.user.update( this.form.uid, this.form,
             () => {
                 console.log(`user update: ${this.form.uid} : success.`);
+                callback();
             } ,
             e => console.error( `user update: ${this.form.uid} : failure: `, e ),
             () => { this.loading = false; }
         );
   }
 
-  updateCenterXprofile(){
+  updateLMSprofile(){
       this.lms.update( this.form , res =>{
           console.log(' lms user updated ' + res );
           this.activeModal.close();
