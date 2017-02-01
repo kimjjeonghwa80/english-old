@@ -91,6 +91,7 @@ export class RegisterComponent{
   }
   onClickUpdate() {
       this.updateProfile();
+      this.updateCenterXprofile();
   }
 
 
@@ -113,7 +114,7 @@ export class RegisterComponent{
             this.user.create( this.form.id, this.form ,
                     uid => { 
                         console.log(`create ${this.form.name} : success`); 
-                        this.activeModal.close();
+                        
                     },
                     (e) => this.app.alert(`create ${this.form.name}: failure:`+ e),
                     () => { this.loading = false; console.log(`create ${this.form.name} : complete`); } ); 
@@ -124,7 +125,8 @@ export class RegisterComponent{
 
   centerXregister(){
       this.lms.register( this.form, res =>{
-          console.log(' registered on centerX ');
+          console.log(' registered on centerX ' + res );
+          this.activeModal.close();
       }, error => console.error(' error on registration ' + error ) )
   }
 
@@ -148,11 +150,17 @@ export class RegisterComponent{
     this.user.update( this.form.uid, this.form,
             () => {
                 console.log(`user update: ${this.form.uid} : success.`);
-                this.activeModal.close();
             } ,
             e => console.error( `user update: ${this.form.uid} : failure: `, e ),
             () => { this.loading = false; }
         );
+  }
+
+  updateCenterXprofile(){
+      this.lms.update( this.form , res =>{
+          console.log(' lms user updated ' + res );
+          this.activeModal.close();
+      }, err =>{})
   }
 
   validate() {

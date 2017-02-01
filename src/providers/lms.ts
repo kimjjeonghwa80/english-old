@@ -44,12 +44,25 @@ export class LMS {
 
 
     register( data, success, failure: ( error : string ) => void ){
-        let url = LMS_ENDPOINT_URL + `?id=${data['id']}&name=${data['name']}&email=${data['email']}&mobile=${data['mobile']}&domain=englishfordevelopers.com&function=user_create`;
+        let url = LMS_ENDPOINT_URL + `?id=${data['id']}&name=${data['name']}&email=${data['email']}&mobile=${data['mobile']}&classid=${data['classid']}&domain=englishfordevelopers.com&function=user_insert`;
+        
         this.http.get( url ).subscribe( re =>{
-            console.log( ' user_create :: ' + re );
+            console.log( ' user_insert :: ' + re );
             if( re ) success( re );
-            else failure( 'error on lms registration ' );
+            else failure( ' error on lms registration ' );
         })
     }
+
+    update( data, success, failure: ( error: string) => void ){
+        let id =  data['id'];
+        let url = LMS_ENDPOINT_URL + `?id=${data['id']}&name=${data['name']}&email=${data['email']}&mobile=${data['mobile']}&classid=${data['classid']}&domain=englishfordevelopers.com&function=user_update`;
+
+        this.http.get( url ).subscribe( re =>{
+            console.log( ' user_update :: ' + re );
+            if( re ) success( re );
+            else failure( ' error on lms update user ' );
+        })
+    }
+
     
 }
