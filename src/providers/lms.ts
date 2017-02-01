@@ -54,7 +54,6 @@ export class LMS {
     }
 
     update( data, success, failure: ( error: string) => void ){
-        let id =  data['id'];
         let url = LMS_ENDPOINT_URL + `?id=${data['id']}&name=${data['name']}&nickname=${data['nickname']}&email=${data['email']}&mobile=${data['mobile']}&classid=${data['classid']}&domain=englishfordevelopers.com&domain_key=empty&function=user_update`;
 
         this.http.get( url ).subscribe( re =>{
