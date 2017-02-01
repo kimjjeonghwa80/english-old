@@ -56,7 +56,7 @@ export class RegisterComponent{
         this.form.password = id;
         this.form.mobile = '09174678000';
         this.form.gender = 'M';
-        this.form.birthday = '1990-12-30';
+        this.form.birthdate = '1990-12-30';
     }
 
     onClickDismiss() {
@@ -105,7 +105,7 @@ export class RegisterComponent{
                 let data = {};
                 data['id'] = this.form.id;
                 data['mobile'] = this.form.mobile;
-                data['birthday'] = this.form.birthday;
+                data['birthdate'] = this.form.birthdate;
                 data['gender'] = this.form.gender;
                 data['email'] = this.form.email;
                 data['password'] = this.form.password;
@@ -177,7 +177,7 @@ export class RegisterComponent{
       if ( ! this.form.name ) return this.validateError('Name');
       if ( ! this.form.mobile ) return this.validateError('Mobile');
       if ( ! this.form.gender ) return this.validateError('Gender');
-      if ( ! this.form.birthday ) return this.validateError('BirthDay');
+      if ( ! this.form.birthdate ) return this.validateError('birthdate');
       return true;
   }
   
