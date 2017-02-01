@@ -1,5 +1,5 @@
 import { Injectable, NgZone, EventEmitter } from '@angular/core';
-export const HEADER_HEIGHT: number = 180;
+export const HEADER_HEIGHT: number = 120;
 @Injectable()
 export class App {
     public myEvent: EventEmitter<any>;

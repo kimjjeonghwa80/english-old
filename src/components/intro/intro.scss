@@ -2,21 +2,22 @@ $color_pallete7:#2c3e50;
 intro-component {
     display: block;
     background-color: #EDEDED;
-    // background-color: $color_pallete2;
     .intro-container {
+       
+
         padding: 3em 0;
-        margin-left: auto;
-        margin-right: auto; 
-        width: 80%;
-        display: block;
-        h2 {
+            margin-left: auto;
+            margin-right: auto; 
+            width: 80%;
+            display: block;
+        .info-title {
             color: $color_pallete7;
             text-align: center;
-            font-size: 2.1875em;
+            font-size: 1.8em;
         }
-         .info-text {
+        .info-text {
             margin-bottom: 1.875rem;
-            font-size: 1.375em;
+            font-size: 1.1em;
             color: $color_pallete7;
             text-align: center; 
         }
@@ -40,16 +41,25 @@ intro-component {
         }
         .title {
             text-align: center;
-            font-size: 1.25em;
+            font-size: 1.1em;
             font-weight: bold;
             color: $color_pallete7;
         }
         .desc {
             text-align: center;
-            font-size: 1em;
+            font-size: .9em;
             color: #2c3e50;
         }
     }
-        
-    
+}
+@media all and (max-width: $breakpoint) {
+    intro-component {
+        position: relative;
+        margin: 0 auto;
+        max-width: 980px;
+        .intro-container {
+            padding: 0;
+        width: 100%;
+        }
+    }
 }
