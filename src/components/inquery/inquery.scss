@@ -1,4 +1,103 @@
 inquery-component {
     display: block;
-    background-color: #ffb9dc;
+    background-color: #FFFFFF;
+    .banner {
+        background-image: url("/assets/img/inquery.jpg");
+        width: 100%;
+        height: 280px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        .banner-info {
+            padding-top: 3em;
+            padding-left: 8em;
+            color: #FFFFFF;
+            color: #FFFFFF;
+            .level {
+                font-size: 32px;
+            }
+            .desc {
+                font-size: 24px;
+            }
+        }
+    }
+    main {
+        padding: 7em 1em;
+        .top {
+            color: #06000a;
+            .forum-description {
+                margin-top: .4em;
+                padding: 0 0 .4em;
+                border-bottom: 1px solid #dfdfdf;
+                font-size: 28px;
+                color: #3b3b3b;
+            }
+        }
+        .bottom {
+            margin-top: .4em;
+            overflow: auto;
+            .post-count {
+                float: left;
+            }
+            .post-new-button {
+                float: right;
+                right: .2em;
+                margin: .2em 0;
+                padding: .2em .4em;
+                cursor: pointer;
+                border-radius: 3px;
+                background-color: #e67e22;
+                a {
+                    padding: .2em 1em;
+                    border-radius: 3px;
+                    background-color: #e67e22;
+                    text-decoration: none;
+                    color: #FFFFFF;
+                }
+            }
+        }
+        .post-list-container {
+            .header {
+                margin: 0;
+                background-color: #2a80b9;
+                color: #FFFFFF; 
+            }
+            .post {
+                margin: 0;
+                padding: 2em;
+                text-align: center;
+                background-color: #f1f1f1;
+            }
+        }
+    }
+}
+@media all and (max-width: $breakpoint) {
+    inquery-component {
+        .banner {
+            height: 160px;
+            .banner-info {
+                padding: 2em;
+                .level {
+                    font-size: 24px;
+                }
+                .desc {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+@media all and (min-width: $breakpoint) {
+    inquery-component {
+        main {
+            padding-left: 8em;
+            .post-list-container {
+                .header {
+                    margin: 0;
+                }
+                .post {
+                    margin: 0;
+                }
+            }
+        }
+    }
 }
