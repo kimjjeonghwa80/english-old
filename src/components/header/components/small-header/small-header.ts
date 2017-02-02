@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { App } from '../../../../providers/app';
+import { User } from '../../../../api/firebase-api-2.0/user';
 @Component({
     selector: 'small-header-component',
     templateUrl: 'small-header.html'
@@ -7,9 +8,23 @@ import { App } from '../../../../providers/app';
 export class SmallHeaderComponent {
     event:any = {};
     more: boolean = false;
-    constructor( public app: App ) {
+    constructor( 
+        public app: App,
+        private user: User
+         ) {
 
     }
+    
+    onClickLogout(){
+        this.event.eventType = "logout";
+        this.app.myEvent.emit( this.event );
+    }
+    onClickUpdateProfile(){
+        this.event.eventType = "update";
+        this.app.myEvent.emit( this.event );
+    }
+
+
     onClickMoreMenu() {
         this.more = ! this.more;
     }

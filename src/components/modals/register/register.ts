@@ -54,7 +54,7 @@ export class RegisterComponent{
         this.form.password = id;
         this.form.mobile = '09174678000';
         this.form.gender = 'M';
-        this.form.birthdate = '1990-12-30';
+        this.form.birthday = '1990-12-30';
     }
 
     onClickDismiss() {
@@ -74,6 +74,7 @@ export class RegisterComponent{
     console.info('userid ' + this.user.loginUser.uid )
     this.user.private_get( this.user.loginUser.uid, res => {
         this.form = res;
+        console.log('data ::' + JSON.stringify( res ))
     }, error => {
         console.log('error ::' + error ); 
     }, () =>{ this.loading = false; });
@@ -98,8 +99,16 @@ export class RegisterComponent{
             console.log('form :: ' + JSON.stringify(this.form))
             console.log("Going to create user : " + this.form.name);
             this.loading = true;
-            this.user.create(
-                    ( uid ) => { 
+                let data = {};
+                data['id'] = this.form.id;
+                data['mobile'] = this.form.mobile;
+                data['birthday'] = this.form.birthday;
+                data['gender'] = this.form.gender;
+                data['email'] = this.form.email;
+                data['password'] = this.form.password;
+                data['name'] = this.form.name;
+            this.user.create( data['id'], data,
+                    uid => { 
                         console.log(`create ${this.form.name} : success`); 
                         this.activeModal.close();
                     },
@@ -107,6 +116,11 @@ export class RegisterComponent{
                     () => { this.loading = false; console.log(`create ${this.form.name} : complete`); } ); 
       }, 300);
    
+  }
+
+
+  centerXregister(){
+      
   }
 
   /**
@@ -126,7 +140,7 @@ export class RegisterComponent{
 
   updateProfile(){
     this.loading = true;
-    this.user.update( this.user.loginUser.uid,
+    this.user.update( this.form.uid, this.form,
             () => {
                 console.log(`user update: ${this.form.uid} : success.`);
                 this.activeModal.close();
@@ -150,7 +164,7 @@ export class RegisterComponent{
       if ( ! this.form.name ) return this.validateError('Name');
       if ( ! this.form.mobile ) return this.validateError('Mobile');
       if ( ! this.form.gender ) return this.validateError('Gender');
-      if ( ! this.form.birthdate ) return this.validateError('BirthDay');
+      if ( ! this.form.birthday ) return this.validateError('BirthDay');
       return true;
   }
   
