@@ -8,6 +8,18 @@ contact-component {
         height: 280px;
         background-size: 100% 100%;
         background-repeat: no-repeat;
+        .banner-info {
+            padding-top: 3em;
+            padding-left: 8em;
+            color: #FFFFFF;
+            h2 {
+                margin: 0;
+                font-size: 36px;
+            }
+            .desc {
+                font-size: 24px;
+            }
+        }
     }
     .contact-container {
         padding:5em 0;
@@ -114,6 +126,15 @@ contact-component {
     contact-component {
         .banner {
             height: 160px;
+            .banner-info {
+                padding: 1em;
+                h2 {
+                    font-size: 24px;
+                }
+                .desc {
+                    font-size: 16px;
+                }
+            }
         }
         .contact-container {
             padding: 5em 0;
