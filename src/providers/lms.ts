@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 export const LMS_URL = "http://onlineenglish.kr";
 export const LMS_ENDPOINT_URL = LMS_URL + "/ajax.php";
+export const domain: string = 'englishfordevelopers.onlineenglish.kr';
 export interface TEACHER {
     birthday: string;
     classid: string;
@@ -44,7 +45,7 @@ export class LMS {
 
 
     register( data, success, failure: ( error : string ) => void ){
-        let url = LMS_ENDPOINT_URL + `?id=${data['id']}&name=${data['name']}&nickname=${data['nickname']}&email=${data['email']}&mobile=${data['mobile']}&classid=${data['classid']}&domain=englishfordevelopers.onlineenglish.kr&domain_key=empty&function=user_insert`;
+        let url = LMS_ENDPOINT_URL + `?id=${data['id']}&name=${data['name']}&nickname=${data['nickname']}&email=${data['email']}&mobile=${data['mobile']}&classid=${data['classid']}&domain=${domain}&domain_key=empty&function=user_insert`;
         
         this.http.get( url ).subscribe( re =>{
             console.log( ' user_insert :: ' + re );
@@ -54,13 +55,32 @@ export class LMS {
     }
 
     update( data, success, failure: ( error: string) => void ){
-        let url = LMS_ENDPOINT_URL + `?id=${data['id']}&name=${data['name']}&nickname=${data['nickname']}&email=${data['email']}&mobile=${data['mobile']}&classid=${data['classid']}&domain=englishfordevelopers.onlineenglish.kr&domain_key=empty&function=user_update`;
+        let url = LMS_ENDPOINT_URL + `?id=${data['id']}&name=${data['name']}&nickname=${data['nickname']}&email=${data['email']}&mobile=${data['mobile']}&classid=${data['classid']}&domain=${domain}&domain_key=empty&function=user_update`;
 
         this.http.get( url ).subscribe( re =>{
             console.log( ' user_update :: ' + re );
             if( re ) success( re );
             else failure( ' error on lms update user ' );
         })
+    }
+
+
+    getReservations( data , success, failure: ( error : string ) => void ){
+        let url = LMS_ENDPOINT_URL + `?id=${data['id']}&email=${data['email']}&classid=${data['classid']}&domain=${domain}&function=reservation_list`;
+        
+        this.http.get( url ).subscribe( re =>{
+            console.log('check this :: ' + re);
+            let json = null;
+            try {
+                json = JSON.parse( re['_body'] );
+            }
+            catch ( e ) {
+                alert("Parse ERROR on lms::getTeachers()");
+            }
+
+            console.log(json);
+            success( json['data'] );
+        });
     }
 
     

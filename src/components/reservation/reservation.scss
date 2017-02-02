@@ -1,14 +1,77 @@
 reservation-component {
     display: block;
     background-color: #71b8ff;
+    position: relative;
     .reservation {
         .reminder-image {
+            
             img {
                 display: block;
                 margin: 0 auto;
-                width: 70%;
-                top: 30%;
-                left: 10%;
+                width: 40%;
+                height: 70%;
+                top: 22%;
+                left: 25%;
+                position: absolute;
+                
+            }
+            
+        }
+    }
+
+    .desc{
+        margin-bottom: 20px;
+        display: block;
+        text-align: center;
+        margin-left: 200px;
+
+        table{
+                display: table;
+                background-color: transparent;
+                border-spacing: 0;
+                border-collapse: collapse;
+                th, td{
+                    border: 3px solid #fff;
+                }
+            .icon{
+                border-radius: 12.5px 15px;
+            }
+
+            
+  
+            .calendar-day{
+                width: 16em;
+                background-color: #f1f1f1;
+                color: #000;
+                @media (min-width: 800px){
+                    height: 150px;
+                }
+                @media (min-width: 750px){
+                    height: 135px;
+                }
+                @media (min-width: 600px){
+                    height: 125px;
+                }
+                    height: 110px;
+
+            }
+            .side {
+                width: 40px;
+                background-color: #eaeaea;
+                color: #fd0e35;
+            }
+
+
+            .calendar-day-head{
+                height: 40px;
+                font-size: 14px;
+                font-weight: bold;
+                background-color: #7d7d7d;
+                color: #eaeaea;
+            }
+            .day-number{
+                padding: 0.5em;
+                padding-bottom: 0em;
             }
         }
     }
