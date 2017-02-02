@@ -10,6 +10,7 @@ level-test-component {
         }
         .level-test-form {
             padding: 3em;
+            
             background-color: #a7dbdb;
             h2 {
                 display: block;
@@ -80,7 +81,12 @@ level-test-component {
 
 @media all and (min-width: $breakpoint) {
     .level-test-form {
+        h2 {
+            text-align: center;
+        }
         form {
+            margin: 0 auto;
+            width: 100%;
             max-width: 685px;
             .line-submit {
                 padding-right:20px;
