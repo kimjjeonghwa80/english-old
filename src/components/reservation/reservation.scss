@@ -48,24 +48,28 @@ reservation-component {
         margin-bottom: 20px;
         display: block;
         text-align: center;
-        margin-left: 200px;
+        // margin-left: 200px;
+        margin-bottom: 0px;
+        
 
         table{
                 display: table;
                 background-color: transparent;
                 border-spacing: 0;
                 border-collapse: collapse;
+                margin-left: auto;
+                margin-right: auto;
+
                 th, td{
                     border: 3px solid #fff;
+                    border-bottom: 0px;
                 }
-            .icon{
-                border-radius: 12.5px 15px;
-            }
+                .day-number{
+                    text-align: left;
+                }
 
-            
-  
             .calendar-day{
-                width: 16em;
+                width: 10em;
                 background-color: #f1f1f1;
                 color: #000;
                 @media (min-width: 800px){
