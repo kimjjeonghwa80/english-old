@@ -44,7 +44,7 @@ export class LMS {
 
 
     register( data, success, failure: ( error : string ) => void ){
-        let url = LMS_ENDPOINT_URL + `?id=${data['id']}&name=${data['name']}&email=${data['email']}&mobile=${data['mobile']}&classid=${data['classid']}&domain=englishfordevelopers.com&domain_key=empty&function=user_insert`;
+        let url = LMS_ENDPOINT_URL + `?id=${data['id']}&name=${data['name']}&nickname=${data['nickname']}&email=${data['email']}&mobile=${data['mobile']}&classid=${data['classid']}&domain=englishfordevelopers.onlineenglish.kr&domain_key=empty&function=user_insert`;
         
         this.http.get( url ).subscribe( re =>{
             console.log( ' user_insert :: ' + re );
@@ -54,8 +54,7 @@ export class LMS {
     }
 
     update( data, success, failure: ( error: string) => void ){
-        let id =  data['id'];
-        let url = LMS_ENDPOINT_URL + `?id=${data['id']}&name=${data['name']}&email=${data['email']}&mobile=${data['mobile']}&classid=${data['classid']}&domain=englishfordevelopers.com&domain_key=empty&function=user_update`;
+        let url = LMS_ENDPOINT_URL + `?id=${data['id']}&name=${data['name']}&nickname=${data['nickname']}&email=${data['email']}&mobile=${data['mobile']}&classid=${data['classid']}&domain=englishfordevelopers.onlineenglish.kr&domain_key=empty&function=user_update`;
 
         this.http.get( url ).subscribe( re =>{
             console.log( ' user_update :: ' + re );

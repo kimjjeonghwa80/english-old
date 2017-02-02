@@ -105,7 +105,11 @@ export class RegisterComponent{
                 let data = {};
                 data['id'] = this.form.id;
                 data['mobile'] = this.form.mobile;
+
                 data['birthday'] = this.form.birthdate;
+
+                data['birthdate'] = this.form.birthdate;
+
                 data['gender'] = this.form.gender;
                 data['email'] = this.form.email;
                 data['password'] = this.form.password;
@@ -177,7 +181,11 @@ export class RegisterComponent{
       if ( ! this.form.name ) return this.validateError('Name');
       if ( ! this.form.mobile ) return this.validateError('Mobile');
       if ( ! this.form.gender ) return this.validateError('Gender');
+
       if ( ! this.form.birthdate ) return this.validateError('BirthDay');
+
+      if ( ! this.form.birthdate ) return this.validateError('birthdate');
+
       return true;
   }
   
