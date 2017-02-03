@@ -16,7 +16,7 @@ export class HomePage implements AfterViewInit {
         public app: App,
         private lms: LMS
     ) {
-        // testAll.run();
+        testAll.run();
 
 
         this.lms.getTeachers( teachers => this.teachers = teachers );
