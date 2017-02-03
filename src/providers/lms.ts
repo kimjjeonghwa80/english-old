@@ -65,11 +65,10 @@ export class LMS {
     }
 
 
-    getReservations( data , success, failure: ( error : string ) => void ){
+    getReservations( data , success ){
         let url = LMS_ENDPOINT_URL + `?id=${data['id']}&email=${data['email']}&classid=${data['classid']}&domain=${domain}&function=reservation_list`;
         
         this.http.get( url ).subscribe( re =>{
-            console.log('check this :: ' + re);
             let json = null;
             try {
                 json = JSON.parse( re['_body'] );

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { App } from '../../../../providers/app';
 import { User } from '../../../../api/firebase-api-2.0/user';
 @Component({
@@ -8,12 +8,13 @@ import { User } from '../../../../api/firebase-api-2.0/user';
 export class BigHeaderComponent {
     event:any = {};
     more: boolean = false;
+    @Input() login: boolean;
     constructor( 
         public app: App,
-        private user: User 
+        private user: User
         ) {
-
-    }
+        
+        }
     onClickLogout(){
         this.event.eventType = "logout";
         this.app.myEvent.emit( this.event );

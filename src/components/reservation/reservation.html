@@ -18,82 +18,37 @@
 <div class="reservation">
     <div class="reminder-image" > 
         <img *ngIf=" ! user.loggedIn " src="assets/img/reservation-banner.png" >
-        </div>  
-    <div class="desc">
-            <table cellpadding="0" cellspacing="0" class="calendar" >
-                <tbody>
-                    <tr class="calendar-row">
-                        <td class="calendar-day-head">Sun</td>
-                        <td class="calendar-day-head">Mon</td>
-                        <td class="calendar-day-head">Tue</td>
-                        <td class="calendar-day-head">Wed</td>
-                        <td class="calendar-day-head">Thu</td>
-                        <td class="calendar-day-head">Fri</td>
-                        <td class="calendar-day-head">Sat</td>
-                    </tr>
-                    <tr class="calendar-row" valign="top">
-                        <td class="calendar-day side"> </td>
-                        <td class="calendar-day"> </td>
-                        <td class="calendar-day"> </td>
-                        <td class="calendar-day"><div class="day-number">1</div> </td>
-                        <td class="calendar-day"><div class="day-number">2</div></td>
-                        <td class="calendar-day"><div class="day-number">3</div> <span *ngIf="reservations"><span [ngbTooltip]="tipContent" [innerHTML]="reservations[0].icon.replace('.', 'http://onlineenglish.kr')"> </span> {{ reservations[0].teacher.mb_nick }}</span> </td>
-                        <td class="calendar-day side"><div class="day-number">4</div></td>
-                    </tr>
-                    <tr class="calendar-row" valign="top">
-                        <td class="calendar-day side"><div class="day-number">5</div></td>
-                        <td class="calendar-day"><div class="day-number">6</div> <span *ngIf="reservations"><span [innerHTML]="reservations[1].icon.replace('.', 'http://onlineenglish.kr')"></span> {{ reservations[1].teacher.mb_nick }}</span></td>
-                        <td class="calendar-day"><div class="day-number">7</div> <span *ngIf="reservations"><span [innerHTML]="reservations[2].icon.replace('.', 'http://onlineenglish.kr')"></span> {{ reservations[2].teacher.mb_nick }}</span></td>
-                        <td class="calendar-day"><div class="day-number">8</div> <span *ngIf="reservations"><span [innerHTML]="reservations[3].icon.replace('.', 'http://onlineenglish.kr')"></span> {{ reservations[3].teacher.mb_nick }}</span></td>
-                        <td class="calendar-day"><div class="day-number">9</div> <span *ngIf="reservations"><span [innerHTML]="reservations[4].icon.replace('.', 'http://onlineenglish.kr')"></span> {{ reservations[4].teacher.mb_nick }}</span></td>
-                        <td class="calendar-day"><div class="day-number">10</div></td>
-                        <td class="calendar-day side"><div class="day-number">11</div></td>
-                    </tr>
-                    <tr class="calendar-row" valign="top">
-                        <td class="calendar-day side"><div class="day-number">12</div></td>
-                        <td class="calendar-day"><div class="day-number">13</div></td>
-                        <td class="calendar-day"><div class="day-number">14</div></td>
-                        <td class="calendar-day"><div class="day-number">15</div></td>
-                        <td class="calendar-day"><div class="day-number">16</div></td>
-                        <td class="calendar-day"><div class="day-number">17</div></td>
-                        <td class="calendar-day side"><div class="day-number">18</div></td>
-                    </tr>
-                    <tr class="calendar-row" valign="top">
-                        <td class="calendar-day side"><div class="day-number">19</div></td>
-                        <td class="calendar-day"><div class="day-number">20</div></td>
-                        <td class="calendar-day"><div class="day-number">21</div></td>
-                        <td class="calendar-day"><div class="day-number">22</div></td>
-                        <td class="calendar-day"><div class="day-number">23</div></td>
-                        <td class="calendar-day"><div class="day-number">24</div></td>
-                        <td class="calendar-day side"><div class="day-number">25</div></td>
-                    </tr>
-                    <tr class="calendar-row" valign="top">
-                        <td class="calendar-day side"><div class="day-number">26</div></td>
-                        <td class="calendar-day"><div class="day-number">27</div></td>
-                        <td class="calendar-day"><div class="day-number">28</div></td>
-                        <td class="calendar-day"> </td>
-                        <td class="calendar-day"> </td>
-                        <td class="calendar-day"> </td>
-                        <td class="calendar-day side"> </td>
-                    </tr>
-                </tbody>
-            </table>    
+</div>  
+
+<article class="container justify-content-center" *ngIf="user.loggedIn">
+    <div class="row " *ngFor=" let reserve of reservations; let i = index" [ngbTooltip]="tipContent">
+        <span class="col-2"  [innerHTML]="reserve.icon.replace('.', 'http://onlineenglish.kr')"></span>
+        <div class="col-3">{{ reserve.teacher.mb_nick }}</div>
+        <div class="col-7">{{ reserve.date }}</div>
+        <br/><br/>
+        <template #tipContent>
+            <article *ngIf="reservations">
+                <div>Teacher: {{ reserve.teacher.mb_name }} </div>
+                <div>Class No. {{ reserve.idx }} </div>
+                <div>Date: {{ reserve.kdate }} </div>
+                <div>Schedule: {{ reserve.kday }}</div>
+                <div>Time: {{ reserve.ktime }} {{ reserve.ap }}</div>
+                <div>Duration: {{ reserve.mins }}</div>
+                <br/>
+                <div>Evaluation</div>
+                <div>Grammar: {{ reserve.rate_grammar }} </div>
+                <div>Vocabulary: {{ reserve.rate_vocabulary }} </div>
+                <div>Expression: {{ reserve.rate_expression }} </div>
+                <div>Book: {{ reserve.book }}</div>
+                <br/>
+                <div>Comment: {{ reserve.rate_comment }} </div>
+                
+            </article>
+        </template>
     </div>
+</article>
+
+
+
 </div>
-<template #tipContent>
-    <article *ngIf="reservations">
-        <div>Teacher: {{ reservations[0].teacher.mb_name }} </div>
-        <div>Class No. {{ reservations[0].idx }} </div>
-        <div>Date: {{ reservations[0].date }} </div>
-        <br/>
-        <div>Evaluation</div>
-        <div>Grammar: {{ reservations[0].rate_grammar }} </div>
-        <div>Vocabulary: {{ reservations[0].rate_vocabulary }} </div>
-        <div>Expression: {{ reservations[0].rate_expression }} </div>
-        <div>Book: {{ reservations[0].book }}</div>
-        <br/>
-        <div>Comment: {{ reservations[0].rate_comment }} </div>
-        
-    </article>
-</template>
 </section>

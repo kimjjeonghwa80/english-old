@@ -11,6 +11,7 @@ import { App } from '../../providers/app';
     templateUrl: 'header.html'
 })
 export class HeaderComponent implements OnInit {
+    event:any = {};
     random;
     ctr: number = 0;
     uid;
@@ -42,6 +43,7 @@ export class HeaderComponent implements OnInit {
             this.onClickRegister();
         }
         if( item.eventType == "logout" ){
+            this.login = false;
             this.onClickLogout();
         }
         if( item.eventType == "update" ){
@@ -61,6 +63,10 @@ export class HeaderComponent implements OnInit {
             console.log( this.user.loginUser );
             this.login = this.user.loggedIn;
             console.log("user login status: ", this.login);
+            if( this.login ) {
+                this.event.eventType = "loggedin";
+                this.app.myEvent.emit(this.event);
+            }
         }).catch( () => console.log('exit') );
 
     }
@@ -88,6 +94,10 @@ export class HeaderComponent implements OnInit {
         this.login = false;
         this.user.logout( () => {
             console.info('user login status: ', this.login);
+            if( ! this.user.login ){
+                this.event.eventType = "loggedout";
+                this.app.myEvent.emit(this.event);
+            }
         },
         (e) => console.error('logout error: ', e),
         () => {} );

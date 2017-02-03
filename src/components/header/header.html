@@ -1,3 +1,3 @@
-<small-header-component *ngIf=" app.widthSize == 'small' "></small-header-component>
-<big-header-component  *ngIf=" app.widthSize == 'big' "></big-header-component>
+<small-header-component  *ngIf=" app.widthSize == 'small' " [login]="login" ></small-header-component>
+<big-header-component *ngIf=" app.widthSize == 'big' " [login]="login" ></big-header-component>
 
