@@ -1,5 +1,142 @@
+
 level-test-component {
     display: block;
-    background-color: black;
-    color: white;
+    #level-test {
+        .banner {
+            background-image: url("/assets/img/leveltest.jpg");
+            width: 100%;
+            height: 280px;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            .banner-info {
+                padding-top: 3em;
+                padding-left: 8em;
+                color: #FFFFFF;
+                h2 {
+                    margin: 0;
+                    font-size: 36px;
+                }
+                .desc {
+                    font-size: 24px;
+                }
+            }
+        }
+        .level-test-form {
+            padding: 3em;
+            padding-bottom: 6em;
+            background-color: #a7dbdb;
+            h2 {
+                display: block;
+                margin-bottom: 26px;
+                font-size: 28px;
+                color: #5a6a62;
+            }
+            form {
+                width: 100%;
+                max-width: 590px;
+                .line-submit {
+                    padding-right: 65px;
+                    input {
+                        display: block;
+                        padding: 9px 34px;
+                        border: 0;
+                        border-radius: 2px;
+                        height: 42px;
+                        color: #FFFFFF;
+                        background-color: #ff6633;
+                    }
+                }
+                .line {
+                    padding: 0;
+                    display: inline-block;
+                    width: 100%;
+                    color: #2d2d2d;
+                    clear: both;
+                    label {
+                        float: left;
+                        padding: 3px;
+                        width: 100px;
+                        margin-bottom: 0;
+                        font-size: 16px;
+                        color: #2d2d2d;
+                    }
+                    .text {
+                        width: 72%;
+                        font-size: 15px;
+                        float: left;
+                        input {
+                            outline: 0;
+                            padding: 5px;
+                            width: 100%;
+                            border-radius: 3px;
+                            border: 0 solid #c6c6c6;
+                        }
+                        select {
+                            outline: 0;
+                            padding: 5px;
+                            width: 100%;
+                            border-radius: 3px;
+                            border: 0 solid #c6c6c6;
+                        }
+                        textarea {
+                            outline: 0;
+                            padding: 5px;
+                            width: 100%;
+                            border-radius: 3px;
+                            border: 0 solid #c6c6c6;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media all and (max-width: $breakpoint) {
+    level-test-component {
+        #level-test {
+            .banner {
+                height: 160px;
+                .banner-info {
+                    padding: 1em;
+                    h2 {
+                        font-size: 24px;
+                    }
+                    .desc {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media all and (min-width: $breakpoint) {
+    .level-test-form {
+        h2 {
+            text-align: center;
+        }
+        form {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 685px;
+            .line-submit {
+                padding-right:20px;
+                input {
+                    float: right;
+                }
+            }
+            .line {
+                padding: 0 20px;
+                label {
+                    padding: 5px 3px;
+                    width: 150px;
+                }
+                .text {
+                    padding: 3px;
+                    width: 72%;
+                    
+                    
+                }
+            }
+        }
+    }
 }

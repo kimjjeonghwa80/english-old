@@ -16,37 +16,74 @@
                     <li *ngIf=" user.loggedIn " class="menu" (click)="onClickLogout()">
                         Logout
                     </li>
-                    <li class="menu" (click)="onClickMenu('contact')"> Help</li>
+                    <li class="menu" (click)="onClickPanelMenu('contact')"> Help</li>
                 </ul>
             </div>
             <div class="menus">
                 <ul >
                     <li class="menu" [class.active]=" app.scrollId =='intro' " (click)="onClickPanelMenu('intro')">
-                        <span class="menu-img"><i class="fa fa-headphones fa-fw"></i></span><font>Home</font>
+                        <!--<span class="menu-img"><i class="fa fa-headphones fa-fw"></i></span><font>Home</font>-->
+                        <span class="menu-img fa-stack">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-headphones fa-stack-1x fa-inverse fa-fw"></i>
+                        </span>
+                        <font>Home</font>
                     </li>
                     <li class="menu" [class.active]=" app.scrollId =='curriculum' " (click)="onClickPanelMenu('curriculum')">
-                        <span class="menu-img"><i class="fa fa-book fa-fw"></i></span> <font>Courses</font>
+                        <!--<span class="menu-img"><i class="fa fa-book fa-fw"></i></span> <font>Courses</font>-->
+                        <span class="menu-img fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-book fa-stack-1x fa-inverse fa-fw"></i>
+                        </span> <font>Courses</font>
                     </li>
                     <li class="menu" [class.active]=" app.scrollId =='teacher' " (click)="onClickPanelMenu('teacher')">
-                        <span class="menu-img"><i class="fa fa-user-circle-o fa-fw"></i></span><font>Teachers</font>
+                        <span class="menu-img fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-user-circle-o fa-stack-1x fa-inverse fa-fw"></i>
+                        </span> <font>Teachers</font>
+                        <!--<span class="menu-img"><i class="fa fa-user-circle-o fa-fw"></i></span><font>Teachers</font>-->
                     </li>
                     <li class="menu" [class.active]=" app.scrollId =='payment' " (click)="onClickPanelMenu('payment')">
-                        <span class="menu-img"><i class="fa fa-money fa-fw"></i></span><font>Payment</font>
+                        <span class="menu-img fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-money fa-stack-1x fa-inverse fa-fw"></i>
+                        </span> <font>Payment</font>
+                        <!--<span class="menu-img"><i class="fa fa-money fa-fw"></i></span><font>Payment</font>-->
                     </li>
                     <li class="menu" [class.active]=" app.scrollId =='level-test' " (click)="onClickPanelMenu('level-test')">
-                        <span class="menu-img"><i class="fa fa-video-camera fa-fw"></i></span><font>Level Test</font>
+                        <span class="menu-img fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-video-camera fa-stack-1x fa-inverse fa-fw"></i>
+                        </span> <font>Level Test</font>
+                        <!--<span class="menu-img"><i class="fa fa-video-camera fa-fw"></i></span><font>Level Test</font>-->
                     </li>
                     <li class="menu" [class.active]=" app.scrollId =='contact' " (click)="onClickPanelMenu('contact')">
-                        <span class="menu-img"><i class="fa fa-phone fa-fw"></i></span><font>Contact</font>
+                        <span class="menu-img fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-phone fa-stack-1x fa-inverse fa-fw"></i>
+                        </span> <font>Contact</font>
+                        <!--<span class="menu-img"><i class="fa fa-phone fa-fw"></i></span><font>Contact</font>-->
                     </li>
                     <li class="menu" [class.active]=" app.scrollId =='comment' " (click)="onClickPanelMenu('comment')">
-                        <span class="menu-img"><i class="fa fa-comments fa-fw"></i></span><font>Comment</font>
+                        <span class="menu-img fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-comments fa-stack-1x fa-inverse fa-fw"></i>
+                        </span> <font>Comment</font>
+                        <!--<span class="menu-img"><i class="fa fa-comments fa-fw"></i></span><font>Comment</font>-->
                     </li>
                     <li class="menu" [class.active]=" app.scrollId =='inquery' " (click)="onClickPanelMenu('inquery')">
-                        <span class="menu-img"><i class="fa fa-info-circle fa-fw"></i></span> <font>Inquery</font>
+                        <span class="menu-img fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-info-circle fa-stack-1x fa-inverse fa-fw"></i>
+                        </span> <font>Inquery</font>
+                        <!--<span class="menu-img"><i class="fa fa-info-circle fa-fw"></i></span> <font>Inquery</font>-->
                     </li>
                     <li class="menu" [class.active]=" app.scrollId =='reservation' " (click)="onClickPanelMenu('reservation')">
-                        <span class="menu-img"><i class="fa fa-calendar fa-fw"></i></span><font>Reservations </font>
+                        <span class="menu-img fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-calendar fa-stack-1x fa-inverse fa-fw"></i>
+                        </span> <font>Reservations </font>
+                        <!--<span class="menu-img"><i class="fa fa-calendar fa-fw"></i></span><font>Reservations </font>-->
                     </li>
                 </ul>
             </div>
