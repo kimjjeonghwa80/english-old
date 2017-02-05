@@ -60,14 +60,14 @@ export class AdminPage{
         return;
         }
         this.inPageLoading = true;
-        // this.user.page(res =>{
-        //     console.log('res :' + JSON.stringify(res));
-        //     this.displayUsers( res );
-        //     // this.inPageLoading = false;
-        // }, error =>{
-        //     console.log('error :: ' + error );
-        //     this.app.alert( error )
-        // }, () => this.inPageLoading = false )
+        this.user.page('user/meta',res =>{
+            console.log('res :' + JSON.stringify(res));
+            this.displayUsers( res );
+            this.inPageLoading = false;
+        }, error =>{
+            console.log('error :: ' + JSON.stringify(error) );
+            this.app.alert( error )
+        }, () => this.inPageLoading = false )
     }
     
 
