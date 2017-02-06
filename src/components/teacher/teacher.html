@@ -14,7 +14,7 @@
                 </div>
                 <div class="name">Teacher {{ teacher.name }}</div>
                 <div class="major">{{ teacher.major }}</div>
-                <div [innerHTML]=" teacher.greeting "></div>
+                <div class="greeting" [innerHTML]=" teacher.greeting "></div>
                 <div *ngIf="teacher.play_video" class="youtube-player" >
                     <object width="640" height="360">
                         <param name="movie" [value]='teacher.url_youtube'/>
