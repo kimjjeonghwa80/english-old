@@ -5,6 +5,21 @@ teacher-component {
         padding: 1em;
         text-align: center;
     }
+    .load-more {
+        margin: 2em;
+        margin-left:auto;
+        margin-right:auto;
+        width: 90%;
+        padding: 0.875em 1.25em;
+        font-size: 1em;
+        letter-spacing: 0.1875em;
+        border-radius: 0.1875em;
+        color: #FFFFFF;
+        background-color: #3498db;
+        text-align: center;
+        
+        cursor: pointer;
+    }
     .teachers {
         position: relative;
         padding: 1em;
@@ -51,13 +66,13 @@ teacher-component {
                 display: block;
                 font-size: 25px;
                 color: #FFFFFF;
-                margin: 35px 0 5px 10px;
+                margin: 15px 0 5px 120px;
             }
             .major {
                 display: block;
                 font-size: 20px;
                 color: #FFFFFF;
-                margin-left: 10px;
+                margin-left: 120px;
             }
             .button_play {
                 cursor: pointer;

@@ -26,6 +26,11 @@
             </div>
         </div>
     </div>
-
+    <div class="load" (click)="onClickShowMore()">
+        <div class="load-more" >
+            <font *ngIf="showMore">감추기</font>
+            <font *ngIf="!showMore">더 보기</font>
+        </div>
+    </div>
     </div>
 </section>

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { LMS } from '../../providers/lms';
 import { DomSanitizer } from '@angular/platform-browser';
+import * as _ from 'lodash';
 @Component({
     selector: 'teacher-component',
     templateUrl: 'teacher.html'
@@ -8,6 +9,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class TeacherComponent {
     @Input() teachers;
     playVideo:boolean = false;
+    showMore:boolean = false;
+    temp:any = [];
     constructor( public lms: LMS,public sanitizer: DomSanitizer) {
     }
     ngOnChanges(changes) {
@@ -21,6 +24,18 @@ export class TeacherComponent {
                 teacher.url_youtube = teacher.url_youtube + "?autoplay=1";
                 teacher.url_youtube = this.sanitizer.bypassSecurityTrustResourceUrl(teacher.url_youtube );//to fix unsafe
             });
+        }
+        this.temp = this.teachers;
+        this.teachers = _.dropRight( this.teachers,30);
+    }
+    onClickShowMore() {
+        this.showMore =!this.showMore;
+        if(this.showMore) {
+            this.teachers = this.temp;
+        }
+        else {
+            this.temp = this.teachers;
+            this.teachers = _.dropRight( this.teachers,30);
         }
     }
 }
