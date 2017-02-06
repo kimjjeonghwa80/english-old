@@ -78,7 +78,7 @@ export class HeaderComponent implements OnInit {
         window.open(
             `https://video.withcenter.com/room/${this.user.loginUser.name}/testroom`,
             '_blank'
-        )
+        );
     }
     
     onClickRegister() {

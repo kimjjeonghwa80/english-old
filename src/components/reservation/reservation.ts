@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../api/firebase-api-2.0/user';
+import { User, KEY_LOGIN_USER_DATA } from '../../api/firebase-api-2.0/user';
 import { LMS } from '../../providers/lms';
 @Component({
     selector: 'reservation-component',
@@ -27,10 +27,14 @@ export class ReservationComponent implements OnInit {
     }
 
 
-    getReservation(){
-        this.lms.getReservations( this.user.loginUser, res =>{
+    getReservation() {
+        this.reservations = null;
+
+        let data = this.user.getLoginUserData();
+        console.log( 'user data', data );
+        this.lms.getReservations( data, res => {
             this.reservations = res;
-            // console.log(' reservation :: HOME: ' + res[0].icon.replace(".", "http://onlineenglish.kr") );
-        })
+            console.log(' reservation :: HOME: ' + res[0].icon.replace(".", "http://onlineenglish.kr") );
+        });
     }
 }

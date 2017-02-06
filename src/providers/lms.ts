@@ -38,6 +38,8 @@ export class LMS {
                 alert("Parse ERROR on lms::getTeachers()");
             }
 
+
+            if ( json['code'] ) alert( json['message'] );
             console.log(json);
             success( json['data'] );
         });
@@ -65,9 +67,9 @@ export class LMS {
     }
 
 
-    getReservations( data , success ){
-        let url = LMS_ENDPOINT_URL + `?id=${data['id']}&email=${data['email']}&classid=${data['classid']}&domain=${domain}&function=reservation_list`;
-        
+    getReservations( data, success ) {
+        let url = LMS_ENDPOINT_URL + `?id=${data['id']}&name=${data['name']}&nickname=${data['nickname']}&email=${data['email']}&mobile=${data['mobile']}&classid=${data['classid']}&domain=${domain}&domain_key=empty&function=reservation_list`;
+        console.log('url: ', url);
         this.http.get( url ).subscribe( re =>{
             let json = null;
             try {
@@ -77,8 +79,13 @@ export class LMS {
                 alert("Parse ERROR on lms::getTeachers()");
             }
 
-            console.log(json);
-            success( json['data'] );
+            if ( json['code'] ) {
+                alert( json['message'] );
+            }
+            else {
+                console.log(json);
+                success( json['data'] );
+            }
         });
     }
 
