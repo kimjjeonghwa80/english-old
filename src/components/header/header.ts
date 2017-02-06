@@ -107,7 +107,7 @@ export class HeaderComponent implements OnInit {
     onClickUpdateProfile(){
         console.log('uid ' + JSON.stringify(this.user.loginUser));
         let modalRef = this.modal.open( RegisterComponent );
-            modalRef.result.then(() => {});
+            modalRef.result.then(() => {}).catch( () =>console.log('exit '));
     }
 
     onClickMoreMenu() {

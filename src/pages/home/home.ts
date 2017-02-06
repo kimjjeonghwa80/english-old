@@ -8,7 +8,7 @@ import { LMS, TEACHERS } from '../../providers/lms';
     templateUrl: 'home.html'
 })
 export class HomePage implements AfterViewInit {
-    login: boolean = false
+    login: boolean = false;
     data;
     teachers: TEACHERS = null;
     reservations;
@@ -32,7 +32,7 @@ export class HomePage implements AfterViewInit {
             if( item.eventType == 'loggedin'  ){
                 setTimeout( () =>{
                     this.getReservation();
-                }, 300);
+                }, 400);
             }
             if( item.eventType == 'loggedout') this.reservations = {};
         })
