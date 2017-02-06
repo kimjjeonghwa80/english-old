@@ -7,7 +7,7 @@ import { LMS } from '../../providers/lms';
 })
 export class ReservationComponent implements OnInit {
 
-    reservations;
+    reservations: any;
     constructor(
         private user : User,
         private lms  : LMS

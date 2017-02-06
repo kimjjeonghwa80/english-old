@@ -67,7 +67,11 @@ export class HomePage implements AfterViewInit {
     }
 
     onLogin() {
-        // this.login = true;
-        this.reservation.getReservation();
+        setTimeout( () =>{
+            this.reservation.getReservation();
+        }, 400);
+    }
+    onLogout(){
+        this.reservation.reservations = null;
     }
 }

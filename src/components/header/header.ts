@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
     uid;
     
     @Output() onLogin = new EventEmitter();
+    @Output() onLogout = new EventEmitter();
 
     more: boolean = false;
     login: boolean = false;
@@ -100,6 +101,7 @@ export class HeaderComponent implements OnInit {
             if( ! this.user.login ){
                 // this.event.eventType = "loggedout";
                 // this.app.myEvent.emit(this.event);
+                this.onLogout.emit();
             }
         },
         (e) => console.error('logout error: ', e),

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { App } from '../../../../providers/app';
 import { User } from '../../../../api/firebase-api-2.0/user';
 @Component({
@@ -9,6 +9,11 @@ export class SmallHeaderComponent {
     event:any = {};
     more: boolean = false;
     @Input() login: boolean;
+    @Output() logout = new EventEmitter();
+    @Output() onLogin = new EventEmitter();
+    @Output() register = new EventEmitter();
+    @Output() profile = new EventEmitter();
+    @Output() classroom = new EventEmitter();
     constructor( 
         public app: App,
         private user: User
@@ -17,12 +22,10 @@ export class SmallHeaderComponent {
     }
     
     onClickLogout(){
-        // this.event.eventType = "logout";
-        // this.app.myEvent.emit( this.event );
+        this.logout.emit();
     }
     onClickUpdateProfile(){
-        // this.event.eventType = "update";
-        // this.app.myEvent.emit( this.event );
+        this.profile.emit();
     }
 
 
@@ -34,17 +37,13 @@ export class SmallHeaderComponent {
         this.app.scrollTo( name );
     }
     onClickLogin(){
-        // this.event.eventType = "login";
-        // this.app.myEvent.emit(this.event);
-
+        this.onLogin.emit();
     }
     onClickGotoClassRoom(){
-        // this.event.eventType = "enter-classroom";
-        // this.app.myEvent.emit(this.event);
+        this.classroom.emit();
     }
     
     onClickRegister() {
-        // this.event.eventType = "register";
-        // this.app.myEvent.emit(this.event);
+        this.register.emit();
     }
 }
