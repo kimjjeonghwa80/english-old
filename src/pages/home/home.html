@@ -1,4 +1,6 @@
-<header-component></header-component>
+<header-component
+    (onLogin)="onLogin()"
+></header-component>
 
 
 <section id="content">
@@ -11,7 +13,7 @@
     <contact-component></contact-component>
     <comment-component></comment-component>
     <inquery-component></inquery-component>
-    <reservation-component  [reservations] = "reservations" ></reservation-component>
+    <reservation-component #reservation ></reservation-component>
 </section>
 
 <footer-component></footer-component>

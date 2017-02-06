@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../../api/firebase-api-2.0/user';
 import { LMS } from '../../providers/lms';
 @Component({
@@ -7,7 +7,7 @@ import { LMS } from '../../providers/lms';
 })
 export class ReservationComponent implements OnInit {
 
-    @Input() reservations;
+    reservations;
     constructor(
         private user : User,
         private lms  : LMS
@@ -26,4 +26,11 @@ export class ReservationComponent implements OnInit {
         }
     }
 
+
+    getReservation(){
+        this.lms.getReservations( this.user.loginUser, res =>{
+            this.reservations = res;
+            // console.log(' reservation :: HOME: ' + res[0].icon.replace(".", "http://onlineenglish.kr") );
+        })
+    }
 }

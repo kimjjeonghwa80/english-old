@@ -17,12 +17,12 @@ export class SmallHeaderComponent {
     }
     
     onClickLogout(){
-        this.event.eventType = "logout";
-        this.app.myEvent.emit( this.event );
+        // this.event.eventType = "logout";
+        // this.app.myEvent.emit( this.event );
     }
     onClickUpdateProfile(){
-        this.event.eventType = "update";
-        this.app.myEvent.emit( this.event );
+        // this.event.eventType = "update";
+        // this.app.myEvent.emit( this.event );
     }
 
 
@@ -34,17 +34,17 @@ export class SmallHeaderComponent {
         this.app.scrollTo( name );
     }
     onClickLogin(){
-        this.event.eventType = "login";
-        this.app.myEvent.emit(this.event);
+        // this.event.eventType = "login";
+        // this.app.myEvent.emit(this.event);
 
     }
     onClickGotoClassRoom(){
-        this.event.eventType = "enter-classroom";
-        this.app.myEvent.emit(this.event);
+        // this.event.eventType = "enter-classroom";
+        // this.app.myEvent.emit(this.event);
     }
     
     onClickRegister() {
-        this.event.eventType = "register";
-        this.app.myEvent.emit(this.event);
+        // this.event.eventType = "register";
+        // this.app.myEvent.emit(this.event);
     }
 }

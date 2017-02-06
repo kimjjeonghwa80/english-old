@@ -6,7 +6,7 @@ import { User } from '../../../../api/firebase-api-2.0/user';
     templateUrl: 'big-header.html'
 })
 export class BigHeaderComponent {
-    event:any = {};
+    // event:any = {};
     more: boolean = false;
     @Input() login: boolean;
     constructor( 
@@ -16,12 +16,12 @@ export class BigHeaderComponent {
         
         }
     onClickLogout(){
-        this.event.eventType = "logout";
-        this.app.myEvent.emit( this.event );
+        // this.event.eventType = "logout";
+        // this.app.myEvent.emit( this.event );
     }
     onClickUpdateProfile(){
-        this.event.eventType = "update";
-        this.app.myEvent.emit( this.event );
+        // this.event.eventType = "update";
+        // this.app.myEvent.emit( this.event );
     }
     onClickMoreMenu() {
         this.more = ! this.more;
@@ -31,17 +31,17 @@ export class BigHeaderComponent {
         this.app.scrollTo( name );
     }
     onClickLogin(){
-        this.event.eventType = "login";
-        this.app.myEvent.emit(this.event);
+        // this.event.eventType = "login";
+        // this.app.myEvent.emit(this.event);
 
     }
     onClickGotoClassRoom(){
-        this.event.eventType = "enter-classroom";
-        this.app.myEvent.emit(this.event);
+        // this.event.eventType = "enter-classroom";
+        // this.app.myEvent.emit(this.event);
     }
     
     onClickRegister() {
-        this.event.eventType = "register";
-        this.app.myEvent.emit(this.event);
+        // this.event.eventType = "register";
+        // this.app.myEvent.emit(this.event);
     }
 }

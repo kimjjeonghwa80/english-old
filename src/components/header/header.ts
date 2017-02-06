@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginModal } from '../modals/login/login'; 
 import { RegisterComponent } from '../modals/register/register';
@@ -16,6 +16,8 @@ export class HeaderComponent implements OnInit {
     ctr: number = 0;
     uid;
     
+    @Output() onLogin = new EventEmitter();
+
     more: boolean = false;
     login: boolean = false;
     constructor( 
@@ -28,30 +30,30 @@ export class HeaderComponent implements OnInit {
         console.log('header :: constructor(), loginUser: ', user.loginUser);
         this.login = user.loggedIn;
         console.log("user login status: ", this.login);
-        this.listenEvents();
+        // this.listenEvents();
     }
     
-    listenEvents() {
-        this.app.myEvent.subscribe( item => {
-        if( item.eventType == "login") {
-            this.onClickLogin();
-        }
-        if( item.eventType == "enter-classroom") {
-            this.onClickGotoClassRoom();
-        }
-        if( item.eventType == "register") {
-            this.onClickRegister();
-        }
-        if( item.eventType == "logout" ){
-            this.login = false;
-            this.onClickLogout();
-        }
-        if( item.eventType == "update" ){
-            this.onClickUpdateProfile();
-        }
+    // listenEvents() {
+    //     this.app.myEvent.subscribe( item => {
+    //     if( item.eventType == "login") {
+    //         this.onClickLogin();
+    //     }
+    //     if( item.eventType == "enter-classroom") {
+    //         this.onClickGotoClassRoom();
+    //     }
+    //     if( item.eventType == "register") {
+    //         this.onClickRegister();
+    //     }
+    //     if( item.eventType == "logout" ){
+    //         this.login = false;
+    //         this.onClickLogout();
+    //     }
+    //     if( item.eventType == "update" ){
+    //         this.onClickUpdateProfile();
+    //     }
         
-        });
-    }
+    //     });
+    // }
     ngOnInit() {
 
     }
@@ -64,8 +66,9 @@ export class HeaderComponent implements OnInit {
             this.login = this.user.loggedIn;
             console.log("user login status: ", this.login);
             if( this.login ) {
-                this.event.eventType = "loggedin";
-                this.app.myEvent.emit(this.event);
+                // this.event.eventType = "loggedin";
+                // this.app.myEvent.emit(this.event);
+                this.onLogin.emit();
             }
         }).catch( () => console.log('exit') );
 
@@ -95,8 +98,8 @@ export class HeaderComponent implements OnInit {
         this.user.logout( () => {
             console.info('user login status: ', this.login);
             if( ! this.user.login ){
-                this.event.eventType = "loggedout";
-                this.app.myEvent.emit(this.event);
+                // this.event.eventType = "loggedout";
+                // this.app.myEvent.emit(this.event);
             }
         },
         (e) => console.error('logout error: ', e),
