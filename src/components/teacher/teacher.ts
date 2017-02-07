@@ -16,18 +16,29 @@ export class TeacherComponent {
     ngOnChanges(changes) {
         if(changes['teachers']) {
             if(!this.teachers) return;
-            console.log(this.teachers)
             this.teachers.forEach( (teacher) => {
                 teacher.play_video = false;
-                if( teacher.url_youtube.match('^http://')) teacher.url_youtube = teacher.url_youtube.replace(/^http:\/\//i, 'https://');//replace http to https
-                if( teacher.url_youtube.match(/youtu.be/g)) teacher.url_youtube = teacher.url_youtube.replace(/youtu.be/g, 'youtube.com/embed');//replace youtu.be to youtube.com/embed
-                if( teacher.greeting.match(/<img[^>]*>/g)) teacher.greeting = teacher.greeting.replace(/<img[^>]*>/g,"");
+                this.changeHttpToHttps( teacher.url_youtube );
+                this.changeYoutubeEmbed( teacher.url_youtube );
+                this.removeImageTag( teacher.greeting );
                 teacher.url_youtube = teacher.url_youtube + "?autoplay=1";
-                teacher.url_youtube = this.sanitizer.bypassSecurityTrustResourceUrl(teacher.url_youtube );//to fix unsafe
+                this.trusResourceUrl( teacher.url_youtube );
             });
         }
         this.temp = this.teachers;
-        this.teachers = _.dropRight( this.teachers,30);
+        this.teachers = _.take( this.teachers, 6);
+    }
+    changeHttpToHttps( data ) {
+        if( data.match('^http://')) data = data.replace(/^http:\/\//i, 'https://');
+    }
+    changeYoutubeEmbed( data ) {
+        if( data.match(/youtu.be/g)) data = data.replace(/youtu.be/g, 'youtube.com/embed');
+    }
+    removeImageTag( data ) {
+        if( data.match(/<img[^>]*>/g)) data = data.replace(/<img[^>]*>/g,"");
+    }
+    trusResourceUrl( data ) {
+        data = this.sanitizer.bypassSecurityTrustResourceUrl( data );
     }
     onClickShowMore() {
         this.showMore =!this.showMore;
@@ -36,7 +47,7 @@ export class TeacherComponent {
         }
         else {
             this.temp = this.teachers;
-            this.teachers = _.dropRight( this.teachers,30);
+            this.teachers = _.take( this.teachers, 6);
         }
     }
 }
