@@ -6,75 +6,9 @@
         <div class="more-text">
             <span>교재 더보기</span>
         </div>
-        <div class="collection">
+        <!--<div class="collection">
             <div class="row">
 
-                <div class="col-md-3 col-sm-4 col-xs-6 col-6 mybook">
-                    <div class="inner-row">
-                        <img src="assets/img/book1.jpg">
-                        <div class="title">
-                            잉글리시타임
-                        </div>
-                        <div class="desc">
-                            읽기, 듣기, 쓰기, 말하기를 한번에 학습시켜주는 어린이 종합 영어 6권 시리즈.
-                            1~4 권은 기본 어휘 및 표현에 집중.
-                            5~6 권은 읽기와 쓰기를 중점적으로 학습.
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-4 col-xs-6 col-6 mybook">
-                    <div class="inner-row">
-                        <img src="assets/img/book2.jpg">
-                        <div class="title">
-                            Express Yourself
-                        </div>
-                        <div class="desc">
-                            옥스포드에서 출판 한 중고등 및 성인용 교재.
-                            믿기 어려운 재미있는 스토리를 통해서 영어에 대한 흥미를 높이는 교재.
-                            숙어와 관용어를 배우는데 좋음.
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-4 col-xs-6 col-6 mybook">
-                    <div class="inner-row">
-                        <img src="assets/img/book3.jpg">
-                        <div class="title">
-                            Can you believe it?
-                        </div>
-                        <div class="desc">
-                            즐겁고 흥겨운 내용의 기초영어
-                            5세~10세의 어린이가 사용하기 적당한 것으로 영어에 꼭 필요한 표현을 학습하여 어린이의 말하기 실력을 향상.
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-4 col-xs-6 col-6 mybook">
-                    <div class="inner-row">
-                        <img src="assets/img/book4.jpg">
-                        <div class="title">
-                            렛츠고
-                        </div>
-                        <div class="desc">
-                            읽기, 듣기, 쓰기, 말하기를 한번에 학습시켜주는 어린이 종합 영어 6권 시리즈.
-                            1~4 권은 기본 어휘 및 표현에 집중.
-                            5~6 권은 읽기와 쓰기를 중점적으로 학습.
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-md-3 col-sm-4 col-xs-6 col-6 mybook">
-                    <div class="inner-row">
-                        <img src="assets/img/book5.jpg">
-                        <div class="title">
-                            리딩 큐
-                        </div>
-                        <div class="desc">
-                    균형 잡힌 리딩 스킬 학습을 위한 초등학생용 리딩 교재.
-                    아이들의 교양 및 관심 분야에 대한 정보를 재미있게 학습 할 수 있도록 편집.
-                    본격적인 읽기 학습을 위한 맞춤 교재.
-                        </div>
-                    </div>
-                </div>
                 <div class="col-md-3 col-sm-4 col-xs-6 col-6 mybook">
                     <div class="inner-row">
                         <img src="assets/img/book6.jpg">
@@ -456,6 +390,29 @@
                 
             </div>
             <div class="load" (click)="showBook =!showBook">
+                <div class="load-more" >
+                    <font *ngIf="showBook">감추기</font>
+                    <font *ngIf="!showBook">더 보기</font>
+                </div>
+            </div>
+        </div>-->
+        
+        
+        <div class="collection" *ngIf="bookList.books">    
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6 col-6 mybook" *ngFor="let book of bookList.books">
+                    <div class="inner-row">
+                        <img src="{{ book.img }}">
+                        <div class="title">
+                            {{ book.title }}
+                        </div>
+                        <div class="desc">
+                            {{ book.desc }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="load" (click)="onClickShowMore()">
                 <div class="load-more" >
                     <font *ngIf="showBook">감추기</font>
                     <font *ngIf="!showBook">더 보기</font>
