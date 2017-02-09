@@ -1,6 +1,6 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { LoginModal } from '../modals/login/login'; 
+import { LoginModal } from '../modals/login/login';
 import { RegisterComponent } from '../modals/register/register';
 import { User } from '../../api/firebase-api-2.0/user';
 import { UserTest } from '../../api/firebase-api-2.0/test/user-test';
@@ -11,13 +11,17 @@ import { App } from '../../providers/app';
     templateUrl: 'header.html'
 })
 export class HeaderComponent implements OnInit {
+    event:any = {};
     random;
     ctr: number = 0;
     uid;
-    
+
+    @Output() onLogin = new EventEmitter();
+    @Output() onLogout = new EventEmitter();
+
     more: boolean = false;
     login: boolean = false;
-    constructor( 
+    constructor(
         private modal       : NgbModal,
         private user        : User,
         private userTest    : UserTest,
@@ -27,28 +31,6 @@ export class HeaderComponent implements OnInit {
         console.log('header :: constructor(), loginUser: ', user.loginUser);
         this.login = user.loggedIn;
         console.log("user login status: ", this.login);
-        this.listenEvents();
-    }
-    
-    listenEvents() {
-        this.app.myEvent.subscribe( item => {
-        if( item.eventType == "login") {
-            this.onClickLogin();
-        }
-        if( item.eventType == "enter-classroom") {
-            this.onClickGotoClassRoom();
-        }
-        if( item.eventType == "register") {
-            this.onClickRegister();
-        }
-        if( item.eventType == "logout" ){
-            this.onClickLogout();
-        }
-        if( item.eventType == "update" ){
-            this.onClickUpdateProfile();
-        }
-        
-        });
     }
     ngOnInit() {
 
@@ -56,11 +38,16 @@ export class HeaderComponent implements OnInit {
     onClickLogin(){
         console.log('login');
         let modalRef = this.modal.open( LoginModal );
-        
+
         modalRef.result.then( (x) => {
             console.log( this.user.loginUser );
             this.login = this.user.loggedIn;
             console.log("user login status: ", this.login);
+            if( this.login ) {
+                // this.event.eventType = "loggedin";
+                // this.app.myEvent.emit(this.event);
+                this.onLogin.emit();
+            }
         }).catch( () => console.log('exit') );
 
     }
@@ -68,9 +55,9 @@ export class HeaderComponent implements OnInit {
         window.open(
             `https://video.withcenter.com/room/${this.user.loginUser.name}/testroom`,
             '_blank'
-        )
+        );
     }
-    
+
     onClickRegister() {
         let modalRef = this.modal.open ( RegisterComponent );
         modalRef.result.then( (x) => {
@@ -87,17 +74,22 @@ export class HeaderComponent implements OnInit {
     onClickLogout() {
         this.login = false;
         this.user.logout( () => {
-            console.info('user login status: ', this.login);
-        },
-        (e) => console.error('logout error: ', e),
-        () => {} );
+                console.info('user login status: ', this.login);
+                if( ! this.user.login ){
+                    // this.event.eventType = "loggedout";
+                    // this.app.myEvent.emit(this.event);
+                    this.onLogout.emit();
+                }
+            },
+            (e) => console.error('logout error: ', e),
+            () => {} );
     }
 
 
     onClickUpdateProfile(){
         console.log('uid ' + JSON.stringify(this.user.loginUser));
         let modalRef = this.modal.open( RegisterComponent );
-            modalRef.result.then(() => {});
+        modalRef.result.then(() => {}).catch( () =>console.log('exit '));
     }
 
     onClickMoreMenu() {
@@ -116,6 +108,6 @@ export class HeaderComponent implements OnInit {
         this.more = false;
         this.app.scrollTo( name );
     }
-    
+
 
 }
