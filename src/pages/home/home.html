@@ -1,4 +1,7 @@
-<header-component></header-component>
+<header-component
+        (onLogin)="onLogin()"
+        (onLogout)="onLogout()"
+></header-component>
 
 
 <section id="content">
@@ -11,7 +14,7 @@
     <contact-component></contact-component>
     <comment-component></comment-component>
     <inquery-component></inquery-component>
-    <reservation-component></reservation-component>
+    <reservation-component #reservation ></reservation-component>
 </section>
 
 <footer-component></footer-component>
