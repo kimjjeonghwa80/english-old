@@ -1,6 +1,5 @@
 payment-component {
     display: block;
-    
     .banner {
         background-image: url("/assets/img/payment.jpg");
         width: 100%;
@@ -25,12 +24,44 @@ payment-component {
             }
         }
     }
+    .payment-container {
+        padding-top: 5em;
+        background: #5c6670;
+        width: 100%;
+        height: 100%;
+    }
     .payment-content {
         background-color: #fff;
-        margin-bottom: 10em;
+        margin-bottom: 5em;
         form {
             padding: 1em;
             .row {
+                .pay-buttons {
+                    display: inline-block;
+                    .total {
+                        padding: .4em;
+                        background-color: #00a0d2;
+                        color: white;
+                        font-size: 1.2em;
+                        font-family: "Malgun Gothic", serif;
+                        cursor: pointer;
+                        text-align: center;
+                    }
+                    .pay-button {
+                        input {
+                            margin: .4em 0 0 0;
+                            background-color: #4f160d;
+                            padding: .4em;
+                            width: 100%;
+                            box-sizing: border-box;
+                            border: 0;
+                            color: white;
+                            font-size: 1.2em;
+                            font-family: "Malgun Gothic", serif;
+                            cursor: pointer;
+                        }
+                    }
+                }
                 .col-md-3 {
                     padding: 0 10px;
                     margin-bottom: 25px;
@@ -64,41 +95,17 @@ payment-component {
                     }
                 }
             }
-            .pay-buttons {
-                display: block;
-                float: right;
-                margin: 1em 0;
-                width: 320px;
-                .total {
-                    padding: .4em;
-                    background-color: #00a0d2;
-                    color: white;
-                    font-size: 1.2em;
-                    font-family: "Malgun Gothic", serif;
-                    cursor: pointer;
-                }
-                .pay-button {
-                    input {
-                        margin: .4em 0 0 0;
-                        background-color: #4f160d;
-                        padding: .4em;
-                        width: 100%;
-                        box-sizing: border-box;
-                        border: 0;
-                        color: white;
-                        font-size: 1.2em;
-                        font-family: "Malgun Gothic", serif;
-                        cursor: pointer;
-                    }
-                }
-            }
+            
         }
     }
 }
 @media all and (min-width: $breakpoint) {
     payment-component {
         .payment-content {
-            margin-left: 8em;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 980px;
+            width: 100%;
             form {
                 padding: 1em;
                 .row {

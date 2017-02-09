@@ -18,28 +18,26 @@ export class TeacherComponent {
             if(!this.teachers) return;
             this.teachers.forEach( (teacher) => {
                 teacher.play_video = false;
-                this.changeHttpToHttps( teacher.url_youtube );
-                this.changeYoutubeEmbed( teacher.url_youtube );
-                this.removeImageTag( teacher.greeting );
+                if( teacher.url_youtube.match(/^http:\/\//i)) teacher.url_youtube = teacher.url_youtube.replace(/^http:\/\//i, 'https://');//replace http to https
+                if( teacher.url_youtube.match(/youtu.be/g)) teacher.url_youtube = teacher.url_youtube.replace(/youtu.be/g, 'youtube.com/embed');//replace youtu.be to youtube.com/embed
+                if( teacher.greeting.match(/<img[^>]*>|&nbsp;/g)) teacher.greeting = teacher.greeting.replace(/<img[^>]*>|&nbsp;/g,"");//remove img tag or &nbsp
                 teacher.url_youtube = teacher.url_youtube + "?autoplay=1";
-                this.trusResourceUrl( teacher.url_youtube );
+                teacher.url_youtube = this.sanitizer.bypassSecurityTrustResourceUrl(teacher.url_youtube );//to fix unsafe
             });
         }
         this.temp = this.teachers;
+        console.log(this.temp);
         this.teachers = _.take( this.teachers, 6);
     }
-    changeHttpToHttps( data ) {
-        if( data.match('^http://')) data = data.replace(/^http:\/\//i, 'https://');
-    }
-    changeYoutubeEmbed( data ) {
-        if( data.match(/youtu.be/g)) data = data.replace(/youtu.be/g, 'youtube.com/embed');
-    }
-    removeImageTag( data ) {
-        if( data.match(/<img[^>]*>/g)) data = data.replace(/<img[^>]*>/g,"");
-    }
-    trusResourceUrl( data ) {
-        data = this.sanitizer.bypassSecurityTrustResourceUrl( data );
-    }
+    // changeHttpToHttps( data ) {
+    //     if( data.match('^http://')) data = data.replace(/^http:\/\//i, 'https://');
+    // }
+    // changeYoutubeEmbed( data ) {
+    //     if( data.match(/youtu.be/g)) data = data.replace(/youtu.be/g, 'youtube.com/embed');
+    // }
+    // removeImageTag( data ) {
+    //     if( data.match(/<img[^>]*>/g)) data = data.replace(/<img[^>]*>/g,"");
+    // }
     onClickShowMore() {
         this.showMore =!this.showMore;
         if(this.showMore) {

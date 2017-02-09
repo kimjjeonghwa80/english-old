@@ -89,7 +89,10 @@ inquery-component {
 @media all and (min-width: $breakpoint) {
     inquery-component {
         main {
-            padding-left: 8em;
+            margin-left:auto;
+            margin-right: auto;
+            width: 100%;
+            max-width: 980px;
             .post-list-container {
                 .header {
                     margin: 0;

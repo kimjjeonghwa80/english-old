@@ -27,7 +27,7 @@ export class App {
 
     get widthSize() : 'small' | 'big' {
         let size : 'small' | 'big' = 'small';
-        if ( this.getWidth() >= 760 ) size = 'big';
+        if ( this.getWidth() >= 768 ) size = 'big';
         // console.log('size: ', size);
         return size;
     }

@@ -3,27 +3,33 @@ comment-component {
     background-color: #F7CD47;;
     .comment-container {
         padding: 3em 0;
+        padding-bottom:0;
         margin-left: auto;
         margin-right: auto; 
         width: 80%;
         display: block;
         .img-comment {
             padding: 1em;
+            padding-bottom: 0;
             text-align: center;
             img {
                 margin:0 auto;
                 width: 50%;
+                position: relative;
             }
         }
         @media all and (min-width: $breakpoint) {
-                .img-comment {
-                    img {
-                        width: 100%;
-                        height: auto;
-                        vertical-align: middle;
-                    }
+            .img-comment {
+                img {
+                    position: absolute;
+                    width: 100%;
+                    max-height: 650px;
+                    height: auto;
+                    bottom: 0;
+                    left: 0;
                 }
             }
+        }
         .title-row {
             display: inline-block;
             font-size: 41px;
