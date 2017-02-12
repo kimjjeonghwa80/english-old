@@ -77,7 +77,7 @@ const appRoutes: Routes = [
     FirebaseApiModule,
     NgbModule.forRoot(),
     FormsModule,
-    BackendAngularApiModule
+    BackendAngularApiModule   
   ],
   bootstrap: [ AppComponent ],
   providers: [ App, NgbActiveModal, LMS ],
