@@ -25,8 +25,8 @@
     "@angular/platform-browser-dynamic": "2.2.3",
     "@angular/platform-server": "2.2.3",
     "@angular/router": "3.2.3",
-    "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.18",
-    "@types/lodash": "^4.14.50",
+    "@ng-bootstrap/ng-bootstrap": "1.0.0-alpha.18",
+    "@types/lodash": "4.14.50",
     "firebase": "^3.6.5",
     "ng2-file-upload": "^1.1.4-2",
     "rxjs": "5.0.0-beta.12",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "1.0.0",
-    "sw-toolbox": "^3.4.0",
+    "sw-toolbox": "3.4.0",
     "typescript": "2.0.9"
   },
   "cordovaPlugins": [
