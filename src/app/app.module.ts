@@ -7,7 +7,6 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { App } from '../providers/app';
 
-
 import { AppComponent } from './app.component';
 
 import { HomePage } from '../pages/home/home';
