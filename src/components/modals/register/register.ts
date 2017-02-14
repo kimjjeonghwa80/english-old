@@ -98,30 +98,20 @@ export class RegisterComponent{
     register( callback? ) {
         this.checkId( );
 
-        setTimeout( () =>{
             if( this.isIDexists == false ) return this.app.alert('id already in used');
             if ( this.validate() == false ) return;
             console.log('form :: ' + JSON.stringify(this.form))
             console.log("Going to create user : " + this.form.name);
             this.loading = true;
-            let data = {};
-            data['id'] = this.form.id;
-            data['mobile'] = this.form.mobile;
-            data['birthday'] = this.form.birthday;
-            data['gender'] = this.form.gender;
-            data['email'] = this.form.email;
-            data['password'] = this.form.password;
-            data['name'] = this.form.name;
-
-
             this.user.register( this.form ,
                 uid => {
                     console.log(`create ${this.form.name} : success`);
+                    this.activeModal.close();
                     if ( callback ) callback();
                 },
                 (e) => this.app.alert(`create ${this.form.name}: failure:`+ e),
                 () => { this.loading = false; console.log(`create ${this.form.name} : complete`); } );
-        }, 300);
+
 
     }
 
@@ -169,19 +159,16 @@ export class RegisterComponent{
 
     validate() {
         console.log('form: ', this.form);
-        // if( this.form.id.match(/[.#$\[\]]/g)) return this.validateError('valid id')
-        // if ( this.user.loggedIn ) {
+        if( this.form.id.match(/[.#$\[\]]/g)) return this.validateError('valid id')
 
-        // }
-        // else {
-        //     if ( ! this.form.id ) return this.validateError('ID');
-        //     if ( ! this.form.email ) return this.validateError('Email');
-        //     if( ! this.form.password )return this.validateError('Password');
-        // }
-        // if ( ! this.form.name ) return this.validateError('Name');
-        // if ( ! this.form.mobile ) return this.validateError('Mobile');
-        // if ( ! this.form.gender ) return this.validateError('Gender');
-        // if ( ! this.form.birthdate ) return this.validateError('birthdate');
+        if ( ! this.form.id ) return this.validateError('ID');
+        if ( ! this.form.email ) return this.validateError('Email');
+        if( ! this.form.password )return this.validateError('Password');
+
+        if ( ! this.form.name ) return this.validateError('Name');
+        if ( ! this.form.mobile ) return this.validateError('Mobile');
+        if ( ! this.form.gender ) return this.validateError('Gender');
+        if ( ! this.form.birthday ) return this.validateError('birthday');
 
         return true;
     }

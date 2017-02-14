@@ -3,6 +3,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginModal } from '../modals/login/login';
 import { RegisterComponent } from '../modals/register/register';
 
+import { User } from '../../backend-angular-api/user';
+
 import { App } from '../../providers/app';
 
 @Component({
@@ -22,11 +24,12 @@ export class HeaderComponent implements OnInit {
     login: boolean = false;
     constructor(
         private modal       : NgbModal,
-        private app         : App
+        private app         : App,
+        private user        : User
     ) {
         // userTest.run();
         // console.log('header :: constructor(), loginUser: ', user.loginUser);
-        // this.login = user.loggedIn;
+        this.login = user.isLogin();
         // console.log("user login status: ", this.login);
 
         // this.onClickRegister();
@@ -37,17 +40,14 @@ export class HeaderComponent implements OnInit {
     onClickLogin(){
         console.log('login');
         let modalRef = this.modal.open( LoginModal );
-        modalRef;
-        // modalRef.result.then( (x) => {
-        //     console.log( this.user.loginUser );
-        //     this.login = this.user.loggedIn;
-        //     console.log("user login status: ", this.login);
-        //     if( this.login ) {
-        //         // this.event.eventType = "loggedin";
-        //         // this.app.myEvent.emit(this.event);
-        //         this.onLogin.emit();
-        //     }
-        // }).catch( () => console.log('exit') );
+        modalRef.result.then( (x) => {
+            console.log( this.user.isLogin() );
+            this.login = this.user.isLogin();
+            console.log("user login status: ", this.login);
+            if( this.login ) {
+                this.onLogin.emit();
+            }
+        }).catch( () => console.log('exit') );
 
     }
     onClickGotoClassRoom(){
@@ -61,7 +61,7 @@ export class HeaderComponent implements OnInit {
         let modalRef = this.modal.open ( RegisterComponent );
         modalRef.result.then( (x) => {
             // console.log( this.user.loginUser );
-            // this.login = this.user.loggedIn;
+            this.login = this.user.isLogin();
             console.log("user login status: ", this.login);
         }).catch( () =>console.log('exit '));
     }
@@ -71,17 +71,10 @@ export class HeaderComponent implements OnInit {
 
 
     onClickLogout() {
-        //this.login = false;
-        // this.user.logout( () => {
-        //         console.info('user login status: ', this.login);
-        //         if( ! this.user.login ){
-        //             // this.event.eventType = "loggedout";
-        //             // this.app.myEvent.emit(this.event);
-        //             this.onLogout.emit();
-        //         }
-        //     },
-        //     (e) => console.error('logout error: ', e),
-        //     () => {} );
+
+      this.user.logout( res =>{
+          this.login = false;
+      }, err =>{})
     }
 
 
