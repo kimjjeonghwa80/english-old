@@ -7,7 +7,6 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { App } from '../providers/app';
 
-import { FirebaseApiModule } from '../api/firebase-api-2.0/firebase-api-module';
 import { AppComponent } from './app.component';
 
 import { HomePage } from '../pages/home/home';
@@ -73,7 +72,6 @@ const appRoutes: Routes = [
     HttpModule,
 
     RouterModule.forRoot( appRoutes, { useHash: !history.pushState }),
-    FirebaseApiModule,
     NgbModule.forRoot(),
     FormsModule
   ],
