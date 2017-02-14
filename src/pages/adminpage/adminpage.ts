@@ -17,7 +17,6 @@ export class AdminPage{
     scrollCount = 0;
     users = [];
     constructor(
-        private user : User,
         private router: Router,
         private renderer: Renderer,
         private app : App
@@ -29,10 +28,10 @@ export class AdminPage{
 
 
     checkAuth(){
-            if(! this.user.loggedIn ){
-                this.router.navigate(['']);
-                console.log('is logged in ? ' + this.user.loggedIn )  
-            }
+            // if(! this.user.loggedIn ){
+            //     this.router.navigate(['']);
+            //     console.log('is logged in ? ' + this.user.loggedIn )  
+            // }
     }
 
 

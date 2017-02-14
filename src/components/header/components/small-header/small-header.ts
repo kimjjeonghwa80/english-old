@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { App } from '../../../../providers/app';
-import { User } from '../../../../api/firebase-api-2.0/user';
 @Component({
     selector: 'small-header-component',
     templateUrl: 'small-header.html'
@@ -15,8 +14,7 @@ export class SmallHeaderComponent {
     @Output() profile = new EventEmitter();
     @Output() classroom = new EventEmitter();
     constructor(
-        public app: App,
-        private user: User
+        public app: App
     ) {
 
     }

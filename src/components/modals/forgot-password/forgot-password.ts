@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { User } from '../../../api/firebase-api-2.0/user';
 
 
 @Component({
@@ -13,8 +12,7 @@ export class ForgotPasswordComponent{
 
     email: string;
     constructor( 
-        private activeModal : NgbActiveModal,
-        private user        : User
+        private activeModal : NgbActiveModal
         ){}
     onClickDismiss(){
         this.activeModal.close();
@@ -25,13 +23,13 @@ export class ForgotPasswordComponent{
      */
 
     onClickResetPassword(){
-        this.user.resetpassword( this.email , success =>{
-            console.log( ' failed ' + success );
-        }, fail =>{
-            console.log( ' error ' + fail );
-        }, complete =>{
-            console.log( ' completed ' );
-            this.activeModal.close();
-        })
+        // this.user.resetpassword( this.email , success =>{
+        //     console.log( ' failed ' + success );
+        // }, fail =>{
+        //     console.log( ' error ' + fail );
+        // }, complete =>{
+        //     console.log( ' completed ' );
+        //     this.activeModal.close();
+        // })
     }
 }

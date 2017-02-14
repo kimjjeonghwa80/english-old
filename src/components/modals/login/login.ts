@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { User } from '../../../api/firebase-api-2.0/user';
+
 import { App } from '../../../providers/app';
 
 import { FindIdModal } from '../find-id/find-id';
@@ -22,7 +22,6 @@ export class LoginModal implements OnInit{
     form = <LOGIN_FORM> {};
     constructor( 
       public activeModal  : NgbActiveModal,
-      private user : User,
       private app: App,
       private modal: NgbModal
       ){
@@ -66,24 +65,24 @@ export class LoginModal implements OnInit{
       //this.form.password = this.form.id;
       if( this.validate() == false ) return;
 
-      // 1. get user email from user id.
-      this.user.get( 'id/'+this.form.id, data => {
-          console.log("user data: ", data);
-          let uid = data['uid'];
-          console.info('uid :: ' + uid );
-              console.log('email node :: ' +  data );
-              // 2. login with email/password
-              this.user.login( data['email'], this.form.password, uid => {
-                  this.activeModal.close();
-                  if( this.saveid ) localStorage.setItem('saveid', this.form.id )
-                  else localStorage.removeItem('saveid')
-              },
-              error => this.app.alert('login error: incorrect password'),
-              () => {} );
+    //   // 1. get user email from user id.
+    //   this.user.get( 'id/'+this.form.id, data => {
+    //       console.log("user data: ", data);
+    //       let uid = data['uid'];
+    //       console.info('uid :: ' + uid );
+    //           console.log('email node :: ' +  data );
+    //           // 2. login with email/password
+    //           this.user.login( data['email'], this.form.password, uid => {
+    //               this.activeModal.close();
+    //               if( this.saveid ) localStorage.setItem('saveid', this.form.id )
+    //               else localStorage.removeItem('saveid')
+    //           },
+    //           error => this.app.alert('login error: incorrect password'),
+    //           () => {} );
 
-      },
-      error => this.app.alert( 'login error: Id does not exist'),
-      () => {} );
+    //   },
+    //   error => this.app.alert( 'login error: Id does not exist'),
+    //   () => {} );
       
   }
 
