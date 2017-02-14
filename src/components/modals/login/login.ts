@@ -2,15 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { App } from '../../../providers/app';
+import { User } from '../../../backend-angular-api/user';
 
 import { FindIdModal } from '../find-id/find-id';
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password';
 import { RegisterComponent } from '../register/register';
 
-interface LOGIN_FORM {
-  id     : string;
-  password  : string;
-}
+import { USER_LOGIN_REQUEST_DATA } from '../../../backend-angular-api/interface';
 
 @Component({
     selector: 'login-component',
@@ -19,11 +17,12 @@ interface LOGIN_FORM {
 
 export class LoginModal implements OnInit{
     saveid:boolean =false;
-    form = <LOGIN_FORM> {};
+    form = <USER_LOGIN_REQUEST_DATA> {};
     constructor( 
       public activeModal  : NgbActiveModal,
       private app: App,
-      private modal: NgbModal
+      private modal: NgbModal,
+      private user : User
       ){
           // this.onClickLogin();
       }
@@ -65,25 +64,11 @@ export class LoginModal implements OnInit{
       //this.form.password = this.form.id;
       if( this.validate() == false ) return;
 
-    //   // 1. get user email from user id.
-    //   this.user.get( 'id/'+this.form.id, data => {
-    //       console.log("user data: ", data);
-    //       let uid = data['uid'];
-    //       console.info('uid :: ' + uid );
-    //           console.log('email node :: ' +  data );
-    //           // 2. login with email/password
-    //           this.user.login( data['email'], this.form.password, uid => {
-    //               this.activeModal.close();
-    //               if( this.saveid ) localStorage.setItem('saveid', this.form.id )
-    //               else localStorage.removeItem('saveid')
-    //           },
-    //           error => this.app.alert('login error: incorrect password'),
-    //           () => {} );
+      this.user.login( this.form, res =>{
+        console.info( 'logged in :: login component :: ' + res );
+          this.activeModal.close();
+      }, err => console.error( ' failed to login ' + err ) );
 
-    //   },
-    //   error => this.app.alert( 'login error: Id does not exist'),
-    //   () => {} );
-      
   }
 
   onEnterLogin(event){
