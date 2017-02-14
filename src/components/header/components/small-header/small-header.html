@@ -8,17 +8,17 @@
             <div class="menu">
                 <ul>
                     <li><i class="fa fa-bars" (click)="onClickMoreMenu()"></i></li>
-                    <li *ngIf="! user.loggedIn " class="menu" (click)="onClickRegister()">
+                    <li *ngIf="! login " class="menu" (click)="onClickRegister()">
                         <font> Register </font> 
                     </li>
-                    <li *ngIf=" user.loggedIn " class="menu" (click)="onClickUpdateProfile()">
+                    <li *ngIf=" login " class="menu" (click)="onClickUpdateProfile()">
                         <font> Profile </font>
                     </li>
-                    <li *ngIf=" ! user.loggedIn " class="menu" (click)="onClickLogin()">
+                    <li *ngIf=" ! login " class="menu" (click)="onClickLogin()">
                         <font>  Login </font>
                     </li>
 
-                    <li *ngIf=" user.loggedIn " class="menu" (click)="onClickLogout()">
+                    <li *ngIf=" login " class="menu" (click)="onClickLogout()">
                         <font>  Logout</font>
                     </li>
                     <li class="menu" (click)="onClickPanelMenu('contact')"> 

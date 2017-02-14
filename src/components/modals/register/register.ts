@@ -3,6 +3,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { App } from '../../../providers/app';
 
 import { LMS } from '../../../providers/lms';
+
+import { USER_REGISTER_REQUEST_DATA } from './../../../backend-angular-api/interface';
+import { User } from './../../../backend-angular-api/user';
 @Component({
     selector:'register-component',
     templateUrl: 'register.html'
@@ -12,15 +15,17 @@ export class RegisterComponent{
 
     isIDexists  :boolean;
     loading     : boolean = false;
-    form = {};
+    form = <USER_REGISTER_REQUEST_DATA> {};
+    login: boolean = false;
     constructor (
         private app          : App,
         private activeModal  : NgbActiveModal,
-        private lms          : LMS
+        private lms          : LMS,
+        private user        : User
     ) {
 
-        //this.fakeData();
-        //this.register();
+        this.fakeData();
+        this.register();
 
 
     }
@@ -45,14 +50,14 @@ export class RegisterComponent{
     }
 
     fakeData() {
-        // let id = 'user' + (new Date).getHours() + (new Date).getMinutes() + (new Date).getSeconds();
-        // this.form.id = id;
-        // this.form.email = id + '@gmail.com';
-        // this.form.name = id;
-        // this.form.password = id;
-        // this.form.mobile = '09174678000';
-        // this.form.gender = 'M';
-        // this.form.birthdate = '1990-12-30';
+        let id = 'user' + (new Date).getHours() + (new Date).getMinutes() + (new Date).getSeconds();
+        this.form.id = id;
+        this.form.email = id + '@gmail.com';
+        this.form.name = id;
+        this.form.password = id;
+        this.form.mobile = '09174678000';
+        this.form.gender = 'M';
+        this.form.birthday = '1990-12-30';
     }
 
     onClickDismiss() {
@@ -82,7 +87,7 @@ export class RegisterComponent{
 
 
     onClickSubmit() {
-        this.register( callback => this.lmsregister() );
+        this.register( callback => this.lmsRegister() );
 
     }
     onClickUpdate() {
@@ -90,36 +95,38 @@ export class RegisterComponent{
     }
 
 
-    register( callback ) {
-        this.checkid( );
-        // setTimeout( () =>{
-        //     if( this.isIDexists == false ) return this.app.alert('id already in used');
-        //     if ( this.validate() == false ) return;
-        //     console.log('form :: ' + JSON.stringify(this.form))
-        //     console.log("Going to create user : " + this.form.name);
-        //     this.loading = true;
-        //     let data = {};
-        //     data['id'] = this.form.id;
-        //     data['mobile'] = this.form.mobile;
-        //     data['birthdate'] = this.form.birthdate;
-        //     data['gender'] = this.form.gender;
-        //     data['email'] = this.form.email;
-        //     data['password'] = this.form.password;
-        //     data['name'] = this.form.name;
+    register( callback? ) {
+        this.checkId( );
 
-        //     this.user.create( this.form.id, this.form ,
-        //         uid => {
-        //             console.log(`create ${this.form.name} : success`);
-        //             callback();
-        //         },
-        //         (e) => this.app.alert(`create ${this.form.name}: failure:`+ e),
-        //         () => { this.loading = false; console.log(`create ${this.form.name} : complete`); } );
-        // }, 300);
+        setTimeout( () =>{
+            if( this.isIDexists == false ) return this.app.alert('id already in used');
+            if ( this.validate() == false ) return;
+            console.log('form :: ' + JSON.stringify(this.form))
+            console.log("Going to create user : " + this.form.name);
+            this.loading = true;
+            let data = {};
+            data['id'] = this.form.id;
+            data['mobile'] = this.form.mobile;
+            data['birthday'] = this.form.birthday;
+            data['gender'] = this.form.gender;
+            data['email'] = this.form.email;
+            data['password'] = this.form.password;
+            data['name'] = this.form.name;
+
+
+            this.user.register( this.form ,
+                uid => {
+                    console.log(`create ${this.form.name} : success`);
+                    if ( callback ) callback();
+                },
+                (e) => this.app.alert(`create ${this.form.name}: failure:`+ e),
+                () => { this.loading = false; console.log(`create ${this.form.name} : complete`); } );
+        }, 300);
 
     }
 
 
-    lmsregister(){
+    lmsRegister(){
         this.lms.register( this.form, res =>{
             console.log(' registered on centerX ' + res );
             this.activeModal.close();
@@ -131,7 +138,7 @@ export class RegisterComponent{
      *
      * @description: it'll set isIDexists to false if the key exists and true if not.
      */
-    checkid(){
+    checkId(){
         //let userid:string;
         // this.user.get( 'id/'+this.form.id , res =>{
         //     userid = res;

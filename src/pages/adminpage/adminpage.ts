@@ -27,10 +27,10 @@ export class AdminPage{
 
 
     checkAuth(){
-            // if(! this.user.loggedIn ){
-            //     this.router.navigate(['']);
-            //     console.log('is logged in ? ' + this.user.loggedIn )  
-            // }
+
+
+        
+        
     }
 
 

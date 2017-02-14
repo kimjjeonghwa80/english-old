@@ -28,6 +28,8 @@ export class HeaderComponent implements OnInit {
         // console.log('header :: constructor(), loginUser: ', user.loginUser);
         // this.login = user.loggedIn;
         // console.log("user login status: ", this.login);
+
+        this.onClickRegister();
     }
     ngOnInit() {
 
@@ -35,7 +37,7 @@ export class HeaderComponent implements OnInit {
     onClickLogin(){
         console.log('login');
         let modalRef = this.modal.open( LoginModal );
-
+        modalRef;
         // modalRef.result.then( (x) => {
         //     console.log( this.user.loginUser );
         //     this.login = this.user.loggedIn;
@@ -58,8 +60,8 @@ export class HeaderComponent implements OnInit {
     onClickRegister() {
         let modalRef = this.modal.open ( RegisterComponent );
         modalRef.result.then( (x) => {
-            console.log( this.user.loginUser );
-            this.login = this.user.loggedIn;
+            // console.log( this.user.loginUser );
+            // this.login = this.user.loggedIn;
             console.log("user login status: ", this.login);
         }).catch( () =>console.log('exit '));
     }
