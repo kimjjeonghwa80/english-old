@@ -61,7 +61,7 @@ contact-component {
                 left:-320px;
             }
         }
-        @media all and(min-width:1336px) {
+        @media all and(min-width:1366px) {
             img {
                 left:-280px;
             }
@@ -185,6 +185,9 @@ contact-component {
             }
             @media all and(min-width:1800px) {
                 left: 440px;   
+            }
+            @media all and(min-width:1920px) {
+                left: 470px;   
             }
         }
         .banner-info {
