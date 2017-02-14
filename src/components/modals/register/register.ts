@@ -25,7 +25,7 @@ export class RegisterComponent{
     ) {
 
         this.fakeData();
-        this.register();
+        // this.register();
 
 
     }

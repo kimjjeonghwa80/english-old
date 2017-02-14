@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
         // this.login = user.loggedIn;
         // console.log("user login status: ", this.login);
 
-        this.onClickRegister();
+        // this.onClickRegister();
     }
     ngOnInit() {
 
