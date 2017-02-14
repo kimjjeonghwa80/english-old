@@ -1,5 +1,4 @@
 import { Component, Renderer  } from '@angular/core';
-import { User } from '../../api/firebase-api-2.0/user';
 import { App } from '../../providers/app';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';

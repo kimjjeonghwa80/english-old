@@ -57,11 +57,11 @@ export class HeaderComponent implements OnInit {
 
     onClickRegister() {
         let modalRef = this.modal.open ( RegisterComponent );
-        // modalRef.result.then( (x) => {
-        //     console.log( this.user.loginUser );
-        //     this.login = this.user.loggedIn;
-        //     console.log("user login status: ", this.login);
-        // }).catch( () =>console.log('exit '));
+        modalRef.result.then( (x) => {
+            console.log( this.user.loginUser );
+            this.login = this.user.loggedIn;
+            console.log("user login status: ", this.login);
+        }).catch( () =>console.log('exit '));
     }
 
 
@@ -69,7 +69,7 @@ export class HeaderComponent implements OnInit {
 
 
     onClickLogout() {
-        this.login = false;
+        //this.login = false;
         // this.user.logout( () => {
         //         console.info('user login status: ', this.login);
         //         if( ! this.user.login ){

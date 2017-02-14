@@ -132,7 +132,7 @@ export class RegisterComponent{
      * @description: it'll set isIDexists to false if the key exists and true if not.
      */
     checkid(){
-        let userid:string;
+        //let userid:string;
         // this.user.get( 'id/'+this.form.id , res =>{
         //     userid = res;
         //     this.isIDexists = false;
