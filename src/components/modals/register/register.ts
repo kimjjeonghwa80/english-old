@@ -4,7 +4,7 @@ import { App } from '../../../providers/app';
 
 import { LMS } from '../../../providers/lms';
 
-import { USER_REGISTER_REQUEST_DATA } from './../../../backend-angular-api/interface';
+import { USER_REGISTER_REQUEST_DATA, USER_UPDATE_REQUEST_DATA } from './../../../backend-angular-api/interface';
 import { User } from './../../../backend-angular-api/user';
 @Component({
     selector:'register-component',
@@ -24,7 +24,9 @@ export class RegisterComponent{
         private user        : User
     ) {
 
-        this.fakeData();
+        this.login = this.user.isLogin();
+
+        // this.fakeData();
         // this.register();
 
 
@@ -65,22 +67,19 @@ export class RegisterComponent{
     }
 
     ngOnInit(){
-        // if ( this.user.loggedIn ) {
-        //     console.log( 'logged in' );
-        //     this.getUserData();
-        // }
+        if ( this.user.isLogin() ) {
+            console.log( 'logged in' );
+            this.getUserData();
+        }
     }
 
 
     getUserData() {
         this.loading = true;
-        // console.info('userid ' + this.user.loginUser.uid )
-        // this.user.private_get( this.user.loginUser.uid, res => {
-        //     this.form = res;
-        //     console.log('data ::' + JSON.stringify( res ))
-        // }, error => {
-        //     console.log('error ::' + error );
-        // }, () =>{ this.loading = false; });
+        this.user.getUserData( res =>{
+            console.log('user data ' + JSON.stringify(res));
+            this.form = res['data'];
+        }, err =>{}, ()=>{})
     }
 
 
@@ -140,14 +139,22 @@ export class RegisterComponent{
 
     updateProfile( callback ){
         this.loading = true;
-        // this.user.update( this.form.uid, this.form,
-        //     () => {
-        //         console.log(`user update: ${this.form.uid} : success.`);
-        //         callback();
-        //     } ,
-        //     e => console.error( `user update: ${this.form.uid} : failure: `, e ),
-        //     () => { this.loading = false; }
-        // );
+        let data : USER_UPDATE_REQUEST_DATA ={
+            name: this.form.name,
+            nickname: this.form.nickname,
+            mobile: this.form.mobile,
+            landline: this.form.landline,
+            gender: this.form.gender,
+            birthday: this.form.birthday,
+            country: this.form.country,
+            province: this.form.province,
+            city: this.form.city,
+            address: this.form.address,
+            zipcode: this.form.zipcode,
+        }
+        this.user.update( data, res =>{
+            console.info( 'updated profile' + res );
+        }, err =>console.error( 'error on update ' + err ), ()=>{});
     }
 
     updateLMSprofile(){
