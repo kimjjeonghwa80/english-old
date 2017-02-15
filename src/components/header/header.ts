@@ -21,15 +21,15 @@ export class HeaderComponent implements OnInit {
     @Output() onLogout = new EventEmitter();
 
     more: boolean = false;
-    login: boolean = false;
+    //login: boolean = false;
     constructor(
         private modal       : NgbModal,
         private app         : App,
-        private user        : User
+        public user        : User
     ) {
         // userTest.run();
         // console.log('header :: constructor(), loginUser: ', user.loginUser);
-        this.login = user.isLogin();
+        // this.login = user.isLogin();
         // console.log("user login status: ", this.login);
 
         // this.onClickRegister();
@@ -41,10 +41,10 @@ export class HeaderComponent implements OnInit {
         console.log('login');
         let modalRef = this.modal.open( LoginModal );
         modalRef.result.then( (x) => {
-            console.log( this.user.isLogin() );
-            this.login = this.user.isLogin();
-            console.log("user login status: ", this.login);
-            if( this.login ) {
+            //console.log( this.user.isLogin() );
+            //this.login = this.user.isLogin();
+            //console.log("user login status: ", this.login);
+            if ( this.user.logged ) {
                 this.onLogin.emit();
             }
         }).catch( () => console.log('exit') );
@@ -61,8 +61,8 @@ export class HeaderComponent implements OnInit {
         let modalRef = this.modal.open ( RegisterComponent );
         modalRef.result.then( (x) => {
             // console.log( this.user.loginUser );
-            this.login = this.user.isLogin();
-            console.log("user login status: ", this.login);
+            //this.login = this.user.isLogin();
+            console.log("user login status: ", this.user.logged);
         }).catch( () =>console.log('exit '));
     }
 
@@ -73,15 +73,20 @@ export class HeaderComponent implements OnInit {
     onClickLogout() {
 
       this.user.logout( res =>{
-          this.login = false;
-      }, err =>{})
+          // this.login = false;
+      }, err =>{},
+      () => {
+
+          //
+
+      });
     }
 
 
     onClickUpdateProfile(){
         // console.log('uid ' + JSON.stringify(this.user.loginUser));
-        // let modalRef = this.modal.open( RegisterComponent );
-        // modalRef.result.then(() => {}).catch( () =>console.log('exit '));
+        let modalRef = this.modal.open( RegisterComponent );
+        modalRef.result.then(() => {}).catch( () =>console.log('exit '));
     }
 
     onClickMoreMenu() {
