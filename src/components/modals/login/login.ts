@@ -29,7 +29,6 @@ export class LoginModal implements OnInit{
 
   onClickDismiss(){
     this.activeModal.close();
-    if( ! this.saveid ) localStorage.removeItem('saveid');
   }
 
 

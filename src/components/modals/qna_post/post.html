@@ -1,0 +1,41 @@
+<div class="post-modal">
+    <div class="modal-header">
+
+        <h5 class="modal-title">
+            <span class="modal-title">Post</span>
+        </h5>
+        <button type="button" class="close" aria-hidden="true" (click)="onClickDismiss()">
+            <span aria-hidden="true">×</span>
+        </button>
+
+    </div>
+
+    <div class="modal-body">
+        <div class="form-container">
+            <div class="form-container">
+                <form>
+                    <div>
+                        <p class="form-title">QnA</p>
+                    </div>
+                    <div class="input-group">
+                        <!--<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>-->
+                        <input name="title" type="text" class="form-control form-control-sm" placeholder="Title">
+                    </div>
+                    <div class="input-group">
+                        <!--<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>-->
+                        <textarea name="content" class="form-control form-control-sm" id="content" placeholder="Content" rows="3" (keydown)="onEnterLogin($event)"></textarea>
+
+                        <!--<input  name="content" type="password" class="form-control form-control-sm" id="password" placeholder="Password" (keydown)="onEnterLogin($event)">-->
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 login" ><button type="button"class="btn btn-danger form-control" (click)="onClickLogin()">Post</button></div>
+                    </div>
+                    <hr/>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

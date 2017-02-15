@@ -33,6 +33,7 @@ import { LoginModal } from '../components/modals/login/login';
 import { RegisterComponent } from '../components/modals/register/register';
 import { ForgotPasswordComponent } from '../components/modals/forgot-password/forgot-password';
 import { FindIdModal } from '../components/modals/find-id/find-id';
+import { QnaPostComponent } from '../components/modals/qna_post/post';
 
 
 import { LMS } from '../providers/lms';
@@ -46,6 +47,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    QnaPostComponent,
     HomePage,
     HelpPage,
     HeaderComponent,
@@ -66,6 +68,7 @@ const appRoutes: Routes = [
     AsideComponent,
     ForgotPasswordComponent,
     FindIdModal,
+
     AdminPage
   ],
   imports: [
@@ -84,7 +87,8 @@ const appRoutes: Routes = [
     LoginModal, 
     RegisterComponent, 
     ForgotPasswordComponent, 
-    FindIdModal 
+    FindIdModal,
+    QnaPostComponent
     ]
 })
 export class AppModule {}

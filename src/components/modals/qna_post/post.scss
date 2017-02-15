@@ -1,0 +1,95 @@
+qna-post-component{
+
+  @mixin button-size() {
+    margin: 0 0 20px;
+    padding: 7px 22px;
+    width: 135px;
+    height: 34px;
+  }
+
+  // Module -- Component -- Narrow
+  .post-modal {
+    .modal-header {
+      .modal-title {
+        line-height: 1.428571429;
+      }
+    }
+    .modal-body {
+
+      .form-container {
+        margin-top: 1.5em;
+        margin-left: auto;
+        margin-right: auto;
+        border: solid 1px #eee;
+        padding: 30px;
+        color: #555;
+        background: #fefefe;
+        box-shadow: 0 0 3px #eee;
+        .form-title {
+          text-align: center;
+          font-size: 22px;
+          font-family: 나눔고딕, 돋음, verdana;
+          border-bottom: 1px solid #eee;
+        }
+        .input-group {
+          margin-top:1.5em;
+        }
+
+        .save-id {
+          padding-top: 1em;
+        }
+        .login {
+          padding-top: .4em;
+          .btn {
+            margin: 0 0 20px;
+            padding: 7px 22px;
+            background-color:#f15f4c;
+            cursor: pointer;
+
+            &:focus {
+              color: white;
+            }
+          }
+        }
+
+        .id-password{
+          button {
+            margin: 0 0 20px;
+            padding: 7px 22px;
+            background-color: #45c1ae;
+            border-color: #3bb19f;
+            cursor: pointer;
+          }
+        }
+        .info {
+          text-align: center;
+          font-weight: bold;
+        }
+        .button-signup {
+          .btn {
+            background-color: #e5b742;
+            border-color: #e2ae2c;
+            cursor: pointer;
+          }
+        }
+
+        // Wide
+        @media all and (min-width: $breakpoint) {
+          width: 362px;
+          .save-id {
+            padding-top: 1.3em;
+          }
+          .login {
+            padding-top: 1em;
+            .btn {
+              @include button-size();
+            }
+          }
+        }
+
+
+      }
+    }
+  }
+
+}
