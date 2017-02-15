@@ -15,6 +15,6 @@ export class InqueryComponent {
             //console.log( this.user.isLogin() );
             //this.login = this.user.isLogin();
             //console.log("user login status: ", this.login);
-        }).catch( () => console.log('exit') );
+        }).catch( e => console.log('exit ' + e ) );
     }
 }
