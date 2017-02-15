@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-export const LMS_URL = "http://onlineenglish.kr";
+export const LMS_URL = "https://englishfordevelopers.com/api";
 export const LMS_ENDPOINT_URL = LMS_URL + "/ajax.php";
 export const domain: string = 'englishfordevelopers.onlineenglish.kr';
 export interface TEACHER {
