@@ -166,9 +166,11 @@ export class RegisterComponent{
 
     validate() {
         console.log('form: ', this.form);
-        if( this.form.id.match(/[.#$\[\]]/g)) return this.validateError('valid id')
+
+
 
         if ( ! this.form.id ) return this.validateError('ID');
+        if( this.form.id.match(/[.#$\[\]]/g)) return this.validateError('valid id');
         if ( ! this.form.email ) return this.validateError('Email');
         if( ! this.form.password )return this.validateError('Password');
 
