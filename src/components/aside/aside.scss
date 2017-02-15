@@ -1,11 +1,10 @@
 //Narrow
 aside-component {
     display: block;
-    background-color: #4a565f;
-    height: 100%;
-    max-height: 150px;
+    padding: .3em 0;
     .sidebar {
-        display: inline-block;
+        overflow: auto;
+        display: block;
         position: relative;
         top: auto;
         left: auto;
@@ -22,13 +21,13 @@ aside-component {
                 width: 20%;
                 text-align: center;
                 a {
-                    display: inline-block;
+                    display: block;
                     position: relative;
                     overflow: auto;
                     img {
                         display: block;
                         width: 100%;
-                        height: 100%;
+                        height: auto;
                     }
                     font {
                         text-decoration: none;
@@ -37,6 +36,7 @@ aside-component {
                         left: 0;
                         bottom:0;
                         color: #fff;
+                        font-size: 12px;
                     }
                     .chrome {
                         color:#3a2123;
@@ -46,105 +46,56 @@ aside-component {
         }
     }
 }
-//Wide
+//Wide Medium
 @media all and(min-width:$breakpoint) {
     aside-component {
-
+        .sidebar {
+            ul {
+                z-index: 1;
+                position: fixed;
+                bottom:0;
+                right: 0;
+                li {
+                    margin-bottom: .2em;
+                    width: 100px;
+                    a {
+                        img {
+                            width: 95%;
+                            height: auto;
+                        }
+                        font {
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
-// aside-component {
-//     display: block;
-//     background-color: #fff;
-//     .sidebar {
-//         position: fixed;
-//         top: 190px;
-//         left: 50px;
-//         right: auto;
-//         bottom: auto;
-//         left: .6em;
-//         z-index:1;
-//         ul {
-//             list-style: none;
-//             margin: 0;
-//             padding: 0;
-//             li {
-//                 float: none;
-//                 margin-bottom: .2em;
-//                 a{
-//                         display: block;
-//                         position: relative;
-//                         overflow: auto;
-//                         img {
-//                             display: block;
-//                             width: 95px;
-//                             height: auto;
-//                         }
-//                         font {
-//                             text-decoration: none;
-//                             position: absolute;
-//                             font-size: 12px;
-//                             width:100%;
-//                             text-align: center;
-//                             bottom: .4em;
-//                             color: #fff;
-//                         }
-//                         .chrome {
-//                             color:#3a2123;
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// @media all and (max-width: $breakpoint) {
-//     aside-component {
-//         display: block;
-//         background-color: #4a565f;
 
-//         .sidebar {
-//             display: inline-block;
-//             position: relative;
-//             top: auto;
-//             left: auto;
-//             right: auto;
-//             bottom: auto;
-//             left: auto;
-//             ul {
-//                 position: relative;
-//                 list-style: none;
-//                 margin: 0;
-//                 padding: 0;
-//                 li {
-//                     float: left;
-//                     width: 20%;
-//                     text-align: center;
-//                     a{
-//                         display: block;
-//                         position: relative;
-//                         overflow: auto;
-//                         img {
-//                             display: block;
-//                             width: 100%;
-//                             height: auto;
-//                         }
-//                         font {
-//                             text-decoration: none;
-//                             position: absolute;
-//                             font-size: 12px;
-//                             right: 0;
-//                             left: 0;
-//                             bottom: .4em;
-//                             color: #fff;
-//                         }
-//                         .chrome {
-//                             color:#3a2123;
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
-
-
+//Wide Large
+@media all and(min-width:$large_breakpoint) {
+    aside-component {
+        .sidebar {
+            z-index: 1;
+            position: fixed;
+            top: 150px;
+            left: 50px;
+            right: auto;
+            bottom: auto;
+            ul {
+                position: relative;
+                li {
+                    float: none;
+                    width: 100px;
+                    a {
+                        img {
+                            width: 95%;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

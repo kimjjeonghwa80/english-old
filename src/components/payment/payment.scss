@@ -1,5 +1,7 @@
+//Narrow
 payment-component {
     display: block;
+    //Banner
     .my-banner {
         position: relative;
         overflow: hidden;
@@ -130,30 +132,7 @@ payment-component {
             }
         }
     }
-    // .banner {
-    //     background-image: url("/assets/img/payment.jpg");
-    //     width: 100%;
-    //     height: 280px;
-    //     background-size: 100% 100%;
-    //     background-repeat: no-repeat;
-    //     .banner-info {
-    //         position: absolute;
-    //         display: inline-block;
-    //         width: 40%;
-    //         right: 2em;
-    //         margin-top: 2%;
-    //         text-align: right;
-    //         color: #FFFFFF;
-    //         .level {
-    //             font-size: 32px;
-    //         }
-    //         .desc {
-    //             float: right;
-    //             max-width: 350px;
-    //             font-size: 24px;
-    //         }
-    //     }
-    // }
+    //Content
     .payment-container {
         padding-top: 5em;
         background: #5c6670;
@@ -164,7 +143,6 @@ payment-component {
         background-color: #fff;
         margin-bottom: 5em;
         form {
-            padding: 1em;
             .row {
                 .pay-buttons {
                     display: inline-block;
@@ -193,10 +171,9 @@ payment-component {
                     }
                 }
                 .col-md-3 {
-                    padding: 0 10px;
+                    margin-top: 25px;
                     margin-bottom: 25px;
                     .cover {
-                        text-align: center;
                         min-height: 350px;
                         border-radius: 5px;
                         background-color: #f5f5f5;
@@ -214,8 +191,11 @@ payment-component {
                         .items {
                             position: relative;
                             display: block;
-                            text-align: left;
-                            padding: 0 0 25px 25px;
+                            // text-align: center;
+                            // padding: 0 0 25px 25px;
+                            width: 100%;
+                            max-width: 200px;
+                            margin:0 auto;
                             .text {
                                 margin-bottom: .5rem;
                                 display: block;
@@ -229,6 +209,7 @@ payment-component {
         }
     }
 }
+//Wide 
 @media all and (min-width: $breakpoint) {
     payment-component {
         .payment-content {
@@ -240,12 +221,13 @@ payment-component {
                 padding: 1em;
                 .row {
                     .col-md-3 {
+                        margin-top: 0;
                         padding: 0 10px;
                         margin-bottom: 25px;
                         .cover {
-                            min-height: 440px;
                             .items {
                                 font-size: 14px;
+                                text-align: left;
                             }
                         }
                     }

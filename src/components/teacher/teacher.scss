@@ -22,11 +22,13 @@ teacher-component {
     }
     .teachers {
         position: relative;
-        padding: 1em;
+        .row{
+            margin: 0;
+        }
         .teacher {
             margin: 0;
+            border: .3em solid #fff;
             padding: 20px;
-            border: 8px solid #ffffff;
             background-color: #01d9c1;
             text-align: left;
             .youtube-player {

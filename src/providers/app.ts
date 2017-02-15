@@ -110,7 +110,7 @@ export class App {
                 if ( parts[i]['id'] == id ) {
                     console.log("parts:i, ", parts[i]);
                     //  window.scrollTo( 0, parts[i]['top'] - HEADER_HEIGHT+1 );
-                    this.scrollToY( parts[i]['top'] - HEADER_HEIGHT, 2000, 'easeInOutQuint' );
+                    this.scrollToY( parts[i]['top'] - HEADER_HEIGHT+1, 2000, 'easeInOutQuint' );
 
                     break;
                 }
