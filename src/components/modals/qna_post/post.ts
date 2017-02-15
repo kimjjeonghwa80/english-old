@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Forum } from '../../../backend-angular-api/forum';
-import { FORUM_DATA_REQUEST_DATA } from '../../../backend-angular-api/interface';
+// import { FORUM_DATA_REQUEST_DATA } from '../../../backend-angular-api/interface';
 import { App } from '../../../providers/app';
 
 @Component({
@@ -10,12 +10,12 @@ import { App } from '../../../providers/app';
 })
 
 export class QnaPostComponent implements OnInit {
-    form: FORUM_DATA_REQUEST_DATA = <FORUM_DATA_REQUEST_DATA> {}
+    // form: FORUM_DATA_REQUEST_DATA = <FORUM_DATA_REQUEST_DATA> {}
 
     constructor(
         private activeModal  : NgbActiveModal,
         private app          : App,
-        private forum        : Forum
+        // private forum        : Forum
     ) {}
 
 
@@ -26,9 +26,9 @@ export class QnaPostComponent implements OnInit {
     }
 
     onClickPost() {
-        this.forum.create( this.form, res =>{
-            console.info('success' + JSON.stringify( res ) );
-            this.activeModal.close();
-        }, error => console.error('error posting ' + error ) )
+        // this.forum.create( this.form, res =>{
+        //     console.info('success' + JSON.stringify( res ) );
+        //     this.activeModal.close();
+        // }, error => console.error('error posting ' + error ) )
     }
 }

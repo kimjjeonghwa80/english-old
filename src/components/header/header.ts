@@ -38,16 +38,16 @@ export class HeaderComponent implements OnInit {
 
     }
     onClickLogin(){
-        console.log('login');
-        let modalRef = this.modal.open( LoginModal );
-        modalRef.result.then( (x) => {
-            //console.log( this.user.isLogin() );
-            //this.login = this.user.isLogin();
-            //console.log("user login status: ", this.login);
-            if ( this.user.logged ) {
-                this.onLogin.emit();
-            }
-        }).catch( () => console.log('exit') );
+        // console.log('login');
+        // let modalRef = this.modal.open( LoginModal );
+        // modalRef.result.then( (x) => {
+        //     //console.log( this.user.isLogin() );
+        //     //this.login = this.user.isLogin();
+        //     //console.log("user login status: ", this.login);
+        //     if ( this.user.logged ) {
+        //         this.onLogin.emit();
+        //     }
+        // }).catch( () => console.log('exit') );
 
     }
     onClickGotoClassRoom(){
@@ -58,12 +58,12 @@ export class HeaderComponent implements OnInit {
     }
 
     onClickRegister() {
-        let modalRef = this.modal.open ( RegisterComponent );
-        modalRef.result.then( (x) => {
-            // console.log( this.user.loginUser );
-            //this.login = this.user.isLogin();
-            console.log("user login status: ", this.user.logged);
-        }).catch( () =>console.log('exit '));
+        // let modalRef = this.modal.open ( RegisterComponent );
+        // modalRef.result.then( (x) => {
+        //     // console.log( this.user.loginUser );
+        //     //this.login = this.user.isLogin();
+        //     console.log("user login status: ", this.user.logged);
+        // }).catch( () =>console.log('exit '));
     }
 
 

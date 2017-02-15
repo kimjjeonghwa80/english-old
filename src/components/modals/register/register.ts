@@ -75,11 +75,11 @@ export class RegisterComponent{
 
 
     getUserData() {
-        this.loading = true;
-        this.user.getUserData( res =>{
-            console.log('user data ' + JSON.stringify(res));
-            this.form = res['data'];
-        }, err =>{}, ()=>{})
+        // this.loading = true;
+        // this.user.getUserData( res =>{
+        //     console.log('user data ' + JSON.stringify(res));
+        //     this.form = res['data'];
+        // }, err =>{}, ()=>{})
     }
 
 
