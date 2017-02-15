@@ -10,11 +10,9 @@ export class InqueryComponent {
     constructor( private modal: NgbModal ) {}
 
     onClickPost() {
-        let modalRef = this.modal.open( QnaPostComponent );
-        modalRef.result.then( (x) => {
-            //console.log( this.user.isLogin() );
-            //this.login = this.user.isLogin();
-            //console.log("user login status: ", this.login);
+        this.modal.open( QnaPostComponent ).result.then( () => {
         }).catch( e => console.log('exit ' + e ) );
     }
+
+
 }
