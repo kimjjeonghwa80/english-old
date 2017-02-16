@@ -237,41 +237,36 @@ contact-component {
             }
         }
     }
-
     .contact-container {
         padding: 5em 0;
         background-color:#d8f1e4;
         .contact-content {
-            margin-left:auto;
-            margin-right:auto;
-            max-width: 980px;
-            width: 100%;
             h2 {
-                font-size: 28px;
-                color: #897562;
                 text-align: center;
             }
-            .company-picture {
-                margin: 1em 0;
+            .logo {
+                margin-bottom: 1em;
+                position: relative;
+                display: block;
+                width: 100%;
+                padding: 0 1em;
                 img {
+                    position: relative;
                     width: 100%;
+                    height: auto;
                 }
             }
-            .line {
-                padding: 0;
-                display: inline-block;
-                width: 100%;
-                .title {
-                    max-width: 980px;
-                    width: 50%;
-                    font-size: 18px;
-                    float: left;
-                    padding: 3px;
-                    color: #2d2d2d;
-                }
+            .title {
+                margin-bottom: 1em;
+                width:10em;
+            }
+            .desc {
+                margin-bottom: 1em;
+                width: 10em;
             }
         }
     }
+   
     .contact-form {
         padding: 3em 0;
         background-color: #a7dbdb;
@@ -299,17 +294,14 @@ contact-component {
 }
 
 @media all and (max-width: $breakpoint) {
-    // contact-component {
-    //     .contact-form {
-    //         padding: 2em 0;
-    //         padding-left: 2em;
-    //         form {
-    //             .line-submit {
-    //                 input {
-    //                     float:none;
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+    contact-component {
+        .contact-container {
+            .logo {
+                width: 60%;
+            }
+            .desc {
+                width: 20em;
+            }
+        }
+    }
 }
