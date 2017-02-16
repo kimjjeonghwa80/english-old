@@ -274,6 +274,9 @@ contact-component {
     }
     .contact-form {
         background-color: #a7dbdb;
+        h2 {
+            text-align: center;
+        }
         form {
             .line-submit {
                 input {
@@ -294,17 +297,17 @@ contact-component {
 }
 
 @media all and (max-width: $breakpoint) {
-    contact-component {
-        .contact-form {
-            padding: 2em 0;
-            padding-left: 2em;
-            form {
-                .line-submit {
-                    input {
-                        float:none;
-                    }
-                }
-            }
-        }
-    }
+    // contact-component {
+    //     .contact-form {
+    //         padding: 2em 0;
+    //         padding-left: 2em;
+    //         form {
+    //             .line-submit {
+    //                 input {
+    //                     float:none;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 }
