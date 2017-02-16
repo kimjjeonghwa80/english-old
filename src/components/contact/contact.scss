@@ -255,6 +255,9 @@ contact-component {
                     width: 100%;
                     height: auto;
                 }
+                @media(min-width:$breakpoint) {
+                    width: 60%;
+                }
             }
             .title {
                 margin-bottom: 1em;
@@ -263,6 +266,9 @@ contact-component {
             .desc {
                 margin-bottom: 1em;
                 width: 10em;
+                @media(min-width:$breakpoint) {
+                    width: 20em;
+                }
             }
         }
     }
@@ -293,15 +299,15 @@ contact-component {
     
 }
 
-@media all and (max-width: $breakpoint) {
-    contact-component {
-        .contact-container {
-            .logo {
-                width: 60%;
-            }
-            .desc {
-                width: 20em;
-            }
-        }
-    }
-}
+// @media all and (max-width: $breakpoint) {
+//     contact-component {
+//         .contact-container {
+//             .logo {
+//                 width: 60%;
+//             }
+//             .desc {
+//                 width: 20em;
+//             }
+//         }
+//     }
+// }
