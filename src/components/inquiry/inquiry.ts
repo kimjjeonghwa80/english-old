@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { QnaPostComponent } from '../modals/qna_post/post';
 @Component({
-    selector: 'inquery-component',
-    templateUrl: 'inquery.html'
+    selector: 'inquiry-component',
+    templateUrl: 'inquiry.html'
 })
-export class InqueryComponent {
+export class InquiryComponent {
 
     constructor( private modal: NgbModal ) {}
 

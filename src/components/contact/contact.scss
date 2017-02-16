@@ -274,6 +274,21 @@ contact-component {
     }
     .contact-form {
         background-color: #a7dbdb;
+        form {
+            .line-submit {
+                input {
+                    background-color: #ff6633;
+                    color:#FFFFFF;
+                }
+            }
+            .col-auto {
+                width: 6em;
+            }
+            .text {
+                margin-bottom:.5em;
+                width: 16em;
+            }
+        }
     }
     
 }

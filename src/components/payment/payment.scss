@@ -143,7 +143,10 @@ payment-component {
         background-color: #fff;
         margin-bottom: 5em;
         form {
+            padding-top: 1em;
+            padding-bottom: 1em;
             .row {
+                
                 .pay-buttons {
                     display: inline-block;
                     .total {
@@ -157,7 +160,7 @@ payment-component {
                     }
                     .pay-button {
                         input {
-                            margin: .4em 0 0 0;
+                            margin-top:1em; 
                             background-color: #4f160d;
                             padding: .4em;
                             width: 100%;
@@ -171,8 +174,7 @@ payment-component {
                     }
                 }
                 .col-md-3 {
-                    margin-top: 25px;
-                    margin-bottom: 25px;
+                    margin-bottom: 1em;
                     .cover {
                         min-height: 350px;
                         border-radius: 5px;

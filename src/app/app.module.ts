@@ -19,12 +19,14 @@ import { BigHeaderComponent } from '../components/header/components/big-header/b
 import { SmallHeaderComponent } from '../components/header/components/small-header/small-header';
 import { IntroComponent } from '../components/intro/intro';
 import { ContactComponent } from '../components/contact/contact';
+import { ContactFormComponent} from '../components/contact/components/contact-form/contact-form';
+import { ContactInformationComponent} from '../components/contact/components/contact-information/contact-information';
 import { CurriculumComponent } from '../components/curriculum/curriculum';
 import { PaymentComponent } from '../components/payment/payment';
 import { TeacherComponent } from '../components/teacher/teacher';
 import { LevelTestComponent } from '../components/level-test/level-test';
 import { CommentComponent } from '../components/comment/comment';
-import { InqueryComponent } from '../components/inquery/inquery';
+import { InquiryComponent } from '../components/inquiry/inquiry';
 import { ReservationComponent } from '../components/reservation/reservation';
 import { FooterComponent } from '../components/footer/footer';
 import { AsideComponent } from '../components/aside/aside';
@@ -53,6 +55,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     BigHeaderComponent,
     SmallHeaderComponent,
+    ContactFormComponent,
+    ContactInformationComponent,
     LoginModal,
     RegisterComponent,
     IntroComponent,
@@ -62,7 +66,7 @@ const appRoutes: Routes = [
     TeacherComponent,
     LevelTestComponent,
     CommentComponent,
-    InqueryComponent,
+    InquiryComponent,
     ReservationComponent,
     FooterComponent,
     AsideComponent,
