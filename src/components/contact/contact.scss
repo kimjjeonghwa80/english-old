@@ -273,9 +273,11 @@ contact-component {
         }
     }
     .contact-form {
+        padding: 3em 0;
         background-color: #a7dbdb;
         h2 {
             text-align: center;
+            margin-bottom: 1em;
         }
         form {
             .line-submit {

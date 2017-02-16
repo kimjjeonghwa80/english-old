@@ -137,11 +137,13 @@ level-test-component {
                 }
             }
         }
-        
+
         //Form
         .level-test-form {
+            padding: 3em 0;
             background-color: #a7dbdb;
             h2 {
+                margin-bottom: 1em;
                 text-align: center;
             }
             form {
@@ -153,6 +155,9 @@ level-test-component {
                 }
                 .col-auto {
                     width: 9em;
+                }
+                .title {
+                    margin-bottom: 1em;
                 }
                 .text {
                     margin-bottom:.5em;
