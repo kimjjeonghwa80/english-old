@@ -153,8 +153,11 @@ level-test-component {
                         color:#FFFFFF;
                     }
                 }
+                label {
+                    margin-left: 1em;
+                }
                 .col-auto {
-                    width: 9em;
+                    width: 10em;
                 }
                 .title {
                     margin-bottom: 1em;

@@ -241,9 +241,6 @@ contact-component {
         padding: 5em 0;
         background-color:#d8f1e4;
         .contact-content {
-            h2 {
-                text-align: center;
-            }
             .logo {
                 margin-bottom: 1em;
                 position: relative;
@@ -274,10 +271,9 @@ contact-component {
     }
    
     .contact-form {
-        padding: 3em 0;
+        padding: 3em 1em;
         background-color: #a7dbdb;
         h2 {
-            text-align: center;
             margin-bottom: 1em;
         }
         form {
@@ -289,6 +285,9 @@ contact-component {
             }
             .col-auto {
                 width: 6em;
+                label {
+                    margin-left: 1em;
+                }
             }
             .text {
                 margin-bottom:.5em;
