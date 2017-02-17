@@ -189,52 +189,62 @@ inquiry-component {
                 }
             }
         }
-        .post-list-container {
-            .header {
-                margin: 0;
-                background-color: #2a80b9;
-                color: #FFFFFF; 
-            }
-            .post {
-                margin: 0;
-                padding: 2em;
-                text-align: center;
-                background-color: #f1f1f1;
-            }
-        }
+        
+        // .post-list-container {
+        //     .header {
+        //         margin: 0;
+        //         padding: 1em;
+        //         background-color: #2a80b9;
+        //         color: #FFFFFF; 
+        //     }
+        //     .author {
+        //         display: none;
+        //     }
+        //     .date {
+        //         display: none;
+        //     }
+        //     .no-of-view {
+        //         display: none;
+        //     }
+        //     .post {
+        //         margin: 0;
+        //         padding: 1em;
+        //         background-color: #f1f1f1;
+        //     }
+        // }
     }
 }
-@media all and (max-width: $breakpoint) {
-    inquiry-component {
-        .banner {
-            height: 160px;
-            .banner-info {
-                padding: 2em;
-                .level {
-                    font-size: 24px;
-                }
-                .desc {
-                    font-size: 16px;
-                }
-            }
-        }
-    }
-}
-@media all and (min-width: $breakpoint) {
-    inquiry-component {
-        main {
-            margin-left:auto;
-            margin-right: auto;
-            width: 100%;
-            max-width: 980px;
-            .post-list-container {
-                .header {
-                    margin: 0;
-                }
-                .post {
-                    margin: 0;
-                }
-            }
-        }
-    }
-}
+// @media all and (max-width: $breakpoint) {
+//     inquiry-component {
+//         .banner {
+//             height: 160px;
+//             .banner-info {
+//                 padding: 2em;
+//                 .level {
+//                     font-size: 24px;
+//                 }
+//                 .desc {
+//                     font-size: 16px;
+//                 }
+//             }
+//         }
+//     }
+// }
+// @media all and (min-width: $breakpoint) {
+//     inquiry-component {
+//         main {
+//             margin-left:auto;
+//             margin-right: auto;
+//             width: 100%;
+//             max-width: 980px;
+//             .post-list-container {
+//                 .header {
+//                     margin: 0;
+//                 }
+//                 .post {
+//                     margin: 0;
+//                 }
+//             }
+//         }
+//     }
+// }
