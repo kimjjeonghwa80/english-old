@@ -1,4 +1,13 @@
 
 header-component {
     display: block;
+    header {
+        nav.navbar {
+            padding: 0;
+            
+            .menu {
+                padding: .3em;
+            }
+        }
+    }
 }
