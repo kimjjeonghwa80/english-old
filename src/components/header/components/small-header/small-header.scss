@@ -1,0 +1,81 @@
+
+header-component .small .navbar {
+    padding: 0;
+    border-top: 5px solid #44bddf;
+    background-color: #ffffff;
+
+
+
+    .logo img {
+        cursor: pointer;
+        display: block;
+        margin: 0 auto 8px;
+        max-width: 260px;
+    } //.logo img
+
+    .bottom {
+        margin: 0;
+        .menu {
+            color: #ffffff;
+            background-color: #3498db;
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                li {
+                    display: inline-block;
+                    cursor: pointer;
+                    .text {
+                        display: block;
+                        font-size: 1.25em;
+                    }
+                    .icon {
+                        display: block;
+                        font-size: 2.375em;
+                    }
+                }
+            }
+            
+        }
+        .panel {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition-duration: .3s;
+            &.active {
+                max-height: 450px;
+            }
+            .menus {
+                margin:0;
+                list-style: none;
+                color: #ffffff;
+                background-color: #2980b9;
+                .menu {
+                    cursor:pointer;
+                    background-color: #2980b9;
+                    font {
+                        font-size: 17px;
+                    }
+                    span {
+                        display: inline-block;
+                        
+                        i {
+                            color: $color_pallete6;
+                            &.fa-inverse {
+                                color: #15acd7;
+                            }
+                        }
+                    }
+                    &.active {
+                        color: #0bcc00;
+                    }
+                    &:hover {
+                        background-color:#3498db;
+                    }
+                }
+            }
+        }
+    }//.bottom
+}
+    
+

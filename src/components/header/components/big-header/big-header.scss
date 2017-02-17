@@ -1,0 +1,77 @@
+
+.big {
+    .navbar {
+        
+        .logo {
+            margin: 0;
+            padding-top: 30px;
+            width: 250px;
+            img {
+                width: 80%;
+            }
+        }
+        .bottom {
+            margin: 0;
+            padding-top: 30px;
+            position: absolute;
+            right: 0;
+            display: inline-block;
+            color: #045f9c;
+            background-color: rgba(0,0,0,0);
+            
+            .top-menu {
+                position: absolute;
+                top:0;
+                right: 0;
+                margin-right:.6em;
+                color:#fff;
+                ul {
+                    margin: 0;
+                    padding: 0;
+                    background-color: #44bddf;
+                    border-top-left-radius: -10px;
+                    border-bottom-left-radius: .5em;
+                    border-bottom-right-radius: .5em;
+                    li {
+                        padding: 0 1em;
+                        padding-bottom: .2em;
+                        display: inline-block;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .menus {
+                ul {
+                    margin: 0;
+                    padding: 0;
+                    
+                    li {
+                        display: inline-block;
+                        list-style: none;
+                        text-align: center;
+                        cursor: pointer;
+                        
+                        &.active {
+                            color: #d35400;
+                            font-weight: 600;
+                        }
+                        &:hover {
+                            color: #0e7ecc;
+                        }
+                        span {
+                            margin:0 auto;
+                            display: block;
+                            font-size: 1em;
+                            i {
+                                color: #15acd7 ;
+                                &.fa-inverse {
+                                    color: $color_pallete6;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
