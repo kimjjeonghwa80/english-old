@@ -6,9 +6,14 @@ $color_pallete5:#eeeeee;
 $color_pallete6:#ffffff;
 $minbreakpoint:575px;
 $breakpoint: 768px;
-$maxbreakpoint:990px;
+$maxbreakpoint:992px;
 $large_breakpoint:1240px;
 $gutter: 8px;
+//Bootstrap Breakpoint
+$sm_breakpoint:576px;
+$md_breakpoint:768px;
+$lg_breakpoint:992px;
+$xl_breakpoint:1200px;
 
 $header-height: 120px; // @attention - this value must match on header.ts
 $header-top-height: 36px;
