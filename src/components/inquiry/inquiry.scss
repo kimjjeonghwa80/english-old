@@ -2,6 +2,7 @@ inquiry-component {
     display: block;
     background-color: #FFFFFF;
     .my-banner {
+        padding-left: 1em;
         position: relative;
         overflow: hidden;
         height: 89px;
@@ -131,6 +132,9 @@ inquiry-component {
                     font-size:24px;
                 }
             }
+        }
+        @media(min-width:$xl_breakpoint) {
+            padding-left: 0;
         }
     }
     main {

@@ -4,6 +4,7 @@ level-test-component {
     #level-test {
         // Banner
         .my-banner {
+            padding-left: 1em;
             position: relative;
             overflow: hidden;
             height: 89px;
@@ -134,7 +135,10 @@ level-test-component {
                     }
                 }
             }
+        @media(min-width:$xl_breakpoint) {
+            padding-left: 0;
         }
+    }
 
         //Form
         .level-test-form {

@@ -1,5 +1,6 @@
 contact-component {
     .my-banner {
+        padding-left: 1em;
         position: relative;
         overflow: hidden;
         height: 89px;
@@ -234,7 +235,10 @@ contact-component {
                 }
             }
         }
+    @media(min-width:$xl_breakpoint) {
+        padding-left: 0;
     }
+}
     .contact-container {
         padding: 5em 0;
         background-color:#d8f1e4;
