@@ -1,6 +1,6 @@
 reservation-component {
     display: block;
-    background-color: #54c0f1;
+    background-color:#fff;
     .my-banner {
         position: relative;
         overflow: hidden;
@@ -153,15 +153,81 @@ reservation-component {
     }
    
     .reservation {
-        padding: 5em;
+        padding-top: 3em;
         padding-bottom: 0;
+        .reservation-container {
+            margin:0 auto;
+            width: 100%;
+            max-width: $lg_breakpoint;
+            table {
+                th {
+                    border: .3em solid #fff;
+                    text-align: center;
+                }
+                td {
+                    border: .3em solid #fff;
+                    text-align: center;
+                }
+                .calendar-day-head {
+                    background-color: #7d7d7d;
+                    color: #fff;
+                    &:first-child {
+                        background-color: #eaeaea;
+                        color: #000;
+                        max-width: 3em;
+                    }
+                    &:last-child {
+                        background-color: #eaeaea;
+                        color: #000;
+                        max-width: 3em;
+                    }
+                }
+                .calendar-day {
+                    background-color: #f1f1f1;
+                    &:first-child {
+                        background-color: #eaeaea;
+                        color: #fd0e35;
+                        max-width: 20px;
+                    }
+                    &:last-child {
+                        background-color: #eaeaea;
+                        color: #fd0e35;
+                        max-width: 20px;
+                    }
+                    @media(min-width:600px) {
+                        height: 60px;
+                    }
+                    @media(min-width:750px) {
+                        height: 85px;
+                    }
+                    @media(min-width:800px) {
+                        height: 100px;
+                    }
+                    
+                    
+                }
+            }
+        }
         .reminder-image {
+            // margin-bottom:-10em;
+            margin-top: -10em; 
             img {
                 display: block;
                 margin: 0 auto;
                 width: 70%;
-                top: 30%;
-                left: 10%;
+                max-width: 800px;
+                bottom: 0;
+                // top: 30%;
+                // left: 10%;
+            }
+            @media(min-width:$sm_breakpoint) {
+                margin-top: -15em;
+            }
+            @media(min-width:$md_breakpoint) {
+                margin-top: -20em;
+            }
+            @media(min-width:$lg_breakpoint) {
+                margin-top: -25em;
             }
         }
     }
