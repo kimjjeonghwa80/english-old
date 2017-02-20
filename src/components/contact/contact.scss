@@ -191,13 +191,13 @@ contact-component {
             }
         }
         .banner-info {
-            position: absolute;
-            display: inline-block;
-            width: 36%;
-            float: left;
-            left: 5px;
-            top: 0;
-            margin-top: 5%;
+            position: relative;
+            display: block;
+            margin:2em auto;
+            width: 100%;
+            max-width: $lg_breakpoint;
+            text-align: left;
+            color: #FFFFFF;
             .level {
                 display: block;
                 font-size: 16px;
@@ -224,8 +224,6 @@ contact-component {
                 }
             }
             @media all and(min-width:980px) {
-                left:10%;
-                width: 36%;
                 .level {
                     
                     margin-bottom: 18px;
