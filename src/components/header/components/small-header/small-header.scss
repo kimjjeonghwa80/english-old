@@ -26,6 +26,7 @@ header-component .small .navbar {
                         font-size: 1.25em;
                     }
                     .icon {
+                        padding-left: .5em;
                         display: block;
                         font-size: 2.375em;
                     }
@@ -43,10 +44,12 @@ header-component .small .navbar {
             }
             .menus {
                 margin:0;
+                padding: 0;
                 list-style: none;
                 color: #ffffff;
                 background-color: #2980b9;
                 .menu {
+                    padding-left: 1em;
                     cursor:pointer;
                     background-color: #2980b9;
                     font {
