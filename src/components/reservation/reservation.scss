@@ -153,13 +153,13 @@ reservation-component {
     }
    
     .reservation {
-        padding-top: 3em;
-        padding-bottom: 0;
+        margin:5em auto auto;
+        width: 100%;
+        max-width: $lg_breakpoint;
         .reservation-container {
-            margin:0 auto;
-            width: 100%;
-            max-width: $lg_breakpoint;
+            
             table {
+                font-size: .8em;
                 th {
                     border: .3em solid #fff;
                     text-align: center;
@@ -171,40 +171,65 @@ reservation-component {
                 .calendar-day-head {
                     background-color: #7d7d7d;
                     color: #fff;
+                    max-width: 3em;
                     &:first-child {
                         background-color: #eaeaea;
                         color: #000;
                         max-width: 3em;
+                        @media(min-width:$md_breakpoint) {
+                            width: auto;
+                            max-width: 1em;
+                        }
                     }
                     &:last-child {
                         background-color: #eaeaea;
                         color: #000;
                         max-width: 3em;
+                        @media(min-width:$md_breakpoint) {
+                            width: auto;
+                            max-width: 1em;
+                        }
+                    }
+                    @media(min-width:$md_breakpoint) {
+                        width: auto;
                     }
                 }
                 .calendar-day {
                     background-color: #f1f1f1;
+                    max-width: 3em;
                     &:first-child {
                         background-color: #eaeaea;
                         color: #fd0e35;
-                        max-width: 20px;
+                        max-width: 3em;
+                        @media(min-width:$md_breakpoint) {
+                            width: auto;
+                            max-width: 1em;
+                        }
                     }
                     &:last-child {
                         background-color: #eaeaea;
                         color: #fd0e35;
-                        max-width: 20px;
+                        max-width: 3em;
+                        @media(min-width:$md_breakpoint) {
+                            width: auto;
+                            max-width: 1em;
+                        }
                     }
-                    @media(min-width:600px) {
+                    @media(min-width:$sm_breakpoint) {
                         height: 60px;
                     }
-                    @media(min-width:750px) {
+                    @media(min-width:$md_breakpoint) {
+                        width: auto;
                         height: 85px;
                     }
-                    @media(min-width:800px) {
+                    @media(min-width:$lg_breakpoint) {
                         height: 100px;
                     }
                     
                     
+                }
+                @media(min-width:$md_breakpoint) {
+                    font-size: 1em;
                 }
             }
         }
