@@ -14,7 +14,8 @@ intro-component {
     .intro-container {
             margin-left: auto;
             margin-right: auto; 
-            width: 80%;
+            width: 100%;
+            max-width: $lg_breakpoint;
             display: block;
         .info-title {
             color: $color_pallete7;
