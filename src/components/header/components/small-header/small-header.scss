@@ -2,6 +2,10 @@
 header-component .small .navbar {
     border-top: 5px solid #44bddf;
     background-color: #ffffff;
+    .logo {
+        width: 100%;
+        height: 110%;
+    }
     .logo img {
         cursor: pointer;
         display: block;
