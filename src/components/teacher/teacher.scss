@@ -7,19 +7,22 @@ teacher-component {
         padding: 1em;
         text-align: center;
     }
-    .load-more {
-        margin: 2em;
-        margin-left:auto;
-        margin-right:auto;
-        border-radius: 0.1875em;
-        padding: 0.875em 1.25em;
-        width: 100%;
-        font-size: 1em;
-        letter-spacing: 0.1875em;
-        color: #FFFFFF;
-        background-color: #3498db;
-        text-align: center;
-        cursor: pointer;
+    .load {
+        padding: 0 .3em;
+        .load-more {
+            margin: 2em;
+            margin-left:auto;
+            margin-right:auto;
+            border-radius: 0.1875em;
+            padding: 0.875em 1.25em;
+            width: 100%;
+            font-size: 1em;
+            letter-spacing: 0.1875em;
+            color: #FFFFFF;
+            background-color: #3498db;
+            text-align: center;
+            cursor: pointer;
+        }
     }
     .teachers {
         position: relative;

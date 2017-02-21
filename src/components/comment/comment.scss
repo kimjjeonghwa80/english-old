@@ -6,7 +6,8 @@ comment-component {
         padding-bottom:0;
         margin-left: auto;
         margin-right: auto; 
-        width: 80%;
+        width: 100%;
+        max-width: $lg_breakpoint;
         display: block;
         .img-comment {
             padding: 1em;
