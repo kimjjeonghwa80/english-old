@@ -9,6 +9,9 @@ comment-component {
         width: 100%;
         max-width: $lg_breakpoint;
         display: block;
+        .row {
+            margin:0;
+        }
         .comment-content {
             padding: 2em;
         }

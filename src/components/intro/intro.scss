@@ -18,6 +18,7 @@ intro-component {
         max-width: $lg_breakpoint;
         display: block;
         .intro-content {
+            margin:0;
             @media (min-width:$md_breakpoint) {
                 padding: 1em;
             }
