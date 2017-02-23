@@ -242,6 +242,9 @@ contact-component {
     .contact-container {
         padding: 5em 0;
         background-color:#d8f1e4;
+        .row {
+            margin:0;
+        }
         .contact-content {
             .logo {
                 margin-bottom: 1em;

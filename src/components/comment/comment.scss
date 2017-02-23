@@ -9,6 +9,12 @@ comment-component {
         width: 100%;
         max-width: $lg_breakpoint;
         display: block;
+        .row {
+            margin:0;
+        }
+        .comment-content {
+            padding: 2em;
+        }
         .img-comment {
             padding: 1em;
             padding-bottom: 0;
@@ -27,7 +33,7 @@ comment-component {
                     max-height: auto;
                     height: auto;
                     bottom: 0;
-                    left: 0;
+                    left: 1em;
                 }
             }
         }
