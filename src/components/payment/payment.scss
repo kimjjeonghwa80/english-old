@@ -153,6 +153,7 @@ payment-component {
                     display: inline-block;
                     padding: .7em;
                     .total {
+                        margin:0 .2em;
                         padding: .4em;
                         background-color: #00a0d2;
                         color: white;
@@ -160,8 +161,15 @@ payment-component {
                         font-family: "Malgun Gothic", serif;
                         cursor: pointer;
                         text-align: center;
+                        @media (min-width: $breakpoint) {
+                            margin: 0;
+                        }
                     }
                     .pay-button {
+                        padding: 0 .2em;
+                        @media (min-width: $breakpoint) {
+                            padding: 0;
+                        }
                         input {
                             margin-top:1em; 
                             background-color: #4f160d;

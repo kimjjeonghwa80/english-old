@@ -12,11 +12,16 @@ intro-component {
     background-color: #EDEDED;
     padding: 3em 0;
     .intro-container {
-            margin-left: auto;
-            margin-right: auto; 
-            width: 100%;
-            max-width: $lg_breakpoint;
-            display: block;
+        margin-left: auto;
+        margin-right: auto; 
+        width: 100%;
+        max-width: $lg_breakpoint;
+        display: block;
+        .intro-content {
+            @media (min-width:$md_breakpoint) {
+                padding: 1em;
+            }
+        }
         .info-title {
             color: $color_pallete7;
             text-align: center;
@@ -26,9 +31,11 @@ intro-component {
             margin-bottom: 1.875rem;
             font-size: 1.1em;
             color: $color_pallete7;
-            text-align: center; 
+            text-align: center;
+            padding:0 .5em;
         }
         .intro-img {
+            padding:0 .5em;
             img {
                 width: 100%;
                 height: auto;

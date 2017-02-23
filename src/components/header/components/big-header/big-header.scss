@@ -14,10 +14,12 @@ header-component .big .navbar {
     .logo {
         margin: 0;
         padding-top: 3em;
-        width: 250px;
+        width: 180px;
         cursor: pointer;
         img {
-            width: 80%;
+            margin-left: .5em;
+            width: 100%;
+            max-width: 180px;
         }
     }
     .bottom {
@@ -55,7 +57,10 @@ header-component .big .navbar .bottom .top-menu {
 header-component .big .navbar .bottom .menus {
     ul {
         margin: 1em 0;
-        padding: 0;  
+        padding: 0;
+        @media ( min-width:$md_breakpoint ) {
+            margin-right:.5em;
+        }   
     }
     ul li {
         display: inline-block;
