@@ -42,9 +42,7 @@ curriculum-component {
         .collection {
             margin-left:auto;
             margin-right:auto;
-            padding: 2em;
-            padding-top: 1.2em;
-            padding-bottom: 1.8em;
+            
             border-radius: 3px;
             width: 98%;
             max-width: 980px;
@@ -54,15 +52,11 @@ curriculum-component {
             }
             
             .inner-row {
-                @media all and (max-width: $breakpoint) {
-                        margin:10px 5px 20px;
-                }
                 height: 25em;
                 overflow-y: hidden;
                 background-color: #fff;
                 text-align: left;
                 border-radius: 6px;
-                margin: .6em .3em 1.25em;
                 img {
                     margin-bottom: 1.625em;
                     width: 100%;
@@ -89,9 +83,6 @@ curriculum-component {
                 }
                 
                 .inner-row {
-                    @media all and (max-width: $breakpoint) {
-                            margin:10px 5px 20px;
-                    }
                     height: 25em;
                     overflow-y: hidden;
                     background-color: #fff;
@@ -120,7 +111,7 @@ curriculum-component {
                 }
             }
             .load {
-                padding:0 .3em;
+                margin: .8em 0;
             }
             .load-more {
                 padding: 0.875em 1.25em;
@@ -130,11 +121,37 @@ curriculum-component {
                 color: #FFFFFF;
                 background-color: #3498db;
                 text-align: center;
-                width: 100%;
-                margin-left:auto;
-                margin-right:auto;
                 cursor: pointer;
             }
         }
     }
+
+
+
+} // eo curriculum-component.
+
+
+// layout of curriclum
+$padding-books: .8em;
+.curriculum-container {
+    .collection {
+        padding-left: $padding-books;
+    }
+    .inner-row {
+        margin: $padding-books $padding-books 0 0;
+    }
+    .load-more {
+        margin-right: $padding-books;
+    }
 }
+
+$padding-big-books: 1.2em;
+.big .curriculum-container {
+    .collection {
+        padding-left: $padding-big-books;
+    }
+    .inner-row {
+        margin: $padding-big-books $padding-big-books 0 0;
+    }   
+}
+// eo layout of curriculum

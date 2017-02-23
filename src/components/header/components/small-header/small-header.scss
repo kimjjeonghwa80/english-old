@@ -24,16 +24,19 @@ header-component .small .navbar {
                 list-style: none;
                 margin: 0;
                 padding: 0;
+                overflow: auto;
                 li {
-                    display: inline-block;
+                    float: left;
+                    padding: 0;
                     cursor: pointer;
                     .text {
                         display: block;
+                        padding: .22em .6em .22em 0;
                         font-size: 1.25em;
                     }
                     .icon {
-                        padding-left: .5em;
                         display: block;
+                        padding: 0 .3em;
                         font-size: 2.375em;
                     }
                 }
@@ -55,15 +58,16 @@ header-component .small .navbar {
                 color: #ffffff;
                 background-color: #2980b9;
                 .menu {
-                    padding-left: 1em;
+                    padding: .4em 0 .4em 1em;
+                    overflow: auto;
                     cursor:pointer;
                     background-color: #2980b9;
                     font {
-                        font-size: 17px;
+                        font-size: 1.01rem;
                     }
-                    span {
-                        display: inline-block;
-                        
+                    .menu-img {
+                        display: block;
+                        float: left;
                         i {
                             color: $color_pallete6;
                             &.fa-inverse {
@@ -71,12 +75,21 @@ header-component .small .navbar {
                             }
                         }
                     }
+                    .text {
+                        display: block;
+                        float: left;
+                        padding: .4em 0 0 .5em;
+                        font-size: 1.2em;
+                    }
                     &.active {
                         color: #0bcc00;
                     }
                     &:hover {
                         background-color:#3498db;
                     }
+                }
+                .menu:first-child {
+                    margin-top: .1em; // space between main menu and panel.
                 }
             }
         }

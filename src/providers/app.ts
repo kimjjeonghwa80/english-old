@@ -92,6 +92,7 @@ export class App {
             for ( let i = 0, len = nodesArray.length; i < len; i ++ ) {
                 let el = nodesArray[i];
                 let pos = this.getOffset( el );
+                if ( el.id == 'intro' ) pos.top = 0;
                 parts.push( { id: el.id, top: pos.top } );
             }
         }
