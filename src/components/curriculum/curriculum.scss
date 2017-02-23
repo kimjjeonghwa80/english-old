@@ -18,7 +18,7 @@ curriculum-component {
             font-size: 2.1875em;
             max-width: 425px;
             width: 100%;
-            border-radius: 0.3125rem;
+            // border-radius: 0.3125rem;
             background-color: rgba(255,255,255,.75);
         }
         .more-text {
@@ -29,7 +29,7 @@ curriculum-component {
             span {
                 display: inline-block;
                 margin-bottom: 3.125em;
-                border-radius: 0.1875em;
+                // border-radius: 0.1875em;
                 padding: 0.875em 1.25em;
                 font-size: 18px;
                 letter-spacing: 0.1875em;
@@ -43,7 +43,7 @@ curriculum-component {
             margin-left:auto;
             margin-right:auto;
             
-            border-radius: 3px;
+            // border-radius: 3px;
             width: 98%;
             max-width: 980px;
             background-color: #ededed;
@@ -56,7 +56,7 @@ curriculum-component {
                 overflow-y: hidden;
                 background-color: #fff;
                 text-align: left;
-                border-radius: 6px;
+                // border-radius: 6px;
                 img {
                     margin-bottom: 1.625em;
                     width: 100%;
@@ -87,7 +87,7 @@ curriculum-component {
                     overflow-y: hidden;
                     background-color: #fff;
                     text-align: left;
-                    border-radius: 6px;
+                    // border-radius: 6px;
                     margin: 0.625rem 0.625rem 1.25rem;
                     img {
                         margin-bottom: 1.625em;
@@ -117,7 +117,7 @@ curriculum-component {
                 padding: 0.875em 1.25em;
                 font-size: 1em;
                 letter-spacing: 0.1875em;
-                border-radius: 0.1875em;
+                // border-radius: 0.1875em;
                 color: #FFFFFF;
                 background-color: #3498db;
                 text-align: center;
@@ -136,6 +136,7 @@ $padding-books: .8em;
 .curriculum-container {
     .collection {
         padding-left: $padding-books;
+        overflow: hidden;
     }
     .inner-row {
         margin: $padding-books $padding-books 0 0;
