@@ -34,9 +34,11 @@ export class HeaderComponent implements OnInit {
 
         // this.onClickRegister();
     }
+
     ngOnInit() {
         this.onClickRegister();
     }
+
     onClickLogin(){
         let modalRef = this.modal.open( LoginModal );
         // modalRef.result.then( (x) => {
@@ -49,6 +51,9 @@ export class HeaderComponent implements OnInit {
         // }).catch( () => console.log('exit') );
 
     }
+
+
+    
     onClickGotoClassRoom(){
         // window.open(
         //     `https://video.withcenter.com/room/${this.user.loginUser.name}/testroom`,

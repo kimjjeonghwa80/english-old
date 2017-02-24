@@ -3,6 +3,12 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { App } from '../../providers/app';
 import { LMS, TEACHERS } from '../../providers/lms';
 import { ReservationComponent } from './../../components/reservation/reservation';
+
+
+import * as _ from 'angular-backend';
+
+
+
 @Component( {
     selector: 'home-page',
     templateUrl: 'home.html'
@@ -22,6 +28,11 @@ export class HomePage implements AfterViewInit {
         //if( this.user.loggedIn ) this.getReservation();
 
         //this.listenevent();
+
+
+        //_.version();
+        
+
 
     }
 
