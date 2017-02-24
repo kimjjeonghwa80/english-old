@@ -1,12 +1,12 @@
 
 login-component{
 
-    @mixin button-size() {
-        margin: 0 0 20px;
-        padding: 7px 22px;
-        width: 135px;
-        height: 34px;
-    }
+    // @mixin button-size() {
+    //     margin: 0 0 20px;
+    //     padding: 7px 22px;
+    //     width: 135px;
+    //     height: 34px;
+    // }
 
     // Module -- Component -- Narrow
     .login-modal {
@@ -18,9 +18,7 @@ login-component{
         .modal-body {
 
             .form-container {
-                margin-top: 1.5em;
-                margin-left: auto;
-                margin-right: auto;
+                margin:1em auto;
                 border: solid 1px #eee;
                 padding: 30px;
                 color: #555;
@@ -39,32 +37,41 @@ login-component{
                 .save-id {
                     padding-top: 1em;
                 }
-                .login {
-                    padding-top: .4em;
-                    .btn {
-                        margin: 0 0 20px;
-                        padding: 7px 22px;
-                        background-color:#f15f4c;
-                        cursor: pointer;
+                // .login {
+                //     padding-top: 1em;
+                //     .btn {
+                //         margin: 0 0 20px;
+                //         padding: 7px 22px;
+                //         background-color:#f15f4c;
+                //         cursor: pointer;
                         
-                        &:focus {
-                            color: white;
-                        }
-                    }
-                }
+                //         &:focus {
+                //             color: white;
+                //         }
+                //     }
+                // }
 
-                .id-password{
-                    button {
-                        margin: 0 0 20px;
-                        padding: 7px 22px;
-                        background-color: #45c1ae;
-                        border-color: #3bb19f;
-                        cursor: pointer;
-                    }
-                }
+                // .id-password{
+                //     button {
+                //         margin: 0 0 20px;
+                //         padding: 7px 22px;
+                //         background-color: #45c1ae;
+                //         border-color: #3bb19f;
+                //         cursor: pointer;
+                //     }
+                // }
                 .info {
                     text-align: center;
                     font-weight: bold;
+                }
+                .button-signin {
+                    padding-top:1em;
+                    .btn {
+                        background-color: #f15f4c;
+                        border-color: #f15f4c;
+                        color: white;
+                        cursor: pointer;
+                    }
                 }
                 .button-signup {
                     .btn {
@@ -73,24 +80,7 @@ login-component{
                         cursor: pointer;
                     }
                 }
-
-                // Wide
-                @media all and (min-width: $breakpoint) {
-                    width: 362px;
-                    .save-id {
-                        padding-top: 1.3em;
-                    }
-                    .login {
-                        padding-top: 1em;
-                        .btn {
-                            @include button-size();
-                        }
-                    }
-                }
-
-
             }
         }
     }
-    
 }

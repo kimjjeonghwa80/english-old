@@ -25,7 +25,7 @@ export class RegisterComponent{
     ) {
 
         this.login = this.user.isLogin();
-
+        this.form.gender = ""; //Default Select gender
         // this.fakeData();
         // this.register();
 

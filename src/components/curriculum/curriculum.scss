@@ -50,17 +50,18 @@ curriculum-component .curriculum-container {
     }
     .more-text {
         margin:0 auto;
-        max-width: 165px;
+        margin-bottom: 3.125em;
+        max-width: 200px;
         width: 100%; 
+        background-color: #F46516;
+        color: #FFFFFF;
+        text-align: center;
         span {
             display: inline-block;
-            margin-bottom: 3.125em;
             padding: 0.9em 1.3em;
             font-size: 1.3em;
             letter-spacing: 0.2em;
             cursor: pointer;
-            background-color: #F46516;
-            color: #FFFFFF;
             text-decoration: none;
         }
     }
