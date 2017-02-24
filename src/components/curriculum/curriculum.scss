@@ -1,153 +1,32 @@
+//Variables
+$padding-books: .8em;
+$padding-big-books: 1.2em;
+// layout of small curriclum-component
 curriculum-component {
     display: block;
     background-repeat: no-repeat;
     background-image: url("/assets/img/course.jpg");
     background-color: #5c6670;
-    .curriculum-container {
-        padding-top:2em;
-        padding-bottom: 2em;
-        .row {
-            margin:auto;
-        } 
-        .info-text {
-            margin-left:auto;
-            margin-right:auto;
-            margin-bottom:1em; 
-            padding: 0.5rem 2.8125rem 0.8125rem;
-            color: #334353;
-            font-size: 2.1875em;
-            max-width: 425px;
-            width: 100%;
-            // border-radius: 0.3125rem;
-            background-color: rgba(255,255,255,.75);
-        }
-        .more-text {
-            margin-left:auto;
-            margin-right:auto;
-            width: 162px; 
-            display: block;
-            span {
-                display: inline-block;
-                margin-bottom: 3.125em;
-                // border-radius: 0.1875em;
-                padding: 0.875em 1.25em;
-                font-size: 18px;
-                letter-spacing: 0.1875em;
-                cursor: pointer;
-                color: #FFFFFF;
-                background-color: #F46516;
-                text-decoration: none;
-            }
-        }
-        .collection {
-            margin-left:auto;
-            margin-right:auto;
-            
-            // border-radius: 3px;
-            width: 98%;
-            max-width: 980px;
-            background-color: #ededed;
-            .mybook {
-                padding: 0;
-            }
-            
-            .inner-row {
-                height: 25em;
-                overflow-y: hidden;
-                background-color: #fff;
-                text-align: left;
-                // border-radius: 6px;
-                img {
-                    margin-bottom: 1.625em;
-                    width: 100%;
-                    height: auto;
-                }
-                .title {
-                    margin-bottom: 1.0625em;
-                    padding: 0 0.8125rem;
-                    font-size: 1.125em;
-                    color: #2b2b2b;
-                }
-                .desc {
-                    padding: 0 0.8125em;
-                    margin-bottom: 1.5em;
-                    height: 9.6875rem;
-                    overflow-y: hidden;
-                    font-size: 0.9375em;
-                    color: #838383;
-                }
-            }
-            .more-book {
-                .mybook {
-                    padding: 0;
-                }
-                
-                .inner-row {
-                    height: 25em;
-                    overflow-y: hidden;
-                    background-color: #fff;
-                    text-align: left;
-                    // border-radius: 6px;
-                    margin: 0.625rem 0.625rem 1.25rem;
-                    img {
-                        margin-bottom: 1.625em;
-                        width: 100%;
-                        height: auto;
-                    }
-                    .title {
-                        margin-bottom: 1.0625em;
-                        padding: 0 0.8125rem;
-                        font-size: 1.125em;
-                        color: #2b2b2b;
-                    }
-                    .desc {
-                        padding: 0 0.8125em;
-                        margin-bottom: 1.5em;
-                        height: 9.6875rem;
-                        overflow-y: hidden;
-                        font-size: 0.9375em;
-                        color: #838383;
-                    }
-                }
-            }
-            .load {
-                margin: .8em 0;
-            }
-            .load-more {
-                padding: 0.875em 1.25em;
-                font-size: 1em;
-                letter-spacing: 0.1875em;
-                // border-radius: 0.1875em;
-                color: #FFFFFF;
-                background-color: #3498db;
-                text-align: center;
-                cursor: pointer;
-            }
-        }
-    }
-
-
-
-} // eo curriculum-component.
-
-
-// layout of curriclum
-$padding-books: .8em;
-.curriculum-container {
+}
+curriculum-component .curriculum-container {
+    padding-top:2em;
+    padding-bottom: 2em;
+    .row {
+        margin:auto;
+    } 
     .collection {
+        margin-left:auto;
+        margin-right:auto;
         padding-left: $padding-books;
+        width: 98%;
+        max-width: 980px;
+        background-color: #ededed;
         overflow: hidden;
-    }
-    .inner-row {
-        margin: $padding-books $padding-books 0 0;
-    }
-    .load-more {
-        margin-right: $padding-books;
     }
 }
 
-$padding-big-books: 1.2em;
-.big .curriculum-container {
+// layout of big curriclum-component
+.big curriculum-component .curriculum-container {
     .collection {
         padding-left: $padding-big-books;
     }
@@ -155,4 +34,75 @@ $padding-big-books: 1.2em;
         margin: $padding-big-books $padding-big-books 0 0;
     }   
 }
-// eo layout of curriculum
+// eo layout of big curriculum-component
+
+//Curriculum Design
+curriculum-component .curriculum-container {
+    .info-text {
+        margin: 0 auto 1em;
+        padding: .5em 1em;
+        text-align: center;
+        font-size: 2.2em;
+        max-width: 425px;
+        width: 100%;
+        background-color: rgba(255,255,255,.75);
+        color: #334353;
+    }
+    .more-text {
+        margin:0 auto;
+        max-width: 165px;
+        width: 100%; 
+        span {
+            display: inline-block;
+            margin-bottom: 3.125em;
+            padding: 0.9em 1.3em;
+            font-size: 1.3em;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            background-color: #F46516;
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+    }
+     .collection .mybook {
+        padding: 0;
+    }
+    .collection .inner-row {
+        margin: $padding-books $padding-books 0 0;
+        height: 25em;
+        text-align: left;
+        overflow-y: hidden;
+        background-color: #fff;
+        .book-image {
+            margin-bottom: 1.6em;
+            width: 100%;
+        }
+        .title {
+            margin-bottom: 1.1em;
+            padding: 0 0.8em;
+            font-size: 1.125em;
+            color: #2b2b2b;
+        }
+        .desc {
+            padding: 0 0.8em;
+            margin-bottom: 1.5em;
+            height: 9.7em;
+            font-size: 0.95em;
+            color: #838383;
+            overflow-y: hidden;
+        }
+    }
+    .collection .load {
+        margin: .8em 0;
+        .load-more {
+            margin-right: $padding-books;
+            padding: 0.875em 1.25em;
+            font-size: 1em;
+            letter-spacing: 0.1875em;
+            background-color: #3498db;
+            color: #FFFFFF;
+            text-align: center;
+            cursor: pointer;
+        }
+    }
+}
