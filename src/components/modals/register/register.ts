@@ -15,17 +15,18 @@ export class RegisterComponent{
 
     isIDexists  :boolean;
     loading     : boolean = false;
-    form = <USER_REGISTER_REQUEST_DATA> {};
+    //form = <USER_REGISTER_REQUEST_DATA> {};
+    form = {};
     login: boolean = false;
     constructor (
         private app          : App,
         private activeModal  : NgbActiveModal,
-        private lms          : LMS,
-        private user        : User
+        private lms          : LMS
+        //private user        : User
     ) {
 
-        this.login = this.user.isLogin();
-        this.form.gender = ""; //Default Select gender
+        //this.login = this.user.isLogin();
+        this.form['gender'] = ""; //Default Select gender
         // this.fakeData();
         // this.register();
 
@@ -53,6 +54,7 @@ export class RegisterComponent{
 
     fakeData() {
         let id = 'user' + (new Date).getHours() + (new Date).getMinutes() + (new Date).getSeconds();
+        /*
         this.form.id = id;
         this.form.email = id + '@gmail.com';
         this.form.name = id;
@@ -60,6 +62,7 @@ export class RegisterComponent{
         this.form.mobile = '09174678000';
         this.form.gender = 'M';
         this.form.birthday = '1990-12-30';
+        */
     }
 
     onClickDismiss() {
@@ -67,10 +70,12 @@ export class RegisterComponent{
     }
 
     ngOnInit(){
+        /*
         if ( this.user.isLogin() ) {
             console.log( 'logged in' );
             this.getUserData();
         }
+        */
     }
 
 
@@ -99,6 +104,8 @@ export class RegisterComponent{
 
             if( this.isIDexists == false ) return this.app.alert('id already in used');
             if ( this.validate() == false ) return;
+
+            /*
             console.log('form :: ' + JSON.stringify(this.form))
             console.log("Going to create user : " + this.form.name);
             this.loading = true;
@@ -111,6 +118,7 @@ export class RegisterComponent{
                 (e) => this.app.alert(`create ${this.form.name}: failure:`+ e),
                 () => { this.loading = false; console.log(`create ${this.form.name} : complete`); } );
 
+*/
 
     }
 
@@ -139,6 +147,7 @@ export class RegisterComponent{
 
     updateProfile( callback ){
         this.loading = true;
+        /*
         let data : USER_UPDATE_REQUEST_DATA ={
             name: this.form.name,
             nickname: this.form.nickname,
@@ -155,6 +164,7 @@ export class RegisterComponent{
         this.user.update( data, res =>{
             console.info( 'updated profile' + res );
         }, err =>console.error( 'error on update ' + err ), ()=>{});
+        */
     }
 
     updateLMSprofile(){
@@ -166,7 +176,7 @@ export class RegisterComponent{
 
     validate() {
         console.log('form: ', this.form);
-
+/*
 
 
         if ( ! this.form.id ) return this.validateError('ID');
@@ -178,7 +188,7 @@ export class RegisterComponent{
         if ( ! this.form.mobile ) return this.validateError('Mobile');
         if ( ! this.form.gender ) return this.validateError('Gender');
         if ( ! this.form.birthday ) return this.validateError('birthday');
-
+*/
         return true;
     }
 

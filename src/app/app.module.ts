@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { App } from '../providers/app';
 
 import { AppComponent } from './app.component';
-import { BackendAngularApiModule } from './../backend-angular-api/backend-angular-api.module';
+//import { BackendAngularApiModule } from './../backend-angular-api/backend-angular-api.module';
 
 import { HomePage } from '../pages/home/home';
 import { HelpPage } from '../pages/help/help';
@@ -82,7 +82,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot( appRoutes, { useHash: !history.pushState }),
     NgbModule.forRoot(),
     FormsModule,
-    BackendAngularApiModule
+    //BackendAngularApiModule
   ],
   bootstrap: [ AppComponent ],
   providers: [ App, NgbActiveModal, LMS ],
