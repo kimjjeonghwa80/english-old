@@ -69,19 +69,20 @@ teacher-component {
                 }
             }
             .name {
+                margin:0.9em 0 0 5.5em;
                 display: block;
-                font-size: 25px;
+                font-size: 1.7em;
                 color: #FFFFFF;
-                margin: 15px 0 5px 120px;
             }
             .major {
+                margin: .5em 0 0 5.5em;
                 display: block;
-                font-size: 20px;
+                font-size: 1.7em;
                 color: #FFFFFF;
-                margin-left: 120px;
             }
             .greeting {
-                font-size: 16px;
+                margin-top:2em;
+                font-size: 1.5em;
                 color: black;
                 h1,h2,h3,h4,h5,h6,strong,kbd {
                     font-style: normal;
