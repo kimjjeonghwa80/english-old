@@ -29,7 +29,7 @@ export class LMS {
     getTeachers( success: (teachers: TEACHERS) => void ) {
         let url = LMS_ENDPOINT_URL + "?function=teacher_list";
         this.http.get( url ).subscribe( re => {
-            console.log(re);
+            // console.log(re);
             let json = null;
             try {
                 json = JSON.parse( re['_body'] );
@@ -38,7 +38,7 @@ export class LMS {
                 alert("Parse ERROR on lms::getTeachers()");
             }
 
-            console.log(json);
+            //console.log(json);
             success( json['data'] );
         });
     }

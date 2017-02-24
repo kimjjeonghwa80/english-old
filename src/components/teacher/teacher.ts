@@ -26,7 +26,7 @@ export class TeacherComponent {
             });
         }
         this.temp = this.teachers;
-        console.log(this.temp);
+        //console.log(this.temp);
         this.teachers = _.take( this.teachers, 6);
     }
     // changeHttpToHttps( data ) {

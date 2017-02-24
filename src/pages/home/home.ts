@@ -3,11 +3,7 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { App } from '../../providers/app';
 import { LMS, TEACHERS } from '../../providers/lms';
 import { ReservationComponent } from './../../components/reservation/reservation';
-
-
-import * as _ from 'angular-backend';
-
-
+import { Test } from './../../angular-backend/test';
 
 @Component( {
     selector: 'home-page',
@@ -20,7 +16,8 @@ export class HomePage implements AfterViewInit {
     @ViewChild('reservation') reservation: ReservationComponent;
     constructor(
         public app: App,
-        private lms: LMS
+        private lms: LMS,
+        test: Test
     ) {
         // testAll.run();
         this.lms.getTeachers( teachers => this.teachers = teachers );
@@ -32,6 +29,7 @@ export class HomePage implements AfterViewInit {
 
         //_.version();
         
+
 
 
     }

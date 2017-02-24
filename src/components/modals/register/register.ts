@@ -4,8 +4,8 @@ import { App } from '../../../providers/app';
 
 import { LMS } from '../../../providers/lms';
 
-import { USER_REGISTER_REQUEST_DATA, USER_UPDATE_REQUEST_DATA } from './../../../backend-angular-api/interface';
-import { User } from './../../../backend-angular-api/user';
+import { USER_REGISTER_REQUEST_DATA, USER_UPDATE_REQUEST_DATA } from './../../../angular-backend/interface';
+import { User } from './../../../angular-backend/user';
 @Component({
     selector:'register-component',
     templateUrl: 'register.html'
@@ -13,21 +13,22 @@ import { User } from './../../../backend-angular-api/user';
 
 export class RegisterComponent{
 
-    isIDexists  :boolean;
+
     loading     : boolean = false;
-    //form = <USER_REGISTER_REQUEST_DATA> {};
-    form = {};
+    form = <USER_REGISTER_REQUEST_DATA> {};
+    //form = {};
     login: boolean = false;
     constructor (
         private app          : App,
         private activeModal  : NgbActiveModal,
-        private lms          : LMS
-        //private user        : User
+        private lms          : LMS,
+        private user         : User
     ) {
 
         //this.login = this.user.isLogin();
         this.form['gender'] = ""; //Default Select gender
-        // this.fakeData();
+        this.fakeData();
+        this.onClickRegister();
         // this.register();
 
 
@@ -54,7 +55,7 @@ export class RegisterComponent{
 
     fakeData() {
         let id = 'user' + (new Date).getHours() + (new Date).getMinutes() + (new Date).getSeconds();
-        /*
+        
         this.form.id = id;
         this.form.email = id + '@gmail.com';
         this.form.name = id;
@@ -62,7 +63,7 @@ export class RegisterComponent{
         this.form.mobile = '09174678000';
         this.form.gender = 'M';
         this.form.birthday = '1990-12-30';
-        */
+        
     }
 
     onClickDismiss() {
@@ -90,8 +91,9 @@ export class RegisterComponent{
 
 
 
-    onClickSubmit() {
+    onClickRegister() {
         this.register( callback => this.lmsRegister() );
+
 
     }
     onClickUpdate() {
@@ -100,15 +102,19 @@ export class RegisterComponent{
 
 
     register( callback? ) {
-        this.checkId( );
-
-            if( this.isIDexists == false ) return this.app.alert('id already in used');
+        
+        
+        
             if ( this.validate() == false ) return;
 
-            /*
-            console.log('form :: ' + JSON.stringify(this.form))
-            console.log("Going to create user : " + this.form.name);
             this.loading = true;
+
+            this.user.register( this.form ).subscribe( re => {
+                if ( this.user.base.isError( re ) ) return this.user.base.errorHandler( re );
+                console.log("user register success: ", re );
+            }, this.user.base.errorHandler );
+
+            /*
             this.user.register( this.form ,
                 uid => {
                     console.log(`create ${this.form.name} : success`);
@@ -130,20 +136,7 @@ export class RegisterComponent{
         }, error => console.error(' error on registration ' + error ) )
     }
 
-    /**
-     * @description: this method is for checking if user id exists.
-     *
-     * @description: it'll set isIDexists to false if the key exists and true if not.
-     */
-    checkId(){
-        //let userid:string;
-        // this.user.get( 'id/'+this.form.id , res =>{
-        //     userid = res;
-        //     this.isIDexists = false;
-        // }, error => this.isIDexists = true )
 
-
-    }
 
     updateProfile( callback ){
         this.loading = true;
