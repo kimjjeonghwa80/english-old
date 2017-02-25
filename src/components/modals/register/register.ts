@@ -4,7 +4,12 @@ import { App } from '../../../providers/app';
 
 import { LMS } from '../../../providers/lms';
 
-import { USER_REGISTER_REQUEST_DATA, USER_UPDATE_REQUEST_DATA } from './../../../angular-backend/interface';
+import {
+    RESPONSE,
+    USER_REGISTER_REQUEST_DATA,
+    USER_UPDATE_REQUEST_DATA,
+    USER_REGISTER_RESPONSE_DATA
+} from './../../../angular-backend/interface';
 import { User } from './../../../angular-backend/user';
 @Component({
     selector:'register-component',
@@ -18,6 +23,7 @@ export class RegisterComponent{
     form = <USER_REGISTER_REQUEST_DATA> {};
     //form = {};
     login: boolean = false;
+    result: RESPONSE = <RESPONSE> {};
     constructor (
         private app          : App,
         private activeModal  : NgbActiveModal,
@@ -27,7 +33,7 @@ export class RegisterComponent{
 
         //this.login = this.user.isLogin();
         this.form['gender'] = ""; //Default Select gender
-        //this.fakeData();
+        this.fakeData();
         //this.onClickRegister();
         // this.register();
 
@@ -104,28 +110,27 @@ export class RegisterComponent{
     register( callback? ) {
             if ( this.validate() == false ) return;
             this.loading = true;
-            this.user.register( this.form ).subscribe( re => {
-                if ( this.user.base.isError( re ) ) {
-                    this.loading = false;
-                    return this.user.base.errorHandler( re );
-                }
-                console.log("user register success: ", re );
-                this.loading = false;
-                this.activeModal.close();
-            }, this.user.base.errorHandler );
+            this.user.register( this.form ).subscribe( (res: any) => {
+                if ( this.user.base.isError( res ) ) this.error( res );
+                else this.success( res );
+            }, error => {
+                this.error( error );
+            } );
 
-            /*
-            this.user.register( this.form ,
-                uid => {
-                    console.log(`create ${this.form.name} : success`);
-                    this.activeModal.close();
-                    if ( callback ) callback();
-                },
-                (e) => this.app.alert(`create ${this.form.name}: failure:`+ e),
-                () => { this.loading = false; console.log(`create ${this.form.name} : complete`); } );
+    }
 
-*/
 
+    success( res: USER_REGISTER_RESPONSE_DATA) {
+        console.log("user register success: ", res );
+        this.loading = false;
+        this.activeModal.close();
+    }
+
+    error( error ) {
+        this.loading = false;
+        this.result = error;
+        console.log( this.result );
+        return this.user.base.errorHandler( error );
     }
 
 

@@ -4,8 +4,8 @@
   <div class="modal-header">
 
       <h5 class="modal-title">
-        <font class="modal-title" *ngIf=" ! login ">Register</font>
-        <font class="modal-title" *ngIf="   login ">Update</font>        
+        <font class="modal-title" *ngIf=" ! user.logged ">Register</font>
+        <font class="modal-title" *ngIf="   user.logged ">Profile Update</font>        
       </h5>
       <button type="button" class="close" aria-hidden="true" (click)="onClickDismiss()">
         <span aria-hidden="true">×</span>
@@ -17,8 +17,8 @@
       <div class="form-container"> 
         <form>
             <div>
-            <p class="form-title" *ngIf=" ! login ">Please Signup.</p>
-            <p class="form-title" *ngIf="   login ">Update Profile.</p>            
+            <p class="form-title" *ngIf=" ! user.logged ">Please Signup.</p>
+            <p class="form-title" *ngIf="   user.logged ">Update Profile.</p>            
             </div>
             <div class="input-group"  *ngIf=" ! login ">
                 <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
@@ -63,6 +63,10 @@
                     <option value="F">Female</option>
                     
                 </select>
+            </div>
+
+            <div class="row">
+                {{ result?.message }}
             </div>
             
             <div class="row">
