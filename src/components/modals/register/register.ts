@@ -102,16 +102,16 @@ export class RegisterComponent{
 
 
     register( callback? ) {
-        
-        
-        
             if ( this.validate() == false ) return;
-
             this.loading = true;
-
             this.user.register( this.form ).subscribe( re => {
-                if ( this.user.base.isError( re ) ) return this.user.base.errorHandler( re );
+                if ( this.user.base.isError( re ) ) {
+                    this.loading = false;
+                    return this.user.base.errorHandler( re );
+                }
                 console.log("user register success: ", re );
+                this.loading = false;
+                this.activeModal.close();
             }, this.user.base.errorHandler );
 
             /*

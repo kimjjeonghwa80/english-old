@@ -2,28 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { App } from '../../../providers/app';
-import { User } from '../../../backend-angular-api/user';
+import { User } from './../../../angular-backend/user';
 
 import { FindIdModal } from '../find-id/find-id';
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password';
 import { RegisterComponent } from '../register/register';
 
-//import { USER_LOGIN_REQUEST_DATA } from '../../../backend-angular-api/interface';
-
+import { USER_LOGIN_REQUEST_DATA } from './../../../angular-backend/interface';
 @Component({
     selector: 'login-component',
     templateUrl: 'login.html'
 })
 
-export class LoginModal implements OnInit{
-    saveid:boolean =false;
-    //form = <USER_LOGIN_REQUEST_DATA> {};
-    form = {};
+export class LoginModal implements OnInit {
+    loading: boolean = false;
+    saveid:boolean = false;
+    form = <USER_LOGIN_REQUEST_DATA> {};
+    // form = {};
     constructor( 
       public activeModal  : NgbActiveModal,
       private app: App,
-      private modal: NgbModal
-      // private user : User
+      private modal: NgbModal,
+      private user : User
       ){
           // this.onClickLogin();
       }
@@ -60,16 +60,28 @@ export class LoginModal implements OnInit{
 
   onClickLogin(){
       
-      //this.form.id = "user191559";
-      //this.form.password = this.form.id;
-      if( this.validate() == false ) return;
+        //this.form.id = "user191559";
+        //this.form.password = this.form.id;
+        //   if( this.validate() == false ) return;
 
-/*
-      this.user.login( this.form, res =>{
-        console.info( 'logged in :: login component :: ' + res );
-          this.activeModal.close();
-      }, err => console.error( ' failed to login ' + err ) );
-*/
+
+        //   this.user.login( this.form, res =>{
+        //     console.info( 'logged in :: login component :: ' + res );
+        //       this.activeModal.close();
+        //   }, err => console.error( ' failed to login ' + err ) );
+
+       if ( this.validate() == false ) return;
+        this.loading = true;
+        this.user.login( this.form ).subscribe( re => {
+            if ( this.user.base.isError( re ) ) 
+            {
+                this.loading = false;
+                return this.user.base.errorHandler( re );
+            }
+            console.log("user login success: ", re );
+            this.loading = false;
+            this.activeModal.close();
+        }, this.user.base.errorHandler );
   }
 
   onEnterLogin(event){
@@ -79,11 +91,9 @@ export class LoginModal implements OnInit{
   }
 
   validate(){
-      /*
       if( this.form.id.match(/[.#$\[\]]/g)) return this.validateError(' valid id ');
       if( ! this.form.id )return this.validateError( 'id ' );
       if( ! this.form.password ) return this.validateError( 'password ' );
-      */
       return true;
   }
 

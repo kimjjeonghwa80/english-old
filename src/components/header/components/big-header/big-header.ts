@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { App } from '../../../../providers/app';
+import { User } from './../../../../angular-backend/user';
 @Component({
     selector: 'big-header-component',
     templateUrl: 'big-header.html'
@@ -14,6 +15,7 @@ export class BigHeaderComponent {
     @Output() profile = new EventEmitter();
     @Output() classroom = new EventEmitter();
     constructor(
+        public user: User,
         public app: App
     ) {
 
