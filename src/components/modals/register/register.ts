@@ -61,8 +61,7 @@ export class RegisterComponent{
     }
 
     fakeData() {
-        let id = 'user' + (new Date).getHours() + (new Date).getMinutes() + (new Date).getSeconds();
-        
+        let id = 'user' + (new Date).getHours() + (new Date).getMinutes() + (new Date).getSeconds();  
         this.form.id = id;
         this.form.email = id + '@gmail.com';
         this.form.name = id;
@@ -104,6 +103,7 @@ export class RegisterComponent{
     register( callback? ) {
         if ( this.validate() == false ) return;
         this.loading = true;
+        
         this.user.register( this.form ).subscribe( (res: any) => {
             if ( this.user.base.isError( res ) ) this.error( res );
             else this.successRegister( res );
@@ -111,10 +111,27 @@ export class RegisterComponent{
             this.error( error );
         } );
     }
+    splitBirthday() {
+        if( this.form.birthday )
+        {
+            let date = this.form.birthday.split("-");
+            this.form.birth_year  = date[0];
+            this.form.birth_month = date[1];
+            this.form.birth_day   = date[2];
+        }
+    }
 
     getDataSuccess( res:any ) {
         console.log(res);
         this.form = res['data'].user;
+        this.form.birthday = this.concatBirthdate();
+    }
+    concatBirthdate() {
+        let month = this.form.birth_month;
+        let day =this.form.birth_day;
+        if( this.form.birth_month.length < 2 ) month = "0"+ month;
+        if( this.form.birth_day.length < 2 ) day = "0"+ day; 
+        return this.form.birth_year + "-" + month + "-" +day;
     }
     successRegister( res: USER_REGISTER_RESPONSE_DATA) {
         console.log("user register success: ", res );
@@ -141,11 +158,14 @@ export class RegisterComponent{
     updateProfile( callback ){
         if ( this.validate() == false ) return;
         this.loading = true;
+        this.splitBirthday();
         let data : USER_UPDATE_REQUEST_DATA = {
             name: this.form.name,
             nickname: this.form.nickname,
             mobile: this.form.mobile,
-            birthday: this.form.birthday,
+            birth_year: this.form.birth_year,
+            birth_month: this.form.birth_month,
+            birth_day: this.form.birth_day,
             gender: this.form.gender
         }
         this.user.update( data ).subscribe( (res: any) => {
