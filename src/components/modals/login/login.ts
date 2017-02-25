@@ -8,7 +8,11 @@ import { FindIdModal } from '../find-id/find-id';
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password';
 import { RegisterComponent } from '../register/register';
 
-import { USER_LOGIN_REQUEST_DATA } from './../../../angular-backend/interface';
+import {
+    RESPONSE, 
+    USER_LOGIN_REQUEST_DATA, 
+    USER_LOGIN_REPONSE_DATA 
+} from './../../../angular-backend/interface';
 @Component({
     selector: 'login-component',
     templateUrl: 'login.html'
@@ -16,6 +20,7 @@ import { USER_LOGIN_REQUEST_DATA } from './../../../angular-backend/interface';
 
 export class LoginModal implements OnInit {
     loading: boolean = false;
+    result: RESPONSE = <RESPONSE> {};
     saveid:boolean = false;
     form = <USER_LOGIN_REQUEST_DATA> {};
     // form = {};
@@ -55,33 +60,27 @@ export class LoginModal implements OnInit {
           this.form['id'] = id;
           this.saveid = true;
       }
-
+  }
+  onClickLogin(){
+    if ( this.validate() == false ) return;
+        this.loading = true;
+        this.user.login( this.form ).subscribe( (res: any) => {
+            if ( this.user.base.isError( res ) ) this.error( res );
+            else this.success( res );
+        }, error => {
+        this.error( error );
+    } );
   }
 
-  onClickLogin(){
-      
-        //this.form.id = "user191559";
-        //this.form.password = this.form.id;
-        //   if( this.validate() == false ) return;
+  success( res: USER_LOGIN_REPONSE_DATA) {
+    this.loading = false;
+    this.activeModal.close();
+  }
 
-
-        //   this.user.login( this.form, res =>{
-        //     console.info( 'logged in :: login component :: ' + res );
-        //       this.activeModal.close();
-        //   }, err => console.error( ' failed to login ' + err ) );
-
-       if ( this.validate() == false ) return;
-        this.loading = true;
-        this.user.login( this.form ).subscribe( re => {
-            if ( this.user.base.isError( re ) ) 
-            {
-                this.loading = false;
-                return this.user.base.errorHandler( re );
-            }
-            console.log("user login success: ", re );
-            this.loading = false;
-            this.activeModal.close();
-        }, this.user.base.errorHandler );
+  error( error ) {
+    this.loading = false;
+    this.result = error;
+    return this.user.base.errorHandler( error );
   }
 
   onEnterLogin(event){
@@ -91,20 +90,23 @@ export class LoginModal implements OnInit {
   }
 
   validate(){
-      if( this.form.id.match(/[.#$\[\]]/g)) return this.validateError(' valid id ');
-      if( ! this.form.id )return this.validateError( 'id ' );
-      if( ! this.form.password ) return this.validateError( 'password ' );
-      return true;
+    //   if( this.form.id && this.form.id.match(/[.#$\[\]]/g)) return this.validateError(' valid id ');
+    //   if( ! this.form.id )return this.validateError( 'id ' );
+    //   if( ! this.form.password ) return this.validateError( 'password ' );
+    //   return true;
+    if( this.form.id && this.form.id.match(/[.#$\[\]]/g)) return this.errorResult(' valid id ');
+    if( ! this.form.id )return this.errorResult( 'id ' );
+    if( ! this.form.password ) return this.errorResult( 'password ' );
+    return true;
   }
 
-
-
-
-
+  errorResult ( name ) {
+       this.result = <any>{message: name + "is required ..."}
+       return false;
+  }
   validateError( name ) {
       this.app.alert( name + ' is required ...' );
       return false;
   }
-
 
 }

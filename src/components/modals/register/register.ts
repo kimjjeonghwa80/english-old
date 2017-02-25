@@ -8,6 +8,7 @@ import {
     RESPONSE,
     USER_REGISTER_REQUEST_DATA,
     USER_UPDATE_REQUEST_DATA,
+    USER_UPDATE_RESPONSE_DATA,
     USER_REGISTER_RESPONSE_DATA
 } from './../../../angular-backend/interface';
 import { User } from './../../../angular-backend/user';
@@ -33,7 +34,7 @@ export class RegisterComponent{
 
         //this.login = this.user.isLogin();
         this.form['gender'] = ""; //Default Select gender
-        this.fakeData();
+        // this.fakeData();
         //this.onClickRegister();
         // this.register();
 
@@ -77,26 +78,11 @@ export class RegisterComponent{
     }
 
     ngOnInit(){
-        /*
-        if ( this.user.isLogin() ) {
-            console.log( 'logged in' );
+        if ( this.user.logged ) {
+            console.log("get me");
             this.getUserData();
         }
-        */
     }
-
-
-    getUserData() {
-        // this.loading = true;
-        // this.user.getUserData( res =>{
-        //     console.log('user data ' + JSON.stringify(res));
-        //     this.form = res['data'];
-        // }, err =>{}, ()=>{})
-    }
-
-
-
-
     onClickRegister() {
         this.register( callback => this.lmsRegister() );
 
@@ -106,21 +92,31 @@ export class RegisterComponent{
         this.updateProfile( callback => this.updateLMSprofile() );
     }
 
-
+    getUserData() {
+        this.loading = true;
+        this.user.getUserData().subscribe( (res: any) => {
+            if ( this.user.base.isError( res ) ) this.error( res );
+            else this.getDataSuccess( res );
+        }, error => {
+            this.error( error );
+        } );
+    }
     register( callback? ) {
-            if ( this.validate() == false ) return;
-            this.loading = true;
-            this.user.register( this.form ).subscribe( (res: any) => {
-                if ( this.user.base.isError( res ) ) this.error( res );
-                else this.success( res );
-            }, error => {
-                this.error( error );
-            } );
-
+        if ( this.validate() == false ) return;
+        this.loading = true;
+        this.user.register( this.form ).subscribe( (res: any) => {
+            if ( this.user.base.isError( res ) ) this.error( res );
+            else this.successRegister( res );
+        }, error => {
+            this.error( error );
+        } );
     }
 
-
-    success( res: USER_REGISTER_RESPONSE_DATA) {
+    getDataSuccess( res:any ) {
+        console.log(res);
+        this.form = res['data'].user;
+    }
+    successRegister( res: USER_REGISTER_RESPONSE_DATA) {
         console.log("user register success: ", res );
         this.loading = false;
         this.activeModal.close();
@@ -133,7 +129,6 @@ export class RegisterComponent{
         return this.user.base.errorHandler( error );
     }
 
-
     lmsRegister(){
         this.lms.register( this.form, res =>{
             console.log(' registered on centerX ' + res );
@@ -144,7 +139,21 @@ export class RegisterComponent{
 
 
     updateProfile( callback ){
+        if ( this.validate() == false ) return;
         this.loading = true;
+        let data : USER_UPDATE_REQUEST_DATA = {
+            name: this.form.name,
+            nickname: this.form.nickname,
+            mobile: this.form.mobile,
+            birthday: this.form.birthday,
+            gender: this.form.gender
+        }
+        this.user.update( data ).subscribe( (res: any) => {
+            if ( this.user.base.isError( res ) ) this.error( res );
+            else this.successUpdate( res );
+        }, error => {
+            this.error( error );
+        } );
         /*
         let data : USER_UPDATE_REQUEST_DATA ={
             name: this.form.name,
@@ -164,7 +173,11 @@ export class RegisterComponent{
         }, err =>console.error( 'error on update ' + err ), ()=>{});
         */
     }
-
+    successUpdate( res: USER_UPDATE_RESPONSE_DATA) {
+        console.log("user update success: ", res );
+        this.loading = false;
+        this.activeModal.close();
+    }
     updateLMSprofile(){
         this.lms.update( this.form , res =>{
             console.log(' lms user updated ' + res );

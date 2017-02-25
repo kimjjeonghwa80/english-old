@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
         // this.login = user.isLogin();
         // console.log("user login status: ", this.login);
 
-        // this.onClickRegister();
+        this.onClickRegister();
 
 
 
