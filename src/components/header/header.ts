@@ -3,7 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginModal } from '../modals/login/login';
 import { RegisterComponent } from '../modals/register/register';
 
-// import { User } from '../../backend-angular-api/user';
+import { User } from '../../angular-backend/user';
 
 import { App } from '../../providers/app';
 
@@ -22,10 +22,13 @@ export class HeaderComponent implements OnInit {
 
     more: boolean = false;
     //login: boolean = false;
+
+
+
     constructor(
+        public user        : User,
         private modal       : NgbModal,
         private app         : App
-        //public user        : User
     ) {
         // userTest.run();
         // console.log('header :: constructor(), loginUser: ', user.loginUser);
@@ -33,10 +36,13 @@ export class HeaderComponent implements OnInit {
         // console.log("user login status: ", this.login);
 
         // this.onClickRegister();
+
+
+
     }
 
     ngOnInit() {
-        this.onClickRegister();
+        // this.onClickRegister();
     }
 
     onClickLogin(){
@@ -76,16 +82,10 @@ export class HeaderComponent implements OnInit {
 
     onClickLogout() {
 
-/*
-      this.user.logout( res =>{
-          // this.login = false;
-      }, err =>{},
-      () => {
-
-          //
-
-      });
-      */
+        
+        
+      this.user.logout();
+      
     }
 
 

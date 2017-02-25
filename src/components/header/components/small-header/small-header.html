@@ -16,15 +16,18 @@
                     <li *ngIf=" login " class="menu" (click)="onClickUpdateProfile()">
                         <span class="text"> Profile </span>
                     </li>
-                    <li *ngIf=" ! login " class="menu" (click)="onClickLogin()">
-                        <span class="text">  Login </span>
+
+                    <li *ngIf=" ! user.logged " class="menu" (click)="onClickLogin()">
+                        <span class="text"> Login </span>
                     </li>
 
-                    <li *ngIf=" login " class="menu" (click)="onClickLogout()">
-                        <span class="text">  Logout</span>
+
+                    <li *ngIf=" user.logged " class="menu" (click)="onClickLogout()">
+                        <span class="text">Logout</span>
                     </li>
+                    
                     <li class="menu" (click)="onClickPanelMenu('contact')"> 
-                        <span class="text">  Help </span>
+                        <span class="text">Help </span>
                     </li>
                 </ul>
             </div>
