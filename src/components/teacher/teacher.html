@@ -5,7 +5,7 @@
         <h3>Withcenter, Inc. Teacher List.</h3>
     </div>
     <div *ngIf="teachers" class="teachers">
-        <div class="teacher col-sm-4" *ngFor=" let teacher of teachers; let i = index">
+        <div class="teacher col-sm-4" *ngFor=" let teacher of teachers; let i = index" >
             <div class="photo">
                 <img src="{{ lms.url }}/{{ teacher.photo }}">
             </div>

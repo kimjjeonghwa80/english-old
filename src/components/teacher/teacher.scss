@@ -112,7 +112,10 @@ teacher-component {
 
         .youtube-wrapper {
             margin-top: 1em;
+            display: inline-block;
+            width:100%;
         }
+    
         .youtube-player {
             embed {
                 width:100%;
