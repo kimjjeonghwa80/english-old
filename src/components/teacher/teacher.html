@@ -1,5 +1,5 @@
 <section id="teacher" class="part">
-    <div>
+    <div class="teacher-container">
     <div class="title">
         <h2>강사 소개</h2>
         <h3>Withcenter, Inc. Teacher List.</h3>
@@ -29,7 +29,7 @@
             </div>
 
 
-            <div class="greeting" (click)="teacher.show_more_greeting" [class.more]=" teacher.show_more_greeting ">
+            <div class="greeting" (click)="teacher.show_more_greeting = ! teacher.show_more_greeting" [class.more]=" teacher.show_more_greeting ">
                 <div class="text" [innerHTML]=" teacher.greeting "></div>
                 <div class="more">... show more</div>
             </div>

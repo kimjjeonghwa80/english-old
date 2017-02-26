@@ -1,7 +1,14 @@
 teacher-component {
     display: block;
-    background-color: #384252;
     padding:2em 0;
+    background-color: #384252;
+    .teacher-container {
+        position: relative;
+        max-width: 980px;
+        margin: 0 auto;
+    
+    
+    }
     .title {
         padding: 1em;
         text-align: center;
@@ -10,7 +17,7 @@ teacher-component {
 
     .load {
         clear: both;
-        padding: 0 .3em;
+        padding: 0;
         .load-more {
             margin: 2em;
             margin-left:auto;
@@ -29,13 +36,7 @@ teacher-component {
 
 
 }
-@media all and (min-width: $breakpoint) {
-    .teachers {
-        position: relative;
-        max-width: 980px;
-        margin: 0 auto;
-    }
-}
+
 //Teachers
 .teachers {
     .teacher {
