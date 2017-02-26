@@ -7,13 +7,13 @@
         <div class="bottom">
             <div class="menu">
                 <ul>
-                    <li>
+                    <li class="menu more">
                         <i class="icon fa fa-bars" (click)="onClickMoreMenu()"></i>
                     </li>
-                    <li *ngIf="! user.logged " class="menu" (click)="onClickRegister()">
+                    <li *ngIf="! user.logged " class="menu register" (click)="onClickRegister()">
                         <span class="text"> Register </span> 
                     </li>
-                    <li *ngIf=" user.logged " class="menu" (click)="onClickUpdateProfile()">
+                    <li *ngIf=" user.logged " class="menu profile" (click)="onClickUpdateProfile()">
                         <span class="text"> Profile </span>
                     </li>
 

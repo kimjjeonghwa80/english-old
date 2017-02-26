@@ -41,6 +41,10 @@ header-component .small .navbar {
                         font-size: 2.375em;
                     }
                 }
+
+                    .register, .profile {
+                        padding-left: .32em;
+                    }
             }
             
         }
@@ -59,7 +63,7 @@ header-component .small .navbar {
                 color: #ffffff;
                 background-color: #2980b9;
                 .menu {
-                    padding: .4em 0 .4em 1em;
+                    padding: .4em 0 .4em .76em;
                     overflow: auto;
                     cursor:pointer;
                     background-color: #2980b9;
@@ -83,7 +87,7 @@ header-component .small .navbar {
                         font-size: 1.2em;
                     }
                     &.active {
-                        color: #0bcc00;
+                        color: #ff0;
                     }
                     &:hover {
                         background-color:#3498db;
@@ -91,6 +95,10 @@ header-component .small .navbar {
                 }
                 .menu:first-child {
                     margin-top: .1em; // space between main menu and panel.
+                    padding-top: .8em;
+                }
+                .menu:last-child {
+                    padding-bottom: .8em;
                 }
             }
         }
