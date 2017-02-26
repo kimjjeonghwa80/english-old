@@ -263,7 +263,7 @@ contact-component {
             }
             .title {
                 margin-bottom: 1em;
-                width:10em;
+                width:7em;
             }
             .desc {
                 margin-bottom: 1em;
@@ -303,16 +303,3 @@ contact-component {
     }
     
 }
-
-// @media all and (max-width: $breakpoint) {
-//     contact-component {
-//         .contact-container {
-//             .logo {
-//                 width: 60%;
-//             }
-//             .desc {
-//                 width: 20em;
-//             }
-//         }
-//     }
-// }
