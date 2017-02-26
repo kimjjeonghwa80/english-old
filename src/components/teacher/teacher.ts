@@ -11,20 +11,25 @@ export class TeacherComponent {
     playVideo:boolean = false;
     showMore:boolean = false;
     temp:any = [];
+    no_teacher_show_by_defualt = 12;
     constructor( public lms: LMS,public sanitizer: DomSanitizer) {
     }
     ngOnChanges(changes) {
         if(changes['teachers']) {
             if(!this.teachers) return;
             this.teachers.forEach( (teacher) => {
+                console.log(teacher);
+                teacher.id = teacher.id.replace('ontue_', '');
+                teacher.id = teacher.id.replace('_ontue', '');
+                teacher.id = teacher.id.replace( /[0-9]+/, '' ); ////\\\\///
                 teacher.play_video = false;
-                teacher.show_more = false;
+                teacher.show_more_greeting = false;
                 if( teacher.url_youtube.match(/^http:\/\//i)) teacher.url_youtube = teacher.url_youtube.replace(/^http:\/\//i, 'https://');//replace http to https
                 if( teacher.url_youtube.match(/youtu.be/g)) teacher.url_youtube = teacher.url_youtube.replace(/youtu.be/g, 'youtube.com/embed');//replace youtu.be to youtube.com/embed
                 if( teacher.greeting.match(/<img[^>]*>|<br.*>|&nbsp;/g)) teacher.greeting = teacher.greeting.replace(/<img[^>]*>|<br.*>|&nbsp;/g,"");//remove br tag img tag or &nbsp
                 if( teacher.greeting.match(/(<([^>]+)>)/g)) teacher.greeting = teacher.greeting.replace(/(<([^>]+)>)/g,"");
                 teacher.img_youtube = teacher.url_youtube.replace(/embed/g,"vi");
-                teacher.img_youtube = teacher.img_youtube.replace(/youtube.com/g,"img.youtube.com")+"/0.jpg";
+                teacher.img_youtube = teacher.img_youtube.replace(/youtube.com/g,"img.youtube.com")+"/mqdefault.jpg";
                  teacher.img_youtube = this.sanitizer.bypassSecurityTrustUrl(teacher.img_youtube );//to fix unsafe
                 teacher.url_youtube = teacher.url_youtube + "?autoplay=1&autohide=1&controls=0&border=0&scrolling=no";
                 
@@ -35,7 +40,7 @@ export class TeacherComponent {
         console.log("teacher",this.teachers);
         this.temp = this.teachers;
         //console.log(this.temp);
-        this.teachers = _.take( this.teachers, 6);
+        this.teachers = _.take( this.teachers, this.no_teacher_show_by_defualt);
     }
     isArray( obj ) {
         if (obj.constructor.toString().indexOf('Array') == -1) return false;
@@ -58,7 +63,7 @@ export class TeacherComponent {
         }
         else {
             this.temp = this.teachers;
-            this.teachers = _.take( this.teachers, 6);
+            this.teachers = _.take( this.teachers, this.no_teacher_show_by_defualt);
         }
     }
 }

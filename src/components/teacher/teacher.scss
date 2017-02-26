@@ -1,12 +1,13 @@
 teacher-component {
     display: block;
-    background-color: $color_pallete6;
+    background-color: #384252;
     padding:2em 0;
     .title {
-        
         padding: 1em;
         text-align: center;
+        color: white;
     }
+
     .load {
         clear: both;
         padding: 0 .3em;
@@ -25,111 +26,36 @@ teacher-component {
             cursor: pointer;
         }
     }
-    // .teachers {
-    //     position: relative;
-    //     .row{
-    //         margin: 0;
-    //     }
-    //     .teacher {
-    //         margin: 0;
-    //         border: .3em solid #fff;
-    //         padding: 20px;
-    //         background-color: #01d9c1;
-    //         text-align: left;
-    //         .youtube-player {
-    //             position: absolute;
-    //             top: 35px;
-    //             left: 20px;
-    //             .youtube-video {
-    //                 height: 100px;
-    //                 width: 100px;
-    //             }
-    //         }
-    //         .photo {
-    //             margin: 1em 0;
-    //             overflow: hidden;
-    //             position: relative;
-    //             display: inline-block;
-    //             height: 100px;
-    //             width: 100px;
-    //             border: 3px solid #ffffff;
-    //             border-radius: 100%;
-    //             float: left;
-    //             img {
-    //                 width: 100px;
-    //                 height: auto;
-    //                 vertical-align: middle;
-    //                 &.youtube-button {
-    //                     position: absolute;
-    //                     width: 24px;
-    //                     height: 24px;
-    //                     bottom: 10px;
-    //                     left: 50px;
-    //                     cursor: pointer;
-    //                 }
-    //             }
-    //         }
-    //         .name {
-    //             margin-top: .8em;
-    //             margin-left: 7em;
-    //             display: block;
-    //             font-size: 17px;
-    //             color: #FFFFFF;
-    //         }
-    //         .major {
-    //             margin-top: .2em;
-    //             margin-left: 7em;
-    //             display: block;
-    //             font-size: 17px;
-    //             color: #FFFFFF;
-    //         }
-    //         .greeting {
-    //             clear:both;
-    //             // h1,h2,h3,h4,h5,h6,strong,kbd,p ,cite,span,u{
-    //             //     font-style: normal;
-    //             //     font-size: 16px;
-    //             //     font-weight: normal;
-    //             //     background-color: transparent;
-    //             //     color: black;
-    //             //     font-family: Arial, Helvetica, sans-serif;
-    //             //     margin: 0;
-    //             //     line-height: 1.7em;
-    //             // }
-    //         }
-    //         .button_play {
-    //             cursor: pointer;
-    //         }
-    //     }
-    // }
+
+
 }
 @media all and (min-width: $breakpoint) {
-    teacher-component {
+    .teachers {
         position: relative;
-        margin: 0 auto;
         max-width: 980px;
+        margin: 0 auto;
     }
 }
 //Teachers
 .teachers {
-    
-    
     .teacher {
-        margin:0;
+        margin: 2em 0 0;
         padding:0 0 2em 0;
-        border:8px solid #fff;
-        background-color: #01d9c1;
         text-align: center;
+        
+
         .teacher-info {
-            height: 300px;
+
+            margin-bottom: .8em;
+
         }
         .photo {
             overflow: hidden;
             position: relative;
             display: inline-block;
-            margin: 30px 0 16px;
-            height: 150px;
-            width: 150px;
-            border: 3px solid #ffffff;
+            height: 9.6rem;
+            width: 9.6rem;
+            border: .2rem solid #ffffff;
             border-radius: 100%;
             
         }
@@ -138,37 +64,65 @@ teacher-component {
             height: auto;
         }
         .id {
-            margin-bottom: .5px;
-            min-height: 70px;
+            margin-bottom: .2em;
             font-size: 1.5rem;
             color: #FFFFFF;
+            &:first-letter {
+                text-transform: uppercase;
+            }
         }
         .greeting {
-            overflow-x: hidden;
-            &.false {
-                height: 100px;
-                overflow-y: hidden;
+            cursor: pointer;
+            .text {
+                height: 4rem;
+                overflow: hidden;
+                font-size: .9rem;
             }
-            &.true {
-                height: 100%;
+            .more {
+                padding-right: 1.6em;
+                text-align: right;
+                font-size: 1em;
+                color: #e9e9e9;
+            }
+            &.more {
+                .text {
+                    height: auto;
+                    overflow: auto;
+                }
+                .more {
+                    display: none;
+                }
             }
         }
         .text {
             padding: 0 1em;
-            margin-bottom: .6em;
+            margin-bottom: .1em;
             text-align: left;
-            font-size: 1rem;
+            font-size: .9rem;
             color: #FFFFFF;
+            .caption {
+                display: inline-block;
+                width: 4.8em;
+            }
+            &.major {
+                height: 3em;
+                overflow: hidden;
+            }
+        }
+
+        .youtube-wrapper {
+            margin-top: 1em;
         }
         .youtube-player {
             embed {
                 width:100%;
             }
         }
-        .youtube {
+        .youtube-default-photo {
             position: relative;
             width: 100%;
-            overflow: auto;
+            height: 150px;
+            overflow: hidden;
             img {
                 width: 100%;
                 height: auto;
@@ -177,19 +131,18 @@ teacher-component {
             .play {
                 position: absolute;
                 margin: 0 auto;
-                width: 100%;
-                top: 50%;
+                left: 10%;
+                bottom: 10%;
                 i {
-                    
-                    color: #ca0c0c;
+                    color: white;
                     font-size: 4em;
                 }
                 
             }
         }
-        .youtube:hover {
+        .youtube-default-photo:hover {
             i {
-                color: #ef0505;
+                color: #d00000;
             }
            
         }

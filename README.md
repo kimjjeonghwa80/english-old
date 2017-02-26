@@ -5,6 +5,19 @@ https://english-c26df.firebaseapp.com/
 
 # TODO
 
+
+marcoception,
+
+fae, luin, meg,
+
+ellise,
+den,
+ren
+ghen
+asah
+vida
+iya,
+
 * @done Scroll spy on page scroll. when the bottom of the section#id appears into view, set it active.
 
 
