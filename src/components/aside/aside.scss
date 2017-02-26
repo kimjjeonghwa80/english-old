@@ -1,7 +1,7 @@
 //Narrow
 aside-component {
     display: block;
-    padding: .3em 0;
+    padding: 0 0 .3em;
     .sidebar {
         overflow: auto;
         display: block;
@@ -34,7 +34,7 @@ aside-component {
                         position: absolute;
                         right: 0;
                         left: 0;
-                        bottom:0;
+                        bottom:.5em;
                         color: #fff;
                         font-size: 12px;
                     }
@@ -56,6 +56,7 @@ aside-component {
                 bottom:0;
                 right: 0;
                 li {
+                    margin-left: .2em;
                     margin-bottom: .5em;
                     width: 100px;
                     a {
