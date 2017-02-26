@@ -153,7 +153,7 @@ reservation-component {
         width: 100%;
         max-width: $lg_breakpoint;
         .reservation-container {
-            
+            position: relative;
             table {
                 font-size: .8em;
                 th {
@@ -230,25 +230,14 @@ reservation-component {
             }
         }
         .reminder-image {
-            // margin-bottom:-10em;
-            margin-top: -10em; 
+            position:absolute;
+            margin:0 auto;
+            bottom:0;
+            width: 100%;
             img {
                 display: block;
-                margin: 0 auto;
+                margin: 0 auto .3em;
                 width: 70%;
-                max-width: 800px;
-                bottom: 0;
-                // top: 30%;
-                // left: 10%;
-            }
-            @media(min-width:$sm_breakpoint) {
-                margin-top: -15em;
-            }
-            @media(min-width:$md_breakpoint) {
-                margin-top: -20em;
-            }
-            @media(min-width:$lg_breakpoint) {
-                margin-top: -25em;
             }
         }
     }
