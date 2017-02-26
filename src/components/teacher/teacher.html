@@ -4,7 +4,84 @@
         <h2>강사 소개</h2>
         <h3>Withcenter, Inc. Teacher List.</h3>
     </div>
-    <div *ngIf=" teachers " class="teachers">
+    <div *ngIf="teachers" class="teachers">
+        <div class="teacher col-sm-4" *ngFor=" let teacher of teachers; let i = index">
+            <div class="photo">
+                <img src="{{ lms.url }}/{{ teacher.photo }}">
+            </div>
+            <div class="teacher-info">
+                <div class="id">
+                    Teacher {{ teacher.id }}
+                </div>
+                <div class="name text">
+                    {{ teacher.name }}
+                </div>
+                <div class="teaching-year text">
+                    Teacher Years :  {{ teacher.teaching_year }}
+                </div>
+                <div class="birthday text">
+                    Birth day : {{ teacher.birthday }}
+                </div>
+                <div class="gender text">
+                    Gender : {{ teacher.gender }}
+                </div>
+                <div class="major text">
+                    {{ teacher.major }}
+                </div>
+            </div>
+            <div class="greeting text {{teacher.show_more}}" [innerHTML]=" teacher.greeting "></div>
+            <div class="load" (click)="teacher.show_more = ! teacher.show_more;">
+                <div class="load-more" >
+                    <font *ngIf="teacher.show_more">감추기</font>
+                    <font *ngIf="!teacher.show_more">더 보기</font>
+                </div>
+            </div>
+            <div *ngIf="!teacher.play_video" (click)="teacher.play_video = true" class="youtube">
+                <img [src]="teacher.img_youtube" >
+                <div class="play" >
+                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div *ngIf="teacher.play_video" class="youtube-player" >
+                <object>
+                    <param name="movie" [value]='teacher.url_youtube'/>
+                    <embed class="youtube-video" [src]='teacher.url_youtube'  type="text/html" />
+                </object>
+            </div>
+            <!--<div *ngIf="teacher.play_video" class="youtube-player" >
+                <object width="640" height="360">
+                    <param name="movie" [value]='teacher.url_youtube'/>
+                    <param name="allowFullScreen" value="true"/>
+                    <param name="allowscriptaccess" value="always"/>
+                    <embed class="youtube-video" [src]='teacher.url_youtube'  type="text/html" allowscriptaccess="always" allowfullscreen="true"/>
+                </object>
+            </div>-->
+            <!--<div class="greeting text">
+                {{ teacher.greeting }}
+            </div>-->
+        </div>
+        <!--<div class="row">
+            
+            <div class="teacher col-md-6" *ngFor=" let teacher of teachers; let i = index">
+                <div class="photo">
+                    <img src="{{ lms.url }}/{{ teacher.photo }}">
+                    <img (click)="teacher.play_video = true" class="youtube-button" src="{{ lms.url }}/centerxshare/img/play.png" border="0">
+                </div>
+                <div class="name">Teacher {{ teacher.name }}</div>
+                <div class="major">{{ teacher.major }}</div>
+                <div class="greeting" [innerHTML]=" teacher.greeting "></div>
+                <div *ngIf="teacher.play_video" class="youtube-player" >
+                    <object width="640" height="360">
+                        <param name="movie" [value]='teacher.url_youtube'/>
+                        <param name="allowFullScreen" value="true"/>
+                        <param name="allowscriptaccess" value="always"/>
+                        <embed class="youtube-video" [src]='teacher.url_youtube'  type="text/html" allowscriptaccess="always" allowfullscreen="true"/>
+                    </object>
+                </div>
+            </div>
+        </div>-->
+    </div>
+    <!--<div *ngIf=" teachers " class="teachers">
         <div class="row">
         
             <div class="teacher col-md-6" *ngFor=" let teacher of teachers; let i = index">
@@ -25,7 +102,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <div class="load" (click)="onClickShowMore()">
         <div class="load-more" >
             <font *ngIf="showMore">감추기</font>

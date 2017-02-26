@@ -18,16 +18,29 @@ export class TeacherComponent {
             if(!this.teachers) return;
             this.teachers.forEach( (teacher) => {
                 teacher.play_video = false;
+                teacher.show_more = false;
                 if( teacher.url_youtube.match(/^http:\/\//i)) teacher.url_youtube = teacher.url_youtube.replace(/^http:\/\//i, 'https://');//replace http to https
                 if( teacher.url_youtube.match(/youtu.be/g)) teacher.url_youtube = teacher.url_youtube.replace(/youtu.be/g, 'youtube.com/embed');//replace youtu.be to youtube.com/embed
-                if( teacher.greeting.match(/<img[^>]*>|&nbsp;/g)) teacher.greeting = teacher.greeting.replace(/<img[^>]*>|&nbsp;/g,"");//remove img tag or &nbsp
-                teacher.url_youtube = teacher.url_youtube + "?autoplay=1";
+                if( teacher.greeting.match(/<img[^>]*>|<br.*>|&nbsp;/g)) teacher.greeting = teacher.greeting.replace(/<img[^>]*>|<br.*>|&nbsp;/g,"");//remove br tag img tag or &nbsp
+                if( teacher.greeting.match(/(<([^>]+)>)/g)) teacher.greeting = teacher.greeting.replace(/(<([^>]+)>)/g,"");
+                teacher.img_youtube = teacher.url_youtube.replace(/embed/g,"vi");
+                teacher.img_youtube = teacher.img_youtube.replace(/youtube.com/g,"img.youtube.com")+"/0.jpg";
+                 teacher.img_youtube = this.sanitizer.bypassSecurityTrustUrl(teacher.img_youtube );//to fix unsafe
+                teacher.url_youtube = teacher.url_youtube + "?autoplay=1&autohide=1&controls=0&border=0&scrolling=no";
+                
                 teacher.url_youtube = this.sanitizer.bypassSecurityTrustResourceUrl(teacher.url_youtube );//to fix unsafe
+               
             });
         }
+        console.log("teacher",this.teachers);
         this.temp = this.teachers;
         //console.log(this.temp);
         this.teachers = _.take( this.teachers, 6);
+    }
+    isArray( obj ) {
+        if (obj.constructor.toString().indexOf('Array') == -1) return false;
+        
+        return true;
     }
     // changeHttpToHttps( data ) {
     //     if( data.match('^http://')) data = data.replace(/^http:\/\//i, 'https://');
