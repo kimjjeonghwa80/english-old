@@ -234,10 +234,24 @@ reservation-component {
             margin:0 auto;
             bottom:0;
             width: 100%;
+            overflow: auto;
             img {
                 display: block;
                 margin: 0 auto .3em;
                 width: 70%;
+            }
+            .reminder-text {
+                display: block;
+                position: absolute;
+                text-align: center;
+                top:20%;
+                left: 41%;
+                width: 40%;
+                font-size: 1em;
+                color: white;
+                @media(min-width:$sm_breakpoint) {
+                    font-size: 2em;
+                }
             }
         }
     }
