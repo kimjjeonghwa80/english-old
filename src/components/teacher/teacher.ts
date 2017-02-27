@@ -10,9 +10,8 @@ export class TeacherComponent {
     @Input() teachers;
     playVideo:boolean = false;
     showMore:boolean = false;
-    temp:any = [];
-    temp_teacher:any = [];
-    no_teacher_show_by_defualt = 12;
+    first_9_teachers:any = [];
+    whole_teacher:any = [];
     constructor( public lms: LMS,public sanitizer: DomSanitizer) {
     }
     ngOnChanges(changes) {
@@ -38,10 +37,14 @@ export class TeacherComponent {
             });
         }
         console.log("teacher",this.teachers);
-        this.temp = this.teachers;
+        this.whole_teacher = this.teachers;
+        this.takeSomeTemporaryTeachers();
         //console.log(this.temp);
         // this.teachers = _.take( this.teachers, this.no_teacher_show_by_defualt);
 
+    }
+    takeSomeTemporaryTeachers() {
+        this.teachers = this.teachers.slice( 0, 9 );
     }
     isArray( obj ) {
         if (obj.constructor.toString().indexOf('Array') == -1) return false;
@@ -60,10 +63,10 @@ export class TeacherComponent {
     onClickShowMore() {
         this.showMore =!this.showMore;
         if(this.showMore) {
-            this.teachers = this.temp;
+            this.teachers = this.whole_teacher;
         }
         else {
-            this.temp = this.teachers;
+            this.takeSomeTemporaryTeachers();
             // this.teachers = _.take( this.teachers, this.no_teacher_show_by_defualt);
            
         }
