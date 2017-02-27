@@ -1,7 +1,14 @@
 teacher-component {
     display: block;
-    background-color: #384252;
     padding:2em 0;
+    background-color: #384252;
+    .teacher-container {
+        position: relative;
+        max-width: 980px;
+        margin: 0 auto;
+    
+    
+    }
     .title {
         padding: 1em;
         text-align: center;
@@ -10,7 +17,7 @@ teacher-component {
 
     .load {
         clear: both;
-        padding: 0 .3em;
+        padding: 0;
         .load-more {
             margin: 2em;
             margin-left:auto;
@@ -30,13 +37,7 @@ teacher-component {
 
 
 }
-@media all and (min-width: $breakpoint) {
-    .teachers {
-        position: relative;
-        max-width: 980px;
-        margin: 0 auto;
-    }
-}
+
 //Teachers
 .teachers {
     .teacher {
@@ -113,7 +114,10 @@ teacher-component {
 
         .youtube-wrapper {
             margin-top: 1em;
+            display: inline-block;
+            width:100%;
         }
+    
         .youtube-player {
             embed {
                 width:100%;
@@ -133,9 +137,9 @@ teacher-component {
                 position: absolute;
                 margin: 0 auto;
                 left: 10%;
-                bottom: 10%;
+                bottom: 30%;
                 i {
-                    color: white;
+                    color: rgba(255, 0, 0, 0.55);
                     font-size: 4em;
                 }
                 

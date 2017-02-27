@@ -85,7 +85,7 @@ export let bookList:BOOKLIST = {
         },
         {
             img:"assets/img/book12.jpg",
-            title:"Thoughts &amp; Notions",
+            title:"Thoughts & Notions",
             desc:`독해와 어휘 실력을 동시에 향상 시키는 리딩 교재.
                 영어 입문 단계 학생들을 위한 교재로 800 여개의 기본 어휘로 구성된 쉬운 교재로서 초등학교 4~6 학년에게 알맞음.`
         },
@@ -127,7 +127,7 @@ export let bookList:BOOKLIST = {
         },
         {
             img:"assets/img/book20.jpg",
-            title:"Cause &amp; Effect",
+            title:"Cause & Effect",
             desc:`흥미롭고 다양한 내용으로 자연스럽게 학생의 독해력과 표현력을 향상시키는 교재. 그룹 스터디용으로 독해력을 집중 향상시키기 좋은 교재. 길지 않은 내용을 단락 별로 구성.`
         },
         {

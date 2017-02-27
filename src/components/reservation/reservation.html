@@ -71,7 +71,9 @@
                 </tr>
             </tbody>
         </table>
-        <div class="reminder-image"> <img src="assets/img/reservation-banner.png" ></div>
+        <div *ngIf="!user.logged" class="reminder-image"> <img src="assets/img/reservation-banner.png" >
+            <div class="reminder-text">수업 시간표를 보시려면 로그인을 하세요.</div>
+        </div>
     </div>
 
     
