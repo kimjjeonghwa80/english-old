@@ -20,12 +20,23 @@
   <link href="build/main.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/bootstrap-v4/bootstrap.min.css">
   <link rel="stylesheet" href="assets/font-awesome-v4/css/font-awesome.min.css">
-
+  <style>
+    .app-loader { margin-top: 15vh; width: 100%; text-align: center; }
+    .app-loader img { width: 80%; max-width: 240px; }
+    .app-loader .t { margin-top: 1em; }
+    .app-loader i { font-size: 3em; color:#3498db; }
+  </style>
 </head>
 <body>
 
   <!-- Ionic's root component and where the app will load -->
-  <app-component></app-component>
+  <app-component>
+    <div class="app-loader">
+      <img src="assets/img/preloader.png">
+      <div class="t"><i class="fa fa-spinner fa-pulse"></i></div>
+      <!--<div class="t"><i class="fa fa-spinner fa-spin"></i> Loading ...</div>-->
+    </div>
+  </app-component>
 
 
   <!-- The polyfills js is generated during the build process -->
