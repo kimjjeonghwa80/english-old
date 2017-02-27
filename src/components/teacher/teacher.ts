@@ -11,6 +11,7 @@ export class TeacherComponent {
     playVideo:boolean = false;
     showMore:boolean = false;
     temp:any = [];
+    temp_teacher:any = [];
     no_teacher_show_by_defualt = 12;
     constructor( public lms: LMS,public sanitizer: DomSanitizer) {
     }
@@ -40,6 +41,7 @@ export class TeacherComponent {
         this.temp = this.teachers;
         //console.log(this.temp);
         this.teachers = _.take( this.teachers, this.no_teacher_show_by_defualt);
+
     }
     isArray( obj ) {
         if (obj.constructor.toString().indexOf('Array') == -1) return false;
