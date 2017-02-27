@@ -44,9 +44,12 @@ comment-component {
             margin-bottom: 1.4rem;
         }
         .inner {
-            height: 175px;
+            height: 130px;
             overflow-y: hidden;
             margin-bottom: 15px;
+            @media(min-width:$md_breakpoint) {
+                height: 175px;
+            }
             .picture-text {
                 margin-bottom: 14px;
                 display: inline-block;
@@ -63,6 +66,7 @@ comment-component {
             .comment-text {
                 color: #2c3e50;
             }
+            
         }
     }
 }
