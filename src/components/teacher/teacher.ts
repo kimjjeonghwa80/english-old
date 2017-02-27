@@ -40,7 +40,7 @@ export class TeacherComponent {
         console.log("teacher",this.teachers);
         this.temp = this.teachers;
         //console.log(this.temp);
-        this.teachers = _.take( this.teachers, this.no_teacher_show_by_defualt);
+        // this.teachers = _.take( this.teachers, this.no_teacher_show_by_defualt);
 
     }
     isArray( obj ) {

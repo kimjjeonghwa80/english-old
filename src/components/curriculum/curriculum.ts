@@ -232,7 +232,7 @@ export class CurriculumComponent {
         this.takeSomeTemporaryBooks();
     }
     takeSomeTemporaryBooks() {
-        this.books = BOOKS.slice( 0, 8 );
+        this.books = BOOKS.slice( 0, 9 );
     }
     onClickShowMore() {
         this.showBook = !this.showBook;
