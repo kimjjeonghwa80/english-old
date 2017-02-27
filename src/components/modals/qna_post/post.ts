@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Forum } from '../../../backend-angular-api/forum';
+//import { Forum } from '../../../backend-angular-api/forum';
 // import { FORUM_DATA_REQUEST_DATA } from '../../../backend-angular-api/interface';
 import { App } from '../../../providers/app';
 

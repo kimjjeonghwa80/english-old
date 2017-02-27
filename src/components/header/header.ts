@@ -47,6 +47,7 @@ export class HeaderComponent implements OnInit {
 
     onClickLogin(){
         let modalRef = this.modal.open( LoginModal );
+        modalRef;
         // modalRef.result.then( (x) => {
         //     //console.log( this.user.isLogin() );
         //     //this.login = this.user.isLogin();
@@ -69,6 +70,7 @@ export class HeaderComponent implements OnInit {
 
     onClickRegister() {
         let modalRef = this.modal.open ( RegisterComponent );
+        modalRef;
         // modalRef.result.then( (x) => {
         //     // console.log( this.user.loginUser );
         //     //this.login = this.user.isLogin();
