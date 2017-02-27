@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { LMS } from '../../providers/lms';
 import { DomSanitizer } from '@angular/platform-browser';
-import * as _ from 'lodash';
+
 @Component({
     selector: 'teacher-component',
     templateUrl: 'teacher.html'
@@ -64,7 +64,8 @@ export class TeacherComponent {
         }
         else {
             this.temp = this.teachers;
-            this.teachers = _.take( this.teachers, this.no_teacher_show_by_defualt);
+            // this.teachers = _.take( this.teachers, this.no_teacher_show_by_defualt);
+           
         }
     }
 }

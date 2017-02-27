@@ -1,17 +1,12 @@
 import { Component } from '@angular/core';
-import * as _ from 'lodash';
-export interface BOOK {
+
+interface BOOK {
     img: string;
     title: string;
     desc: string;
 }
-
-export interface BOOKLIST {
-    books: Array< BOOK >
-}
-
-export let bookList:BOOKLIST = {
-    books:[
+type BOOKS = Array<BOOK>;
+const BOOKS: BOOKS = [
         {
             img:"assets/img/book1.jpg",
             title:"잉글리시타임",
@@ -223,27 +218,26 @@ export let bookList:BOOKLIST = {
 
         
         
-    ]
-};
+    ];
+    
 @Component({
     selector: 'curriculum-component',
     templateUrl: 'curriculum.html'
 })
 export class CurriculumComponent {
-    temp:any = [];
     showBook:boolean = false;
-    bookList:BOOKLIST = bookList;
+    books: BOOKS = null; // container of books to display on browser.
+    first_8_books: BOOKS = null; // first_8
     constructor() {
         this.takeSomeTemporaryBooks();
     }
     takeSomeTemporaryBooks() {
-        this.temp = this.bookList.books;
-        this.bookList.books = _.take( this.bookList.books, 8);
+        this.books = BOOKS.slice( 0, 8 );
     }
     onClickShowMore() {
-        this.showBook =!this.showBook;
+        this.showBook = !this.showBook;
         if(this.showBook) {
-            this.bookList.books = this.temp;
+            this.books = BOOKS;
         }
         else {
             this.takeSomeTemporaryBooks();

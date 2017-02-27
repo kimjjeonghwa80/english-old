@@ -1,7 +1,7 @@
 import { Component, Renderer  } from '@angular/core';
 import { App } from '../../providers/app';
 import { Router } from '@angular/router';
-import * as _ from 'lodash';
+
 
 
 @Component({
@@ -74,7 +74,7 @@ export class AdminPage{
 
 
     beginScroll() {
-        this.scrollListener = this.renderer.listenGlobal( 'document', 'scroll', _.debounce( () => this.pageScrolled(), 200));
+        // this.scrollListener = this.renderer.listenGlobal( 'document', 'scroll', _.debounce( () => this.pageScrolled(), 200));
     }
     endScroll() {
         if ( this.scrollListener ) this.scrollListener();
