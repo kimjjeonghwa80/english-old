@@ -10,7 +10,6 @@ export class TeacherComponent {
     @Input() teachers;
     playVideo:boolean = false;
     showMore:boolean = false;
-    first_9_teachers:any = [];
     whole_teacher:any = [];
     constructor( public lms: LMS,public sanitizer: DomSanitizer) {
     }
@@ -39,27 +38,29 @@ export class TeacherComponent {
         console.log("teacher",this.teachers);
         this.whole_teacher = this.teachers;
         this.takeSomeTemporaryTeachers();
-        //console.log(this.temp);
-        // this.teachers = _.take( this.teachers, this.no_teacher_show_by_defualt);
 
     }
     takeSomeTemporaryTeachers() {
-        this.teachers = this.teachers.slice( 0, 9 );
+        // this.teachers = this.teachers.slice( 0, 9 );
+        this.teachers = this.teachers.filter(this.firstDisplayTeacherIndex);
+    }
+    firstDisplayTeacherIndex(query) {
+        if( query.nickname == "Mngr Fae"||
+            query.nickname == "Louine" ||
+            query.nickname == "Meg"||
+            query.nickname == "Yani"||
+            query.nickname == "Ellise"||
+            query.nickname == "Den"||
+            query.nickname == "Ren"||
+            query.nickname == "Ghen"||
+            query.nickname == "Asha")return query;
     }
     isArray( obj ) {
         if (obj.constructor.toString().indexOf('Array') == -1) return false;
         
         return true;
     }
-    // changeHttpToHttps( data ) {
-    //     if( data.match('^http://')) data = data.replace(/^http:\/\//i, 'https://');
-    // }
-    // changeYoutubeEmbed( data ) {
-    //     if( data.match(/youtu.be/g)) data = data.replace(/youtu.be/g, 'youtube.com/embed');
-    // }
-    // removeImageTag( data ) {
-    //     if( data.match(/<img[^>]*>/g)) data = data.replace(/<img[^>]*>/g,"");
-    // }
+ 
     onClickShowMore() {
         this.showMore =!this.showMore;
         if(this.showMore) {
