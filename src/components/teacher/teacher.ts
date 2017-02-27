@@ -7,10 +7,14 @@ import { DomSanitizer } from '@angular/platform-browser';
     templateUrl: 'teacher.html'
 })
 export class TeacherComponent {
-    @Input() teachers;
+
+    @Input() teachers;                 
+    // teachers container to be displayed
     playVideo:boolean = false;
     showMore:boolean = false;
     whole_teacher:any = [];
+    first_9_teachers;
+    rest_teacher;
     constructor( public lms: LMS,public sanitizer: DomSanitizer) {
     }
     ngOnChanges(changes) {
@@ -36,15 +40,21 @@ export class TeacherComponent {
             });
         }
         console.log("teacher",this.teachers);
-        this.whole_teacher = this.teachers;
-        this.takeSomeTemporaryTeachers();
+        //this.whole_teacher = this.teachers;
+
+        console.log( 'count: ', this.teachers.length );
+        this.first_9_teachers = this.teachers.filter(this.firstDisplayTeacherIndex);
+
+
+        this.rest_teacher = this.teachers.filter( e => this.first_9_teachers.findIndex( x => e.nickname == x.nickname ) == -1 );
+        this.whole_teacher = this.first_9_teachers.concat( this.rest_teacher );
+
+
+        this.teachers = this.first_9_teachers;
 
     }
-    takeSomeTemporaryTeachers() {
-        // this.teachers = this.teachers.slice( 0, 9 );
-        this.teachers = this.teachers.filter(this.firstDisplayTeacherIndex);
-    }
-    firstDisplayTeacherIndex(query) {
+    
+    firstDisplayTeacherIndex(query, i) {
         if( query.nickname == "Mngr Fae"||
             query.nickname == "Louine" ||
             query.nickname == "Meg"||
@@ -53,8 +63,11 @@ export class TeacherComponent {
             query.nickname == "Den"||
             query.nickname == "Ren"||
             query.nickname == "Ghen"||
-            query.nickname == "Asha")return query;
+            query.nickname == "Asha") {
+                return query;
+            }
     }
+
     isArray( obj ) {
         if (obj.constructor.toString().indexOf('Array') == -1) return false;
         
@@ -67,7 +80,7 @@ export class TeacherComponent {
             this.teachers = this.whole_teacher;
         }
         else {
-            this.takeSomeTemporaryTeachers();
+            this.teachers = this.first_9_teachers;
             // this.teachers = _.take( this.teachers, this.no_teacher_show_by_defualt);
            
         }
