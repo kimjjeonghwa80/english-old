@@ -44,8 +44,6 @@ export class TeacherComponent {
 
         console.log( 'count: ', this.teachers.length );
         this.first_9_teachers = this.teachers.filter(this.firstDisplayTeacherIndex);
-
-
         this.rest_teacher = this.teachers.filter( e => this.first_9_teachers.findIndex( x => e.nickname == x.nickname ) == -1 );
         this.whole_teacher = this.first_9_teachers.concat( this.rest_teacher );
 
