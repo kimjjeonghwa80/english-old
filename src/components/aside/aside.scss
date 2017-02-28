@@ -1,7 +1,11 @@
 //Narrow
 aside-component {
     display: block;
-    padding: 0 0 .3em;
+    padding: .3em 0 .3em;
+    background: #605e63;
+    @media(min-width:$md_breakpoint) {
+        background: white;
+    }
     .sidebar {
         overflow: auto;
         display: block;
