@@ -16,6 +16,10 @@ import { HomePage } from '../pages/home/home';
 import { HelpPage } from '../pages/help/help';
 import { AdminPage } from '../pages/adminpage/adminpage';
 
+import { PlFooterComponent } from '../theme/plcenter/pl-footer/pl-footer';
+import { PlHeaderComponent } from '../theme/plcenter/pl-header/pl-header';
+import { PlSmallHeaderComponent } from '../theme/plcenter/pl-header/components/pl-small-header/pl-small-header';
+import { PlBigHeaderComponent } from '../theme/plcenter/pl-header/components/pl-big-header/pl-big-header';
 import { HeaderComponent } from '../components/header/header';
 import { BigHeaderComponent } from '../components/header/components/big-header/big-header';
 import { SmallHeaderComponent } from '../components/header/components/small-header/small-header';
@@ -54,6 +58,10 @@ const appRoutes: Routes = [
     QnaPostComponent,
     HomePage,
     HelpPage,
+    PlFooterComponent,
+    PlHeaderComponent,
+    PlSmallHeaderComponent,
+    PlBigHeaderComponent,
     HeaderComponent,
     BigHeaderComponent,
     SmallHeaderComponent,

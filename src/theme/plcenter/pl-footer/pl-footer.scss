@@ -1,0 +1,23 @@
+pl-footer-component {
+    .copyright {
+        padding: 5em 0;
+        background-color: #4b494f;
+        img {
+            width: 100%;
+        }
+        .footer-content {
+            padding: 0 .5em;
+            width: 100%;
+            color: #fff;
+            font-size: 0.9em;
+            line-height: 1.6rem;
+            text-align: center;
+            @media(min-width:$maxbreakpoint) {
+                border-left: 0.15rem solid #898989;
+                padding-left:1em; 
+                text-align: left;
+                width: auto;
+            }
+        }
+    }
+}
