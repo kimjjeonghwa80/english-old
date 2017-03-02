@@ -2,18 +2,44 @@ kkang-footer-component {
     .copyright {
         position: relative;
         padding: 2em 0 4em;
-        img {
+        .container {
+            margin: 0 auto;
             width: 100%;
+            max-width: $lg_breakpoint;
+        }
+    
+        .logo-picture {
+            cursor: pointer;
+            margin: 0 auto;
+            width: 100%;  
+            text-align: center;
+        }
+        .btn-img {
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            right: 0;
+            @media(min-width:$lg_breakpoint) {
+                position: relative;
+            }
+            img {
+                position: absolute;
+                top: 0;
+                right: 20px;
+                @media(min-width:$lg_breakpoint) {
+                    position: relative;
+                }   
+            }            
         }
         .footer-content {
-            padding: 0 .5em;
+            padding: 1em;
             width: 100%;
             color: #383838;
-            font-size: 0.9em;
+            font-size: 0.75em;
             line-height: 1.6rem;
             text-align: center;
             @media(min-width:$maxbreakpoint) {
-                padding-left:1em; 
+                // padding-left:1em; 
                 text-align: left;
                 width: auto;
             }
@@ -22,9 +48,9 @@ kkang-footer-component {
         .copyright-content {
             position: absolute;
             bottom: 0;
-            padding: .5em;
+            padding: .8em;
             width: 100%;
-            font-size: 1em;
+            font-size: .7em;
             text-align: center;
             background-color: #c0c0c0;
             color: #fff;

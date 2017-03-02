@@ -1,9 +1,9 @@
 <footer id="footer">
 <div class="copyright"> 
     <div class="container">
-        <div class="row justify-content-around">
-            <div class="col-auto logo-picture">
-                <img src="/assets/img/kkang-logo.png">
+        <div class="row">
+            <div class="col-md-3 logo-picture" (click)="onClickPanelMenu('intro')">
+                <img src="/assets/img/kkang/f-logo.png">
             </div> 
             <div class="col-auto footer-content">
                 <font>
@@ -13,6 +13,9 @@
                     업태 서비스 종목 온라인강의 개인정보관리책임자 송재호<
                 </font>
             </div>
+            <div class="col-md-2 btn-img" (click)="onClickPanelMenu('intro')">
+                <img src="/assets/img/kkang/btn-to-top.png">
+            </div> 
         </div>
         
     </div>

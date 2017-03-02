@@ -8,16 +8,29 @@ kkang-header-component .small .navbar {
         }
     }
     .top .menu {
-       text-align: center;
+        margin: 0 auto;
+        max-width: $lg_breakpoint;
+        width: 100%;  
         .button {
-            padding: .5em;
             display: inline-block;
-            font-size: 1.3em;
+            font-size: 1em;
         }
         .button:hover {
             cursor: pointer;
             color:#fde000;
         }
+    }
+    .top .menu .left-menu {
+        width: 50%;
+        float: left;
+        span {
+            cursor:pointer;
+        }
+    }
+    .top .menu .right-menu {
+        width: 50%;
+        display: inline-block;
+        text-align: right;
     }
     .bottom {
         position: relative;
@@ -62,11 +75,10 @@ kkang-header-component .small .navbar {
                     font-size: 1.3em;
                     cursor:pointer;
                     &.active {
-                        background-color: #f15f4c;
-                        color:#fff;
+                        color: #f15f4c;
                     }
                     &:hover {
-                        background-color: #eee;
+                        color: #fde000;
                     }
                 }
             }
