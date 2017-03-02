@@ -19,7 +19,7 @@ pl-footer-component {
           
             .info .title {
                 margin: 1em 0;
-                font-size: 1.2em;
+                font-size: 1.1em;
                 font-weight: 500;
                 line-height: 1.2;
                 color:#eee;
@@ -27,6 +27,7 @@ pl-footer-component {
             .info .desc {
                 margin-bottom: 1em;
                 color:#999;
+                font-size: .95em;
             }
             .button span{
                 padding: .2em;
@@ -38,7 +39,7 @@ pl-footer-component {
                 color:#999;
             }
             .copyright {
-                    border-top: 5px solid rgba(255,255,255,.1);
+                border-top: 5px solid rgba(255,255,255,.1);
                 padding: 1em;
                 color: #999;
             }

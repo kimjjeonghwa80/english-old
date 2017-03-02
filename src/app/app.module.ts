@@ -16,8 +16,14 @@ import { HomePage } from '../pages/home/home';
 import { HelpPage } from '../pages/help/help';
 import { AdminPage } from '../pages/adminpage/adminpage';
 
+import { KkangHeaderComponent } from '../theme/kkang/kkang-header/kkang-header';
+import { KkangFooterComponent } from '../theme/kkang/kkang-footer/kkang-footer';
+import { KkangSmallHeaderComponent } from '../theme/kkang/kkang-header/components/kkang-small-header/kkang-small-header';
+import { KkangBigHeaderComponent } from '../theme/kkang/kkang-header/components/kkang-big-header/kkang-big-header';
+
 import { PlFooterComponent } from '../theme/plcenter/pl-footer/pl-footer';
 import { PlHeaderComponent } from '../theme/plcenter/pl-header/pl-header';
+
 import { PlSmallHeaderComponent } from '../theme/plcenter/pl-header/components/pl-small-header/pl-small-header';
 import { PlBigHeaderComponent } from '../theme/plcenter/pl-header/components/pl-big-header/pl-big-header';
 import { HeaderComponent } from '../components/header/header';
@@ -58,6 +64,10 @@ const appRoutes: Routes = [
     QnaPostComponent,
     HomePage,
     HelpPage,
+    KkangHeaderComponent,
+    KkangFooterComponent,
+    KkangSmallHeaderComponent,
+    KkangBigHeaderComponent,
     PlFooterComponent,
     PlHeaderComponent,
     PlSmallHeaderComponent,

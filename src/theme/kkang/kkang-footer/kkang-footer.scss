@@ -1,0 +1,33 @@
+kkang-footer-component {
+    .copyright {
+        position: relative;
+        padding: 2em 0 4em;
+        img {
+            width: 100%;
+        }
+        .footer-content {
+            padding: 0 .5em;
+            width: 100%;
+            color: #383838;
+            font-size: 0.9em;
+            line-height: 1.6rem;
+            text-align: center;
+            @media(min-width:$maxbreakpoint) {
+                padding-left:1em; 
+                text-align: left;
+                width: auto;
+            }
+            
+        }
+        .copyright-content {
+            position: absolute;
+            bottom: 0;
+            padding: .5em;
+            width: 100%;
+            font-size: 1em;
+            text-align: center;
+            background-color: #c0c0c0;
+            color: #fff;
+        }
+    }
+}
