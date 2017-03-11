@@ -4,14 +4,12 @@ import { App } from '../../../providers/app';
 
 import { LMS } from '../../../providers/lms';
 
-import {
+import { User,
     RESPONSE,
-    USER_REGISTER_REQUEST_DATA,
-    USER_UPDATE_REQUEST_DATA,
-    USER_UPDATE_RESPONSE_DATA,
-    USER_REGISTER_RESPONSE_DATA
-} from './../../../angular-backend/interface';
-import { User } from './../../../angular-backend/user';
+    USER_REGISTER,
+    USER_UPDATE,
+    USER_UPDATE_RESPONSE,
+    USER_REGISTER_RESPONSE } from './../../../angular-backend/user';
 @Component({
     selector:'register-component',
     templateUrl: 'register.html'
@@ -21,7 +19,7 @@ export class RegisterComponent{
 
 
     loading     : boolean = false;
-    form = <USER_REGISTER_REQUEST_DATA> {};
+    form = <USER_REGISTER> {};
     //form = {};
     login: boolean = false;
     result: RESPONSE = <RESPONSE> {};
@@ -94,7 +92,7 @@ export class RegisterComponent{
     getUserData() {
         this.loading = true;
         this.user.getUserData().subscribe( (res: any) => {
-            if ( this.user.base.isError( res ) ) this.error( res );
+            if ( this.user.isError( res ) ) this.error( res );
             else this.getDataSuccess( res );
         }, error => {
             this.error( error );
@@ -105,7 +103,7 @@ export class RegisterComponent{
         this.loading = true;
         
         this.user.register( this.form ).subscribe( (res: any) => {
-            if ( this.user.base.isError( res ) ) this.error( res );
+            if ( this.user.isError( res ) ) this.error( res );
             else this.successRegister( res );
         }, error => {
             this.error( error );
@@ -133,7 +131,7 @@ export class RegisterComponent{
         if( this.form.birth_day.length < 2 ) day = "0"+ day; 
         return this.form.birth_year + "-" + month + "-" +day;
     }
-    successRegister( res: USER_REGISTER_RESPONSE_DATA) {
+    successRegister( res: USER_REGISTER_RESPONSE ) {
         console.log("user register success: ", res );
         this.loading = false;
         this.activeModal.close();
@@ -143,7 +141,7 @@ export class RegisterComponent{
         this.loading = false;
         this.result = error;
         console.log( this.result );
-        return this.user.base.errorHandler( error );
+        return this.user.errorHandler( error );
     }
 
     lmsRegister(){
@@ -159,7 +157,7 @@ export class RegisterComponent{
         if ( this.validate() == false ) return;
         this.loading = true;
         this.splitBirthday();
-        let data : USER_UPDATE_REQUEST_DATA = {
+        let data : USER_UPDATE = {
             name: this.form.name,
             nickname: this.form.nickname,
             mobile: this.form.mobile,
@@ -169,7 +167,7 @@ export class RegisterComponent{
             gender: this.form.gender
         }
         this.user.update( data ).subscribe( (res: any) => {
-            if ( this.user.base.isError( res ) ) this.error( res );
+            if ( this.user.isError( res ) ) this.error( res );
             else this.successUpdate( res );
         }, error => {
             this.error( error );
@@ -193,7 +191,7 @@ export class RegisterComponent{
         }, err =>console.error( 'error on update ' + err ), ()=>{});
         */
     }
-    successUpdate( res: USER_UPDATE_RESPONSE_DATA) {
+    successUpdate( res: USER_UPDATE_RESPONSE ) {
         console.log("user update success: ", res );
         this.loading = false;
         this.activeModal.close();
