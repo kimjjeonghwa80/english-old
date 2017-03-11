@@ -2,18 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { App } from '../../../providers/app';
+
 import { User } from './../../../angular-backend-0.2/user';
+
 
 import { FindIdModal } from '../find-id/find-id';
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password';
 import { RegisterComponent } from '../register/register';
 
+
 import {
     RESPONSE, 
     USER_LOGIN,
     USER_LOGIN_RESPONSE
-    // USER_LOGIN_REPONSE_DATA 
 } from './../../../angular-backend-0.2/interface';
+
 @Component({
     selector: 'login-component',
     templateUrl: 'login.html'
@@ -64,15 +67,19 @@ export class LoginModal implements OnInit {
   }
   onClickLogin(){
     if ( this.validate() == false ) return;
+
     this.loading = true;
     this.user.login( this.form ).subscribe( ( res: USER_LOGIN_RESPONSE ) => {
         this.success( res );
     }, error => {
+
         this.error( error );
     });
   }
 
+
   success( res: USER_LOGIN_RESPONSE) {
+
     this.loading = false;
     this.activeModal.close();
   }
@@ -80,8 +87,10 @@ export class LoginModal implements OnInit {
   error( error ) {
     this.loading = false;
     this.result = error;
+
     console.log( this.result );
     return this.user.errorResponse( error );
+
   }
 
   onEnterLogin(event){

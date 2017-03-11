@@ -4,13 +4,14 @@ import { App } from '../../../providers/app';
 
 import { LMS } from '../../../providers/lms';
 
-import {
+import { 
     RESPONSE,
     USER_REGISTER, USER_REGISTER_RESPONSE, 
     USER_UPDATE, USER_UPDATE_RESPONSE
 } from './../../../angular-backend-0.2/interface';
 import { User,
    } from './../../../angular-backend-0.2/user';
+
 @Component({
     selector:'register-component',
     templateUrl: 'register.html'
@@ -19,6 +20,7 @@ import { User,
 export class RegisterComponent{
     loading     : boolean = false;
     form = <USER_REGISTER> {};
+
     login: boolean = false;
     result: RESPONSE = <RESPONSE> {};
     constructor (
@@ -102,9 +104,11 @@ export class RegisterComponent{
     register( callback? ) {
         // if ( this.validate() == false ) return;
         this.loading = true;
+
         this.splitBirthday(); 
         this.user.register( this.form ).subscribe( (res: USER_REGISTER_RESPONSE ) => {
             this.successRegister( res );
+
         }, error => {
             this.error( error );
         } );
@@ -134,6 +138,7 @@ export class RegisterComponent{
         return this.form.birth_year + "-" + month + "-" +day;
     }
     successRegister( res: USER_REGISTER_RESPONSE) {
+
         console.log("user register success: ", res );
         this.loading = false;
         this.activeModal.close();
@@ -170,6 +175,7 @@ export class RegisterComponent{
         }
         this.user.update( data ).subscribe( (res: any) => {
             this.successUpdate( res );
+
         }, error => {
             this.error( error );
         } );
@@ -193,6 +199,7 @@ export class RegisterComponent{
         */
     }
     successUpdate( res: USER_UPDATE_RESPONSE) {
+
         console.log("user update success: ", res );
         this.loading = false;
         this.activeModal.close();

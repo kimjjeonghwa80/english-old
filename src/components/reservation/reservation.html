@@ -16,6 +16,25 @@
         <table class="table">
             <thead></thead>
             <tbody>
+                <tr *ngFor="">
+                    <td *ngFor="let mydata of data">
+                        <div [innerHTML]="mydata.icon"></div>
+                        <span>  {{ mydata.teacher.mb_nick}} </span>
+                        <span> {{mydata.kdate }}</span>
+                        <!--Sample https://englishfordevelopers.com/api/data/teacher/primary_photo_27018-->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="reservation">
+    <div class="reservation-container">
+        <table class="table">
+            <thead></thead>
+            <tbody>
                 <tr>
                     <td *ngFor="let mydata of data">
                         <div [innerHTML]="mydata.icon"></div>
