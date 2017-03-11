@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { App } from '../../../providers/app';
-import { User } from './../../../angular-backend/user';
+import { User } from './../../../angular-backend-0.2/user';
 
 import { FindIdModal } from '../find-id/find-id';
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password';
@@ -10,9 +10,10 @@ import { RegisterComponent } from '../register/register';
 
 import {
     RESPONSE, 
-    USER_LOGIN_REQUEST_DATA, 
-    USER_LOGIN_REPONSE_DATA 
-} from './../../../angular-backend/interface';
+    USER_LOGIN,
+    USER_LOGIN_RESPONSE
+    // USER_LOGIN_REPONSE_DATA 
+} from './../../../angular-backend-0.2/interface';
 @Component({
     selector: 'login-component',
     templateUrl: 'login.html'
@@ -22,7 +23,7 @@ export class LoginModal implements OnInit {
     loading: boolean = false;
     result: RESPONSE = <RESPONSE> {};
     saveid:boolean = false;
-    form = <USER_LOGIN_REQUEST_DATA> {};
+    form = <USER_LOGIN> {};
     // form = {};
     constructor( 
       public activeModal  : NgbActiveModal,
@@ -63,16 +64,15 @@ export class LoginModal implements OnInit {
   }
   onClickLogin(){
     if ( this.validate() == false ) return;
-        this.loading = true;
-        this.user.login( this.form ).subscribe( (res: any) => {
-            if ( this.user.base.isError( res ) ) this.error( res );
-            else this.success( res );
-        }, error => {
+    this.loading = true;
+    this.user.login( this.form ).subscribe( ( res: USER_LOGIN_RESPONSE ) => {
+        this.success( res );
+    }, error => {
         this.error( error );
-    } );
+    });
   }
 
-  success( res: USER_LOGIN_REPONSE_DATA) {
+  success( res: USER_LOGIN_RESPONSE) {
     this.loading = false;
     this.activeModal.close();
   }
@@ -80,7 +80,8 @@ export class LoginModal implements OnInit {
   error( error ) {
     this.loading = false;
     this.result = error;
-    return this.user.base.errorHandler( error );
+    console.log( this.result );
+    return this.user.errorResponse( error );
   }
 
   onEnterLogin(event){
@@ -90,10 +91,6 @@ export class LoginModal implements OnInit {
   }
 
   validate(){
-    //   if( this.form.id && this.form.id.match(/[.#$\[\]]/g)) return this.validateError(' valid id ');
-    //   if( ! this.form.id )return this.validateError( 'id ' );
-    //   if( ! this.form.password ) return this.validateError( 'password ' );
-    //   return true;
     if( this.form.id && this.form.id.match(/[.#$\[\]]/g)) return this.errorResult(' valid id ');
     if( ! this.form.id )return this.errorResult( 'id ' );
     if( ! this.form.password ) return this.errorResult( 'password ' );

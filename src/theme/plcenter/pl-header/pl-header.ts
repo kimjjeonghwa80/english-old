@@ -3,7 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginModal } from '../../../components/modals/login/login';
 import { RegisterComponent } from '../../../components/modals/register/register';
 
-import { User } from '../../../angular-backend/user';
+import { User } from '../../../angular-backend-0.2/user';
 import { App } from '../../../providers/app';
 
 @Component({
@@ -24,7 +24,7 @@ export class PlHeaderComponent implements OnInit {
         private modal       : NgbModal,
         private app         : App
     ) {
-    
+        // this.onClickRegister();
     }
     ngOnInit() {}
 

@@ -6,23 +6,19 @@ import { LMS } from '../../../providers/lms';
 
 import {
     RESPONSE,
-    USER_REGISTER_REQUEST_DATA,
-    USER_UPDATE_REQUEST_DATA,
-    USER_UPDATE_RESPONSE_DATA,
-    USER_REGISTER_RESPONSE_DATA
-} from './../../../angular-backend/interface';
-import { User } from './../../../angular-backend/user';
+    USER_REGISTER, USER_REGISTER_RESPONSE, 
+    USER_UPDATE, USER_UPDATE_RESPONSE
+} from './../../../angular-backend-0.2/interface';
+import { User,
+   } from './../../../angular-backend-0.2/user';
 @Component({
     selector:'register-component',
     templateUrl: 'register.html'
 })
 
 export class RegisterComponent{
-
-
     loading     : boolean = false;
-    form = <USER_REGISTER_REQUEST_DATA> {};
-    //form = {};
+    form = <USER_REGISTER> {};
     login: boolean = false;
     result: RESPONSE = <RESPONSE> {};
     constructor (
@@ -31,11 +27,14 @@ export class RegisterComponent{
         private lms          : LMS,
         private user         : User
     ) {
+        ///////////////
+        // this.form['gender'] = ""; //Default Select gender
+        //////////////
 
-        //this.login = this.user.isLogin();
-        this.form['gender'] = ""; //Default Select gender
-        // this.fakeData();
-        //this.onClickRegister();
+
+      
+        this.fakeData();
+        // this.onClickRegister();
         // this.register();
 
 
@@ -64,6 +63,7 @@ export class RegisterComponent{
         let id = 'user' + (new Date).getHours() + (new Date).getMinutes() + (new Date).getSeconds();  
         this.form.id = id;
         this.form.email = id + '@gmail.com';
+        this.form.nickname = id;
         this.form.name = id;
         this.form.password = id;
         this.form.mobile = '09174678000';
@@ -93,23 +93,22 @@ export class RegisterComponent{
 
     getUserData() {
         this.loading = true;
-        this.user.getUserData().subscribe( (res: any) => {
-            if ( this.user.base.isError( res ) ) this.error( res );
-            else this.getDataSuccess( res );
+        this.user.data().subscribe( (res: any) => {
+            this.getDataSuccess( res );
         }, error => {
             this.error( error );
         } );
     }
     register( callback? ) {
-        if ( this.validate() == false ) return;
+        // if ( this.validate() == false ) return;
         this.loading = true;
-        
-        this.user.register( this.form ).subscribe( (res: any) => {
-            if ( this.user.base.isError( res ) ) this.error( res );
-            else this.successRegister( res );
+        this.splitBirthday(); 
+        this.user.register( this.form ).subscribe( (res: USER_REGISTER_RESPONSE ) => {
+            this.successRegister( res );
         }, error => {
             this.error( error );
         } );
+
     }
     splitBirthday() {
         if( this.form.birthday )
@@ -118,6 +117,7 @@ export class RegisterComponent{
             this.form.birth_year  = date[0];
             this.form.birth_month = date[1];
             this.form.birth_day   = date[2];
+            delete this.form.birthday;
         }
     }
 
@@ -133,7 +133,7 @@ export class RegisterComponent{
         if( this.form.birth_day.length < 2 ) day = "0"+ day; 
         return this.form.birth_year + "-" + month + "-" +day;
     }
-    successRegister( res: USER_REGISTER_RESPONSE_DATA) {
+    successRegister( res: USER_REGISTER_RESPONSE) {
         console.log("user register success: ", res );
         this.loading = false;
         this.activeModal.close();
@@ -143,7 +143,7 @@ export class RegisterComponent{
         this.loading = false;
         this.result = error;
         console.log( this.result );
-        return this.user.base.errorHandler( error );
+        return this.user.errorResponse( error );
     }
 
     lmsRegister(){
@@ -156,10 +156,10 @@ export class RegisterComponent{
 
 
     updateProfile( callback ){
-        if ( this.validate() == false ) return;
+        // if ( this.validate() == false ) return;
         this.loading = true;
         this.splitBirthday();
-        let data : USER_UPDATE_REQUEST_DATA = {
+        let data : USER_UPDATE = {
             name: this.form.name,
             nickname: this.form.nickname,
             mobile: this.form.mobile,
@@ -169,8 +169,7 @@ export class RegisterComponent{
             gender: this.form.gender
         }
         this.user.update( data ).subscribe( (res: any) => {
-            if ( this.user.base.isError( res ) ) this.error( res );
-            else this.successUpdate( res );
+            this.successUpdate( res );
         }, error => {
             this.error( error );
         } );
@@ -193,7 +192,7 @@ export class RegisterComponent{
         }, err =>console.error( 'error on update ' + err ), ()=>{});
         */
     }
-    successUpdate( res: USER_UPDATE_RESPONSE_DATA) {
+    successUpdate( res: USER_UPDATE_RESPONSE) {
         console.log("user update success: ", res );
         this.loading = false;
         this.activeModal.close();
@@ -205,23 +204,23 @@ export class RegisterComponent{
         }, err =>{})
     }
 
-    validate() {
-        console.log('form: ', this.form);
-/*
+//     validate() {
+//         console.log('form: ', this.form);
+// /*
 
 
-        if ( ! this.form.id ) return this.validateError('ID');
-        if( this.form.id.match(/[.#$\[\]]/g)) return this.validateError('valid id');
-        if ( ! this.form.email ) return this.validateError('Email');
-        if( ! this.form.password )return this.validateError('Password');
+//         if ( ! this.form.id ) return this.validateError('ID');
+//         if( this.form.id.match(/[.#$\[\]]/g)) return this.validateError('valid id');
+//         if ( ! this.form.email ) return this.validateError('Email');
+//         if( ! this.form.password )return this.validateError('Password');
 
-        if ( ! this.form.name ) return this.validateError('Name');
-        if ( ! this.form.mobile ) return this.validateError('Mobile');
-        if ( ! this.form.gender ) return this.validateError('Gender');
-        if ( ! this.form.birthday ) return this.validateError('birthday');
-*/
-        return true;
-    }
+//         if ( ! this.form.name ) return this.validateError('Name');
+//         if ( ! this.form.mobile ) return this.validateError('Mobile');
+//         if ( ! this.form.gender ) return this.validateError('Gender');
+//         if ( ! this.form.birthday ) return this.validateError('birthday');
+// */
+//         return true;
+//     }
 
     validateError( name ) {
         this.app.alert( name + ' is required ...' );

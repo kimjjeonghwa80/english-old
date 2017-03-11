@@ -66,6 +66,10 @@ export class LMS {
     getReservations( data, success ) {
         let url = LMS_ENDPOINT_URL + `?id=${data['id']}&name=${data['name']}&nickname=${data['nickname']}&email=${data['email']}&mobile=${data['mobile']}&classid=${data['classid']}&domain=${domain}&domain_key=empty&function=reservation_list`;
         console.log('url: ', url);
+        //Mock Test Reservation list
+        url = "https://englishfordevelopers.com/api/ajax.php?id=k402486&email=k402486@naver.com&classid=${data[%27classid%27]}&domain=englishcoffeeonline.onlineenglish.kr&domain_key=empty&function=reservation_list";
+        //Mock Test Reservation list by month year
+        url = "https://englishfordevelopers.com/api/ajax.php?id=k402486&email=k402486@naver.com&classid=${data[%27classid%27]}&domain=englishcoffeeonline.onlineenglish.kr&domain_key=empty&function=class_list_by_month&Y=2017&m=02";
         this.http.get( url ).subscribe( re =>{
             let json = null;
             try {
