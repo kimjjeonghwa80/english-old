@@ -33,60 +33,49 @@ export class ReservationComponent implements OnInit {
         });
       
     }
-    checkDate( data ):any{
-        if(data['day'].length < 2) { data['day'] = "0"+data['day'];}
-        let date = data['year']+data['month']+data['day'];
-        for(let i=0; i < this.data.length ;i++) {
-            if( date == this.data[i].date) return i;
-        }
-        return 0;
-    }
-    // getReservation() {
 
-    // }
+
 
     listCalendar(month, year) {
-        let running_day = new Date(year + "-" + month + "-01").getDay()
-        let days_in_month = new Date(year, month, 0).getDate();
-        for (let i = 0; i < running_day; i++) { this.listOfDays.unshift("" ); }     //Fill all the empty days first
+        let empty_day = new Date(year + "-" + month + "-01").getDay()   // first date(day) of the month. 0~6
+        let days_in_month = new Date(year, month, 0).getDate();         // last date(day) of the month. 28, 29, 30.
+        for (let i = 0; i < empty_day; i++) { this.listOfDays.unshift( "" ); }     // Fill all the empty days first
         for (let i = 1; i <= days_in_month; i++) {
-            let result;
-            result = this.checkDate( { year:this.year, month:this.month, day:`${i}` });
-            if( result != 0) {
-                this.data[result].myDate = `${i}`;
-                this.listOfDays.push( this.data[result]);
-            }//if data is equals to today push
-            else {
-                this.listOfDays.push({myDate:i});
-            }//else put empty object
+
+            let date = this.year + this.month + (i < 10 ? '0' + i : i);
+            let book = this.data.find( book => book['date'] == date );
+            if ( book ) book['myDate'] = i;
+            else book = { myDate: i };
+            this.listOfDays.push( book );
+
         }       //Fill the days of month
-        while( this.listOfDays.length < this.maxDay ) { this.listOfDays.push(""); } //fill the remaining days
-        this.listOfDays = this.chunk(this.listOfDays,7);                            //Chunk Date
-        
+        // console.info('debug:', this.listOfDays);
+        while( this.listOfDays.length < this.maxDay ) { this.listOfDays.push(""); } // fill the remaining days
+        this.listOfDays = this.chunk(this.listOfDays );                            //Chunk Date
     }
+    
 
-//  listCalendar(month, year) {
-//         let running_day = new Date(year + "-" + month + "-01").getDay()
-//         let days_in_month = new Date(year, month, 0).getDate();
-//         for (let i = 0; i < running_day; i++) { this.listOfDays.unshift("" ); }     //Fill all the empty days first
-//         for (let i = 1; i <= days_in_month; i++) { this.listOfDays.push(i); }       //Fill the days of month
-//         while( this.listOfDays.length < this.maxDay ) { this.listOfDays.push(""); } //fill the remaining days
-//         this.listOfDays = this.chunk(this.listOfDays,7);                            //Chunk Date
-//     }
-
-    chunk(myArray:Array<any>, size) {
-        let temp = myArray;
-        myArray = [];
-        for( let i = 0; i < temp.length; i = i + size ) {
-            myArray.push(this.pres(temp.slice( i, i + size ) ));
+    chunk( arr:Array<any> ) {
+        let temp = [];
+        for( let i = 0; i < arr.length; i = i + 7 ) {
+            temp.push( this.pres( arr.slice( i, i + 7 ) ) );
         }
-        return myArray;
+        return temp;
     }
+
     pres( arr: any ) {
         // console.log('pres:', arr);
         return arr.map( e => this.pre(e) );
     }
     pre( data ) {
         return data;
+    }
+
+
+    onClickNext() {
+
+    }
+    onClickPrev() {
+
     }
 }

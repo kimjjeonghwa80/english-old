@@ -11,8 +11,12 @@
         </font>
     </div>
 </div>
+
 <div class="reservation">
+
     <div class="reservation-container">
+
+        <span (click)="onClickPrev()">&lt;&lt; Prev</span> - {{ year }} {{ month }} - <span (click)="onClickNext()">Next &gt;&gt;</span>
         <table class="table">
             <thead>
                 <th class="calendar-day-head">Sun</th>
@@ -26,10 +30,9 @@
             <tbody>
                 <tr *ngFor="let week of listOfDays">
                     <td *ngFor="let day of week" class="calendar-day">
-                        <span *ngIf="day.myDate">{{day.myDate}}</span>
+                        <span *ngIf="day.myDate">{{day.myDate}} / {{ day.date }}</span>
                         <div *ngIf="day.teacher">{{day.teacher.mb_nick}}</div>
                         <div [innerHTML]="day.icon"></div>
-                        
                         
                         <!--Sample https://englishfordevelopers.com/api/data/teacher/primary_photo_27018-->
                     </td>
