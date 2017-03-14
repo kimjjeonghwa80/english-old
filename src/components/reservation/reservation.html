@@ -14,13 +14,23 @@
 <div class="reservation">
     <div class="reservation-container">
         <table class="table">
-            <thead></thead>
+            <thead>
+                <th class="calendar-day-head">Sun</th>
+                <th class="calendar-day-head">Mon</th>
+                <th class="calendar-day-head">Tue</th>
+                <th class="calendar-day-head">Wed</th>
+                <th class="calendar-day-head">Thu</th>
+                <th class="calendar-day-head">Fri</th> 
+                <th class="calendar-day-head">Sat</th>
+            </thead>
             <tbody>
-                <tr *ngFor="">
-                    <td *ngFor="let mydata of data">
-                        <div [innerHTML]="mydata.icon"></div>
-                        <span>  {{ mydata.teacher.mb_nick}} </span>
-                        <span> {{mydata.kdate }}</span>
+                <tr *ngFor="let week of listOfDays">
+                    <td *ngFor="let day of week" class="calendar-day">
+                        <span *ngIf="day.myDate">{{day.myDate}}</span>
+                        <div *ngIf="day.teacher">{{day.teacher.mb_nick}}</div>
+                        <div [innerHTML]="day.icon"></div>
+                        
+                        
                         <!--Sample https://englishfordevelopers.com/api/data/teacher/primary_photo_27018-->
                     </td>
                 </tr>
@@ -29,8 +39,7 @@
     </div>
 </div>
 
-
-<div class="reservation">
+<!--<div class="reservation">
     <div class="reservation-container">
         <table class="table">
             <thead></thead>
@@ -40,13 +49,13 @@
                         <div [innerHTML]="mydata.icon"></div>
                         <span>  {{ mydata.teacher.mb_nick}} </span>
                         <span> {{mydata.kdate }}</span>
-                        <!--Sample https://englishfordevelopers.com/api/data/teacher/primary_photo_27018-->
+                        
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-</div>
+</div>-->
 <div class="reservation">
     <div class="reservation-container">
         <table class="table">
