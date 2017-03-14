@@ -3,7 +3,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { App } from '../../../providers/app';
 
-import { User } from './../../../angular-backend-0.2/user';
+import { User } from './../../../angular-backend/user';
 
 
 import { FindIdModal } from '../find-id/find-id';
@@ -15,7 +15,7 @@ import {
     RESPONSE, 
     USER_LOGIN,
     USER_LOGIN_RESPONSE
-} from './../../../angular-backend-0.2/interface';
+} from './../../../angular-backend/interface';
 
 @Component({
     selector: 'login-component',

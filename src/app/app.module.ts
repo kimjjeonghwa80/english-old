@@ -10,7 +10,7 @@ import { App } from '../providers/app';
 import { AppComponent } from './app.component';
 //import { BackendAngularApiModule } from './../backend-angular-api/backend-angular-api.module';
 
-import { AngularBackendModule } from './../angular-backend-0.2/angular-backend.module';
+import { AngularBackendModule } from './../angular-backend/angular-backend.module';
 
 import { HomePage } from '../pages/home/home';
 import { HelpPage } from '../pages/help/help';

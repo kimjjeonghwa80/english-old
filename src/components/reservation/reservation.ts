@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LMS } from '../../providers/lms';
-import { User } from '../../angular-backend-0.2/user';
+import { User } from '../../angular-backend/user';
 @Component({
     selector: 'reservation-component',
     templateUrl: 'reservation.html'

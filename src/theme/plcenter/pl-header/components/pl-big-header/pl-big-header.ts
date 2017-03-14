@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { User } from '../../../../../angular-backend-0.2/user';
+import { User } from '../../../../../angular-backend/user';
 import { App } from '../../../../../providers/app';
 @Component({
     selector: 'pl-big-header-component',

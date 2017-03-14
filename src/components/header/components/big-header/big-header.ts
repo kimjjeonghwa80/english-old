@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { App } from '../../../../providers/app';
-import { User } from './../../../../angular-backend-0.2/user';
+import { User } from './../../../../angular-backend/user';
 @Component({
     selector: 'big-header-component',
     templateUrl: 'big-header.html'

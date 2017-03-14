@@ -6,11 +6,11 @@ import { LMS } from '../../../providers/lms';
 
 import { 
     RESPONSE,
-    USER_REGISTER, USER_REGISTER_RESPONSE, 
-    USER_UPDATE, USER_UPDATE_RESPONSE
-} from './../../../angular-backend-0.2/interface';
+    USER_REGISTER, USER_REGISTER_RESPONSE
+    , USER_EDIT, USER_EDIT_RESPONSE
+} from './../../../angular-backend/interface';
 import { User,
-   } from './../../../angular-backend-0.2/user';
+   } from './../../../angular-backend/user';
 
 @Component({
     selector:'register-component',
@@ -164,7 +164,7 @@ export class RegisterComponent{
         // if ( this.validate() == false ) return;
         this.loading = true;
         this.splitBirthday();
-        let data : USER_UPDATE = {
+        let data : USER_EDIT = {
             name: this.form.name,
             nickname: this.form.nickname,
             mobile: this.form.mobile,
@@ -173,7 +173,7 @@ export class RegisterComponent{
             birth_day: this.form.birth_day,
             gender: this.form.gender
         }
-        this.user.update( data ).subscribe( (res: any) => {
+        this.user.edit( data ).subscribe( (res: any) => {
             this.successUpdate( res );
 
         }, error => {
@@ -198,7 +198,7 @@ export class RegisterComponent{
         }, err =>console.error( 'error on update ' + err ), ()=>{});
         */
     }
-    successUpdate( res: USER_UPDATE_RESPONSE) {
+    successUpdate( res: USER_EDIT_RESPONSE) {
 
         console.log("user update success: ", res );
         this.loading = false;
