@@ -1,3 +1,17 @@
+@mixin nav_setting() {
+    margin:0 0.2em;
+    padding: .5em;
+    width: 7em;
+    border-radius: .1em;
+    background-color: #1abc9c;
+    color:#fff;
+    font-size: 1.3em;
+    cursor: pointer;
+    text-align:center;
+    &:hover {
+        font-weight: bold;
+    }
+}
 reservation-component {
     display: block;
     background-color:#fff;
@@ -154,7 +168,21 @@ reservation-component {
         max-width: $lg_breakpoint;
         .reservation-container {
             position: relative;
+            .this-month {
+                @include nav_setting();
+                margin:0 auto;
+                
+            }
+            .prev-month {
+                @include nav_setting();
+                float: left;
+            }
+            .next-month {
+                @include nav_setting();
+                float: right;
+            }
             table {
+                margin: 1em 0;
                 font-size: .8em;
                 th {
                     border: .3em solid #fff;
@@ -227,6 +255,14 @@ reservation-component {
                 @media(min-width:$md_breakpoint) {
                     font-size: 1em;
                 }
+            }
+        }
+        .calendar-loader {
+            text-align: center;
+            font-size: 3em; 
+            color:#7d7d7d;
+            .loader {
+                font-size: 1em;
             }
         }
         .reminder-image {

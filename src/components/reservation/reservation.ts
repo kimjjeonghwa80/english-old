@@ -8,7 +8,8 @@ import { User } from '../../angular-backend/user';
 export class ReservationComponent implements OnInit {
     reservations: any;
     data:any = null;
-    maxDay:number = 35;
+    maxDay:number = 42;
+    calendarLoad:boolean = true;
     listOfDays:Array<any> = [];
     date:any = new Date();
     year:any = this.date.getFullYear();
@@ -19,7 +20,11 @@ export class ReservationComponent implements OnInit {
         private lms : LMS
     ) {}
     ngOnInit() {
-        
+        this.getNewReservationData();
+    }
+    getNewReservationData() {
+        this.listOfDays = [];
+        this.calendarLoad = true;
         this.lms.getReservationsByMonthYear( { m:this.month , Y:this.year }, ( res )=> {
             //Process gather data
             res.books.forEach((res)=>{
@@ -30,10 +35,10 @@ export class ReservationComponent implements OnInit {
             console.log("Get Reservation Data:", this.data);
             this.listCalendar( this.month, this.year);
             console.log("Get listOfDays Data:", this.listOfDays);
+            this.calendarLoad = false;
         });
-      
+        
     }
-
 
 
     listCalendar(month, year) {
@@ -73,9 +78,31 @@ export class ReservationComponent implements OnInit {
 
 
     onClickNext() {
-
+        console.log("old:",this.month);
+        this.month ++;
+        
+        console.log("new:",this.month);
+         if( this.month > 12) {
+            this.year ++;
+            this.month = 1;
+        }
+        this.month = (this.month < 10 ? '0' + this.month : this.month);
+        console.log("newest:",this.month);
+        this.getNewReservationData();
     }
     onClickPrev() {
+        console.log("old:",this.month);
+        this.month --;
+        
+        console.log("new:",this.month);
+        if( this.month < 1) {
+            this.year --;
+            this.month = 12;
+        }
+       
+        this.month = (this.month < 10 ? '0' + this.month : this.month);
+        console.log("newest:",this.month);
+        this.getNewReservationData();
 
     }
 }
