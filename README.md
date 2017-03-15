@@ -53,8 +53,8 @@ post list
 * git clone https://github.com/thruthesky/english
 * npm install --verbose
 * cd src
-* git clone https://github.com/thruthesky/backend-agular-api
-* cd ../..
+* git clone https://github.com/thruthesky/angular-backend
+* cd ..
 
 
 
