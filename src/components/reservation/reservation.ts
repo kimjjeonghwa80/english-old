@@ -7,8 +7,7 @@ import { PrevMonths, NextMonths, BOOKS, WEEKS } from './reservation-interface';
     templateUrl: 'reservation.html'
 })
 export class ReservationComponent implements OnInit {
-    reservations;
-    data = null;
+    data: BOOKS = [];
     maxDay:number = 42;
     calendarLoad:boolean = true;
     books: BOOKS = [];
@@ -16,7 +15,6 @@ export class ReservationComponent implements OnInit {
     date:Date = new Date();
     year:number = this.date.getFullYear();
     month:number = parseInt(("0" + (this.date.getMonth() + 1)).slice(-2));
-    testList:any = [];
     prevMonths:Array<PrevMonths> = [];
     nextMonths:Array<NextMonths> = [];
     constructor(
@@ -76,7 +74,6 @@ export class ReservationComponent implements OnInit {
         }
         while( this.books.length < this.maxDay ) { this.books.push( null ); } // fill the remaining days
         this.weeks = this.chunk(this.books );                             //Chunk Date
-        console.log(this.weeks);
     }
     
 

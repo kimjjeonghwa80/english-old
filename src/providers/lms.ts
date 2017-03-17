@@ -72,7 +72,6 @@ export class LMS {
         let m = parseInt(data['m']) < 10 ? '0' + data['m'] :  data['m'];
         
         let url = `https://englishfordevelopers.com/api/ajax.php?id=k402486&email=k402486@naver.com&classid=${data['classid']}&domain=englishcoffeeonline.onlineenglish.kr&domain_key=empty&function=class_list_by_month&Y=${data['Y']}&m=${m}`;
-        console.log(url);
         this.http.get( url ).subscribe( re =>{
             let json = null;
             try {

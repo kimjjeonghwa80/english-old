@@ -28,6 +28,25 @@
                     <thead class="table-inverse bg-info">
                         <th>Title</th>
                         <th>Writer</th>
+                        <th>Content</th>
+                        <!--<th>Date</th>-->
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let post of postList">
+                            <th> {{ post.title }} </th>
+                            <td> {{ post.name }} </td>
+                            <td> {{ post.content }} </td>
+                            <!--<td> {{ post.created }} </td>-->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--<div class="post-list-container">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead class="table-inverse bg-info">
+                        <th>Title</th>
+                        <th>Writer</th>
                         <th>Date</th>
                         <th>Views</th>
                     </thead>
@@ -52,7 +71,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div>-->
         </div>
        
         <!--<div class="post-list-container">

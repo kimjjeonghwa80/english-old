@@ -7,7 +7,7 @@ import { LMS } from '../../../providers/lms';
 import { 
     RESPONSE,
     USER_REGISTER, USER_REGISTER_RESPONSE
-    , USER_EDIT, USER_EDIT_RESPONSE
+    , USER_EDIT, USER_EDIT_RESPONSE, USER
 } from './../../../angular-backend/interface';
 import { User,
    } from './../../../angular-backend/user';
@@ -80,7 +80,6 @@ export class RegisterComponent{
 
     ngOnInit(){
         if ( this.user.logged ) {
-            console.log("get me");
             this.getUserData();
         }
     }
@@ -95,7 +94,7 @@ export class RegisterComponent{
 
     getUserData() {
         this.loading = true;
-        this.user.data().subscribe( (res: any) => {
+        this.user.data().subscribe( (res: USER) => {
             this.getDataSuccess( res );
         }, error => {
             this.error( error );
