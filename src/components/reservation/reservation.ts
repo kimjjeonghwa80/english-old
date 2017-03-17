@@ -1,67 +1,87 @@
 import { Component, OnInit } from '@angular/core';
 import { LMS } from '../../providers/lms';
 import { User } from '../../angular-backend/user';
+import { PrevMonths, NextMonths, BOOKS, WEEKS } from './reservation-interface';
 @Component({
     selector: 'reservation-component',
     templateUrl: 'reservation.html'
 })
 export class ReservationComponent implements OnInit {
-    reservations: any;
-    data:any = null;
+    reservations;
+    data = null;
     maxDay:number = 42;
     calendarLoad:boolean = true;
-    listOfDays:Array<any> = [];
-    date:any = new Date();
-    year:any = this.date.getFullYear();
-    month:any = ("0" + (this.date.getMonth() + 1)).slice(-2);
+    books: BOOKS = [];
+    weeks: WEEKS = [];
+    date:Date = new Date();
+    year:number = this.date.getFullYear();
+    month:number = parseInt(("0" + (this.date.getMonth() + 1)).slice(-2));
     testList:any = [];
+    prevMonths:Array<PrevMonths> = [];
+    nextMonths:Array<NextMonths> = [];
     constructor(
-        public user        : User,
+        public user : User,
         private lms : LMS
     ) {}
     ngOnInit() {
+        this.listCalendar(this.month, this.year);
         this.getNewReservationData();
+        this.getPreviousMonths();
+        this.getNextMonths();
+    }
+    getPreviousMonths() {
+        this.prevMonths = [];
+        for(let i=0; i < 12;i++ ) {
+            let test = (new Date(this.year, this.month-i, 1, 1, 10)).toDateString().split(" ");
+            this.prevMonths.push( { m: test[1], Y: test[3] } );
+        }
+    }
+    getNextMonths() {
+        this.nextMonths = [];
+        for(let i=0; i < 12;i++ ) {
+            let test = (new Date(this.year, this.month+i, 1, 1, 10)).toDateString().split(" ");
+            this.nextMonths.push( { m: test[1], Y: test[3] } );
+        }
     }
     getNewReservationData() {
-        this.listOfDays = [];
         this.calendarLoad = true;
         this.lms.getReservationsByMonthYear( { m:this.month , Y:this.year }, ( res )=> {
             //Process gather data
             res.books.forEach((res)=>{
-                if(  res.icon.match(/.\/data/g))  res.icon = res.icon.replace(/.\/data/g, 'https://englishfordevelopers.com/api/data');
+                if(  res.icon.match(/.\/data/g))  res.icon = res.icon.replace(/.\/data/g,
+                 'https://englishfordevelopers.com/api/data');
             });
-            
             this.data = res.books;
-            console.log("Get Reservation Data:", this.data);
             this.listCalendar( this.month, this.year);
-            console.log("Get listOfDays Data:", this.listOfDays);
             this.calendarLoad = false;
         });
-        
     }
 
 
-    listCalendar(month, year) {
-        let empty_day = new Date(year + "-" + month + "-01").getDay()   // first date(day) of the month. 0~6
-        let days_in_month = new Date(year, month, 0).getDate();         // last date(day) of the month. 28, 29, 30.
-        for (let i = 0; i < empty_day; i++) { this.listOfDays.unshift( "" ); }     // Fill all the empty days first
-        for (let i = 1; i <= days_in_month; i++) {
-
-            let date = this.year + this.month + (i < 10 ? '0' + i : i);
-            let book = this.data.find( book => book['date'] == date );
+    add0(n:number) : string {
+        return n < 10 ? '0' + n : n.toString();
+    }
+    listCalendar( month, year ) {
+        this.books = [];
+        let book;
+        let empty_day = new Date(year + "-" + month + "-01").getDay()               // first date(day) of the month. 0~6
+        let days_in_month = new Date(year, month, 0).getDate();                     // last date(day) of the month. 28, 29, 30.
+        for (let i = 0; i < empty_day; i++) { this.books.unshift( null ); }      // Fill all the empty days first
+        for (let i = 1; i <= days_in_month; i++) {                                  //Fill the days of month
+            let date = this.year.toString() +  this.add0( this.month ) + this.add0( i );
+            if(this.data) book = this.data.find( book => book['date'] == date );
             if ( book ) book['myDate'] = i;
             else book = { myDate: i };
-            this.listOfDays.push( book );
-
-        }       //Fill the days of month
-        // console.info('debug:', this.listOfDays);
-        while( this.listOfDays.length < this.maxDay ) { this.listOfDays.push(""); } // fill the remaining days
-        this.listOfDays = this.chunk(this.listOfDays );                            //Chunk Date
+            this.books.push( book );
+        }
+        while( this.books.length < this.maxDay ) { this.books.push( null ); } // fill the remaining days
+        this.weeks = this.chunk(this.books );                             //Chunk Date
+        console.log(this.weeks);
     }
     
 
-    chunk( arr:Array<any> ) {
-        let temp = [];
+    chunk( arr:BOOKS ) : WEEKS {
+        let temp:WEEKS = [];
         for( let i = 0; i < arr.length; i = i + 7 ) {
             temp.push( this.pres( arr.slice( i, i + 7 ) ) );
         }
@@ -69,40 +89,26 @@ export class ReservationComponent implements OnInit {
     }
 
     pres( arr: any ) {
-        // console.log('pres:', arr);
         return arr.map( e => this.pre(e) );
     }
     pre( data ) {
         return data;
     }
 
-
     onClickNext() {
-        console.log("old:",this.month);
         this.month ++;
-        
-        console.log("new:",this.month);
          if( this.month > 12) {
             this.year ++;
             this.month = 1;
         }
-        this.month = (this.month < 10 ? '0' + this.month : this.month);
-        console.log("newest:",this.month);
         this.getNewReservationData();
     }
     onClickPrev() {
-        console.log("old:",this.month);
         this.month --;
-        
-        console.log("new:",this.month);
         if( this.month < 1) {
             this.year --;
             this.month = 12;
         }
-       
-        this.month = (this.month < 10 ? '0' + this.month : this.month);
-        console.log("newest:",this.month);
         this.getNewReservationData();
-
     }
 }

@@ -40,12 +40,12 @@
                 <th class="calendar-day-head">Sat</th>
             </thead>
             <tbody>
-                <tr *ngFor="let week of listOfDays">
+                <tr *ngFor="let week of weeks">
                     <td *ngFor="let day of week" class="calendar-day">
-                        <span *ngIf="day.myDate">{{day.myDate}}</span>
+                        <span>{{day?.myDate}}</span>
                         <!--<span *ngIf="day.myDate">{{day.myDate}} / {{ day.date }}</span>-->
-                        <div *ngIf="day.teacher">{{day.teacher.mb_nick}}</div>
-                        <div [innerHTML]="day.icon"></div>
+                        <div>{{day?.teacher?.mb_nick}}</div>
+                        <div [innerHTML]="day?.icon"></div>
                         
                         <!--Sample https://englishfordevelopers.com/api/data/teacher/primary_photo_27018-->
                     </td>
