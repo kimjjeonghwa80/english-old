@@ -3,9 +3,11 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 //import { Forum } from '../../../backend-angular-api/forum';
 // import { FORUM_DATA_REQUEST_DATA } from '../../../backend-angular-api/interface';
 import { App } from '../../../providers/app';
-import { POST_CREATE, USER } from './../../../angular-backend/interface';
-import { Post } from './../../../angular-backend/post';
-import { User } from './../../../angular-backend/user';
+//import { POST_CREATE, USER } from './../../../angular-backend/interface';
+//import { Post } from './../../../angular-backend/post';
+//import { User } from './../../../angular-backend/user';
+
+import { User, PostData, POST_CREATE, USER } from './../../../angular-backend/angular-backend';
 @Component({
     selector: 'qna-post-component',
     templateUrl: 'post.html'
@@ -17,7 +19,7 @@ export class QnaPostComponent implements OnInit {
     constructor(
         private activeModal  : NgbActiveModal,
         private app          : App,
-        private post         : Post,
+        private post         : PostData,
         private user         : User       
         // private forum        : Forum
     ) {}
@@ -44,7 +46,7 @@ export class QnaPostComponent implements OnInit {
     }
 
     onClickPost() {
-       this.form.post_config_id = 6; //Fake test only
+       this.form.post_config_id = '6'; //Fake test only
        this.post.create( this.form ).subscribe( (res) => {
             console.log( res );
             this.app.myEvent.emit( { eventType:"post" } );
