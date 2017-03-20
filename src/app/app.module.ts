@@ -10,7 +10,7 @@ import { App } from '../providers/app';
 import { AppComponent } from './app.component';
 //import { BackendAngularApiModule } from './../backend-angular-api/backend-angular-api.module';
 
-import { AngularBackendModule } from './../angular-backend/angular-backend.module';
+import { AngularBackend } from './../angular-backend/angular-backend';
 
 import { HomePage } from '../pages/home/home';
 import { HelpPage } from '../pages/help/help';
@@ -102,7 +102,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot( appRoutes, { useHash: !history.pushState }),
     NgbModule.forRoot(),
     FormsModule,
-    AngularBackendModule
+    AngularBackend
     //BackendAngularApiModule
   ],
   bootstrap: [ AppComponent ],
