@@ -32,14 +32,9 @@ export class RegisterComponent{
         ///////////////
         // this.form['gender'] = ""; //Default Select gender
         //////////////
-
-
-      
         this.fakeData();
         // this.onClickRegister();
         // this.register();
-
-
     }
 
     // testforumpost(){
@@ -55,10 +50,10 @@ export class RegisterComponent{
 
 
     onEnterRegister(event){
-        // if( event.keyCode == 13){
-        //     if( this.user.loggedIn ) this.updateProfile( callback => this.updateLMSprofile() );
-        //     else this.register( callback => this.lmsregister( ) );
-        // }
+        if( event.keyCode == 13){
+            if( this.user.logged ) this.updateProfile( callback => this.updateLMSprofile() );
+            else this.register( callback => this.lmsRegister() );
+        }
     }
 
     fakeData() {
@@ -106,8 +101,8 @@ export class RegisterComponent{
 
         this.splitBirthday(); 
         this.user.register( this.form ).subscribe( (res: USER_REGISTER_RESPONSE ) => {
-            this.successRegister( res );
-
+            //this.successRegister( res );
+            callback();
         }, error => {
             this.error( error );
         } );
@@ -159,7 +154,7 @@ export class RegisterComponent{
 
 
 
-    updateProfile( callback ){
+    updateProfile( callback? ){
         // if ( this.validate() == false ) return;
         this.loading = true;
         this.splitBirthday();
@@ -173,6 +168,7 @@ export class RegisterComponent{
             gender: this.form.gender
         }
         this.user.edit( data ).subscribe( (res: any) => {
+            callback();
             this.successUpdate( res );
 
         }, error => {
